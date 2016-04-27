@@ -1,0 +1,173 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is something is something that all objects and subjects has and it can be seen or feel or touch or even smell.
+# Semantic graph: [something/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  rcmod:[something/NN
+#                         cop:is/VBZ
+#                         dep:[has/VBZ
+#                              dep:that/IN
+#                              nsubj:[objects/NNS det:all/DT cc:and/CC conj:subjects/NNS]
+#                              cc:and/CC
+#                              conj:[seen/VBN
+#                                    nsubjpass:it/PRP
+#                                    aux:can/MD
+#                                    auxpass:be/VB
+#                                    cc:or/CC
+#                                    conj:[feel/VB cc:or/CC conj:touch/VB]]
+#                              cc:or/CC
+#                              conj:[smell/VBP advmod:even/RB]]]]
+#   Detected 5 clause(s).
+#   - SVC (C: something@3, V: is@2, S: Matter@1)
+#   - SV (V: has@11, S: objects@8)
+#   - SV (V: smell@23, S: objects@8, A-: even@22)
+#   - SV (V: seen@16, S: it@13)
+#   - SV (V: feel@18, S: it@13)
+1	"Matter"	"is"	"something"
+1	"all objects and subjects"	"has"
+1	"all objects and subjects"	"smell"
+1	"it"	"can be seen"
+1	"it"	"can feel"
+1	"it"	"can touch"
+# Line 2: Matter has mass and volume.
+# Semantic graph: [has/VBZ nsubj:Matter/NNP dobj:[mass/NN cc:and/CC conj:volume/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: mass@3)
+2	"Matter"	"has"	"mass and volume"
+# Line 3: We have two different type of matter properties: chemical and physical properties.
+# Semantic graph: [have/VBP
+#                  nsubj:We/PRP
+#                  dobj:[type/NN
+#                        num:two/CD
+#                        amod:different/JJ
+#                        prep:[of/IN
+#                              pobj:[properties/NNS
+#                                    nn:matter/NN
+#                                    dep:[properties/NNS
+#                                         amod:[chemical/NN cc:and/CC conj:physical/NN]]]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: have@2, S: We@1, O: type@5)
+3	"We"	"have"	"two different type of matter properties chemical and physical properties"
+# Line 4: Physical property will only change the shape of the matter but will not change the identity of that matter.
+# Semantic graph: [change/VB
+#                  nsubj:[property/NN amod:Physical/JJ]
+#                  aux:will/MD
+#                  advmod:only/RB
+#                  dobj:[shape/NN det:the/DT prep:[of/IN pobj:[matter/NN det:the/DT]]]
+#                  cc:but/CC
+#                  conj:[change/VB
+#                        aux:will/MD
+#                        neg:not/RB
+#                        dobj:[identity/NN det:the/DT prep:[of/IN pobj:[matter/NN det:that/DT]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: change@5, S: property@2, A?: only@4, O: shape@7)
+#   - SVO (V: change@14, S: property@2, O: identity@16)
+4	"Physical property"	"will change"	"the shape of the matter only"
+4	"Physical property"	"will change"	"the shape of the matter"
+4	"Physical property"	"will not change"	"the identity of that matter"
+# Line 5: Chemical property changes the shape and identity of the original matter to another new matter.
+# Semantic graph: [changes/VBZ
+#                  nsubj:[property/NN nn:Chemical/NNP]
+#                  dobj:[shape/NN
+#                        det:the/DT
+#                        cc:and/CC
+#                        conj:identity/NN
+#                        prep:[of/IN pobj:[matter/NN det:the/DT amod:original/JJ]]]
+#                  prep:[to/TO pobj:[matter/NN det:another/DT amod:new/JJ]]]
+#   Detected 1 clause(s).
+#   - SVO (V: changes@3, S: property@2, O: shape@5, A?: to@12)
+5	"Chemical property"	"changes"	"the shape and identity of the original matter to another new matter"
+5	"Chemical property"	"changes"	"the shape and identity of the original matter"
+# Line 6: Energy not like matter can be seen or touch but its part of the matter.
+# Semantic graph: [seen/VBN
+#                  nsubjpass:[Energy/NNP prep:[like/IN neg:not/RB pobj:matter/NN]]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:[touch/VB
+#                        prep:[but/CC
+#                              dep:[part/NN
+#                                   poss:its/PRP$
+#                                   prep:[of/IN pobj:[matter/NN det:the/DT]]]]]]
+#   Detected 3 clause(s).
+#   - SV (V: seen@7, S: Energy@1)
+#   - SVA (V: touch@9, S: Energy@1, A!: but@10)
+#   - SVO (S: its@11, V: "has", O: part@12)
+6	"Energy not like matter"	"can be seen"
+6	"Energy not like matter"	"can touch"	"but its part of the matter"
+6	"its"	"has"	"part of the matter"
+# Line 7: All matter has energy.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+7	"All matter"	"has"	"energy"
+# Line 8: The law of conservation of energy is that energy can be transferred from one object to other but cannot be created or destroyed.
+# Semantic graph: [is/VBZ
+#                  nsubj:[law/NN
+#                         det:The/DT
+#                         prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#                  ccomp:[transferred/VBN
+#                         complm:that/IN
+#                         nsubjpass:energy/NN
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[from/IN pobj:[object/NN num:one/CD]]
+#                         prep:[to/TO pobj:other/JJ]
+#                         cc:but/CC
+#                         conj:[created/VBN
+#                               aux:can/MD
+#                               neg:not/RB
+#                               auxpass:be/VB
+#                               cc:or/CC
+#                               conj:destroyed/VBN]]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@7, S: law@2, CCOMP: transferred@12)
+#   - SVA (V: transferred@12, S: energy@9, A!: from@13, A?: to@16)
+#   - SV (V: created@22, S: energy@9)
+8	"The law of conservation of energy"	"is"	"that energy can be transferred from one object to other but can not be created or destroyed"
+8	"energy"	"can be transferred"	"from one object to other"
+8	"energy"	"can be transferred"	"from one object"
+8	"energy"	"can not be created"
+8	"energy"	"can not be destroyed"
+# Line 9: Mechanical energy is an object has so it can move or stop in an place.
+# Semantic graph: [object/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  det:an/DT
+#                  rcmod:[has/VBZ
+#                         advcl:[move/VB
+#                                mark:so/IN
+#                                nsubj:it/PRP
+#                                aux:can/MD
+#                                cc:or/CC
+#                                conj:stop/VB
+#                                prep:[in/IN pobj:[place/NN det:an/DT]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: object@5, V: is@3, S: energy@2)
+#   - SVA (V: move@10, S: it@8, A!: in@13)
+#   - SVA (V: stop@12, S: it@8, A!: in@13)
+9	"Mechanical energy"	"is"	"an object"
+9	"it"	"can move"	"in an place"
+9	"it"	"can stop"	"in an place"

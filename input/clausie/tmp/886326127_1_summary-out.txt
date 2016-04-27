@@ -1,0 +1,114 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is all objects and substances in the universe are made of.
+# Semantic graph: [objects/NNS
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:all/DT
+#                  cc:and/CC
+#                  conj:substances/NNS
+#                  prep:[in/IN
+#                        pobj:[universe/NN
+#                              det:the/DT
+#                              rcmod:[made/VBN auxpass:are/VBP prep:of/IN]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: objects@4, V: is@2, S: Matter@1, A?: in@7)
+1	"Matter"	"is"	"all objects and substances in the universe"
+1	"Matter"	"is"	"all objects and substances"
+# Line 2: You can detect the matter mostly with your senses.
+# Semantic graph: [detect/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dobj:[matter/NN det:the/DT]
+#                  advmod:mostly/RB
+#                  prep:[with/IN pobj:[senses/NNS poss:your/PRP$]]]
+#   Detected 2 clause(s).
+#   - SVO (V: detect@3, S: You@1, O: matter@5, A?: mostly@6, A?: with@7)
+#   - SVO (S: your@8, V: "has", O: senses@9)
+2	"You"	"can detect"	"the matter mostly"
+2	"You"	"can detect"	"the matter with your senses"
+2	"You"	"can detect"	"the matter"
+2	"your"	"has"	"senses"
+# Line 3: There is two properties of matter and they are physical properties and chemical change.
+# Semantic graph: [is/VBZ
+#                  expl:There/EX
+#                  nsubj:[properties/NNS num:two/CD prep:[of/IN pobj:matter/NN]]
+#                  cc:and/CC
+#                  conj:[properties/NNS
+#                        nsubj:they/PRP
+#                        cop:are/VBP
+#                        amod:physical/JJ
+#                        cc:and/CC
+#                        conj:[change/NN nn:chemical/NN]]]
+#   Detected 2 clause(s).
+#   - EXISTENTIAL (V: is@2, S: properties@4)
+#   - SVC (C: properties@11, V: are@9, S: they@8)
+3	"two properties of matter"	"There is"
+3	"they"	"are"	"physical properties and chemical change"
+# Line 4: Physical properties are those observed without changing the make up or identity of the matter.
+# Semantic graph: [those/DT
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  cop:are/VBP
+#                  partmod:[observed/VBN
+#                           prep:[without/IN
+#                                 pcomp:[changing/VBG dobj:[make/NN det:the/DT] prt:up/RP]]]
+#                  cc:or/CC
+#                  conj:[identity/NN prep:[of/IN pobj:[matter/NN det:the/DT]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: those@4, V: are@3, S: properties@2, A?: observed@5)
+#   - SVA (V: "be observed", S: those@4, A!: without@6)
+4	"Physical properties"	"are"	"those or identity of the matter observed without changing the make up"
+4	"Physical properties"	"are"	"those or identity of the matter"
+4	"those or identity of the matter"	"be observed"	"without changing the make up"
+# Line 5: Chemical properties describe matter based on its ability to change into a new kind of matter with different properties.
+# Semantic graph: [describe/VBP
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  dobj:matter/NN
+#                  prep:[based/VBN
+#                        pcomp:[on/IN
+#                               pobj:[ability/NN
+#                                     poss:its/PRP$
+#                                     infmod:[change/VB
+#                                             aux:to/TO
+#                                             prep:[into/IN
+#                                                   pobj:[kind/NN
+#                                                         det:a/DT
+#                                                         amod:new/JJ
+#                                                         prep:[of/IN pobj:matter/NN]]]
+#                                             prep:[with/IN
+#                                                   pobj:[properties/NNS amod:different/JJ]]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: describe@3, S: properties@2, O: matter@4, A?: based@5)
+#   - SVO (S: its@7, V: "has", O: ability@8)
+5	"Chemical properties"	"describe"	"matter based on its ability to change into a new kind of matter with different properties"
+5	"Chemical properties"	"describe"	"matter"
+5	"its"	"has"	"ability to change into a new kind of matter with different properties"
+# Line 6: There is also energy and all matter has it.
+# Semantic graph: [energy/NN
+#                  expl:There/EX
+#                  cop:is/VBZ
+#                  advmod:also/RB
+#                  cc:and/CC
+#                  conj:[has/VBZ advmod:[matter/NN det:all/DT] dobj:it/PRP]]
+#   Detected 0 clause(s).

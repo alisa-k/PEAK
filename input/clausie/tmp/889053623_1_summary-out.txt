@@ -1,0 +1,76 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: What I under stood about this passage was that all thing in this universe is matter cause everything has volume and mass so thats why its universal.
+# Semantic graph: [was/VBD
+#                  csubj:[stood/VBD
+#                         dobj:What/WP
+#                         nsubj:I/PRP
+#                         advmod:under/IN
+#                         prep:[about/IN pobj:[passage/NN det:this/DT]]]
+#                  ccomp:[everything/NN
+#                         complm:that/IN
+#                         nsubj:[thing/NN det:all/DT prep:[in/IN pobj:[universe/NN det:this/DT]]]
+#                         cop:is/VBZ
+#                         nn:matter/NN
+#                         nn:cause/NN
+#                         rcmod:[has/VBZ
+#                                dobj:[volume/NN
+#                                      cc:and/CC
+#                                      conj:mass/NN
+#                                      amod:[thats/JJ advmod:so/RB]
+#                                      rcmod:[universal/JJ advmod:why/WRB dep:its/PRP$]]]]]
+#   Detected 3 clause(s).
+#   - SVOA (V: stood@4, S: I@2, O: What@1, A?: under@3, A!: about@5)
+#   - SVC (V: was@8, S: stood@4, CCOMP: everything@18)
+#   - SVC (C: everything@18, V: is@15, S: thing@11)
+1	"I"	"stood"	"What about this passage under"
+1	"I"	"stood"	"What about this passage"
+1	"What I under stood about this passage"	"was"	"that all thing in this universe is matter cause everything"
+1	"all thing in this universe"	"is"	"matter cause everything"
+# Line 2: What makes matter move and change is energy this two thing work together in other to make something happens.
+# Semantic graph: [happens/VBZ
+#                  csubj:[makes/VBZ
+#                         nsubj:What/WP
+#                         ccomp:[energy/NN
+#                                nsubj:[move/NN nn:matter/NN cc:and/CC conj:change/NN]
+#                                cop:is/VBZ
+#                                infmod:[make/VB
+#                                        nsubj:[this/DT
+#                                               prep:[in/IN
+#                                                     advmod:[together/RB
+#                                                             npadvmod:[work/NN
+#                                                                       num:two/CD
+#                                                                       nn:thing/NN]]
+#                                                     pobj:other/JJ]]
+#                                        aux:to/TO
+#                                        dobj:something/NN]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: makes@2, S: What@1, CCOMP: energy@8)
+#   - SVC (C: energy@8, V: is@7, S: move@4)
+#   - SVO (V: make@17, S: this@9, O: something@18)
+#   - SV (V: happens@19, S: makes@2)
+2	"What"	"makes"	"matter move and change is energy this two thing work together in other to make something"
+2	"matter move and change"	"is"	"energy this two thing work together in other to make something"
+2	"this two thing work together in other"	"to make"	"something"
+2	"What makes matter move and change is energy this two thing work together in other to make something"	"happens"

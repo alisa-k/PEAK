@@ -1,0 +1,145 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter: A Fact of Everyday Life
+# Semantic graph: [Matter/NNP
+#                  dep:[Fact/NN det:A/DT prep:[of/IN pobj:[Life/NNP nn:Everyday/NNP]]]]
+#   Detected 0 clause(s).
+# Line 2: Matter is anything that occupies space and can be perceived by our senses.
+# Semantic graph: [anything/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  rcmod:[occupies/VBZ
+#                         nsubj:that/WDT
+#                         dobj:space/NN
+#                         cc:and/CC
+#                         conj:[perceived/VBN
+#                               aux:can/MD
+#                               auxpass:be/VB
+#                               prep:[by/IN pobj:[senses/NNS poss:our/PRP$]]]]]
+#   Detected 4 clause(s).
+#   - SVC (C: anything@3, V: is@2, S: Matter@1)
+#   - SVO (V: occupies@5, S: anything@3, O: space@6)
+#   - SVA (V: perceived@10, S: anything@3, A!: by@11)
+#   - SVO (S: our@12, V: "has", O: senses@13)
+2	"Matter"	"is"	"anything"
+2	"anything"	"occupies"	"space"
+2	"anything"	"can be perceived"	"by our senses"
+2	"our"	"has"	"senses"
+# Line 3: We classify it by its physical or chemical properties.
+# Semantic graph: [classify/VB
+#                  nsubj:We/PRP
+#                  dobj:it/PRP
+#                  prep:[by/IN
+#                        pobj:[properties/NNS
+#                              poss:its/PRP$
+#                              amod:[physical/NN cc:or/CC conj:chemical/NN]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: classify@2, S: We@1, O: it@3, A?: by@4)
+#   - SVO (S: its@5, V: "has", O: properties@9)
+3	"We"	"classify"	"it by its physical or chemical properties"
+3	"We"	"classify"	"it"
+3	"its"	"has"	"physical or chemical properties"
+# Line 4: It can be changed physically channging its shape but it is still made of the same substance.
+# Semantic graph: [changed/JJ
+#                  nsubj:It/PRP
+#                  aux:can/MD
+#                  cop:be/VB
+#                  advmod:physically/RB
+#                  dep:[channging/VBG dobj:[shape/NN poss:its/PRP$]]
+#                  cc:but/CC
+#                  conj:[made/VBN
+#                        nsubjpass:it/PRP
+#                        auxpass:is/VBZ
+#                        advmod:still/RB
+#                        prep:[of/IN pobj:[substance/NN det:the/DT amod:same/JJ]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: changed@4, V: be@3, S: It@1, A?: physically@5)
+#   - SVO (S: its@7, V: "has", O: shape@8)
+#   - SVA (V: made@13, S: it@10, A?: still@12, A!: of@14)
+4	"It"	"can be"	"changed channging its shape physically"
+4	"It"	"can be"	"changed channging its shape"
+4	"its"	"has"	"shape"
+4	"it"	"is made"	"of the same substance still"
+4	"it"	"is made"	"of the same substance"
+# Line 5: If we change it chemically, we alter its form by changing its substance into a different substance.
+# Semantic graph: [alter/VBP
+#                  advcl:[change/VBP mark:If/IN nsubj:we/PRP dobj:it/PRP advmod:chemically/RB]
+#                  nsubj:we/PRP
+#                  dobj:[form/NN poss:its/PRP$]
+#                  prep:[by/IN
+#                        pcomp:[changing/VBG
+#                               dobj:[substance/NN poss:its/PRP$]
+#                               prep:[into/IN pobj:[substance/NN det:a/DT amod:different/JJ]]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: change@3, S: we@2, O: it@4, A?: chemically@5)
+#   - SVO (V: alter@8, S: we@7, A?: change@3, O: form@10, A?: by@11)
+#   - SVO (S: its@9, V: "has", O: form@10)
+#   - SVO (S: its@13, V: "has", O: substance@14)
+5	"we"	"change"	"it chemically"
+5	"we"	"change"	"it"
+5	"we"	"alter"	"its form If we change it chemically"
+5	"we"	"alter"	"its form by changing its substance into a different substance"
+5	"we"	"alter"	"its form"
+5	"its"	"has"	"form"
+5	"its"	"has"	"substance"
+# Line 6: Energy is also a property of matter and all matter has it.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  advmod:also/RB
+#                  det:a/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[has/VBZ advmod:[matter/NN det:all/DT] dobj:it/PRP]]
+#   Detected 2 clause(s).
+#   - SVC (C: property@5, V: is@2, S: Energy@1, A?: also@3, A?: of@6)
+#   - SVO (V: has@11, S: Energy@1, A?: matter@10, O: it@12)
+6	"Energy"	"is"	"a property also"
+6	"Energy"	"is"	"a property of matter"
+6	"Energy"	"is"	"a property"
+6	"Energy"	"has"	"it all matter"
+6	"Energy"	"has"	"it"
+# Line 7: It can not be created or destroyed although it can be transferred from one object to another.
+# Semantic graph: [created/VBN
+#                  nsubjpass:It/PRP
+#                  aux:can/MD
+#                  neg:not/RB
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:destroyed/VBN
+#                  advcl:[transferred/VBN
+#                         mark:although/IN
+#                         nsubjpass:it/PRP
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[from/IN pobj:[object/NN num:one/CD]]
+#                         prep:[to/TO pobj:another/DT]]]
+#   Detected 3 clause(s).
+#   - SVA (V: created@5, S: It@1, A!: transferred@12)
+#   - SVA (V: destroyed@7, S: It@1, A!: transferred@12)
+#   - SVA (V: transferred@12, S: it@9, A!: from@13, A?: to@16)
+7	"It"	"can not be created"	"although it can be transferred from one object to another"
+7	"It"	"can not be destroyed"	"although it can be transferred from one object to another"
+7	"it"	"can be transferred"	"from one object to another"
+7	"it"	"can be transferred"	"from one object"

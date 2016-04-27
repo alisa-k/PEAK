@@ -1,0 +1,136 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what makes up the universe.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[makes/VBZ nsubj:what/WP prt:up/RP dobj:[universe/NN det:the/DT]]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: makes@4)
+#   - SVO (V: makes@4, S: what@3, O: universe@7)
+1	"Matter"	"is"	"what makes up the universe"
+1	"what"	"makes up"	"the universe"
+# Line 2: It has shape, volume, and mass.
+# Semantic graph: [has/VBZ nsubj:It/PRP dobj:[shape/NN conj:volume/NN cc:and/CC conj:mass/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: It@1, O: shape@3)
+2	"It"	"has"	"shape volume and mass"
+# Line 3: The properties of matter such as physical and chemical proeprties is what helps us classify matter.
+# Semantic graph: [is/VBZ
+#                  nsubj:[properties/NNS
+#                         det:The/DT
+#                         prep:[of/IN
+#                               pobj:[matter/NN
+#                                     prep:[as/IN
+#                                           mwe:such/JJ
+#                                           pobj:[proeprties/NNS
+#                                                 amod:[physical/NN cc:and/CC conj:chemical/NN]]]]]]
+#                  ccomp:[helps/VBZ
+#                         nsubj:what/WP
+#                         ccomp:[classify/VB nsubj:us/PRP dobj:matter/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@11, S: properties@2, CCOMP: helps@13)
+#   - SVO (V: helps@13, S: what@12, CCOMP: classify@15)
+#   - SVO (V: classify@15, S: us@14, O: matter@16)
+3	"The properties of matter such as physical and chemical proeprties"	"is"	"what helps us classify matter"
+3	"what"	"helps"	"us classify matter"
+3	"us"	"classify"	"matter"
+# Line 4: Physical property is observed without changing the makeup or identity.
+# Semantic graph: [observed/JJ
+#                  nsubj:[property/NN amod:Physical/JJ]
+#                  cop:is/VBZ
+#                  prep:[without/IN
+#                        pcomp:[changing/VBG
+#                               dobj:[makeup/NN det:the/DT cc:or/CC conj:identity/NN]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: observed@4, V: is@3, S: property@2, A?: without@5)
+4	"Physical property"	"is"	"observed without changing the makeup or identity"
+4	"Physical property"	"is"	"observed"
+# Line 5: Chemical property is based on abilities to change into a new kind of matter.
+# Semantic graph: [based/VBN
+#                  nsubjpass:[property/NN nn:Chemical/NNP]
+#                  auxpass:is/VBZ
+#                  prep:[on/IN pobj:abilities/NNS]
+#                  xcomp:[change/VB
+#                         aux:to/TO
+#                         prep:[into/IN
+#                               pobj:[kind/NN det:a/DT amod:new/JJ prep:[of/IN pobj:matter/NN]]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: based@4, S: property@2, A?: on@5, XCOMP: change@8)
+5	"Chemical property"	"is based"	"on abilities to change into a new kind of matter"
+5	"Chemical property"	"is based"	"to change into a new kind of matter"
+# Line 6: Energy is in every matter.
+# Semantic graph: [is/VBZ nsubj:Energy/NNP prep:[in/IN pobj:[matter/NN det:every/DT]]]
+#   Detected 1 clause(s).
+#   - SVA (V: is@2, S: Energy@1, A!: in@3)
+6	"Energy"	"is"	"in every matter"
+# Line 7: All matter has potential or kinetic energy.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[energy/NN amod:[potential/JJ cc:or/CC conj:kinetic/JJ]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@7)
+7	"All matter"	"has"	"potential or kinetic energy"
+# Line 8: Potential energy is the energy in position or shape.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Potential/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[in/IN pobj:[position/NN cc:or/CC conj:shape/NN]]]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2, A?: in@6)
+8	"Potential energy"	"is"	"the energy in position or shape"
+8	"Potential energy"	"is"	"the energy"
+# Line 9: Kinetic energy is the energy matter has because its moving.
+# Semantic graph: [matter/NN
+#                  nsubj:[energy/NN amod:Kinetic/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  nn:energy/NN
+#                  rcmod:[because/IN aux:has/VBZ pobj:[moving/NN poss:its/PRP$]]]
+#   Detected 2 clause(s).
+#   - SVC (C: matter@6, V: is@3, S: energy@2)
+#   - SVO (S: its@9, V: "has", O: moving@10)
+9	"Kinetic energy"	"is"	"the energy matter"
+9	"its"	"has"	"moving"
+# Line 10: Energy can be transferred but never created or destroyed, according to the law of conservation.
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  advmod:but/CC
+#                  neg:never/RB
+#                  dep:created/VBN
+#                  cc:or/CC
+#                  conj:destroyed/VBN
+#                  conj:[according/VBG
+#                        pcomp:[to/TO pobj:[law/NN det:the/DT prep:[of/IN pobj:conservation/NN]]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: transferred@4, S: Energy@1, A!: but@5)
+#   - SV (V: destroyed@9, S: Energy@1, A?: but@5)
+#   - SV (V: according@11, S: Energy@1, A?: but@5)
+10	"Energy"	"can be transferred never"	"but"
+10	"Energy"	"can be never destroyed"	"but"
+10	"Energy"	"can be never destroyed"
+10	"Energy"	"can be never according to the law of conservation"	"but"
+10	"Energy"	"can be never according to the law of conservation"

@@ -1,0 +1,103 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Matter is basically what things are made of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  advmod:basically/RB
+#                  ccomp:[made/VBN dep:what/WP nsubjpass:things/NNS auxpass:are/VBP prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, A?: basically@3, CCOMP: made@7)
+#   - SVA (V: made@7, S: things@5, A!: of@8)
+1	"Matter"	"is"	"basically what things are made of"
+1	"Matter"	"is"	"what things are made of"
+1	"things"	"are made"	"of"
+# Line 2 (id 2): All of the matter is the universe can be detected because of its volume.
+# Semantic graph: [universe/NN
+#                  nsubj:[All/DT prep:[of/IN pobj:[matter/NN det:the/DT]]]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[detected/VBN
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[of/IN advmod:because/RB pobj:[volume/NN poss:its/PRP$]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: universe@7, V: is@5, S: All@1)
+#   - SVO (S: its@13, V: "has", O: volume@14)
+2	"All of the matter"	"is"	"the universe"
+2	"its"	"has"	"volume"
+# Line 3 (id 3): Matter can also be recognized by our senses.
+# Semantic graph: [recognized/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  advmod:also/RB
+#                  auxpass:be/VB
+#                  prep:[by/IN pobj:[senses/NNS poss:our/PRP$]]]
+#   Detected 2 clause(s).
+#   - SVA (V: recognized@5, S: Matter@1, A?: also@3, A!: by@6)
+#   - SVO (S: our@7, V: "has", O: senses@8)
+3	"Matter"	"can be recognized"	"by our senses also"
+3	"Matter"	"can be recognized"	"by our senses"
+3	"our"	"has"	"senses"
+# Line 4 (id 4): Things that help us identify and recognize matter are properties.
+# Semantic graph: [properties/NNS
+#                  nsubj:[Things/NNS
+#                         rcmod:[help/VBP
+#                                nsubj:that/WDT
+#                                ccomp:[identify/VB
+#                                       nsubj:us/PRP
+#                                       cc:and/CC
+#                                       conj:recognize/VB
+#                                       dobj:matter/NN]]]
+#                  cop:are/VBP]
+#   Detected 4 clause(s).
+#   - SVO (V: help@3, S: Things@1, CCOMP: identify@5)
+#   - SVO (V: identify@5, S: us@4, O: matter@8)
+#   - SVO (V: recognize@7, S: us@4, O: matter@8)
+#   - SVC (C: properties@10, V: are@9, S: Things@1)
+4	"Things"	"help"	"us identify and recognize matter"
+4	"us"	"identify"	"matter"
+4	"us"	"recognize"	"matter"
+4	"Things"	"are"	"properties"
+# Line 5 (id 5): Matter has a thing call energy.
+# Semantic graph: [has/VBZ nsubj:Matter/NNP dobj:[energy/NN det:a/DT nn:thing/NN nn:call/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: energy@6)
+5	"Matter"	"has"	"a thing call energy"
+# Line 6 (id 6): Energy that is made by the motion of an object is called mechanical.
+# Semantic graph: [called/VBN
+#                  nsubjpass:[Energy/NNP
+#                             rcmod:[made/VBN
+#                                    nsubjpass:that/WDT
+#                                    auxpass:is/VBZ
+#                                    prep:[by/IN
+#                                          pobj:[motion/NN
+#                                                det:the/DT
+#                                                prep:[of/IN pobj:[object/NN det:an/DT]]]]]]
+#                  auxpass:is/VBZ
+#                  dobj:mechanical/JJ]
+#   Detected 2 clause(s).
+#   - SVA (V: made@4, S: Energy@1, A!: by@5)
+#   - SVO (V: called@12, S: Energy@1, O: mechanical@13)
+6	"Energy"	"is made"	"by the motion of an object"
+6	"Energy"	"is called"	"mechanical"

@@ -1,0 +1,66 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All things in this universe have matter.
+# Semantic graph: [have/VBP
+#                  nsubj:[things/NNS det:All/DT prep:[in/IN pobj:[universe/NN det:this/DT]]]
+#                  dobj:matter/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: have@6, S: things@2, O: matter@7)
+1	"All things in this universe"	"have"	"matter"
+# Line 2: We all live around matter.
+# Semantic graph: [live/VBP nsubj:We/PRP advmod:all/DT prep:[around/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: live@3, S: We@1, A?: all@2, A!: around@4)
+2	"We"	"live"	"around matter all"
+2	"We"	"live"	"around matter"
+# Line 3: All matter can be measured because its three dimensional.
+# Semantic graph: [measured/VBN
+#                  nsubjpass:[matter/NN det:All/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[because/IN pobj:[dimensional/NN poss:its/PRP$ num:three/CD]]]
+#   Detected 2 clause(s).
+#   - SVA (V: measured@5, S: matter@2, A!: because@6)
+#   - SVO (S: its@7, V: "has", O: dimensional@9)
+3	"All matter"	"can be measured"	"because its three dimensional"
+3	"its"	"has"	"three dimensional"
+# Line 4: Chemical properties make matter change inside and physical properties help it change on the outside
+# Semantic graph: [make/VBP
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  ccomp:[help/VB
+#                         nsubj:[inside/NN
+#                                nn:matter/NN
+#                                nn:change/NN
+#                                cc:and/CC
+#                                conj:[properties/NNS amod:physical/JJ]]
+#                         ccomp:[change/VB
+#                                nsubj:it/PRP
+#                                prep:[on/IN pobj:[outside/NN det:the/DT]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: make@3, S: properties@2, CCOMP: help@10)
+#   - SVO (V: help@10, S: inside@6, CCOMP: change@12)
+#   - SVA (V: change@12, S: it@11, A!: on@13)
+4	"Chemical properties"	"make"	"matter change inside and physical properties help it change on the outside"
+4	"matter change inside and physical properties"	"help"	"it change on the outside"
+4	"it"	"change"	"on the outside"

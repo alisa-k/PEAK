@@ -1,0 +1,163 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is something that has volume, mass and energy, no matter how small it is.
+# Semantic graph: [something/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  rcmod:[has/VBZ
+#                         nsubj:that/WDT
+#                         dobj:[volume/NN conj:mass/NN cc:and/CC conj:energy/NN]
+#                         advmod:[matter/NN
+#                                 det:no/DT
+#                                 dep:[is/VBZ advmod:[how/WRB dep:small/JJ] nsubj:it/PRP]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: something@3, V: is@2, S: Matter@1)
+#   - SVO (V: has@5, S: something@3, O: volume@6, A?: matter@13)
+#   - SV (V: is@17, S: it@16, A?: how@14)
+1	"Matter"	"is"	"something"
+1	"something"	"has"	"volume mass and energy no matter how small it is"
+1	"something"	"has"	"volume mass and energy"
+1	"it"	"is"	"how small"
+1	"it"	"is"
+# Line 2: We can see or smell and tough many matters around us, but there many more things that we cant, like viruses that are too small for us to see them with naked eyes, but they are there.
+# Semantic graph: [see/VB
+#                  nsubj:We/PRP
+#                  aux:can/MD
+#                  dobj:[smell/NN
+#                        cc:or/CC
+#                        cc:and/CC
+#                        conj:[matters/NNS amod:tough/JJ amod:many/JJ]]
+#                  prep:[around/IN pobj:us/PRP]
+#                  cc:but/CC
+#                  conj:[things/NNS
+#                        advmod:there/RB
+#                        amod:many/JJ
+#                        amod:more/JJR
+#                        ccomp:[cant/VBZ
+#                               complm:that/IN
+#                               nsubj:we/PRP
+#                               prep:[like/IN
+#                                     pobj:[viruses/NNS
+#                                           rcmod:[small/JJ
+#                                                  nsubj:that/WDT
+#                                                  cop:are/VBP
+#                                                  advmod:too/RB
+#                                                  dep:[see/VB
+#                                                       mark:for/IN
+#                                                       nsubj:us/PRP
+#                                                       aux:to/TO
+#                                                       dobj:them/PRP
+#                                                       prep:[with/IN
+#                                                             pobj:[eyes/NNS amod:naked/JJ]]]]]]]]
+#                  cc:but/CC
+#                  conj:[are/VBP nsubj:they/PRP advmod:there/RB]]
+#   Detected 6 clause(s).
+#   - SVO (V: see@3, S: We@1, O: smell@5, A?: around@10)
+#   - SVO (V: things@17, S: We@1, A?: there@14, CCOMP: cant@20)
+#   - SVA (V: cant@20, S: we@19, A!: like@22)
+#   - SVC (C: small@27, V: are@25, S: viruses@23, A?: too@26)
+#   - SVO (V: see@31, S: us@29, O: them@32, A?: with@33)
+#   - SVA (V: are@39, S: they@38, A!: there@40)
+2	"We"	"can see"	"or smell and tough many matters around us"
+2	"We"	"can see"	"or smell and tough many matters"
+2	"We"	"many more things"	"that we cant like viruses there"
+2	"We"	"many more things"	"that we cant like viruses"
+2	"we"	"cant"	"like viruses"
+2	"viruses"	"are"	"small for us to see them with naked eyes too"
+2	"viruses"	"are"	"small for us to see them with naked eyes"
+2	"us"	"to see"	"them with naked eyes"
+2	"us"	"to see"	"them"
+2	"they"	"are"	"there"
+# Line 3: Matters can change in two ways: physical and chemical.
+# Semantic graph: [change/VB
+#                  nsubj:Matters/NNS
+#                  aux:can/MD
+#                  prep:[in/IN
+#                        pobj:[ways/NNS num:two/CD amod:[physical/NN cc:and/CC conj:chemical/NN]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: change@3, S: Matters@1, A!: in@4)
+3	"Matters"	"can change"	"in two ways physical and chemical"
+# Line 4: When a matter changes physical it just looses it shape but not the structure of it's atoms or molecules.
+# Semantic graph: [looses/VBZ
+#                  advcl:[changes/VBZ
+#                         advmod:When/WRB
+#                         nsubj:[matter/NN det:a/DT]
+#                         acomp:physical/JJ]
+#                  nsubj:it/PRP
+#                  advmod:just/RB
+#                  xcomp:[shape/NN
+#                         nsubj:it/PRP
+#                         cc:[not/RB cc:but/CC]
+#                         conj:[structure/NN
+#                               det:the/DT
+#                               prep:[of/IN
+#                                     pobj:[atoms/NNS
+#                                           poss:[it/PRP possessive:'s/POS]
+#                                           cc:or/CC
+#                                           conj:molecules/NNS]]]]]
+#   Detected 4 clause(s).
+#   - SVC (V: changes@4, S: matter@3, A?: When@1, ACOMP: physical@5)
+#   - SVO (V: looses@8, S: it@6, A?: changes@4, A?: just@7, XCOMP: shape@10)
+#   - SV (V: shape@10, S: it@9)
+#   - SVO (S: it@16, V: "has", O: atoms@18)
+4	"a matter"	"changes"	"physical When"
+4	"a matter"	"changes"	"physical"
+4	"it"	"looses"	"it shape When a matter changes physical"
+4	"it"	"looses"	"it the structure of it 's atoms When a matter changes physical"
+4	"it"	"looses"	"it the structure of it 's molecules When a matter changes physical"
+4	"it"	"looses"	"it shape just"
+4	"it"	"looses"	"it the structure of it 's atoms just"
+4	"it"	"looses"	"it the structure of it 's molecules just"
+4	"it"	"looses"	"it shape"
+4	"it"	"looses"	"it the structure of it 's atoms"
+4	"it"	"looses"	"it the structure of it 's molecules"
+4	"it"	"shape"
+4	"it"	"the structure of it 's atoms"
+4	"it"	"the structure of it 's molecules"
+4	"it"	"has"	"atoms or molecules"
+# Line 5: When a matter changes chemically, its atoms and molecules changes too, so we are going to have new materials.
+# Semantic graph: [changes/VBZ
+#                  advcl:[changes/VBZ
+#                         advmod:When/WRB
+#                         nsubj:[matter/NN det:a/DT]
+#                         advmod:chemically/RB]
+#                  nsubj:[atoms/NNS poss:its/PRP$ cc:and/CC conj:molecules/NNS]
+#                  advmod:too/RB
+#                  dep:so/IN
+#                  ccomp:[going/VBG
+#                         nsubj:we/PRP
+#                         aux:are/VBP
+#                         xcomp:[have/VB aux:to/TO dobj:[materials/NNS amod:new/JJ]]]]
+#   Detected 4 clause(s).
+#   - SVA (V: changes@4, S: matter@3, A?: When@1, A!: chemically@5)
+#   - SVO (S: its@7, V: "has", O: atoms@8)
+#   - SVO (V: changes@11, S: atoms@8, A?: changes@4, A?: too@12, CCOMP: going@17)
+#   - SVC (V: going@17, S: we@15, XCOMP: have@19)
+5	"a matter"	"changes"	"chemically When"
+5	"a matter"	"changes"	"chemically"
+5	"its"	"has"	"atoms and molecules"
+5	"its atoms and molecules"	"changes"	"we are going to have new materials When a matter changes chemically"
+5	"its atoms and molecules"	"changes"	"too we are going to have new materials"
+5	"its atoms and molecules"	"changes"	"we are going to have new materials"
+5	"we"	"are going"	"to have new materials"

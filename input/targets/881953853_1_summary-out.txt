@@ -1,0 +1,113 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is all objects and substances in the universe are made of.
+# Semantic graph: [objects/NNS
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:all/DT
+#                  cc:and/CC
+#                  conj:substances/NNS
+#                  prep:[in/IN
+#                        pobj:[universe/NN
+#                              det:the/DT
+#                              rcmod:[made/VBN auxpass:are/VBP prep:of/IN]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: objects@4, V: is@2, S: Matter@1, A?: in@7)
+1	"Matter"	"is"	"all objects and substances in the universe"
+1	"Matter"	"is"	"all objects and substances"
+# Line 2: Because all matter takes up space and contains a certain amount of material all matter can be detected and measured.
+# Semantic graph: [detected/VBN
+#                  advcl:[takes/VBZ
+#                         mark:Because/IN
+#                         nsubj:[matter/NN det:all/DT]
+#                         prt:up/RP
+#                         dobj:space/NN
+#                         cc:and/CC
+#                         conj:[contains/VBZ
+#                               dobj:[amount/NN
+#                                     det:a/DT
+#                                     amod:certain/JJ
+#                                     prep:[of/IN pobj:material/NN]]]]
+#                  nsubjpass:[matter/NN det:all/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN]
+#   Detected 4 clause(s).
+#   - SVO (V: takes@4, S: matter@3, O: space@6)
+#   - SVO (V: contains@8, S: matter@3, O: amount@11)
+#   - SV (V: detected@18, S: matter@15, A?: takes@4)
+#   - SV (V: measured@20, S: matter@15, A?: takes@4)
+2	"all matter"	"takes up"	"space"
+2	"all matter"	"contains"	"a certain amount of material"
+2	"all matter"	"can be detected"	"Because all matter takes up space and contains a certain amount of material"
+2	"all matter"	"can be detected"
+2	"all matter"	"can be measured"	"Because all matter takes up space and contains a certain amount of material"
+2	"all matter"	"can be measured"
+# Line 3: You can observe some types of matter easily with your senses.
+# Semantic graph: [observe/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dobj:[types/NNS det:some/DT prep:[of/IN pobj:matter/NN]]
+#                  prep:[with/IN advmod:easily/RB pobj:[senses/NNS poss:your/PRP$]]]
+#   Detected 2 clause(s).
+#   - SVO (V: observe@3, S: You@1, O: types@5, A?: with@9)
+#   - SVO (S: your@10, V: "has", O: senses@11)
+3	"You"	"can observe"	"some types of matter easily with your senses"
+3	"You"	"can observe"	"some types of matter"
+3	"your"	"has"	"senses"
+# Line 4: For example, you can smell coooked food and see cooked food.
+# Semantic graph: [smell/VB
+#                  prep:[For/IN pobj:example/NN]
+#                  nsubj:you/PRP
+#                  aux:can/MD
+#                  dobj:[food/NN amod:coooked/JJ]
+#                  cc:and/CC
+#                  conj:[see/VB dobj:[food/NN amod:cooked/JJ]]]
+#   Detected 2 clause(s).
+#   - SVO (V: smell@6, S: you@4, A?: For@1, O: food@8)
+#   - SVO (V: see@10, S: you@4, A?: For@1, O: food@12)
+4	"you"	"can smell"	"coooked food For example"
+4	"you"	"can smell"	"coooked food"
+4	"you"	"can see"	"cooked food For example"
+4	"you"	"can see"	"cooked food"
+# Line 5: Physical properties are those that can be observed without changing the make-up for identity of the matter.
+# Semantic graph: [those/DT
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  cop:are/VBP
+#                  rcmod:[observed/VBN
+#                         nsubjpass:that/WDT
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[without/IN
+#                               pcomp:[changing/VBG
+#                                      dobj:[make-up/NN det:the/DT]
+#                                      prep:[for/IN
+#                                            pobj:[identity/NN
+#                                                  prep:[of/IN pobj:[matter/NN det:the/DT]]]]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: those@4, V: are@3, S: properties@2)
+#   - SVA (V: observed@8, S: those@4, A!: without@9)
+5	"Physical properties"	"are"	"those"
+5	"those"	"can be observed"	"without changing the make-up for identity of the matter"

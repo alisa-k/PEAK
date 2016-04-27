@@ -1,0 +1,97 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is anything that take up volume is object or thing in the universe matter has different types of properties.
+# Semantic graph: [anything/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  ccomp:[has/VBZ
+#                         complm:that/IN
+#                         csubj:[take/VB
+#                                prt:up/RP
+#                                dobj:[volume/NN
+#                                      rcmod:[object/NN
+#                                             cop:is/VBZ
+#                                             cc:or/CC
+#                                             conj:thing/NN
+#                                             prep:[in/IN
+#                                                   pobj:[matter/NN det:the/DT nn:universe/NN]]]]]
+#                         dobj:[types/NNS amod:different/JJ prep:[of/IN pobj:properties/NNS]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: anything@3, V: is@2, S: Matter@1, CCOMP: has@16)
+#   - SVO (V: has@16, S: take@5, O: types@18)
+1	"Matter"	"is"	"anything that take up volume has different types of properties"
+1	"take up volume"	"has"	"different types of properties"
+# Line 2: Properties name what matter is like for examples car, house, metal, box, physical properties can melt or turn in different type.
+# Semantic graph: [melt/VB
+#                  nsubj:[name/NN
+#                         nn:Properties/NNP
+#                         rcmod:[is/VBZ
+#                                nsubj:what/WP
+#                                advmod:matter/NN
+#                                prep:[for/IN
+#                                      dep:like/IN
+#                                      pobj:[car/NN
+#                                            nn:examples/NNS
+#                                            appos:house/NN
+#                                            appos:metal/NN
+#                                            appos:box/NN
+#                                            appos:[properties/NNS amod:physical/JJ]]]]]
+#                  aux:can/MD
+#                  cc:or/CC
+#                  conj:turn/VB
+#                  prep:[in/IN pobj:[type/NN amod:different/JJ]]]
+#   Detected 7 clause(s).
+#   - SVA (V: is@5, S: name@2, A?: matter@4, A!: for@7)
+#   - SVC (S: car@9, V: "is", C: properties@18)
+#   - SVC (S: car@9, V: "is", C: house@11)
+#   - SVC (S: car@9, V: "is", C: metal@13)
+#   - SVC (S: car@9, V: "is", C: box@15)
+#   - SVA (V: melt@20, S: name@2, A!: in@23)
+#   - SVA (V: turn@22, S: name@2, A!: in@23)
+2	"Properties name"	"is"	"for like examples car matter"
+2	"Properties name"	"is"	"for like examples car"
+2	"examples car"	"is"	"physical properties"
+2	"examples car"	"is"	"house"
+2	"examples car"	"is"	"metal"
+2	"examples car"	"is"	"box"
+2	"Properties name"	"can melt"	"in different type"
+2	"Properties name"	"can turn"	"in different type"
+# Line 3: Of matter.
+# Semantic graph: [Of/IN pobj:matter/NN]
+#   Detected 0 clause(s).
+# Line 4: Melt turn it different paper burn has a reaction.
+# Semantic graph: [turn/VBP
+#                  nsubj:Melt/NNP
+#                  xcomp:[has/VBZ
+#                         nsubj:it/PRP
+#                         dep:different/JJ
+#                         nsubj:[burn/NNS nn:paper/NN]
+#                         dobj:[reaction/NN det:a/DT]]]
+#   Detected 3 clause(s).
+#   - SVC (V: turn@2, S: Melt@1, XCOMP: has@7)
+#   - SVO (V: has@7, S: it@3, O: reaction@9)
+#   - SVO (V: has@7, S: burn@6, O: reaction@9)
+4	"Melt"	"turn"	"it paper burn has a reaction"
+4	"it"	"paper burn has"	"a reaction"
+4	"paper burn"	"it has"	"a reaction"

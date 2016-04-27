@@ -1,0 +1,83 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: In the world that we live in there are a lot of substances and objects surrounding us.
+# Semantic graph: [are/VBP
+#                  prep:[In/IN
+#                        pobj:[world/NN
+#                              det:the/DT
+#                              dep:[live/VBP complm:that/IN nsubj:we/PRP prt:in/RP]]]
+#                  expl:there/EX
+#                  nsubj:[lot/NN
+#                         det:a/DT
+#                         prep:[of/IN pobj:[substances/NNS cc:and/CC conj:objects/NNS]]
+#                         partmod:[surrounding/VBG dobj:us/PRP]]]
+#   Detected 3 clause(s).
+#   - SV (V: live@6, S: we@5)
+#   - EXISTENTIAL (V: are@9, S: lot@11, A?: In@1)
+#   - SVA (V: "be surrounding", S: lot@11, O: us@17)
+1	"we"	"live in"
+1	"a lot of substances and objects surrounding us"	"there are"	"In the world that we live in"
+1	"a lot of substances and objects surrounding us"	"there are"
+1	"a lot of substances and objects"	"be surrounding"	"us"
+# Line 2: All of that is matter.
+# Semantic graph: [matter/NN nsubj:[All/DT prep:[of/IN pobj:that/DT]] cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: matter@5, V: is@4, S: All@1)
+2	"All of that"	"is"	"matter"
+# Line 3: Matter consists energy.
+# Semantic graph: [consists/VBZ nsubj:Matter/NNP dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: consists@2, S: Matter@1, O: energy@3)
+3	"Matter"	"consists"	"energy"
+# Line 4: Any changes made in matter is created by energy.
+# Semantic graph: [created/VBN
+#                  nsubjpass:[changes/NNS
+#                             det:Any/DT
+#                             partmod:[made/VBN prep:[in/IN pobj:matter/NN]]]
+#                  auxpass:is/VBZ
+#                  prep:[by/IN pobj:energy/NN]]
+#   Detected 2 clause(s).
+#   - SVA (V: "be made", S: changes@2, A!: in@4)
+#   - SVA (V: created@7, S: changes@2, A!: by@8)
+4	"Any changes"	"be made"	"in matter"
+4	"Any changes made in matter"	"is created"	"by energy"
+# Line 5: Matter has physical and chemical changes.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[changes/NNS amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: changes@6)
+5	"Matter"	"has"	"physical and chemical changes"
+# Line 6: Any change in matter will change the living lives among us, the planet earth.
+# Semantic graph: [change/VB
+#                  nsubj:[change/NN det:Any/DT prep:[in/IN pobj:matter/NN]]
+#                  aux:will/MD
+#                  dobj:[lives/NNS det:the/DT amod:living/VBG]
+#                  prep:[among/IN pobj:[us/PRP appos:[earth/NN det:the/DT nn:planet/NN]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: change@6, S: change@2, O: lives@9, A?: among@10)
+#   - SVC (S: us@11, V: "is", C: earth@15)
+6	"Any change in matter"	"will change"	"the living lives among us"
+6	"Any change in matter"	"will change"	"the living lives"
+6	"us"	"is"	"the planet earth"

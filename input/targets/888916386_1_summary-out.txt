@@ -1,0 +1,165 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what everthing is made of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN dep:what/WP nsubjpass:everthing/NN auxpass:is/VBZ prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@6)
+#   - SVA (V: made@6, S: everthing@4, A!: of@7)
+1	"Matter"	"is"	"what everthing is made of"
+1	"everthing"	"is made"	"of"
+# Line 2: It has shape and volume.
+# Semantic graph: [has/VBZ nsubj:It/PRP dobj:[shape/NN cc:and/CC conj:volume/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: It@1, O: shape@3)
+2	"It"	"has"	"shape and volume"
+# Line 3: Matter has properties that let us identify what it is.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[properties/NNS
+#                        rcmod:[let/VBD
+#                               nsubj:that/WDT
+#                               ccomp:[identify/VBP
+#                                      nsubj:us/PRP
+#                                      ccomp:[is/VBZ dobj:what/WP nsubj:it/PRP]]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: properties@3)
+#   - SVO (V: let@5, S: properties@3, CCOMP: identify@7)
+#   - SVO (V: identify@7, S: us@6, CCOMP: is@10)
+#   - SVO (V: is@10, S: it@9, O: what@8)
+3	"Matter"	"has"	"properties"
+3	"properties"	"let"	"us identify what it is"
+3	"us"	"identify"	"what it is"
+3	"it"	"is"	"what"
+# Line 4: These properties are divided in two, physical and chemical.
+# Semantic graph: [divided/VBN
+#                  nsubjpass:[properties/NNS det:These/DT]
+#                  auxpass:are/VBP
+#                  prep:[in/IN pobj:two/CD]
+#                  dep:[physical/NN cc:and/CC conj:chemical/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: divided@4, S: properties@2, A!: in@5)
+4	"These properties"	"are divided"	"in two"
+# Line 5: Because of these, matter goes through physical and chemical changes.
+# Semantic graph: [goes/VBZ
+#                  prep:[Because/IN pcomp:[of/IN pobj:these/DT]]
+#                  nsubj:matter/NN
+#                  prep:[through/IN
+#                        pobj:[changes/NNS amod:[physical/NN cc:and/CC conj:chemical/NN]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: goes@6, S: matter@5, A?: Because@1, A!: through@7)
+5	"matter"	"goes"	"through physical and chemical changes Because of these"
+5	"matter"	"goes"	"through physical and chemical changes"
+# Line 6: Another property of matter is energy.
+# Semantic graph: [energy/NN
+#                  nsubj:[property/NN det:Another/DT prep:[of/IN pobj:matter/NN]]
+#                  cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@6, V: is@5, S: property@2)
+6	"Another property of matter"	"is"	"energy"
+# Line 7: There are mechanical energy, kinetic energy and potential energy.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[energy/NN
+#                         amod:mechanical/JJ
+#                         conj:[energy/NN amod:kinetic/JJ]
+#                         cc:and/CC
+#                         conj:[energy/NN amod:potential/JJ]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: energy@4)
+7	"mechanical energy kinetic energy and potential energy"	"There are"
+# Line 8: Energy cannot be created or destroyed.
+# Semantic graph: [created/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  neg:not/RB
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:destroyed/VBN]
+#   Detected 2 clause(s).
+#   - SV (V: created@5, S: Energy@1)
+#   - SV (V: destroyed@7, S: Energy@1)
+8	"Energy"	"can not be created"
+8	"Energy"	"can not be destroyed"
+# Line 9: That is the law of conservation of energy.
+# Semantic graph: [law/NN
+#                  nsubj:That/DT
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: law@4, V: is@2, S: That@1, A?: of@5)
+9	"That"	"is"	"the law of conservation of energy"
+9	"That"	"is"	"the law"
+# Line 10: Fixed sentences
+# Semantic graph: [sentences/NNS amod:Fixed/JJ]
+#   Detected 0 clause(s).
+# Line 11: 1.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 12: Because of these, matter goes through physical and chemical changes -> due to these properties, matter can change both physically and chemically.
+# Semantic graph: [change/VB
+#                  prep:[of/IN
+#                        mwe:Because/IN
+#                        pobj:[these/DT
+#                              appos:[matter/NN
+#                                     rcmod:goes/VBZ
+#                                     dep:[through/IN
+#                                          pobj:[changes/NNS
+#                                                amod:[physical/JJ cc:and/CC conj:chemical/JJ]]]]
+#                              amod:[due/JJ prep:[to/TO pobj:[properties/NNS det:these/DT]]]]]
+#                  nsubj:matter/NN
+#                  aux:can/MD
+#                  acomp:[physically/JJ preconj:both/DT cc:and/CC conj:chemically/JJ]]
+#   Detected 2 clause(s).
+#   - SVC (S: these@3, V: "is", C: matter@5)
+#   - SVC (V: change@21, S: matter@19, A?: of@2, ACOMP: physically@23)
+12	"these due to these properties"	"is"	"matter through physical and chemical changes"
+12	"matter"	"can change"	"both physically and chemically Because of these due to these properties"
+12	"matter"	"can change"	"both physically and chemically"
+# Line 13: 2.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 14: There are mechanical energy, kinetic energy and potential energy -> there are three types of energy; mechanical, kinetic and potential.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[energy/NN
+#                         amod:mechanical/JJ
+#                         dep:[energy/NN
+#                              amod:kinetic/JJ
+#                              cc:and/CC
+#                              conj:[energy/NN amod:potential/JJ]]
+#                         rcmod:[are/VBP
+#                                expl:there/EX
+#                                nsubj:[types/NNS
+#                                       num:three/CD
+#                                       prep:[of/IN pobj:energy/NN]
+#                                       dep:mechanical/JJ
+#                                       amod:[kinetic/JJ cc:and/CC conj:potential/JJ]]]]]
+#   Detected 2 clause(s).
+#   - EXISTENTIAL (V: are@2, S: energy@4)
+#   - EXISTENTIAL (V: are@14, S: types@16, O: energy@4)
+14	"mechanical energy kinetic energy and potential energy"	"There are"
+14	"three types of energy mechanical kinetic and potential"	"there are"	"mechanical energy kinetic energy and potential energy"

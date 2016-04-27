@@ -1,0 +1,139 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the "stuff" that everything is made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  dep:[made/VBN
+#                       complm:that/IN
+#                       nsubjpass:everything/NN
+#                       auxpass:is/VBZ
+#                       prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@5, V: is@2, S: Matter@1)
+#   - SVA (V: made@10, S: everything@8, A!: of@11)
+1	"Matter"	"is"	"the stuff that everything is made of"
+1	"everything"	"is made"	"of"
+# Line 2: It has volume and mass.
+# Semantic graph: [has/VBZ nsubj:It/PRP dobj:[volume/NN cc:and/CC conj:mass/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: It@1, O: volume@3)
+2	"It"	"has"	"volume and mass"
+# Line 3: Which is why it can be detected and measured.
+# Semantic graph: [is/VBZ
+#                  nsubj:Which/WDT
+#                  advcl:[detected/VBN
+#                         advmod:why/WRB
+#                         nsubjpass:it/PRP
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         cc:and/CC
+#                         conj:measured/VBN]]
+#   Detected 3 clause(s).
+#   - SVA (V: is@2, S: Which@1, A!: detected@7)
+#   - SV (V: detected@7, S: it@4, A-: why@3)
+#   - SV (V: measured@9, S: it@4, A-: why@3)
+3	"Which"	"is"	"why it can be detected and measured"
+3	"it"	"can be detected"
+3	"it"	"can be measured"
+# Line 4: Matter has two different properties physical and chemical.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[properties/NNS
+#                        num:two/CD
+#                        amod:different/JJ
+#                        amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: properties@5)
+4	"Matter"	"has"	"two different properties physical and chemical"
+# Line 5: They help to classify the matter.
+# Semantic graph: [help/VBP
+#                  nsubj:They/PRP
+#                  xcomp:[classify/VB aux:to/TO dobj:[matter/NN det:the/DT]]]
+#   Detected 1 clause(s).
+#   - SVO (V: help@2, S: They@1, XCOMP: classify@4)
+5	"They"	"help"	"to classify the matter"
+# Line 6: While physical is easy to change by riping or breaking something its a bit harder to change the chemical properties.
+# Semantic graph: [change/VBP
+#                  advcl:[easy/JJ
+#                         mark:While/IN
+#                         nsubj:physical/JJ
+#                         cop:is/VBZ
+#                         xcomp:[change/VB
+#                                aux:to/TO
+#                                prep:[by/IN
+#                                      pcomp:[riping/VBG
+#                                             cc:or/CC
+#                                             conj:breaking/VBG
+#                                             dobj:something/NN]]]]
+#                  nsubj:its/PRP$
+#                  advmod:[harder/RBR npadvmod:[bit/RB det:a/DT] prep:to/TO]
+#                  dobj:[properties/NNS det:the/DT nn:chemical/NN]]
+#   Detected 2 clause(s).
+#   - SVC (C: easy@4, V: is@3, S: physical@2, XCOMP: change@6)
+#   - SVO (V: change@17, S: its@12, A?: easy@4, A?: harder@15, O: properties@20)
+6	"physical"	"is"	"easy to change by riping or breaking something"
+6	"its"	"change"	"the chemical properties While physical is easy to change by riping or breaking something"
+6	"its"	"change"	"the chemical properties a bit harder to"
+6	"its"	"change"	"the chemical properties"
+# Line 7: All matter has energy.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+7	"All matter"	"has"	"energy"
+# Line 8: And it can be transferred from one object to another but it cannot be created or destroyed.
+# Semantic graph: [transferred/VBN
+#                  cc:And/CC
+#                  nsubjpass:it/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[from/IN pobj:[object/NN num:one/CD]]
+#                  prep:[to/TO pobj:another/DT]
+#                  cc:but/CC
+#                  conj:[created/VBN
+#                        nsubjpass:it/PRP
+#                        aux:can/MD
+#                        neg:not/RB
+#                        auxpass:be/VB
+#                        cc:or/CC
+#                        conj:destroyed/VBN]]
+#   Detected 3 clause(s).
+#   - SVA (V: transferred@5, S: it@2, A!: from@6, A?: to@9)
+#   - SV (V: created@16, S: it@12)
+#   - SV (V: destroyed@18, S: it@12)
+8	"it"	"can be transferred"	"from one object to another"
+8	"it"	"can be transferred"	"from one object"
+8	"it"	"can not be created"
+8	"it"	"can not be destroyed"
+# Line 9: Mechanical energy is created by its motion and position.
+# Semantic graph: [created/VBN
+#                  nsubjpass:[energy/NN amod:Mechanical/JJ]
+#                  auxpass:is/VBZ
+#                  prep:[by/IN pobj:[motion/NN poss:its/PRP$ cc:and/CC conj:position/NN]]]
+#   Detected 2 clause(s).
+#   - SVA (V: created@4, S: energy@2, A!: by@5)
+#   - SVO (S: its@6, V: "has", O: motion@7)
+9	"Mechanical energy"	"is created"	"by its motion and position"
+9	"its"	"has"	"motion and position"

@@ -1,0 +1,169 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter, what everything is made of.
+# Semantic graph: [made/VBN
+#                  advmod:Matter/RB
+#                  nsubjpass:[everything/NN dep:what/WP]
+#                  auxpass:is/VBZ
+#                  prep:of/IN]
+#   Detected 1 clause(s).
+#   - SVA (V: made@6, S: everything@4, A?: Matter@1, A!: of@7)
+1	"what everything"	"is made"	"of Matter"
+1	"what everything"	"is made"	"of"
+# Line 2: Matter has the volume and mass.
+# Semantic graph: [has/VBZ nsubj:Matter/NNP dobj:[volume/NN det:the/DT cc:and/CC conj:mass/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: volume@4)
+2	"Matter"	"has"	"the volume and mass"
+# Line 3: You can classify matter by its properties.
+# Semantic graph: [classify/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dobj:matter/NN
+#                  prep:[by/IN pobj:[properties/NNS poss:its/PRP$]]]
+#   Detected 2 clause(s).
+#   - SVO (V: classify@3, S: You@1, O: matter@4, A?: by@5)
+#   - SVO (S: its@6, V: "has", O: properties@7)
+3	"You"	"can classify"	"matter by its properties"
+3	"You"	"can classify"	"matter"
+3	"its"	"has"	"properties"
+# Line 4: One of these is physical.
+# Semantic graph: [physical/JJ nsubj:[One/CD prep:[of/IN pobj:these/DT]] cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: physical@5, V: is@4, S: One@1)
+4	"One of these"	"is"	"physical"
+# Line 5: Where an objects size and shape of feel can change.
+# Semantic graph: [change/VB
+#                  advcl:[size/VBP
+#                         advmod:Where/WRB
+#                         nsubj:[objects/NNS det:an/DT]
+#                         cc:and/CC
+#                         conj:shape/VBP
+#                         prep:[of/IN pobj:feel/NN]]
+#                  aux:can/MD]
+#   Detected 2 clause(s).
+#   - SVA (V: size@4, S: objects@3, A?: Where@1, A!: of@7)
+#   - SVA (V: shape@6, S: objects@3, A?: Where@1, A!: of@7)
+5	"an objects"	"size"	"of feel Where"
+5	"an objects"	"size"	"of feel"
+5	"an objects"	"shape"	"of feel Where"
+5	"an objects"	"shape"	"of feel"
+# Line 6: Chemical by turning one object into another or completely changing it by way of changing its chemical make up.
+# Semantic graph: [make/VBP
+#                  nsubj:[Chemical/NNP
+#                         prep:[by/IN
+#                               pcomp:[turning/VBG
+#                                      dobj:[object/NN num:one/CD]
+#                                      prep:[into/IN pobj:another/DT]
+#                                      cc:or/CC
+#                                      advmod:completely/RB
+#                                      conj:[changing/VBG
+#                                            dobj:it/PRP
+#                                            prep:[by/IN
+#                                                  pobj:[way/NN
+#                                                        prep:[of/IN
+#                                                              pcomp:[changing/VBG
+#                                                                     dobj:[chemical/NN
+#                                                                           poss:its/PRP$]]]]]]]]]
+#                  prt:up/RP]
+#   Detected 2 clause(s).
+#   - SVO (S: its@16, V: "has", O: chemical@17)
+#   - SV (V: make@18, S: Chemical@1)
+6	"its"	"has"	"chemical"
+6	"Chemical by turning one object into another or completely changing it by way of changing its chemical"	"make up"
+# Line 7: Matter also has energy, although energy cannot be seen, created or destroyed, due to the law of conservation of energy.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  advmod:also/RB
+#                  dobj:energy/NN
+#                  advcl:[seen/VBN
+#                         mark:although/IN
+#                         nsubjpass:energy/NN
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         conj:created/VBN
+#                         cc:or/CC
+#                         conj:destroyed/VBN
+#                         conj:[to/TO
+#                               mwe:due/JJ
+#                               pobj:[law/NN
+#                                     det:the/DT
+#                                     prep:[of/IN
+#                                           pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]]]]
+#   Detected 5 clause(s).
+#   - SVO (V: has@3, S: Matter@1, A?: also@2, O: energy@4, A?: seen@11)
+#   - SV (V: seen@11, S: energy@7)
+#   - SVA (V: to@18, S: energy@7, A!: law@20)
+#   - SV (V: created@13, S: energy@7)
+#   - SV (V: destroyed@15, S: energy@7)
+7	"Matter"	"has"	"energy also"
+7	"Matter"	"has"	"energy although energy can not be seen created or destroyed due to the law of conservation of energy"
+7	"Matter"	"has"	"energy"
+7	"energy"	"can not be seen"
+7	"energy"	"can not be due to"	"the law of conservation of energy"
+7	"energy"	"can not be created"
+7	"energy"	"can not be destroyed"
+# Line 8: Energy is involved in everything matter does from motion to characteristic and potential energy are both part of mechanical energy.
+# Semantic graph: [involved/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  prep:[in/IN
+#                        pcomp:[does/VBZ
+#                               nsubj:[matter/NN nn:everything/NN]
+#                               prep:[from/IN pobj:motion/NN]
+#                               prep:[to/TO pobj:characteristic/NN]
+#                               cc:and/CC
+#                               conj:[part/NN
+#                                     nsubj:[energy/NN amod:potential/JJ]
+#                                     cop:are/VBP
+#                                     det:both/DT
+#                                     prep:[of/IN pobj:[energy/NN amod:mechanical/JJ]]]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: involved@3, S: Energy@1, A!: in@4)
+#   - SVA (V: does@7, S: matter@6, A!: from@8, A?: to@10)
+#   - SVC (C: part@17, V: are@15, S: energy@14, A?: of@18)
+8	"Energy"	"is involved"	"in everything matter does from motion to characteristic and potential energy are both part of mechanical energy"
+8	"everything matter"	"does"	"from motion to characteristic"
+8	"everything matter"	"does"	"from motion"
+8	"potential energy"	"are"	"both part of mechanical energy"
+8	"potential energy"	"are"	"both part"
+# Line 9: Kinetic is due to motion or position.
+# Semantic graph: [due/JJ
+#                  nsubj:Kinetic/NNP
+#                  cop:is/VBZ
+#                  prep:[to/TO pobj:[motion/NN cc:or/CC conj:position/NN]]]
+#   Detected 1 clause(s).
+#   - SVC (C: due@3, V: is@2, S: Kinetic@1, A?: to@4)
+9	"Kinetic"	"is"	"due to motion or position"
+9	"Kinetic"	"is"	"due"
+# Line 10: Potential is due to shape or position.
+# Semantic graph: [due/JJ
+#                  nsubj:Potential/JJ
+#                  cop:is/VBZ
+#                  prep:[to/TO pobj:[shape/NN cc:or/CC conj:position/NN]]]
+#   Detected 1 clause(s).
+#   - SVC (C: due@3, V: is@2, S: Potential@1, A?: to@4)
+10	"Potential"	"is"	"due to shape or position"
+10	"Potential"	"is"	"due"

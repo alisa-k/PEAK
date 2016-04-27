@@ -1,0 +1,144 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: As many things evolveds around us, there are things that you can see, and some can't but all takes up a certain amount of space.
+# Semantic graph: [are/VBP
+#                  advcl:[evolveds/VBZ
+#                         mark:As/IN
+#                         nsubj:[things/NNS amod:many/JJ]
+#                         prep:[around/IN pobj:us/PRP]]
+#                  expl:there/EX
+#                  nsubj:[things/NNS dep:[see/VB complm:that/IN nsubj:you/PRP aux:can/MD]]
+#                  cc:and/CC
+#                  conj:[ca/MD
+#                        nsubj:some/DT
+#                        neg:n't/RB
+#                        cc:but/CC
+#                        conj:[takes/VBZ
+#                              advmod:all/DT
+#                              prt:up/RP
+#                              dobj:[amount/NN
+#                                    det:a/DT
+#                                    amod:certain/JJ
+#                                    prep:[of/IN pobj:space/NN]]]]]
+#   Detected 5 clause(s).
+#   - SVA (V: evolveds@4, S: things@3, A!: around@5)
+#   - EXISTENTIAL (V: are@9, S: things@10, A?: evolveds@4)
+#   - SV (V: see@14, S: you@12)
+#   - SV (V: ca@18, S: some@17)
+#   - SVO (V: takes@22, S: some@17, A?: all@21, O: amount@26)
+1	"many things"	"evolveds"	"around us"
+1	"things that you can see"	"there are"	"As many things evolveds around us"
+1	"things that you can see"	"there are"
+1	"you"	"can see"
+1	"some"	"ca n't"
+1	"some"	"takes up"	"a certain amount of space all"
+1	"some"	"takes up"	"a certain amount of space"
+# Line 2: Which what we call today matter.
+# Semantic graph: [call/VBP dep:Which/WDT dobj:what/WP nsubj:we/PRP tmod:[matter/NN nn:today/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: call@4, S: we@3, O: what@2, A?: matter@6)
+2	"we"	"call"	"what today matter"
+2	"we"	"call"	"what"
+# Line 3: "Matter is the stuff that all substances and object in the universe are made of."
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[substances/NNS
+#                                    det:all/DT
+#                                    cc:and/CC
+#                                    conj:object/NN
+#                                    prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                         auxpass:are/VBP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@5, V: is@3, S: Matter@2, CCOMP: made@15)
+#   - SVA (V: made@15, S: substances@8, A!: of@16)
+3	"Matter"	"is"	"the stuff that all substances and object in the universe are made of"
+3	"all substances and object in the universe"	"are made"	"of"
+# Line 4: When speaking of matter theirs what we call "the properties of matter.
+# Semantic graph: [call/VBP
+#                  advcl:[theirs/VBZ
+#                         advmod:When/WRB
+#                         nsubj:[speaking/NN prep:[of/IN pobj:matter/NN]]
+#                         dobj:what/WP]
+#                  nsubj:we/PRP
+#                  dobj:[properties/NNS det:the/DT prep:[of/IN pobj:matter/NN]]]
+#   Detected 2 clause(s).
+#   - SVO (V: theirs@5, S: speaking@2, A?: When@1, O: what@6)
+#   - SVO (V: call@8, S: we@7, A?: theirs@5, O: properties@11)
+4	"speaking of matter"	"theirs"	"what When"
+4	"speaking of matter"	"theirs"	"what"
+4	"we"	"call"	"the properties of matter When speaking of matter theirs what"
+4	"we"	"call"	"the properties of matter"
+# Line 5: Within this theres a physical property which is something that you observed with out changing its make up or identity of matter.
+# Semantic graph: [theres/VBZ
+#                  prep:[Within/IN pobj:this/DT]
+#                  nsubj:[property/NN
+#                         det:a/DT
+#                         amod:physical/JJ
+#                         rcmod:[something/NN
+#                                nsubj:which/WDT
+#                                cop:is/VBZ
+#                                ccomp:[observed/VBD
+#                                       complm:that/IN
+#                                       nsubj:you/PRP
+#                                       prep:[with/IN
+#                                             pcomp:[changing/VBG
+#                                                    advmod:out/RB
+#                                                    dobj:[make/NN poss:its/PRP$]
+#                                                    prt:up/RP]]]]
+#                         cc:or/CC
+#                         conj:[identity/NN prep:[of/IN pobj:matter/NN]]]]
+#   Detected 4 clause(s).
+#   - SV (V: theres@3, S: property@6, A?: Within@1)
+#   - SVC (C: something@9, V: is@8, S: property@6, CCOMP: observed@12)
+#   - SVA (V: observed@12, S: you@11, A!: with@13)
+#   - SVO (S: its@16, V: "has", O: make@17)
+5	"a physical property or identity of matter"	"theres"	"Within this"
+5	"a physical property or identity of matter"	"theres"
+5	"a physical property or identity of matter"	"is"	"something that you observed with out changing its make up"
+5	"you"	"observed"	"with out changing its make up"
+5	"its"	"has"	"make"
+# Line 6: Theres also what we call chemical properties here the matter can change is ability
+# Semantic graph: [ability/NN
+#                  nsubj:[Theres/NNS
+#                         advmod:also/RB
+#                         rcmod:[call/VBP
+#                                rel:what/WP
+#                                nsubj:we/PRP
+#                                dobj:[properties/NNS nn:chemical/NN]
+#                                advmod:here/RB
+#                                dep:[change/VB nsubj:[matter/NN det:the/DT] aux:can/MD]]]
+#                  cop:is/VBZ]
+#   Detected 3 clause(s).
+#   - SVO (V: call@5, S: we@4, O: properties@7, A?: here@8)
+#   - SV (V: change@12, S: matter@10)
+#   - SVC (C: ability@14, V: is@13, S: Theres@1)
+6	"we"	"what call"	"chemical properties here"
+6	"we"	"what call"	"chemical properties"
+6	"the matter"	"can change"
+6	"Theres also"	"is"	"ability"

@@ -1,0 +1,143 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: What is matter?
+# Semantic graph: [is/VBZ attr:What/WP nsubj:matter/NN]
+#   Detected 1 clause(s).
+#   - SV (V: is@2, S: matter@3)
+1	"matter"	"What is"
+# Line 2: (That's a very good question].
+# Semantic graph: [question/NN nsubj:That/DT cop:'s/VBZ det:a/DT amod:[good/JJ advmod:very/RB]]
+#   Detected 1 clause(s).
+#   - SVC (C: question@7, V: 's@3, S: That@2)
+2	"That"	"'s"	"a very good question"
+# Line 3: Matter is the "stuff" that makes up our universe.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[makes/VBZ nsubj:that/WDT prt:up/RP dobj:[universe/NN poss:our/PRP$]]]
+#   Detected 3 clause(s).
+#   - SVC (C: stuff@5, V: is@2, S: Matter@1)
+#   - SVO (V: makes@8, S: stuff@5, O: universe@11)
+#   - SVO (S: our@10, V: "has", O: universe@11)
+3	"Matter"	"is"	"the stuff"
+3	"the stuff"	"makes up"	"our universe"
+3	"our"	"has"	"universe"
+# Line 4: Everything is made of matter.
+# Semantic graph: [made/VBN nsubjpass:Everything/NNP auxpass:is/VBZ prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@3, S: Everything@1, A!: of@4)
+4	"Everything"	"is made"	"of matter"
+# Line 5: Since matter is such a broad term scientists use different ways to identify or classify matter called properties.
+# Semantic graph: [use/VBP
+#                  csubj:[scientists/NNS
+#                         mark:Since/IN
+#                         nsubj:matter/NN
+#                         cop:is/VBZ
+#                         predet:such/PDT
+#                         det:a/DT
+#                         amod:broad/JJ
+#                         nn:term/NN]
+#                  xcomp:[identify/VB
+#                         nsubj:[ways/NNS amod:different/JJ]
+#                         aux:to/TO
+#                         cc:or/CC
+#                         conj:classify/VB
+#                         dobj:[matter/NN partmod:[called/VBN dobj:properties/NNS]]]]
+#   Detected 5 clause(s).
+#   - SVC (C: scientists@8, V: is@3, S: matter@2)
+#   - SVO (V: use@9, S: scientists@8, XCOMP: identify@13)
+#   - SVO (V: identify@13, S: ways@11, O: matter@16)
+#   - SVO (V: classify@15, S: ways@11, O: matter@16)
+#   - SVA (V: "be called", S: matter@16, O: properties@18)
+5	"matter"	"is"	"such a broad term scientists"
+5	"Since matter is such a broad term scientists"	"use"	"different ways to identify matter called properties"
+5	"Since matter is such a broad term scientists"	"use"	"different ways to classify matter called properties"
+5	"different ways"	"to identify"	"matter called properties"
+5	"different ways"	"to classify"	"matter called properties"
+5	"matter"	"be called"	"properties"
+# Line 6: There are physical and chemical properties as well as changes.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[properties/NNS
+#                         amod:[physical/JJ cc:and/CC conj:chemical/JJ]
+#                         cc:[well/RB advmod:as/RB mwe:as/IN]
+#                         conj:changes/NNS]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: properties@6)
+6	"physical and chemical properties as well as changes"	"There are"
+# Line 7: Energy is also a property of matter.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  advmod:also/RB
+#                  det:a/DT
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@5, V: is@2, S: Energy@1, A?: also@3, A?: of@6)
+7	"Energy"	"is"	"a property also"
+7	"Energy"	"is"	"a property of matter"
+7	"Energy"	"is"	"a property"
+# Line 8: Energy comes in many different forms or stages.
+# Semantic graph: [comes/VBZ
+#                  nsubj:Energy/NNP
+#                  prep:[in/IN
+#                        pobj:[forms/NNS amod:many/JJ amod:different/JJ cc:or/CC conj:stages/NNS]]]
+#   Detected 1 clause(s).
+#   - SVA (V: comes@2, S: Energy@1, A!: in@3)
+8	"Energy"	"comes"	"in many different forms or stages"
+# Line 9: Any action taken in the world required some form of energy whether it is kinetic, potential, or some other unnatural form.
+# Semantic graph: [required/VBD
+#                  nsubj:[action/NN
+#                         det:Any/DT
+#                         partmod:[taken/VBN prep:[in/IN pobj:[world/NN det:the/DT]]]]
+#                  dobj:[form/NN det:some/DT prep:[of/IN pobj:energy/NN]]
+#                  ccomp:[kinetic/JJ
+#                         complm:whether/IN
+#                         nsubj:it/PRP
+#                         cop:is/VBZ
+#                         conj:potential/JJ
+#                         cc:or/CC
+#                         conj:[form/NN det:some/DT amod:other/JJ amod:unnatural/JJ]]]
+#   Detected 3 clause(s).
+#   - SVA (V: "be taken", S: action@2, A!: in@4)
+#   - SVOC (V: required@7, S: action@2, O: form@9, CCOMP: kinetic@15)
+#   - SVC (C: kinetic@15, V: is@14, S: it@13)
+9	"Any action"	"be taken"	"in the world"
+9	"Any action taken in the world"	"required"	"some form of energy whether it is kinetic potential or some other unnatural form"
+9	"it"	"is"	"kinetic potential or some other unnatural form"
+# Line 10: (electricity, etc) This subject is confusing most people to understand.
+# Semantic graph: [confusing/VBG
+#                  csubj:[subject/VB dep:[electricity/NN appos:etc/FW] nsubj:This/DT]
+#                  aux:is/VBZ
+#                  xcomp:[understand/VB nsubj:[people/NNS amod:most/JJS] aux:to/TO]]
+#   Detected 4 clause(s).
+#   - SVC (S: electricity@2, V: "is", C: etc@4)
+#   - SV (V: subject@7, S: This@6)
+#   - SVO (V: confusing@9, S: subject@7, XCOMP: understand@13)
+#   - SV (V: understand@13, S: people@11)
+10	"electricity"	"is"	"etc"
+10	"This"	"subject"
+10	"electricity This subject"	"is confusing"	"most people to understand"
+10	"most people"	"to understand"

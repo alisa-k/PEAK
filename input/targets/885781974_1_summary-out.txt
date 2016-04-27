@@ -1,0 +1,93 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is everything I found out in this passage.
+# Semantic graph: [everything/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  rcmod:[found/VBD
+#                         nsubj:I/PRP
+#                         prt:out/RP
+#                         prep:[in/IN pobj:[passage/NN det:this/DT]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: everything@3, V: is@2, S: Matter@1)
+#   - SVO (V: found@5, S: I@4, A?: in@7, O: everything@3)
+1	"Matter"	"is"	"everything"
+1	"I"	"found out"	"in this passage everything"
+1	"I"	"found out"	"everything"
+# Line 2: I learned aout different changes of matter which were physical and chemical.
+# Semantic graph: [learned/VBD
+#                  nsubj:I/PRP
+#                  dobj:[changes/NNS
+#                        amod:aout/JJ
+#                        amod:different/JJ
+#                        prep:[of/IN pobj:matter/NN]
+#                        rcmod:[physical/JJ
+#                               nsubj:which/WDT
+#                               cop:were/VBD
+#                               cc:and/CC
+#                               conj:chemical/JJ]]]
+#   Detected 2 clause(s).
+#   - SVO (V: learned@2, S: I@1, O: changes@5)
+#   - SVC (C: physical@10, V: were@9, S: changes@5)
+2	"I"	"learned"	"aout different changes of matter"
+2	"aout different changes of matter"	"were"	"physical and chemical"
+# Line 3: I also learned that [illegible word] cannot be created or destroyed which is called "law of conservation of energy.
+# Semantic graph: [learned/VBD
+#                  nsubj:I/PRP
+#                  advmod:also/RB
+#                  ccomp:[created/VBN
+#                         complm:that/IN
+#                         nsubjpass:[word/NN amod:illegible/JJ]
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         cc:or/CC
+#                         conj:destroyed/VBN
+#                         ccomp:[called/VBN
+#                                nsubjpass:which/WDT
+#                                auxpass:is/VBZ
+#                                dep:[law/NN
+#                                     prep:[of/IN
+#                                           pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: learned@3, S: I@1, A?: also@2, CCOMP: created@12)
+#   - SVO (V: created@12, S: word@7, CCOMP: called@17)
+#   - SVO (V: destroyed@14, S: word@7, CCOMP: called@17)
+#   - SV (V: called@17, S: which@15)
+3	"I"	"learned"	"that illegible word can not be created or destroyed which is called law of conservation of energy also"
+3	"I"	"learned"	"that illegible word can not be created or destroyed which is called law of conservation of energy"
+3	"illegible word"	"can not be created"	"which is called law of conservation of energy"
+3	"illegible word"	"can not be destroyed"	"which is called law of conservation of energy"
+3	"which"	"is called"
+# Line 4: I enjoyed this passage and learned a ton.
+# Semantic graph: [enjoyed/VBD
+#                  nsubj:I/PRP
+#                  dobj:[passage/NN det:this/DT]
+#                  cc:and/CC
+#                  conj:[learned/VBD dobj:[ton/NN det:a/DT]]]
+#   Detected 2 clause(s).
+#   - SVO (V: enjoyed@2, S: I@1, O: passage@4)
+#   - SVO (V: learned@6, S: I@1, O: ton@8)
+4	"I"	"enjoyed"	"this passage"
+4	"I"	"learned"	"a ton"

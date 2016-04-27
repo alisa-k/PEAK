@@ -1,0 +1,156 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what all objects in the universe are made of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN
+#                         dep:what/WP
+#                         nsubjpass:[objects/NNS
+#                                    det:all/DT
+#                                    prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                         auxpass:are/VBP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@10)
+#   - SVA (V: made@10, S: objects@5, A!: of@11)
+1	"Matter"	"is"	"what all objects in the universe are made of"
+1	"all objects in the universe"	"are made"	"of"
+# Line 2: All matter has [illegible word] that can be seen using our 5 senses.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[word/NN
+#                        amod:illegible/JJ
+#                        rcmod:[seen/VBN
+#                               nsubjpass:that/WDT
+#                               aux:can/MD
+#                               auxpass:be/VB
+#                               xcomp:[using/VBG dobj:[senses/NNS poss:our/PRP$ num:5/CD]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: word@6)
+#   - SVO (V: seen@11, S: word@6, XCOMP: using@12)
+#   - SVO (S: our@13, V: "has", O: senses@15)
+2	"All matter"	"has"	"illegible word"
+2	"illegible word"	"can be seen"	"using our 5 senses"
+2	"our"	"has"	"5 senses"
+# Line 3: The properties are the chemical and physical properties.
+# Semantic graph: [chemical/NN
+#                  nsubj:[properties/NNS det:The/DT]
+#                  cop:are/VBP
+#                  det:the/DT
+#                  cc:and/CC
+#                  conj:[properties/NNS amod:physical/JJ]]
+#   Detected 1 clause(s).
+#   - SVC (C: chemical@5, V: are@3, S: properties@2)
+3	"The properties"	"are"	"the chemical and physical properties"
+# Line 4: The physical property is something that cannot be changed by make-up or identity of the matter and the chemical is when it charges into new substance with different studies.
+# Semantic graph: [something/NN
+#                  nsubj:[property/NN det:The/DT amod:physical/JJ]
+#                  cop:is/VBZ
+#                  rcmod:[changed/VBN
+#                         nsubjpass:that/WDT
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         prep:[by/IN
+#                               pobj:[make-up/NN
+#                                     cc:or/CC
+#                                     conj:identity/NN
+#                                     prep:[of/IN pobj:[matter/NN det:the/DT]]]]]
+#                  cc:and/CC
+#                  conj:[is/VBZ
+#                        nsubj:[chemical/NN det:the/DT]
+#                        advcl:[charges/VBZ
+#                               advmod:when/WRB
+#                               nsubj:it/PRP
+#                               prep:[into/IN pobj:[substance/NN amod:new/JJ]]
+#                               prep:[with/IN pobj:[studies/NNS amod:different/JJ]]]]]
+#   Detected 4 clause(s).
+#   - SVC (C: something@5, V: is@4, S: property@3)
+#   - SVA (V: changed@10, S: something@5, A!: by@11)
+#   - SVA (V: is@21, S: chemical@20, A!: charges@24)
+#   - SVA (V: charges@24, S: it@23, A?: when@22, A!: into@25, A?: with@28)
+4	"The physical property"	"is"	"something"
+4	"something and the chemical is when it charges into new substance with different studies"	"can not be changed"	"by make-up or identity of the matter"
+4	"the chemical"	"is"	"when it charges into new substance with different studies"
+4	"it"	"charges"	"into new substance when"
+4	"it"	"charges"	"into new substance with different studies"
+4	"it"	"charges"	"into new substance"
+# Line 5: Energy is the property of matter, it is everywhere.
+# Semantic graph: [is/VBZ
+#                  ccomp:[property/NN
+#                         nsubj:Energy/NNP
+#                         cop:is/VBZ
+#                         det:the/DT
+#                         prep:[of/IN pobj:matter/NN]]
+#                  nsubj:it/PRP
+#                  advmod:everywhere/RB]
+#   Detected 2 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+#   - SVC (V: is@9, S: it@8, CCOMP: property@4, A?: everywhere@10)
+5	"Energy"	"is"	"the property of matter"
+5	"Energy"	"is"	"the property"
+5	"it"	"is"	"Energy is the property of matter everywhere"
+5	"it"	"is"	"Energy is the property of matter"
+# Line 6: Energy can not be created or destroyed.
+# Semantic graph: [created/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  neg:not/RB
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:destroyed/VBN]
+#   Detected 2 clause(s).
+#   - SV (V: created@5, S: Energy@1)
+#   - SV (V: destroyed@7, S: Energy@1)
+6	"Energy"	"can not be created"
+6	"Energy"	"can not be destroyed"
+# Line 7: There is mechanical energy.
+# Semantic graph: [is/VBZ expl:There/EX nsubj:[energy/NN amod:mechanical/JJ]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: is@2, S: energy@4)
+7	"mechanical energy"	"There is"
+# Line 8: That is the energy an object has because of its motion and positions.
+# Semantic graph: [energy/NN
+#                  nsubj:That/DT
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[of/IN
+#                         nsubj:[object/NN det:an/DT]
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[motion/NN poss:its/PRP$ cc:and/CC conj:positions/NNS]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@4, V: is@2, S: That@1)
+#   - SVO (V: of@9, S: object@6, A?: because@8, A?: motion@11, O: energy@4)
+#   - SVO (S: its@10, V: "has", O: motion@11)
+8	"That"	"is"	"the energy"
+8	"an object"	"has of"	"the energy because"
+8	"an object"	"has of"	"its motion and positions the energy"
+8	"an object"	"has of"	"the energy"
+8	"its"	"has"	"motion and positions"
+# Line 9: That is matter.
+# Semantic graph: [matter/NN nsubj:That/DT cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: matter@3, V: is@2, S: That@1)
+9	"That"	"is"	"matter"

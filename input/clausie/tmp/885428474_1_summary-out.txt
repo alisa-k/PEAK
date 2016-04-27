@@ -1,0 +1,147 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All objets and substances are made of matter.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[objets/NNS det:All/DT cc:and/CC conj:substances/NNS]
+#                  auxpass:are/VBP
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@6, S: objets@2, A!: of@7)
+1	"All objets and substances"	"are made"	"of matter"
+# Line 2: Matter has volume and mass, so it can be detected and measured.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[volume/NN cc:and/CC conj:mass/NN]
+#                  dep:so/IN
+#                  ccomp:[detected/VBN
+#                         nsubjpass:it/PRP
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         cc:and/CC
+#                         conj:measured/VBN]]
+#   Detected 3 clause(s).
+#   - SVOC (V: has@2, S: Matter@1, O: volume@3, CCOMP: detected@11)
+#   - SV (V: detected@11, S: it@8)
+#   - SV (V: measured@13, S: it@8)
+2	"Matter"	"has"	"volume and mass it can be detected and measured"
+2	"it"	"can be detected"
+2	"it"	"can be measured"
+# Line 3: Physical properties produce physical changes.
+# Semantic graph: [produce/VBP
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  dobj:[changes/NNS amod:physical/JJ]]
+#   Detected 1 clause(s).
+#   - SVO (V: produce@3, S: properties@2, O: changes@5)
+3	"Physical properties"	"produce"	"physical changes"
+# Line 4: They can be observed without changing the make-up of the matter.
+# Semantic graph: [observed/VBN
+#                  nsubjpass:They/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[without/IN
+#                        pcomp:[changing/VBG
+#                               dobj:[make-up/NN
+#                                     det:the/DT
+#                                     prep:[of/IN pobj:[matter/NN det:the/DT]]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: observed@4, S: They@1, A!: without@5)
+4	"They"	"can be observed"	"without changing the make-up of the matter"
+# Line 5: Chemical properties produce chemical changes.
+# Semantic graph: [produce/VBP
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  dobj:[changes/NNS nn:chemical/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: produce@3, S: properties@2, O: changes@5)
+5	"Chemical properties"	"produce"	"chemical changes"
+# Line 6: They create new substances.
+# Semantic graph: [create/VBP nsubj:They/PRP dobj:[substances/NNS amod:new/JJ]]
+#   Detected 1 clause(s).
+#   - SVO (V: create@2, S: They@1, O: substances@4)
+6	"They"	"create"	"new substances"
+# Line 7: Energy is another property of matter.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:another/DT
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+7	"Energy"	"is"	"another property of matter"
+7	"Energy"	"is"	"another property"
+# Line 8: It can be transferred from one object to another.
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:It/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[from/IN pobj:[object/NN num:one/CD]]
+#                  prep:[to/TO pobj:another/DT]]
+#   Detected 1 clause(s).
+#   - SVA (V: transferred@4, S: It@1, A!: from@5, A?: to@8)
+8	"It"	"can be transferred"	"from one object to another"
+8	"It"	"can be transferred"	"from one object"
+# Line 9: It cannot be created or destroyed.
+# Semantic graph: [created/VBN
+#                  nsubjpass:It/PRP
+#                  aux:can/MD
+#                  neg:not/RB
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:destroyed/VBN]
+#   Detected 2 clause(s).
+#   - SV (V: created@5, S: It@1)
+#   - SV (V: destroyed@7, S: It@1)
+9	"It"	"can not be created"
+9	"It"	"can not be destroyed"
+# Line 10: Mechanic energy has kinetic and potential energy.
+# Semantic graph: [has/VBZ
+#                  nsubj:[energy/NN amod:Mechanic/JJ]
+#                  dobj:[energy/NN amod:[kinetic/JJ cc:and/CC conj:potential/JJ]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: energy@2, O: energy@7)
+10	"Mechanic energy"	"has"	"kinetic and potential energy"
+# Line 11: Kinetic is the energy of a moving object.
+# Semantic graph: [energy/NN
+#                  nsubj:Kinetic/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN pobj:[object/NN det:a/DT amod:moving/VBG]]]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@4, V: is@2, S: Kinetic@1, A?: of@5)
+11	"Kinetic"	"is"	"the energy of a moving object"
+11	"Kinetic"	"is"	"the energy"
+# Line 12: Potential is the energy of the position or shape of an object.
+# Semantic graph: [energy/NN
+#                  nsubj:Potential/JJ
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN
+#                        pobj:[position/NN
+#                              det:the/DT
+#                              cc:or/CC
+#                              conj:shape/NN
+#                              prep:[of/IN pobj:[object/NN det:an/DT]]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@4, V: is@2, S: Potential@1, A?: of@5)
+12	"Potential"	"is"	"the energy of the position or shape of an object"
+12	"Potential"	"is"	"the energy"

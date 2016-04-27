@@ -1,0 +1,143 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the stuff that all objects in our universe is made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[objects/NNS
+#                                    det:all/DT
+#                                    prep:[in/IN pobj:[universe/NN poss:our/PRP$]]]
+#                         auxpass:is/VBZ
+#                         prep:of/IN]]
+#   Detected 3 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@12)
+#   - SVO (S: our@9, V: "has", O: universe@10)
+#   - SVA (V: made@12, S: objects@7, A!: of@13)
+1	"Matter"	"is"	"the stuff that all objects in our universe is made of"
+1	"our"	"has"	"universe"
+1	"all objects in our universe"	"is made"	"of"
+# Line 2: All matter has mass and volume and with this being said, all matter can be measured and detected.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[mass/NN cc:and/CC conj:volume/NN]
+#                  cc:and/CC
+#                  conj:[measured/VBN
+#                        prep:[with/IN pobj:[this/DT partmod:[said/VBD auxpass:being/VBG]]]
+#                        nsubjpass:[matter/NN det:all/DT]
+#                        aux:can/MD
+#                        auxpass:be/VB
+#                        cc:and/CC
+#                        conj:detected/VBN]]
+#   Detected 4 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: mass@4)
+#   - SVA (V: "be said", S: this@9)
+#   - SV (V: measured@17, S: matter@14, A?: with@8)
+#   - SV (V: detected@19, S: matter@14, A?: with@8)
+2	"All matter"	"has"	"mass and volume"
+2	"this"	"be said"
+2	"all matter"	"can be measured"	"with this being said"
+2	"all matter"	"can be measured"
+2	"all matter"	"can be detected"	"with this being said"
+2	"all matter"	"can be detected"
+# Line 3: Matter also has different properties that make up certain objects such as physical and chemical.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  advmod:also/RB
+#                  dobj:[properties/NNS
+#                        amod:different/JJ
+#                        rcmod:[make/VBP
+#                               nsubj:that/WDT
+#                               prt:up/RP
+#                               dobj:[objects/NNS
+#                                     amod:certain/JJ
+#                                     prep:[as/IN
+#                                           mwe:such/JJ
+#                                           pobj:[physical/JJ cc:and/CC conj:chemical/NN]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@3, S: Matter@1, A?: also@2, O: properties@5)
+#   - SVO (V: make@7, S: properties@5, O: objects@10)
+3	"Matter"	"has"	"different properties also"
+3	"Matter"	"has"	"different properties"
+3	"different properties"	"make up"	"certain objects such as physical and chemical"
+# Line 4: Physical meaning that you can observe the substance without changing it's properties whereas chemical you can change the substance into a new property that isn't like the last.
+# Semantic graph: [properties/NNS
+#                  nsubj:[Physical/NNP
+#                         partmod:[meaning/VBG
+#                                  ccomp:[observe/VB
+#                                         complm:that/IN
+#                                         nsubj:you/PRP
+#                                         aux:can/MD
+#                                         dobj:[substance/NN det:the/DT]
+#                                         prep:[without/IN pcomp:[changing/VBG dobj:it/PRP]]]]]
+#                  cop:'s/VBZ
+#                  advcl:[change/VB
+#                         mark:whereas/IN
+#                         nsubj:[you/NN nn:chemical/NN]
+#                         aux:can/MD
+#                         dobj:[substance/NN det:the/DT]
+#                         prep:[into/IN
+#                               pobj:[property/NN
+#                                     det:a/DT
+#                                     amod:new/JJ
+#                                     rcmod:[is/VBZ
+#                                            nsubj:that/WDT
+#                                            neg:n't/RB
+#                                            prep:[like/IN pobj:[last/JJ det:the/DT]]]]]]]
+#   Detected 5 clause(s).
+#   - SVA (V: "be meaning", S: Physical@1, CCOMP: observe@6)
+#   - SVO (V: observe@6, S: you@4, O: substance@8, A?: without@9)
+#   - SVC (C: properties@13, V: 's@12, S: Physical@1, A?: change@18)
+#   - SVO (V: change@18, S: you@16, O: substance@20, A?: into@21)
+#   - SVA (V: is@26, S: property@24, A!: like@28)
+4	"Physical"	"be meaning"	"that you can observe the substance without changing it"
+4	"you"	"can observe"	"the substance without changing it"
+4	"you"	"can observe"	"the substance"
+4	"Physical meaning that you can observe the substance without changing it"	"'s"	"properties whereas chemical you can change the substance into a new property"
+4	"Physical meaning that you can observe the substance without changing it"	"'s"	"properties"
+4	"chemical you"	"can change"	"the substance into a new property"
+4	"chemical you"	"can change"	"the substance"
+4	"a new property"	"is n't"	"like the last"
+# Line 5: The engine of matter is energy which has many different kinds such as mechanical, potential, and kinetic energy.
+# Semantic graph: [energy/NN
+#                  nsubj:[engine/NN det:The/DT prep:[of/IN pobj:matter/NN]]
+#                  cop:is/VBZ
+#                  rcmod:[has/VBZ
+#                         nsubj:which/WDT
+#                         dobj:[kinds/NNS
+#                               amod:many/JJ
+#                               amod:different/JJ
+#                               prep:[as/IN
+#                                     mwe:such/JJ
+#                                     pobj:[potential/JJ
+#                                           amod:mechanical/JJ
+#                                           cc:and/CC
+#                                           conj:[energy/NN nn:kinetic/NN]]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: energy@6, V: is@5, S: engine@2)
+#   - SVO (V: has@8, S: energy@6, O: kinds@11)
+5	"The engine of matter"	"is"	"energy"
+5	"energy"	"has"	"many different kinds such as mechanical potential and kinetic energy"

@@ -1,0 +1,173 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: What is matter?
+# Semantic graph: [is/VBZ attr:What/WP nsubj:matter/NN]
+#   Detected 1 clause(s).
+#   - SV (V: is@2, S: matter@3)
+1	"matter"	"What is"
+# Line 2: Matter is substances and materials that make-up the universe.
+# Semantic graph: [substances/NNS
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  cc:and/CC
+#                  conj:materials/NNS
+#                  rcmod:[make-up/VBZ nsubj:that/WDT dobj:[universe/NN det:the/DT]]]
+#   Detected 2 clause(s).
+#   - SVC (C: substances@3, V: is@2, S: Matter@1)
+#   - SVO (V: make-up@7, S: substances@3, O: universe@9)
+2	"Matter"	"is"	"substances and materials"
+2	"substances and materials"	"make-up"	"the universe"
+# Line 3: Using your senses, it is not difficult to detect matter.
+# Semantic graph: [difficult/JJ
+#                  partmod:[Using/VBG dobj:[senses/NNS poss:your/PRP$]]
+#                  nsubj:it/PRP
+#                  cop:is/VBZ
+#                  neg:not/RB
+#                  xcomp:[detect/VB aux:to/TO dobj:matter/NN]]
+#   Detected 3 clause(s).
+#   - SVO (S: your@2, V: "has", O: senses@3)
+#   - SVA (V: "be Using", S: difficult@8, O: senses@3)
+#   - SVC (C: difficult@8, V: is@6, S: it@5, A?: Using@1, XCOMP: detect@10)
+3	"your"	"has"	"senses"
+3	"not difficult to detect matter"	"be Using"	"your senses"
+3	"it"	"is not"	"difficult to detect matter Using your senses"
+3	"it"	"is not"	"difficult to detect matter"
+# Line 4: Because certain matter takes up space and has a certain amount of material.
+# Semantic graph: [takes/VBZ
+#                  prep:[Because/IN pobj:certain/JJ]
+#                  nsubj:matter/NN
+#                  prt:up/RP
+#                  dobj:space/NN
+#                  cc:and/CC
+#                  conj:[has/VBZ
+#                        dobj:[amount/NN det:a/DT amod:certain/JJ prep:[of/IN pobj:material/NN]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: takes@4, S: matter@3, A?: Because@1, O: space@6)
+#   - SVO (V: has@8, S: matter@3, A?: Because@1, O: amount@11)
+4	"matter"	"takes up"	"space Because certain"
+4	"matter"	"takes up"	"space"
+4	"matter"	"has"	"a certain amount of material Because certain"
+4	"matter"	"has"	"a certain amount of material"
+# Line 5: Then comes the physical change and chemical change.
+# Semantic graph: [comes/VBZ
+#                  advmod:Then/RB
+#                  nsubj:[change/NN
+#                         det:the/DT
+#                         amod:physical/JJ
+#                         cc:and/CC
+#                         conj:[change/NN nn:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SV (V: comes@2, S: change@5, A-: Then@1)
+5	"the physical change and chemical change"	"comes"
+# Line 6: Physical change is when the size and shape of the physical property changes.
+# Semantic graph: [is/VBZ
+#                  nsubj:[change/NN amod:Physical/JJ]
+#                  advcl:[changes/VBZ
+#                         advmod:when/WRB
+#                         nsubj:[size/NN
+#                                det:the/DT
+#                                cc:and/CC
+#                                conj:shape/NN
+#                                prep:[of/IN pobj:[property/NN det:the/DT amod:physical/JJ]]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: is@3, S: change@2, A!: changes@13)
+#   - SV (V: changes@13, S: size@6, A?: when@4)
+6	"Physical change"	"is"	"when the size and shape of the physical property changes"
+6	"the size and shape of the physical property"	"changes"	"when"
+6	"the size and shape of the physical property"	"changes"
+# Line 7: Then chemical change is when it produces new substances.
+# Semantic graph: [is/VBZ
+#                  advmod:Then/RB
+#                  nsubj:[change/NN nn:chemical/NN]
+#                  advcl:[produces/VBZ
+#                         advmod:when/WRB
+#                         nsubj:it/PRP
+#                         dobj:[substances/NNS amod:new/JJ]]]
+#   Detected 2 clause(s).
+#   - SVA (V: is@4, S: change@3, A-: Then@1, A!: produces@7)
+#   - SVO (V: produces@7, S: it@6, A?: when@5, O: substances@9)
+7	"chemical change"	"is"	"when it produces new substances"
+7	"it"	"produces"	"new substances when"
+7	"it"	"produces"	"new substances"
+# Line 8: And energy is important to matter because all matter contains and needs energy.
+# Semantic graph: [important/JJ
+#                  cc:And/CC
+#                  nsubj:energy/NN
+#                  cop:is/VBZ
+#                  xcomp:[matter/VB
+#                         aux:to/TO
+#                         advcl:[contains/VBZ
+#                                mark:because/IN
+#                                nsubj:[matter/NN det:all/DT]
+#                                cc:and/CC
+#                                conj:needs/VBZ
+#                                dobj:energy/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: important@4, V: is@3, S: energy@2, XCOMP: matter@6)
+#   - SVO (V: contains@10, S: matter@9, O: energy@13)
+#   - SVO (V: needs@12, S: matter@9, O: energy@13)
+8	"energy"	"is"	"And important to matter because all matter contains and needs energy"
+8	"all matter"	"contains"	"energy"
+8	"all matter"	"needs"	"energy"
+# Line 9: The law of conservation of energy is when energy cannot be created or destroyed.
+# Semantic graph: [is/VBZ
+#                  nsubj:[law/NN
+#                         det:The/DT
+#                         prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#                  advcl:[created/VBN
+#                         advmod:when/WRB
+#                         nsubjpass:energy/NN
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         cc:or/CC
+#                         conj:destroyed/VBN]]
+#   Detected 3 clause(s).
+#   - SVA (V: is@7, S: law@2, A!: created@13)
+#   - SV (V: created@13, S: energy@9, A?: when@8)
+#   - SV (V: destroyed@15, S: energy@9, A?: when@8)
+9	"The law of conservation of energy"	"is"	"when energy can not be created or destroyed"
+9	"energy"	"can not be created"	"when"
+9	"energy"	"can not be created"
+9	"energy"	"can not be destroyed"	"when"
+9	"energy"	"can not be destroyed"
+# Line 10: Mechanical energy is the energy an object has because of its motion or position.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[of/IN
+#                         nsubj:[object/NN det:an/DT]
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[motion/NN poss:its/PRP$ cc:or/CC conj:position/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2)
+#   - SVO (V: of@10, S: object@7, A?: because@9, A?: motion@12, O: energy@5)
+#   - SVO (S: its@11, V: "has", O: motion@12)
+10	"Mechanical energy"	"is"	"the energy"
+10	"an object"	"has of"	"the energy because"
+10	"an object"	"has of"	"its motion or position the energy"
+10	"an object"	"has of"	"the energy"
+10	"its"	"has"	"motion or position"

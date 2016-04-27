@@ -1,0 +1,125 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is everything in the universe that takes up volume.
+# Semantic graph: [everything/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  prep:[in/IN
+#                        pobj:[universe/NN
+#                              det:the/DT
+#                              rcmod:[takes/VBZ nsubj:that/WDT prt:up/RP dobj:volume/NN]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: everything@3, V: is@2, S: Matter@1, A?: in@4)
+#   - SVO (V: takes@8, S: universe@6, O: volume@10)
+1	"Matter"	"is"	"everything in the universe"
+1	"Matter"	"is"	"everything"
+1	"the universe"	"takes up"	"volume"
+# Line 2: I contains a certain amount of material that can be detected and measured.
+# Semantic graph: [contains/VBZ
+#                  nsubj:I/PRP
+#                  dobj:[amount/NN
+#                        det:a/DT
+#                        amod:certain/JJ
+#                        prep:[of/IN pobj:material/NN]
+#                        rcmod:[detected/VBN
+#                               nsubjpass:that/WDT
+#                               aux:can/MD
+#                               auxpass:be/VB
+#                               cc:and/CC
+#                               conj:measured/VBN]]]
+#   Detected 3 clause(s).
+#   - SVO (V: contains@2, S: I@1, O: amount@5)
+#   - SV (V: detected@11, S: amount@5)
+#   - SV (V: measured@13, S: amount@5)
+2	"I"	"contains"	"a certain amount of material"
+2	"a certain amount of material"	"can be detected"
+2	"a certain amount of material"	"can be measured"
+# Line 3: Some of matter can't be seen and has no smell to it.
+# Semantic graph: [seen/VBN
+#                  nsubjpass:[Some/DT prep:[of/IN pobj:matter/NN]]
+#                  aux:ca/MD
+#                  neg:n't/RB
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:[has/VBZ dobj:[smell/NN det:no/DT prep:[to/TO pobj:it/PRP]]]]
+#   Detected 2 clause(s).
+#   - SV (V: seen@7, S: Some@1)
+#   - SVO (V: has@9, S: Some@1, O: smell@11)
+3	"Some of matter"	"ca n't be seen"
+3	"Some of matter"	"has"	"no smell to it"
+# Line 4: All matter has properties.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:properties/NNS]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: properties@4)
+4	"All matter"	"has"	"properties"
+# Line 5: I has both physical and chemical properties.
+# Semantic graph: [has/VBZ
+#                  nsubj:I/PRP
+#                  dobj:[properties/NNS
+#                        det:both/DT
+#                        amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: I@1, O: properties@7)
+5	"I"	"has"	"both physical and chemical properties"
+# Line 6: Energy is a property of matter.
+# Semantic graph: [property/NN nsubj:Energy/NNP cop:is/VBZ det:a/DT prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+6	"Energy"	"is"	"a property of matter"
+6	"Energy"	"is"	"a property"
+# Line 7: All matter has some energy in it.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[energy/NN det:some/DT prep:[in/IN pobj:it/PRP]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@5)
+7	"All matter"	"has"	"some energy in it"
+# Line 8: Energy comes in different forms and can be transferred from an object or system to another.
+# Semantic graph: [comes/VBZ
+#                  nsubj:Energy/NNP
+#                  prep:[in/IN pobj:[forms/NNS amod:different/JJ]]
+#                  cc:and/CC
+#                  conj:[transferred/VBN
+#                        aux:can/MD
+#                        auxpass:be/VB
+#                        prep:[from/IN
+#                              pobj:[object/NN
+#                                    det:an/DT
+#                                    cc:or/CC
+#                                    conj:system/NN
+#                                    prep:[to/TO pobj:another/DT]]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: comes@2, S: Energy@1, A!: in@3)
+#   - SVA (V: transferred@9, S: Energy@1, A!: from@10)
+8	"Energy"	"comes"	"in different forms"
+8	"Energy"	"can be transferred"	"from an object or system to another"
+# Line 9: The energy law of conservation is still unknown.
+# Semantic graph: [unknown/JJ
+#                  nsubj:[law/NN det:The/DT nn:energy/NN prep:[of/IN pobj:conservation/NN]]
+#                  cop:is/VBZ
+#                  advmod:still/RB]
+#   Detected 1 clause(s).
+#   - SVC (C: unknown@8, V: is@6, S: law@3, A?: still@7)
+9	"The energy law of conservation"	"is"	"unknown still"
+9	"The energy law of conservation"	"is"	"unknown"

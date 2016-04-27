@@ -1,0 +1,148 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: There are three states of matter.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[states/NNS num:three/CD prep:[of/IN pobj:matter/NN]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: states@4)
+1	"three states of matter"	"There are"
+# Line 2: Solid, liquids, and gases .
+# Semantic graph: [Solid/NNP appos:[liquids/NNS cc:and/CC conj:gases/NNS]]
+#   Detected 1 clause(s).
+#   - SVC (S: Solid@1, V: "is", C: liquids@3)
+2	"Solid"	"is"	"liquids and gases"
+# Line 3: That are all different states of matter.
+# Semantic graph: [states/NNS
+#                  nsubj:That/DT
+#                  cop:are/VBP
+#                  det:all/DT
+#                  amod:different/JJ
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: states@5, V: are@2, S: That@1, A?: of@6)
+3	"That"	"are"	"all different states of matter"
+3	"That"	"are"	"all different states"
+# Line 4: Each of these states is also known as a phase.
+# Semantic graph: [known/VBN
+#                  nsubjpass:[Each/DT prep:[of/IN pobj:[states/NNS det:these/DT]]]
+#                  auxpass:is/VBZ
+#                  advmod:also/RB
+#                  prep:[as/IN pobj:[phase/NN det:a/DT]]]
+#   Detected 1 clause(s).
+#   - SVA (V: known@7, S: Each@1, A?: also@6, A!: as@8)
+4	"Each of these states"	"is known"	"as a phase also"
+4	"Each of these states"	"is known"	"as a phase"
+# Line 5: Elements and compounds can move from one phase to another phase when special phhysical forces are present.
+# Semantic graph: [move/VB
+#                  nsubj:[Elements/NNS cc:and/CC conj:compounds/NNS]
+#                  aux:can/MD
+#                  prep:[from/IN
+#                        pobj:[phase/NN num:one/CD prep:[to/TO pobj:[phase/NN det:another/DT]]]]
+#                  advcl:[present/JJ
+#                         advmod:when/WRB
+#                         nsubj:[forces/NNS amod:special/JJ amod:phhysical/JJ]
+#                         cop:are/VBP]]
+#   Detected 2 clause(s).
+#   - SVA (V: move@5, S: Elements@1, A!: from@6, A?: present@17)
+#   - SVC (C: present@17, V: are@16, S: forces@15, A?: when@12)
+5	"Elements and compounds"	"can move"	"from one phase to another phase when special phhysical forces are present"
+5	"Elements and compounds"	"can move"	"from one phase to another phase"
+5	"special phhysical forces"	"are"	"present when"
+5	"special phhysical forces"	"are"	"present"
+# Line 6: One example of these forces is temperature.
+# Semantic graph: [temperature/NN
+#                  nsubj:[example/NN num:One/CD prep:[of/IN pobj:[forces/NNS det:these/DT]]]
+#                  cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: temperature@7, V: is@6, S: example@2)
+6	"One example of these forces"	"is"	"temperature"
+# Line 7: The phase or state of matter can change when temperature changes.
+# Semantic graph: [change/VB
+#                  nsubj:[phase/NN det:The/DT cc:or/CC conj:state/NN prep:[of/IN pobj:matter/NN]]
+#                  aux:can/MD
+#                  advcl:[changes/VBZ advmod:when/WRB nsubj:temperature/NN]]
+#   Detected 2 clause(s).
+#   - SVA (V: change@8, S: phase@2, A!: changes@11)
+#   - SV (V: changes@11, S: temperature@10, A?: when@9)
+7	"The phase or state of matter"	"can change"	"when temperature changes"
+7	"temperature"	"changes"	"when"
+7	"temperature"	"changes"
+# Line 8: Generally, as the temperature rises, matter moves to a more active start.
+# Semantic graph: [moves/VBZ
+#                  advmod:Generally/RB
+#                  advcl:[rises/VBZ mark:as/IN nsubj:[temperature/NN det:the/DT]]
+#                  nsubj:matter/NN
+#                  prep:[to/TO pobj:[start/NN det:a/DT amod:[active/JJ advmod:more/RBR]]]]
+#   Detected 2 clause(s).
+#   - SV (V: rises@6, S: temperature@5)
+#   - SVA (V: moves@9, S: matter@8, A?: Generally@1, A?: rises@6, A!: to@10)
+8	"the temperature"	"rises"
+8	"matter"	"moves"	"to a more active start Generally"
+8	"matter"	"moves"	"to a more active start as the temperature rises"
+8	"matter"	"moves"	"to a more active start"
+# Line 9: Phase describes a physical state of matter.
+# Semantic graph: [describes/VBZ
+#                  nsubj:Phase/NN
+#                  dobj:[state/NN det:a/DT amod:physical/JJ prep:[of/IN pobj:matter/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: describes@2, S: Phase@1, O: state@5)
+9	"Phase"	"describes"	"a physical state of matter"
+# Line 10: The key word to notice is physical.
+# Semantic graph: [physical/JJ
+#                  nsubj:[word/NN det:The/DT amod:key/JJ prep:[to/TO pobj:notice/NN]]
+#                  cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: physical@7, V: is@6, S: word@3)
+10	"The key word to notice"	"is"	"physical"
+# Line 11: Things only move from one phase to another by physical means.
+# Semantic graph: [move/VBP
+#                  nsubj:Things/NNS
+#                  advmod:only/RB
+#                  prep:[from/IN pobj:[phase/NN num:one/CD]]
+#                  prep:[to/TO pobj:[another/DT prep:[by/IN pobj:[means/NNS amod:physical/JJ]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: move@3, S: Things@1, A?: only@2, A!: from@4, A?: to@7)
+11	"Things"	"move"	"from one phase only"
+11	"Things"	"move"	"from one phase to another by physical means"
+11	"Things"	"move"	"from one phase"
+# Line 12: If energy is added or energy is taken away you have created a physical change.
+# Semantic graph: [created/VBN
+#                  advcl:[added/VBN
+#                         mark:If/IN
+#                         nsubjpass:energy/NN
+#                         auxpass:is/VBZ
+#                         cc:or/CC
+#                         conj:[taken/VBN nsubjpass:energy/NN auxpass:is/VBZ prt:away/RP]]
+#                  nsubj:you/PRP
+#                  aux:have/VBP
+#                  dobj:[change/NN det:a/DT amod:physical/JJ]]
+#   Detected 3 clause(s).
+#   - SV (V: added@4, S: energy@2)
+#   - SV (V: taken@8, S: energy@6)
+#   - SVO (V: created@12, S: you@10, A?: added@4, O: change@15)
+12	"energy"	"is added"
+12	"energy"	"is taken away"
+12	"you"	"have created"	"a physical change If energy is added or energy is taken away"
+12	"you"	"have created"	"a physical change"

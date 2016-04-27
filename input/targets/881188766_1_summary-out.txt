@@ -1,0 +1,159 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: This world is made up of many different things.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[world/NN det:This/DT]
+#                  auxpass:is/VBZ
+#                  prt:up/RP
+#                  prep:[of/IN pobj:[things/NNS amod:many/JJ amod:different/JJ]]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@4, S: world@2, A!: of@6)
+1	"This world"	"is made up"	"of many different things"
+# Line 2: One of which is matter.
+# Semantic graph: [matter/NN nsubj:[One/CD prep:[of/IN pobj:which/WDT]] cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: matter@5, V: is@4, S: One@1)
+2	"One of which"	"is"	"matter"
+# Line 3: All matter has volume and mass, therefore it can be detected and measured.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[volume/NN cc:and/CC conj:mass/NN]
+#                  advmod:therefore/RB
+#                  ccomp:[detected/VBN
+#                         nsubjpass:it/PRP
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         cc:and/CC
+#                         conj:measured/VBN]]
+#   Detected 3 clause(s).
+#   - SVOC (V: has@3, S: matter@2, O: volume@4, A?: therefore@8, CCOMP: detected@12)
+#   - SV (V: detected@12, S: it@9)
+#   - SV (V: measured@14, S: it@9)
+3	"All matter"	"has"	"volume and mass therefore it can be detected and measured"
+3	"All matter"	"has"	"volume and mass it can be detected and measured"
+3	"it"	"can be detected"
+3	"it"	"can be measured"
+# Line 4: Matter also has both chemical and physical properties.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  advmod:also/RB
+#                  dobj:[properties/NNS
+#                        det:both/DT
+#                        amod:[chemical/NN cc:and/CC conj:physical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: Matter@1, A?: also@2, O: properties@8)
+4	"Matter"	"has"	"both chemical and physical properties also"
+4	"Matter"	"has"	"both chemical and physical properties"
+# Line 5: Chemical properties describe matter based on its ability to change into a new kind of matter with different properties.
+# Semantic graph: [describe/VBP
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  dobj:matter/NN
+#                  prep:[based/VBN
+#                        pcomp:[on/IN
+#                               pobj:[ability/NN
+#                                     poss:its/PRP$
+#                                     infmod:[change/VB
+#                                             aux:to/TO
+#                                             prep:[into/IN
+#                                                   pobj:[kind/NN
+#                                                         det:a/DT
+#                                                         amod:new/JJ
+#                                                         prep:[of/IN pobj:matter/NN]]]
+#                                             prep:[with/IN
+#                                                   pobj:[properties/NNS amod:different/JJ]]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: describe@3, S: properties@2, O: matter@4, A?: based@5)
+#   - SVO (S: its@7, V: "has", O: ability@8)
+5	"Chemical properties"	"describe"	"matter based on its ability to change into a new kind of matter with different properties"
+5	"Chemical properties"	"describe"	"matter"
+5	"its"	"has"	"ability to change into a new kind of matter with different properties"
+# Line 6: Physical properties are those that can be observed without changing the make-up, or identity, of the matter.
+# Semantic graph: [those/DT
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  cop:are/VBP
+#                  rcmod:[observed/VBN
+#                         nsubjpass:that/WDT
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[without/IN
+#                               pcomp:[changing/VBG
+#                                      dobj:[make-up/NN
+#                                            det:the/DT
+#                                            cc:or/CC
+#                                            conj:identity/NN
+#                                            prep:[of/IN pobj:[matter/NN det:the/DT]]]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: those@4, V: are@3, S: properties@2)
+#   - SVA (V: observed@8, S: those@4, A!: without@9)
+6	"Physical properties"	"are"	"those"
+6	"those"	"can be observed"	"without changing the make-up or identity of the matter"
+# Line 7: Another important topic is energy.
+# Semantic graph: [energy/NN nsubj:[topic/NN det:Another/DT amod:important/JJ] cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@5, V: is@4, S: topic@3)
+7	"Another important topic"	"is"	"energy"
+# Line 8: There is the law of conservation energy, mechanical energy, kinetic energy, and potential energy.
+# Semantic graph: [is/VBZ
+#                  expl:There/EX
+#                  nsubj:[law/NN
+#                         det:the/DT
+#                         prep:[of/IN
+#                               pobj:[energy/NN
+#                                     nn:conservation/NN
+#                                     conj:[energy/NN amod:mechanical/JJ]
+#                                     conj:[energy/NN amod:kinetic/JJ]
+#                                     cc:and/CC
+#                                     conj:[energy/NN amod:potential/JJ]]]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: is@2, S: law@4)
+8	"the law of conservation energy mechanical energy kinetic energy and potential energy"	"There is"
+# Line 9: The law of conservation energy is when it can be transferred to one object or another, energy cannot be created or destroyed.
+# Semantic graph: [created/VBN
+#                  ccomp:[is/VBZ
+#                         nsubj:[law/NN
+#                                det:The/DT
+#                                prep:[of/IN pobj:[energy/NN nn:conservation/NN]]]
+#                         advcl:[transferred/VBN
+#                                advmod:when/WRB
+#                                nsubjpass:it/PRP
+#                                aux:can/MD
+#                                auxpass:be/VB
+#                                prep:[to/TO
+#                                      pobj:[object/NN num:one/CD cc:or/CC conj:another/DT]]]]
+#                  nsubjpass:energy/NN
+#                  aux:can/MD
+#                  neg:not/RB
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:destroyed/VBN]
+#   Detected 4 clause(s).
+#   - SVA (V: is@6, S: law@2, A!: transferred@11)
+#   - SVA (V: transferred@11, S: it@8, A?: when@7, A!: to@12)
+#   - SVO (V: created@22, S: energy@18, CCOMP: is@6)
+#   - SVO (V: destroyed@24, S: energy@18, CCOMP: is@6)
+9	"The law of conservation energy"	"is"	"when it can be transferred to one object or another"
+9	"it"	"can be transferred"	"to one object or another when"
+9	"it"	"can be transferred"	"to one object or another"
+9	"energy"	"can not be created"	"The law of conservation energy is when it can be transferred to one object or another"
+9	"energy"	"can not be destroyed"	"The law of conservation energy is when it can be transferred to one object or another"

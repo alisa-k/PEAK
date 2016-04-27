@@ -1,0 +1,158 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: In this passage I was taught very important objectives that are very important in the every day science.
+# Semantic graph: [taught/VBN
+#                  prep:[In/IN pobj:[passage/NN det:this/DT]]
+#                  nsubjpass:I/PRP
+#                  auxpass:was/VBD
+#                  dobj:[objectives/NNS
+#                        amod:[important/JJ advmod:very/RB]
+#                        rcmod:[important/JJ
+#                               nsubj:that/WDT
+#                               cop:are/VBP
+#                               advmod:very/RB
+#                               prep:[in/IN
+#                                     pobj:[science/NN predet:the/DT det:every/DT nn:day/NN]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: taught@6, S: I@4, A?: In@1, O: objectives@9)
+#   - SVC (C: important@13, V: are@11, S: objectives@9, A?: very@12, A?: in@14)
+1	"I"	"was taught"	"very important objectives In this passage"
+1	"I"	"was taught"	"very important objectives"
+1	"very important objectives"	"are"	"important very"
+1	"very important objectives"	"are"	"important in the every day science"
+1	"very important objectives"	"are"	"important"
+# Line 2: These important objectives are matter, law of conservation, physical and chemical change, and mechanical energy.
+# Semantic graph: [matter/NN
+#                  nsubj:[objectives/NNS det:These/DT amod:important/JJ]
+#                  cop:are/VBP
+#                  conj:[law/NN prep:[of/IN pobj:conservation/NN]]
+#                  conj:[change/NN amod:[physical/NN cc:and/CC conj:chemical/NN]]
+#                  cc:and/CC
+#                  conj:[energy/NN amod:mechanical/JJ]]
+#   Detected 1 clause(s).
+#   - SVC (C: matter@5, V: are@4, S: objectives@3)
+2	"These important objectives"	"are"	"matter law of conservation physical and chemical change and mechanical energy"
+# Line 3: Matter is what everything is build around.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[build/VBN
+#                         dobj:what/WP
+#                         nsubjpass:everything/NN
+#                         auxpass:is/VBZ
+#                         prt:around/RP]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: build@6)
+#   - SVO (V: build@6, S: everything@4, O: what@3)
+3	"Matter"	"is"	"what everything is build around"
+3	"everything"	"is build around"	"what"
+# Line 4: It has every organism possibly made.
+# Semantic graph: [has/VBZ
+#                  nsubj:It/PRP
+#                  dobj:[organism/NN det:every/DT partmod:[made/VBN advmod:possibly/RB]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@2, S: It@1, O: organism@4)
+#   - SVA (V: "be made", S: organism@4, A!: possibly@5)
+4	"It"	"has"	"every organism possibly made"
+4	"every organism"	"be made"	"possibly"
+# Line 5: When we use matter we are using all the energies that are used.
+# Semantic graph: [using/VBG
+#                  advcl:[use/VBP advmod:When/WRB nsubj:we/PRP dobj:matter/NN]
+#                  nsubj:we/PRP
+#                  aux:are/VBP
+#                  dobj:[energies/NNS
+#                        predet:all/PDT
+#                        det:the/DT
+#                        rcmod:[used/VBN nsubjpass:that/WDT auxpass:are/VBP]]]
+#   Detected 3 clause(s).
+#   - SVO (V: use@3, S: we@2, A?: When@1, O: matter@4)
+#   - SVO (V: using@7, S: we@5, A?: use@3, O: energies@10)
+#   - SV (V: used@13, S: energies@10)
+5	"we"	"use"	"matter When"
+5	"we"	"use"	"matter"
+5	"we"	"are using"	"all the energies When we use matter"
+5	"we"	"are using"	"all the energies"
+5	"all the energies"	"are used"
+# Line 6: Physical and chemical energy are energies and not has a different shape and volume.
+# Semantic graph: [energies/NNS
+#                  nsubj:[Physical/NNP cc:and/CC conj:[energy/NN nn:chemical/NN]]
+#                  cop:are/VBP
+#                  cc:and/CC
+#                  conj:not/RB
+#                  dep:[has/VBZ
+#                       dobj:[shape/NN det:a/DT amod:different/JJ cc:and/CC conj:volume/NN]]]
+#   Detected 1 clause(s).
+#   - SVC (C: energies@6, V: are@5, S: Physical@1)
+6	"Physical and chemical energy"	"are"	"energies and not has a different shape and volume"
+# Line 7: Mechanical energy is when a object moves on repositions themselves, an example is when lifting a object to another spot.
+# Semantic graph: [is/VBZ
+#                  ccomp:[is/VBZ
+#                         nsubj:[energy/NN amod:Mechanical/JJ]
+#                         advcl:[moves/VBZ
+#                                advmod:when/WRB
+#                                nsubj:[object/NN det:a/DT]
+#                                prep:[on/IN pobj:[repositions/NNS advmod:themselves/PRP]]]]
+#                  nsubj:[example/NN det:an/DT]
+#                  advcl:[lifting/VBG
+#                         advmod:when/WRB
+#                         dobj:[object/NN det:a/DT]
+#                         prep:[to/TO pobj:[spot/NN det:another/DT]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: is@3, S: energy@2, A!: moves@7)
+#   - SVA (V: moves@7, S: object@6, A?: when@4, A!: on@8)
+#   - SVC (V: is@14, S: example@13, CCOMP: is@3, A?: lifting@16)
+7	"Mechanical energy"	"is"	"when a object moves on repositions themselves"
+7	"a object"	"moves"	"on repositions themselves when"
+7	"a object"	"moves"	"on repositions themselves"
+7	"an example"	"is"	"Mechanical energy is when a object moves on repositions themselves when lifting a object to another spot"
+7	"an example"	"is"	"Mechanical energy is when a object moves on repositions themselves"
+# Line 8: The last is law of of conservation which specifically states that energy (by any means possible) cannot be destroyed at all.
+# Semantic graph: [law/NN
+#                  nsubj:[last/JJ det:The/DT]
+#                  cop:is/VBZ
+#                  prep:[of/IN
+#                        dep:of/IN
+#                        pobj:[conservation/NN
+#                              rcmod:[states/VBZ
+#                                     nsubj:which/WDT
+#                                     advmod:specifically/RB
+#                                     ccomp:[destroyed/VBN
+#                                            complm:that/IN
+#                                            nsubjpass:[energy/NN
+#                                                       dep:[by/IN
+#                                                            pobj:[means/NN
+#                                                                  det:any/DT
+#                                                                  amod:possible/JJ]]]
+#                                            aux:can/MD
+#                                            neg:not/RB
+#                                            auxpass:be/VB
+#                                            advmod:[at/IN pobj:all/DT]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: law@4, V: is@3, S: last@2, A?: of@6)
+#   - SVO (V: states@10, S: conservation@7, A?: specifically@9, CCOMP: destroyed@22)
+#   - SVA (V: destroyed@22, S: energy@12, A!: at@23)
+8	"The last"	"is"	"law of of conservation"
+8	"The last"	"is"	"law"
+8	"conservation"	"states"	"that energy by any means possible can not be destroyed at all specifically"
+8	"conservation"	"states"	"that energy by any means possible can not be destroyed at all"
+8	"energy by any means possible"	"can not be destroyed"	"at all"

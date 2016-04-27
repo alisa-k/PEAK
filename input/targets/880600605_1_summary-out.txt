@@ -1,0 +1,207 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: One of the substance they spoke about in this passage us matter.
+# Semantic graph: [spoke/VBD
+#                  nsubj:[One/CD prep:[of/IN pobj:[substance/NN det:the/DT dep:they/PRP]]]
+#                  prep:[in/IN
+#                        dep:about/IN
+#                        pobj:[passage/NN det:this/DT rcmod:[matter/VBP nsubj:us/PRP]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: spoke@6, S: One@1, A!: in@8)
+#   - SVO (V: matter@12, S: us@11, O: passage@10)
+1	"One of the substance they"	"spoke"	"about in this passage"
+1	"us"	"matter"	"this passage"
+# Line 2: Matter is a thing that can occupy any kind of space.
+# Semantic graph: [thing/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  rcmod:[occupy/VB
+#                         nsubj:that/WDT
+#                         aux:can/MD
+#                         dobj:[kind/NN det:any/DT prep:[of/IN pobj:space/NN]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: thing@4, V: is@2, S: Matter@1)
+#   - SVO (V: occupy@7, S: thing@4, O: kind@9)
+2	"Matter"	"is"	"a thing"
+2	"a thing"	"can occupy"	"any kind of space"
+# Line 3: Matter also transforms into liquid or gases.
+# Semantic graph: [transforms/VBZ
+#                  nsubj:Matter/NNP
+#                  advmod:also/RB
+#                  prep:[into/IN pobj:[liquid/NN cc:or/CC conj:gases/NNS]]]
+#   Detected 1 clause(s).
+#   - SVA (V: transforms@3, S: Matter@1, A?: also@2, A!: into@4)
+3	"Matter"	"transforms"	"into liquid or gases also"
+3	"Matter"	"transforms"	"into liquid or gases"
+# Line 4: Matter is a substance that can be smelled touched or seen.
+# Semantic graph: [substance/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  rcmod:[touched/VBN
+#                         nsubjpass:that/WDT
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         advmod:smelled/RB
+#                         cc:or/CC
+#                         conj:seen/VBN]]
+#   Detected 3 clause(s).
+#   - SVC (C: substance@4, V: is@2, S: Matter@1)
+#   - SV (V: touched@9, S: substance@4, A?: smelled@8)
+#   - SV (V: seen@11, S: substance@4, A?: smelled@8)
+4	"Matter"	"is"	"a substance"
+4	"a substance"	"can be touched"	"smelled"
+4	"a substance"	"can be touched"
+4	"a substance"	"can be seen"	"smelled"
+4	"a substance"	"can be seen"
+# Line 5: Matter has different kind of properties, in which the thing can be changed in the inside, but it can stay the same in the exterior.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[kind/NN
+#                        amod:different/JJ
+#                        prep:[of/IN
+#                              pobj:[properties/NNS
+#                                    rcmod:[changed/VBN
+#                                           rel:[in/IN pobj:which/WDT]
+#                                           nsubjpass:[thing/NN det:the/DT]
+#                                           aux:can/MD
+#                                           auxpass:be/VB
+#                                           prep:[in/IN pobj:[inside/NN det:the/DT]]]]]]
+#                  cc:but/CC
+#                  conj:[same/JJ
+#                        nsubj:it/PRP
+#                        aux:can/MD
+#                        cop:stay/VB
+#                        det:the/DT
+#                        prep:[in/IN pobj:[exterior/NN det:the/DT]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: kind@4)
+#   - SVA (V: changed@14, S: thing@11, S: in@8, A?: in@15)
+#   - SVC (C: same@24, V: stay@22, S: it@20, A?: in@25)
+5	"Matter"	"has"	"different kind of properties"
+5	"the thing"	"can be changed"	"in the inside in properties"
+5	"the thing"	"can be changed"	"in properties"
+5	"it"	"can stay"	"the same in the exterior"
+5	"it"	"can stay"	"the same"
+# Line 6: One of the things that all matter has is energy.
+# Semantic graph: [energy/NN
+#                  nsubj:[One/CD
+#                         prep:[of/IN
+#                               pobj:[things/NNS
+#                                     det:the/DT
+#                                     rcmod:[has/VBZ
+#                                            nsubj:that/WDT
+#                                            advmod:[matter/NN det:all/DT]]]]]
+#                  cop:is/VBZ]
+#   Detected 2 clause(s).
+#   - SV (V: has@8, S: things@4, A?: matter@7)
+#   - SVC (C: energy@10, V: is@9, S: One@1)
+6	"the things"	"has"	"all matter"
+6	"the things"	"has"
+6	"One of the things"	"is"	"energy"
+# Line 7: We kno that mattber has energy, because when you see a light switch go on, you know that energy is present.
+# Semantic graph: [kno/VBP
+#                  nsubj:We/PRP
+#                  ccomp:[has/VBZ
+#                         complm:that/IN
+#                         nsubj:mattber/NN
+#                         dobj:energy/NN
+#                         advcl:[know/VBP
+#                                mark:because/IN
+#                                advcl:[see/VBP
+#                                       advmod:when/WRB
+#                                       nsubj:you/PRP
+#                                       ccomp:[go/VB
+#                                              nsubj:[switch/NN det:a/DT amod:light/JJ]
+#                                              prt:on/RP]]
+#                                nsubj:you/PRP
+#                                ccomp:[present/JJ complm:that/IN nsubj:energy/NN cop:is/VBZ]]]]
+#   Detected 6 clause(s).
+#   - SVO (V: kno@2, S: We@1, CCOMP: has@5)
+#   - SVO (V: has@5, S: mattber@4, O: energy@6, A?: know@19)
+#   - SVO (V: see@11, S: you@10, A?: when@9, CCOMP: go@15)
+#   - SV (V: go@15, S: switch@14)
+#   - SVO (V: know@19, S: you@18, A?: see@11, CCOMP: present@23)
+#   - SVC (C: present@23, V: is@22, S: energy@21)
+7	"We"	"kno"	"that mattber has energy because when you see a light switch go on you know that energy is present"
+7	"mattber"	"has"	"energy because when you see a light switch go on you know that energy is present"
+7	"mattber"	"has"	"energy"
+7	"you"	"see"	"a light switch go on when"
+7	"you"	"see"	"a light switch go on"
+7	"a light switch"	"go on"
+7	"you"	"know"	"that energy is present when you see a light switch go on"
+7	"you"	"know"	"that energy is present"
+7	"energy"	"is"	"present"
+# Line 8: There are two different kinds of energy.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[kinds/NNS num:two/CD amod:different/JJ prep:[of/IN pobj:energy/NN]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: kinds@5)
+8	"two different kinds of energy"	"There are"
+# Line 9: Kinetic energy, that determines the energy by its moving motion.
+# Semantic graph: [determines/VBZ
+#                  partmod:[Kinetic/VBG dobj:energy/NN]
+#                  nsubj:that/DT
+#                  dobj:[energy/NN det:the/DT]
+#                  prep:[by/IN pobj:[motion/NN poss:its/PRP$ amod:moving/VBG]]]
+#   Detected 3 clause(s).
+#   - SVA (V: "be Kinetic", S: that@4, O: energy@2)
+#   - SVO (V: determines@5, S: that@4, A?: Kinetic@1, O: energy@7, A?: by@8)
+#   - SVO (S: its@9, V: "has", O: motion@11)
+9	"that"	"be Kinetic"	"energy"
+9	"that"	"determines"	"the energy Kinetic energy"
+9	"that"	"determines"	"the energy by its moving motion"
+9	"that"	"determines"	"the energy"
+9	"its"	"has"	"moving motion"
+# Line 10: Potential energy, is one that is determined by its shape and size.
+# Semantic graph: [one/CD
+#                  nsubj:[energy/NN amod:Potential/JJ]
+#                  cop:is/VBZ
+#                  rcmod:[determined/VBN
+#                         nsubjpass:that/WDT
+#                         auxpass:is/VBZ
+#                         prep:[by/IN pobj:[shape/NN poss:its/PRP$ cc:and/CC conj:size/NN]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: one@5, V: is@4, S: energy@2)
+#   - SVA (V: determined@8, S: one@5, A!: by@9)
+#   - SVO (S: its@10, V: "has", O: shape@11)
+10	"Potential energy"	"is"	"one"
+10	"one"	"is determined"	"by its shape and size"
+10	"its"	"has"	"shape and size"
+# Line 11: This are the properties of matter, and its substances.
+# Semantic graph: [properties/NNS
+#                  nsubj:This/DT
+#                  cop:are/VBP
+#                  det:the/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[substances/NNS poss:its/PRP$]]
+#   Detected 2 clause(s).
+#   - SVC (C: properties@4, V: are@2, S: This@1, A?: of@5)
+#   - SVO (S: its@9, V: "has", O: substances@10)
+11	"This"	"are"	"the properties and its substances of matter"
+11	"This"	"are"	"the properties and its substances"
+11	"its"	"has"	"substances"

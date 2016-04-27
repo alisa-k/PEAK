@@ -1,0 +1,264 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): All living things, man-made, or from mother nature itself are made out of matter.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[things/NNS det:All/DT nn:living/NN]
+#                  dep:[man-made/JJ cc:or/CC conj:[from/IN pobj:[nature/NN nn:mother/NN]]]
+#                  nsubjpass:itself/PRP
+#                  auxpass:are/VBP
+#                  prt:out/RP
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVA (V: made@13, S: things@3, A!: of@15)
+#   - SVA (V: made@13, S: itself@11, A!: of@15)
+1	"All living things"	"itself are made out"	"of matter"
+1	"itself"	"All living things are made out"	"of matter"
+# Line 2 (id 2): Also, because matter takes up space and certain amount of material, it can be detected and measured.
+# Semantic graph: [detected/VBN
+#                  advmod:Also/RB
+#                  advcl:[takes/VBZ
+#                         mark:because/IN
+#                         nsubj:matter/NN
+#                         prt:up/RP
+#                         dobj:[amount/NN
+#                               nn:[space/NN cc:and/CC conj:certain/JJ]
+#                               prep:[of/IN pobj:material/NN]]]
+#                  nsubjpass:it/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN]
+#   Detected 3 clause(s).
+#   - SVO (V: takes@5, S: matter@4, O: amount@10)
+#   - SV (V: detected@17, S: it@14, A?: Also@1, A?: takes@5)
+#   - SV (V: measured@19, S: it@14, A?: Also@1, A?: takes@5)
+2	"matter"	"takes up"	"space and certain amount of material"
+2	"it"	"can be detected"	"Also"
+2	"it"	"can be detected"	"because matter takes up space and certain amount of material"
+2	"it"	"can be detected"
+2	"it"	"can be measured"	"Also"
+2	"it"	"can be measured"	"because matter takes up space and certain amount of material"
+2	"it"	"can be measured"
+# Line 3 (id 3): Volume is what matter takes up as space; mass is what certain amount of material the object has.
+# Semantic graph: [is/VBZ
+#                  nsubj:Volume/NN
+#                  ccomp:[takes/VBZ
+#                         dobj:what/WP
+#                         nsubj:matter/NN
+#                         prt:up/RP
+#                         prep:[as/IN pobj:space/NN]]
+#                  parataxis:[is/VBZ
+#                             nsubj:mass/NN
+#                             ccomp:[has/VBZ
+#                                    dobj:what/WP
+#                                    nsubj:[amount/NN
+#                                           amod:certain/JJ
+#                                           prep:[of/IN
+#                                                 pobj:[object/NN amod:material/JJ det:the/DT]]]]]]
+#   Detected 4 clause(s).
+#   - SVC (V: is@2, S: Volume@1, CCOMP: takes@5)
+#   - SVOA (V: takes@5, S: matter@4, O: what@3, A!: as@7)
+#   - SVC (V: is@11, S: mass@10, CCOMP: has@19)
+#   - SVO (V: has@19, S: amount@14, O: what@12)
+3	"Volume"	"is"	"what matter takes up as space"
+3	"matter"	"takes up"	"what as space"
+3	"mass"	"is"	"what certain amount of material the object has"
+3	"certain amount of material the object"	"has"	"what"
+# Line 4 (id 4): Because a cork is hard, it will break when you break it, and clay will flatten when bended.
+# Semantic graph: [break/VB
+#                  advcl:[hard/JJ mark:Because/IN nsubj:[cork/NN det:a/DT] cop:is/VBZ]
+#                  nsubj:it/PRP
+#                  aux:will/MD
+#                  advcl:[break/VBP advmod:when/WRB nsubj:you/PRP dobj:it/PRP]
+#                  cc:and/CC
+#                  conj:[flatten/VB nsubj:clay/NN aux:will/MD advcl:[bended/VBD advmod:when/WRB]]]
+#   Detected 4 clause(s).
+#   - SVC (C: hard@5, V: is@4, S: cork@3)
+#   - SVA (V: break@9, S: it@7, A?: hard@5, A!: break@12)
+#   - SVO (V: break@12, S: you@11, A?: when@10, O: it@13)
+#   - SVA (V: flatten@18, S: clay@16, A!: bended@20)
+4	"a cork"	"is"	"hard"
+4	"it"	"will break"	"when you break it Because a cork is hard"
+4	"it"	"will break"	"when you break it"
+4	"you"	"break"	"it when"
+4	"you"	"break"	"it"
+4	"clay"	"will flatten"	"when bended"
+# Line 5 (id 5): But when you drop both in water, the cork will float, and the clay will sink.
+# Semantic graph: [float/VB
+#                  cc:But/CC
+#                  advcl:[drop/VBP
+#                         advmod:when/WRB
+#                         nsubj:you/PRP
+#                         prep:[in/IN dep:both/DT pobj:water/NN]]
+#                  nsubj:[cork/NN det:the/DT]
+#                  aux:will/MD
+#                  cc:and/CC
+#                  conj:[sink/VB nsubj:[clay/NN det:the/DT] aux:will/MD]]
+#   Detected 3 clause(s).
+#   - SVA (V: drop@4, S: you@3, A?: when@2, A!: in@6)
+#   - SV (V: float@12, S: cork@10, A?: drop@4)
+#   - SV (V: sink@18, S: clay@16)
+5	"you"	"drop"	"both in water when"
+5	"you"	"drop"	"both in water"
+5	"the cork"	"will float"	"when you drop both in water"
+5	"the cork"	"will float"
+5	"the clay"	"will sink"
+# Line 6 (id 6): These characteristics determine the properties of matter.
+# Semantic graph: [determine/VBP
+#                  nsubj:[characteristics/NNS det:These/DT]
+#                  dobj:[properties/NNS det:the/DT prep:[of/IN pobj:matter/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: determine@3, S: characteristics@2, O: properties@5)
+6	"These characteristics"	"determine"	"the properties of matter"
+# Line 7 (id 7): Physical properties are what the object looks like without changing anything about it.
+# Semantic graph: [are/VBP
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  ccomp:[looks/VBZ
+#                         dobj:what/WP
+#                         nsubj:[object/NN det:the/DT]
+#                         prep:[without/IN
+#                               dep:like/IN
+#                               pobj:[anything/NN amod:changing/VBG prep:[about/IN pobj:it/PRP]]]]]
+#   Detected 2 clause(s).
+#   - SVC (V: are@3, S: properties@2, CCOMP: looks@7)
+#   - SVO (V: looks@7, S: object@6, O: what@4, A?: without@9)
+7	"Physical properties"	"are"	"what the object looks like without changing anything about it"
+7	"the object"	"looks"	"what like without changing anything about it"
+7	"the object"	"looks"	"what"
+# Line 8 (id 8): Chemical properties describe matter when it is changed with a different kind of property.
+# Semantic graph: [describe/VBP
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  dobj:matter/NN
+#                  advcl:[changed/VBN
+#                         advmod:when/WRB
+#                         nsubjpass:it/PRP
+#                         auxpass:is/VBZ
+#                         prep:[with/IN
+#                               pobj:[kind/NN
+#                                     det:a/DT
+#                                     amod:different/JJ
+#                                     prep:[of/IN pobj:property/NN]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: describe@3, S: properties@2, O: matter@4, A?: changed@8)
+#   - SVA (V: changed@8, S: it@6, A?: when@5, A!: with@9)
+8	"Chemical properties"	"describe"	"matter when it is changed with a different kind of property"
+8	"Chemical properties"	"describe"	"matter"
+8	"it"	"is changed"	"with a different kind of property when"
+8	"it"	"is changed"	"with a different kind of property"
+# Line 9 (id 9): Energy is the property of matter.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+9	"Energy"	"is"	"the property of matter"
+9	"Energy"	"is"	"the property"
+# Line 10 (id 10): Energy can be transferred to one object to another, energy cannot be created or destroyed, this rule is called the law of conservation of energy.
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[to/TO pobj:[object/NN num:one/CD]]
+#                  prep:[to/TO pobj:another/DT]
+#                  ccomp:[created/VBN
+#                         nsubjpass:energy/NN
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         cc:or/CC
+#                         conj:destroyed/VBN]
+#                  ccomp:[called/VBN
+#                         nsubjpass:[rule/NN det:this/DT]
+#                         auxpass:is/VBZ
+#                         dobj:[law/NN
+#                               det:the/DT
+#                               prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]]]
+#   Detected 4 clause(s).
+#   - SVOC (V: transferred@4, S: Energy@1, A?: to@5, A?: to@8, CCOMP: created@15, CCOMP: called@22)
+#   - SV (V: created@15, S: energy@11)
+#   - SV (V: destroyed@17, S: energy@11)
+#   - SVO (V: called@22, S: rule@20, O: law@24)
+10	"Energy"	"can be transferred"	"to one object energy can not be created or destroyed this rule is called the law of conservation of energy"
+10	"Energy"	"can be transferred"	"to another energy can not be created or destroyed this rule is called the law of conservation of energy"
+10	"Energy"	"can be transferred"	"energy can not be created or destroyed this rule is called the law of conservation of energy"
+10	"energy"	"can not be created"
+10	"energy"	"can not be destroyed"
+10	"this rule"	"is called"	"the law of conservation of energy"
+# Line 11 (id 11): When an object has a motion or position, it is called mechanical energy.
+# Semantic graph: [called/VBN
+#                  advcl:[has/VBZ
+#                         advmod:When/WRB
+#                         nsubj:[object/NN det:an/DT]
+#                         dobj:[motion/NN det:a/DT cc:or/CC conj:position/NN]]
+#                  nsubjpass:it/PRP
+#                  auxpass:is/VBZ
+#                  dobj:[energy/NN amod:mechanical/JJ]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@4, S: object@3, A?: When@1, O: motion@6)
+#   - SVO (V: called@12, S: it@10, A?: has@4, O: energy@14)
+11	"an object"	"has"	"a motion or position When"
+11	"an object"	"has"	"a motion or position"
+11	"it"	"is called"	"mechanical energy When an object has a motion or position"
+11	"it"	"is called"	"mechanical energy"
+# Line 12 (id 12): The energy an object has when it is moving is called kinetic energy.
+# Semantic graph: [called/VBN
+#                  nsubjpass:[energy/NN
+#                             det:The/DT
+#                             rcmod:[has/VBZ
+#                                    nsubj:[object/NN det:an/DT]
+#                                    advcl:[moving/VBG advmod:when/WRB nsubj:it/PRP aux:is/VBZ]]]
+#                  auxpass:is/VBZ
+#                  dobj:[energy/NN amod:kinetic/JJ]]
+#   Detected 3 clause(s).
+#   - SVO (V: has@5, S: object@4, A?: moving@9, O: energy@2)
+#   - SV (V: moving@9, S: it@7, A?: when@6)
+#   - SVO (V: called@11, S: energy@2, O: energy@13)
+12	"an object"	"has"	"when it is moving The energy"
+12	"an object"	"has"	"The energy"
+12	"it"	"is moving"	"when"
+12	"it"	"is moving"
+12	"The energy"	"is called"	"kinetic energy"
+# Line 13 (id 13): The energy an object has when it has a position or shape is called a potential energy.
+# Semantic graph: [called/VBN
+#                  nsubjpass:[energy/NN
+#                             det:The/DT
+#                             rcmod:[has/VBZ
+#                                    nsubj:[object/NN det:an/DT]
+#                                    advcl:[has/VBZ
+#                                           advmod:when/WRB
+#                                           nsubj:it/PRP
+#                                           dobj:[position/NN det:a/DT cc:or/CC conj:shape/NN]]]]
+#                  auxpass:is/VBZ
+#                  dobj:[energy/NN det:a/DT amod:potential/JJ]]
+#   Detected 3 clause(s).
+#   - SVO (V: has@5, S: object@4, A?: has@8, O: energy@2)
+#   - SVO (V: has@8, S: it@7, A?: when@6, O: position@10)
+#   - SVO (V: called@14, S: energy@2, O: energy@17)
+13	"an object"	"has"	"when it has a position or shape The energy"
+13	"an object"	"has"	"The energy"
+13	"it"	"has"	"a position or shape when"
+13	"it"	"has"	"a position or shape"
+13	"The energy"	"is called"	"a potential energy"

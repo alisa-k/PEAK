@@ -1,0 +1,163 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter makes up everything in the universe that takes up space and has mass.
+# Semantic graph: [makes/VBZ
+#                  nsubj:Matter/NNP
+#                  prt:up/RP
+#                  dobj:[everything/NN
+#                        prep:[in/IN
+#                              pobj:[universe/NN
+#                                    det:the/DT
+#                                    rcmod:[takes/VBZ
+#                                           nsubj:that/WDT
+#                                           prt:up/RP
+#                                           dobj:space/NN
+#                                           cc:and/CC
+#                                           conj:[has/VBZ dobj:mass/NN]]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: makes@2, S: Matter@1, O: everything@4)
+#   - SVO (V: takes@9, S: universe@7, O: space@11)
+#   - SVO (V: has@13, S: universe@7, O: mass@14)
+1	"Matter"	"makes up"	"everything in the universe"
+1	"the universe"	"takes up"	"space"
+1	"the universe"	"has"	"mass"
+# Line 2: Matter has many different properties such as density, malleability, and stability.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[properties/NNS
+#                        amod:many/JJ
+#                        amod:different/JJ
+#                        prep:[as/IN
+#                              mwe:such/JJ
+#                              pobj:[density/NN conj:malleability/NN cc:and/CC conj:stability/NN]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: properties@5)
+2	"Matter"	"has"	"many different properties such as density malleability and stability"
+# Line 3: Matter can change physically and still be the same type, but it can also change chemically into different matter.
+# Semantic graph: [change/VB
+#                  nsubj:Matter/NNP
+#                  aux:can/MD
+#                  dobj:physically/NNS
+#                  cc:and/CC
+#                  advmod:still/RB
+#                  conj:[type/NN cop:be/VB det:the/DT amod:same/JJ]
+#                  cc:but/CC
+#                  conj:[change/VB
+#                        nsubj:it/PRP
+#                        aux:can/MD
+#                        advmod:also/RB
+#                        advmod:chemically/RB
+#                        prep:[into/IN pobj:[matter/NN amod:different/JJ]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: change@3, S: Matter@1, O: physically@4, A?: still@6)
+#   - SVC (C: type@10, V: be@7, S: Matter@1, A?: still@6)
+#   - SVA (V: change@16, S: it@13, A?: also@15, A!: chemically@17, A?: into@18)
+3	"Matter"	"can change"	"physically still"
+3	"Matter"	"can change"	"physically"
+3	"Matter"	"can be"	"the same type still"
+3	"Matter"	"can be"	"the same type"
+3	"it"	"can change"	"chemically also"
+3	"it"	"can change"	"chemically into different matter"
+3	"it"	"can change"	"chemically"
+# Line 4: Energy is a properties of matter and all matter has it.
+# Semantic graph: [properties/NNS
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[has/VBZ advmod:[matter/NN det:all/DT] dobj:it/PRP]]
+#   Detected 2 clause(s).
+#   - SVC (C: properties@4, V: is@2, S: Energy@1, A?: of@5)
+#   - SVO (V: has@10, S: Energy@1, A?: matter@9, O: it@11)
+4	"Energy"	"is"	"a properties of matter"
+4	"Energy"	"is"	"a properties"
+4	"Energy"	"has"	"it all matter"
+4	"Energy"	"has"	"it"
+# Line 5: Law of conservation of energy states that energy can be transferred but not destroyed or created.
+# Semantic graph: [states/VBZ
+#                  nsubj:[Law/NNP
+#                         prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#                  ccomp:[transferred/VBN
+#                         complm:that/IN
+#                         nsubjpass:energy/NN
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         cc:[not/RB cc:but/CC]
+#                         conj:destroyed/VBN
+#                         cc:or/CC
+#                         conj:created/VBN]]
+#   Detected 4 clause(s).
+#   - SVO (V: states@6, S: Law@1, CCOMP: transferred@11)
+#   - SV (V: transferred@11, S: energy@8)
+#   - SV (V: created@16, S: energy@8)
+#   - SV (V: destroyed@14, S: energy@8)
+5	"Law of conservation of energy"	"states"	"that energy can be transferred but not destroyed or created"
+5	"energy"	"can be transferred"
+5	"energy"	"can be created"
+5	"energy"	"can be destroyed"
+# Line 6: There are 3 types of energy: mechanical; the energy an object has because its poisition or motion, kinetic; energy because an object is moving, and potential; energy object has because of its position or shape.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[types/NNS
+#                         num:3/CD
+#                         prep:[of/IN pobj:energy/NN]
+#                         dep:[mechanical/JJ
+#                              dep:[energy/NN
+#                                   det:the/DT
+#                                   rcmod:[kinetic/JJ
+#                                          nsubj:[object/NN det:an/DT]
+#                                          dep:has/VBZ
+#                                          prep:[because/IN
+#                                                pobj:[poisition/NN
+#                                                      poss:its/PRP$
+#                                                      cc:or/CC
+#                                                      conj:motion/NN]]]]]
+#                         conj:[energy/NN
+#                               dep:[moving/VBG
+#                                    mark:because/IN
+#                                    nsubj:[object/NN det:an/DT]
+#                                    aux:is/VBZ]]
+#                         cc:and/CC
+#                         conj:potential/NN]
+#                  parataxis:[of/IN
+#                             nsubj:[object/NN nn:energy/NN]
+#                             aux:has/VBZ
+#                             advmod:because/RB
+#                             pobj:[position/NN poss:its/PRP$ cc:or/CC conj:shape/NN]]]
+#   Detected 6 clause(s).
+#   - EXISTENTIAL (V: are@2, S: types@4)
+#   - SVO (S: its@16, V: "has", O: poisition@17)
+#   - SVO (V: kinetic@21, S: object@13, A?: because@15, O: energy@11)
+#   - SV (V: moving@28, S: object@26)
+#   - SVA (V: of@37, S: object@34, A?: because@36, A!: position@39)
+#   - SVO (S: its@38, V: "has", O: position@39)
+6	"3 types of energy mechanical the energy energy because an object is moving and potential"	"There are"
+6	"its"	"has"	"poisition or motion"
+6	"an object"	"kinetic"	"the energy because its poisition or motion"
+6	"an object"	"kinetic"	"the energy"
+6	"an object"	"is moving"
+6	"energy object"	"has of"	"its position or shape because"
+6	"energy object"	"has of"	"its position or shape"
+6	"its"	"has"	"position or shape"

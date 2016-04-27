@@ -1,0 +1,97 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Scientist for centuries have studying physical and chemical change in objects and all forms of energy for example mechanical energy kinetic energy, potential energy.
+# Semantic graph: [have/VBP
+#                  nsubj:[Scientist/NNP prep:[for/IN pobj:centuries/NNS]]
+#                  xcomp:[studying/VBG
+#                         dobj:[change/NN amod:[physical/NN cc:and/CC conj:chemical/NN]]
+#                         prep:[in/IN
+#                               pobj:[objects/NNS
+#                                     cc:and/CC
+#                                     conj:[forms/NNS
+#                                           det:all/DT
+#                                           prep:[of/IN
+#                                                 pobj:[energy/NN
+#                                                       prep:[for/IN
+#                                                             pobj:[energy/NN
+#                                                                   nn:example/NN
+#                                                                   amod:mechanical/JJ
+#                                                                   dep:[energy/NN
+#                                                                        amod:kinetic/JJ]
+#                                                                   appos:[energy/NN
+#                                                                          amod:potential/JJ]]]]]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: have@4, S: Scientist@1, XCOMP: studying@5)
+#   - SVC (S: energy@20, V: "is", C: energy@25)
+1	"Scientist for centuries"	"have"	"studying physical and chemical change in objects and all forms of energy for example mechanical energy kinetic energy"
+1	"Scientist for centuries"	"have"	"studying physical and chemical change"
+1	"example mechanical energy kinetic energy"	"is"	"potential energy"
+# Line 2: Scientist have also included matter because of energy it could give but you don't have to be scientist to do certain experiments some you could do in your own home without much requirements.
+# Semantic graph: [included/VBN
+#                  nsubj:Scientist/NNP
+#                  aux:have/VBP
+#                  advmod:also/RB
+#                  advmod:matter/NN
+#                  advcl:[give/VB
+#                         mark:because/IN
+#                         prep:[of/IN pobj:energy/NN]
+#                         nsubj:it/PRP
+#                         aux:could/MD]
+#                  cc:but/CC
+#                  conj:[have/VB
+#                        nsubj:you/PRP
+#                        aux:do/VBP
+#                        neg:n't/RB
+#                        xcomp:[scientist/JJ
+#                               aux:to/TO
+#                               cop:be/VB
+#                               xcomp:[do/VB
+#                                      aux:to/TO
+#                                      iobj:[experiments/NNS amod:certain/JJ]
+#                                      dobj:[some/DT
+#                                            rcmod:[do/VB
+#                                                   nsubj:you/PRP
+#                                                   aux:could/MD
+#                                                   prep:[in/IN
+#                                                         pobj:[home/NN
+#                                                               poss:your/PRP$
+#                                                               amod:own/JJ]]
+#                                                   prep:[without/IN
+#                                                         pobj:[requirements/NNS amod:much/JJ]]]]]]]]
+#   Detected 5 clause(s).
+#   - SVA (V: included@4, S: Scientist@1, A?: also@3, A!: matter@5, A?: give@11)
+#   - SV (V: give@11, S: it@9, A?: of@7)
+#   - SVO (V: have@16, S: you@13, XCOMP: scientist@19)
+#   - SVO (V: do@27, S: you@25, A?: in@28, A?: without@32, O: some@24)
+#   - SVO (S: your@29, V: "has", O: home@31)
+2	"Scientist"	"have included"	"matter also"
+2	"Scientist"	"have included"	"matter because of energy it could give"
+2	"Scientist"	"have included"	"matter"
+2	"it"	"could give"	"of energy"
+2	"it"	"could give"
+2	"you"	"do n't have"	"to be scientist to do certain experiments some"
+2	"you"	"could do"	"in your own home some"
+2	"you"	"could do"	"without much requirements some"
+2	"you"	"could do"	"some"
+2	"your"	"has"	"own home"

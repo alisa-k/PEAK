@@ -1,0 +1,96 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: I learned that matter is a substance that's universe.
+# Semantic graph: [learned/VBD
+#                  nsubj:I/PRP
+#                  ccomp:[substance/NN
+#                         complm:that/IN
+#                         nsubj:matter/NN
+#                         cop:is/VBZ
+#                         det:a/DT
+#                         rcmod:[universe/NN nsubj:that/WDT cop:'s/VBZ]]]
+#   Detected 3 clause(s).
+#   - SVO (V: learned@2, S: I@1, CCOMP: substance@7)
+#   - SVC (C: substance@7, V: is@5, S: matter@4)
+#   - SVC (C: universe@10, V: 's@9, S: substance@7)
+1	"I"	"learned"	"that matter is a substance"
+1	"matter"	"is"	"a substance"
+1	"that a substance"	"'s"	"universe"
+# Line 2: Matter can be measured by a good amount of material.
+# Semantic graph: [measured/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[by/IN
+#                        pobj:[amount/NN det:a/DT amod:good/JJ prep:[of/IN pobj:material/NN]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: measured@4, S: Matter@1, A!: by@5)
+2	"Matter"	"can be measured"	"by a good amount of material"
+# Line 3: Matter is everywhere like in trees, bicycle, stones etc.
+# Semantic graph: [stones/NNS
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  advmod:everywhere/RB
+#                  amod:[like/JJ prep:[in/IN pobj:[trees/NNS appos:bicycle/NN]]]
+#                  dep:etc./NN]
+#   Detected 2 clause(s).
+#   - SVC (S: trees@6, V: "is", C: bicycle@8)
+#   - SVC (C: stones@10, V: is@2, S: Matter@1, A?: everywhere@3)
+3	"trees"	"is"	"bicycle"
+3	"Matter"	"is"	"like in trees stones etc. everywhere"
+3	"Matter"	"is"	"like in trees stones etc."
+# Line 4: Energy is also related to matter by the properly they both share.
+# Semantic graph: [related/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  advmod:also/RB
+#                  xcomp:[matter/VB
+#                         aux:to/TO
+#                         prep:[by/IN pobj:[properly/NN det:the/DT]]
+#                         dobj:[they/PRP dep:[share/NN det:both/DT]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: related@4, S: Energy@1, A?: also@3, XCOMP: matter@6)
+4	"Energy"	"is related"	"to matter by the properly they both share also"
+4	"Energy"	"is related"	"to matter they both share also"
+4	"Energy"	"is related"	"to matter by the properly they both share"
+4	"Energy"	"is related"	"to matter they both share"
+# Line 5: The law of conservation of energy is it cannot be created or destroyed.
+# Semantic graph: [is/VBZ
+#                  nsubj:[law/NN
+#                         det:The/DT
+#                         prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#                  ccomp:[created/VBN
+#                         nsubjpass:it/PRP
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         cc:or/CC
+#                         conj:destroyed/VBN]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@7, S: law@2, CCOMP: created@12)
+#   - SV (V: created@12, S: it@8)
+#   - SV (V: destroyed@14, S: it@8)
+5	"The law of conservation of energy"	"is"	"it can not be created or destroyed"
+5	"it"	"can not be created"
+5	"it"	"can not be destroyed"

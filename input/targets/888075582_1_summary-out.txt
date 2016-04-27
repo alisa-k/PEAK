@@ -1,0 +1,220 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All objects have matter.
+# Semantic graph: [have/VBP nsubj:[objects/NNS det:All/DT] dobj:matter/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: have@3, S: objects@2, O: matter@4)
+1	"All objects"	"have"	"matter"
+# Line 2: Matter is anything that takes up space.
+# Semantic graph: [anything/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  rcmod:[takes/VBZ nsubj:that/WDT prt:up/RP dobj:space/NN]]
+#   Detected 2 clause(s).
+#   - SVC (C: anything@3, V: is@2, S: Matter@1)
+#   - SVO (V: takes@5, S: anything@3, O: space@7)
+2	"Matter"	"is"	"anything"
+2	"anything"	"takes up"	"space"
+# Line 3: All matter has volume and mass.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:[volume/NN cc:and/CC conj:mass/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: volume@4)
+3	"All matter"	"has"	"volume and mass"
+# Line 4: These characteristics make matter measurable.
+# Semantic graph: [make/VBP
+#                  nsubj:[characteristics/NNS det:These/DT]
+#                  dobj:[measurable/NN nn:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: make@3, S: characteristics@2, O: measurable@5)
+4	"These characteristics"	"make"	"matter measurable"
+# Line 5: Along with matter comes different properties.
+# Semantic graph: [comes/VBZ
+#                  prep:[with/IN advmod:Along/RB pobj:matter/NN]
+#                  nsubj:[properties/NNS amod:different/JJ]]
+#   Detected 1 clause(s).
+#   - SV (V: comes@4, S: properties@6, A?: with@2)
+5	"different properties"	"comes"	"Along with matter"
+5	"different properties"	"comes"
+# Line 6: The properties of matter make matter easier to classify.
+# Semantic graph: [make/VBP
+#                  nsubj:[properties/NNS det:The/DT prep:[of/IN pobj:matter/NN]]
+#                  xcomp:[classify/VB nsubj:matter/NN dep:easier/RBR aux:to/TO]]
+#   Detected 2 clause(s).
+#   - SVO (V: make@5, S: properties@2, XCOMP: classify@9)
+#   - SV (V: classify@9, S: matter@6)
+6	"The properties of matter"	"make"	"matter to classify"
+6	"matter"	"to classify"
+# Line 7: There are both physical and chemical properties of matter.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[properties/NNS
+#                         det:both/DT
+#                         amod:[physical/NN cc:and/CC conj:chemical/NN]
+#                         prep:[of/IN pobj:matter/NN]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: properties@7)
+7	"both physical and chemical properties of matter"	"There are"
+# Line 8: Physical properties don't change the identity of the object, while chemical properties change the object into a whole new object with different properties.
+# Semantic graph: [change/VB
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  aux:do/VBP
+#                  neg:n't/RB
+#                  dobj:[identity/NN det:the/DT prep:[of/IN pobj:[object/NN det:the/DT]]]
+#                  advcl:[change/VBP
+#                         mark:while/IN
+#                         nsubj:[properties/NNS nn:chemical/NN]
+#                         dobj:[object/NN det:the/DT]
+#                         prep:[into/IN
+#                               pobj:[object/NN
+#                                     det:a/DT
+#                                     amod:whole/JJ
+#                                     amod:new/JJ
+#                                     prep:[with/IN pobj:[properties/NNS amod:different/JJ]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: change@5, S: properties@2, O: identity@7, A?: change@15)
+#   - SVO (V: change@15, S: properties@14, O: object@17, A?: into@18)
+8	"Physical properties"	"do n't change"	"the identity of the object while chemical properties change the object into a whole new object with different properties"
+8	"Physical properties"	"do n't change"	"the identity of the object"
+8	"chemical properties"	"change"	"the object into a whole new object with different properties"
+8	"chemical properties"	"change"	"the object"
+# Line 9: Physical changes alter only the objects size and shape, but a chemical change produces a totally new substance.
+# Semantic graph: [alter/VBP
+#                  nsubj:[changes/NNS amod:Physical/JJ]
+#                  dobj:[size/NN
+#                        advmod:only/RB
+#                        det:the/DT
+#                        amod:objects/JJ
+#                        cc:and/CC
+#                        conj:shape/NN]
+#                  cc:but/CC
+#                  conj:[produces/VBZ
+#                        nsubj:[change/NN det:a/DT nn:chemical/NN]
+#                        dobj:[substance/NN det:a/DT amod:[new/JJ advmod:totally/RB]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: alter@3, S: changes@2, O: size@7)
+#   - SVO (V: produces@15, S: change@14, O: substance@19)
+9	"Physical changes"	"alter"	"only the objects size and shape"
+9	"a chemical change"	"produces"	"a totally new substance"
+# Line 10: Energy is another property of matter, and all matter contains energy.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:another/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[contains/VBZ nsubj:[matter/NN det:all/DT] dobj:energy/NN]]
+#   Detected 2 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+#   - SVO (V: contains@11, S: matter@10, O: energy@12)
+10	"Energy"	"is"	"another property of matter"
+10	"Energy"	"is"	"another property"
+10	"all matter"	"contains"	"energy"
+# Line 11: Energy is transferrable.
+# Semantic graph: [transferrable/JJ nsubj:Energy/NNP cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: transferrable@3, V: is@2, S: Energy@1)
+11	"Energy"	"is"	"transferrable"
+# Line 12: It can be transferred from one object to another, but cannot be created or destroyed.
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:It/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[from/IN pobj:[object/NN num:one/CD]]
+#                  prep:[to/TO pobj:another/DT]
+#                  cc:but/CC
+#                  conj:[created/VBN
+#                        aux:can/MD
+#                        neg:not/RB
+#                        auxpass:be/VB
+#                        cc:or/CC
+#                        conj:destroyed/VBN]]
+#   Detected 2 clause(s).
+#   - SVA (V: transferred@4, S: It@1, A!: from@5, A?: to@8)
+#   - SV (V: created@15, S: It@1)
+12	"It"	"can be transferred"	"from one object to another"
+12	"It"	"can be transferred"	"from one object"
+12	"It"	"can not be created"
+12	"It"	"can not be destroyed"
+# Line 13: This is known as the law of conservation of energy.
+# Semantic graph: [known/VBN
+#                  nsubjpass:This/DT
+#                  auxpass:is/VBZ
+#                  prep:[as/IN
+#                        pobj:[law/NN
+#                              det:the/DT
+#                              prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: known@3, S: This@1, A!: as@4)
+13	"This"	"is known"	"as the law of conservation of energy"
+# Line 14: There are three different types of energy.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[types/NNS num:three/CD amod:different/JJ prep:[of/IN pobj:energy/NN]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: types@5)
+14	"three different types of energy"	"There are"
+# Line 15: Kinetic, which is the energy a moving object carries, potential, which is the energy an object carries because of it's shape, and mechanical energy, which is energy an object has resulting from its shape or position.
+# Semantic graph: [has/VBZ
+#                  nsubj:[Kinetic/NNP
+#                         rcmod:[energy/NN
+#                                nsubj:which/WDT
+#                                cop:is/VBZ
+#                                det:the/DT
+#                                rcmod:[carries/VBZ nsubj:[object/NN det:a/DT amod:moving/VBG]]]
+#                         conj:[potential/NN
+#                               rcmod:[energy/NN
+#                                      nsubj:which/WDT
+#                                      cop:is/VBZ
+#                                      det:the/DT
+#                                      rcmod:[carries/VBZ
+#                                             nsubj:[object/NN det:an/DT]
+#                                             prep:[of/IN
+#                                                   advmod:because/RB
+#                                                   pobj:[shape/NN
+#                                                         poss:[it/PRP possessive:'s/POS]]]]]]
+#                         cc:and/CC
+#                         conj:[energy/NN
+#                               amod:mechanical/JJ
+#                               rcmod:[energy/NN nsubj:which/WDT cop:is/VBZ]]
+#                         dep:[object/NN det:an/DT]]
+#                  xcomp:[resulting/VBG
+#                         prep:[from/IN pobj:[shape/NN poss:its/PRP$ cc:or/CC conj:position/NN]]]]
+#   Detected 8 clause(s).
+#   - SVC (C: energy@6, V: is@4, S: Kinetic@1)
+#   - SVO (V: carries@10, S: object@9, O: energy@6)
+#   - SVC (C: energy@17, V: is@15, S: potential@12)
+#   - SVO (V: carries@20, S: object@19, A?: of@22, O: energy@17)
+#   - SVO (S: it@23, V: "has", O: shape@25)
+#   - SVC (C: energy@33, V: is@32, S: energy@29)
+#   - SVO (V: has@36, S: Kinetic@1, XCOMP: resulting@37)
+#   - SVO (S: its@39, V: "has", O: shape@40)
+15	"Kinetic potential and mechanical energy an object"	"is"	"the energy"
+15	"a moving object"	"carries"	"the energy"
+15	"potential"	"is"	"the energy"
+15	"an object"	"carries"	"of because it 's shape the energy"
+15	"an object"	"carries"	"the energy"
+15	"it"	"has"	"shape"
+15	"mechanical energy"	"is"	"energy"
+15	"Kinetic potential and mechanical energy an object"	"has"	"resulting from its shape or position"
+15	"its"	"has"	"shape or position"

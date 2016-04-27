@@ -1,0 +1,107 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the "stuff" that an object takes place.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  dep:[takes/VBZ complm:that/IN nsubj:[object/NN det:an/DT] dobj:place/NN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@5, V: is@2, S: Matter@1)
+#   - SVO (V: takes@10, S: object@9, O: place@11)
+1	"Matter"	"is"	"the stuff that an object takes place"
+1	"an object"	"takes"	"place"
+# Line 2: Meaning the space taken by the object.
+# Semantic graph: [taken/VBN
+#                  csubj:[Meaning/VBG dobj:[space/NN det:the/DT]]
+#                  prep:[by/IN pobj:[object/NN det:the/DT]]]
+#   Detected 1 clause(s).
+#   - SVA (V: taken@4, S: Meaning@1, A!: by@5)
+2	"Meaning the space"	"taken"	"by the object"
+# Line 3: All matter can be measured because it takes up space.
+# Semantic graph: [measured/VBN
+#                  nsubjpass:[matter/NN det:All/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  advcl:[takes/VBZ mark:because/IN nsubj:it/PRP prt:up/RP dobj:space/NN]]
+#   Detected 2 clause(s).
+#   - SVA (V: measured@5, S: matter@2, A!: takes@8)
+#   - SVO (V: takes@8, S: it@7, O: space@10)
+3	"All matter"	"can be measured"	"because it takes up space"
+3	"it"	"takes up"	"space"
+# Line 4: Then we have the physical and chemical change.
+# Semantic graph: [have/VBP
+#                  advmod:Then/RB
+#                  nsubj:we/PRP
+#                  dobj:[change/NN det:the/DT amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: have@3, S: we@2, A-: Then@1, O: change@8)
+4	"we"	"have"	"the physical and chemical change"
+# Line 5: A physical change is a change in the way an object appears an chemical change is when the object changes shape.
+# Semantic graph: [change/NN
+#                  nsubj:[change/NN det:A/DT amod:physical/JJ]
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[in/IN
+#                        pobj:[way/NN
+#                              det:the/DT
+#                              rcmod:[appears/VBZ
+#                                     nsubj:[object/NN det:an/DT]
+#                                     ccomp:[is/VBZ
+#                                            nsubj:[change/NN det:an/DT nn:chemical/NN]
+#                                            advcl:[shape/VBP
+#                                                   advmod:when/WRB
+#                                                   nsubj:[changes/NNS det:the/DT nn:object/NN]]]]]]]
+#   Detected 4 clause(s).
+#   - SVC (C: change@6, V: is@4, S: change@3, A?: in@7)
+#   - SVOC (V: appears@12, S: object@11, CCOMP: is@16, O: way@9)
+#   - SVA (V: is@16, S: change@15, A!: shape@21)
+#   - SV (V: shape@21, S: changes@20, A?: when@17)
+5	"A physical change"	"is"	"a change in the way"
+5	"A physical change"	"is"	"a change"
+5	"an object"	"appears"	"an chemical change is when the object changes shape the way"
+5	"an chemical change"	"is"	"when the object changes shape"
+5	"the object changes"	"shape"	"when"
+5	"the object changes"	"shape"
+# Line 6: Energy and matter are very closely related because energy is mainly made up of matter.
+# Semantic graph: [related/JJ
+#                  nsubj:[Energy/NNP cc:and/CC conj:matter/NN]
+#                  cop:are/VBP
+#                  advmod:very/RB
+#                  advmod:closely/RB
+#                  ccomp:[made/VBN
+#                         mark:because/IN
+#                         nsubjpass:energy/NN
+#                         auxpass:is/VBZ
+#                         advmod:mainly/RB
+#                         prt:up/RP
+#                         prep:[of/IN pobj:matter/NN]]]
+#   Detected 2 clause(s).
+#   - SVC (C: related@7, V: are@4, S: Energy@1, A?: very@5, A?: closely@6, CCOMP: made@12)
+#   - SVA (V: made@12, S: energy@9, A?: mainly@11, A!: of@14)
+6	"Energy and matter"	"are"	"related very because energy is mainly made up of matter"
+6	"Energy and matter"	"are"	"related closely because energy is mainly made up of matter"
+6	"Energy and matter"	"are"	"related because energy is mainly made up of matter"
+6	"energy"	"is made up"	"of matter mainly"
+6	"energy"	"is made up"	"of matter"

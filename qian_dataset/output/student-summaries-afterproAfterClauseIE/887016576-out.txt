@@ -1,0 +1,104 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Matter, is a physical substance.
+# Semantic graph: [substance/NN nsubj:Matter/NNP cop:is/VBZ det:a/DT amod:physical/JJ]
+#   Detected 1 clause(s).
+#   - SVC (C: substance@6, V: is@3, S: Matter@1)
+1	"Matter"	"is"	"a physical substance"
+# Line 2 (id 2): All things in this universe are made of matter.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[things/NNS det:All/DT prep:[in/IN pobj:[universe/NN det:this/DT]]]
+#                  auxpass:are/VBP
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@7, S: things@2, A!: of@8)
+2	"All things in this universe"	"are made"	"of matter"
+# Line 3 (id 3): Some types of matter are observed easily by senses.
+# Semantic graph: [observed/VBN
+#                  nsubjpass:[types/NNS det:Some/DT prep:[of/IN pobj:matter/NN]]
+#                  auxpass:are/VBP
+#                  advmod:easily/RB
+#                  prep:[by/IN pobj:senses/NNS]]
+#   Detected 1 clause(s).
+#   - SVA (V: observed@6, S: types@2, A!: easily@7, A?: by@8)
+3	"Some types of matter"	"are observed"	"easily by senses"
+3	"Some types of matter"	"are observed"	"easily"
+# Line 4 (id 4): Matter also has properties.
+# Semantic graph: [has/VBZ nsubj:Matter/NNP advmod:also/RB dobj:properties/NNS]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: Matter@1, A?: also@2, O: properties@4)
+4	"Matter"	"has"	"properties also"
+4	"Matter"	"has"	"properties"
+# Line 5 (id 5): Physical properties are those that can be observed.
+# Semantic graph: [those/DT
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  cop:are/VBP
+#                  rcmod:[observed/JJ nsubj:that/WDT aux:can/MD cop:be/VB]]
+#   Detected 2 clause(s).
+#   - SVC (C: those@4, V: are@3, S: properties@2)
+#   - SVC (C: observed@8, V: be@7, S: those@4)
+5	"Physical properties"	"are"	"those"
+5	"those"	"can be"	"observed"
+# Line 6 (id 6): Malleability is also another example of a physical property.
+# Semantic graph: [example/NN
+#                  nsubj:Malleability/NNP
+#                  cop:is/VBZ
+#                  advmod:also/RB
+#                  det:another/DT
+#                  prep:[of/IN pobj:[property/NN det:a/DT amod:physical/JJ]]]
+#   Detected 1 clause(s).
+#   - SVC (C: example@5, V: is@2, S: Malleability@1, A?: also@3, A?: of@6)
+6	"Malleability"	"is"	"another example also"
+6	"Malleability"	"is"	"another example of a physical property"
+6	"Malleability"	"is"	"another example"
+# Line 7 (id 7): Chemical properties change matter into a new kind of matter.
+# Semantic graph: [change/VBP
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  dobj:matter/NN
+#                  prep:[into/IN pobj:[kind/NN det:a/DT amod:new/JJ prep:[of/IN pobj:matter/NN]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: change@3, S: properties@2, O: matter@4, A?: into@5)
+7	"Chemical properties"	"change"	"matter into a new kind of matter"
+7	"Chemical properties"	"change"	"matter"
+# Line 8 (id 8): Matter also has energy, but energy cannot be created or destroyed.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  advmod:also/RB
+#                  dobj:energy/NN
+#                  cc:but/CC
+#                  conj:[created/VBN
+#                        nsubjpass:energy/NN
+#                        aux:can/MD
+#                        neg:not/RB
+#                        auxpass:be/VB
+#                        cc:or/CC
+#                        conj:destroyed/VBN]]
+#   Detected 3 clause(s).
+#   - SVO (V: has@3, S: Matter@1, A?: also@2, O: energy@4)
+#   - SV (V: created@11, S: energy@7)
+#   - SV (V: destroyed@13, S: energy@7)
+8	"Matter"	"has"	"energy also"
+8	"Matter"	"has"	"energy"
+8	"energy"	"can not be created"
+8	"energy"	"can not be destroyed"

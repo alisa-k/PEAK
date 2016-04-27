@@ -1,0 +1,143 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: What is matter?
+# Semantic graph: [is/VBZ attr:What/WP nsubj:matter/NN]
+#   Detected 1 clause(s).
+#   - SV (V: is@2, S: matter@3)
+1	"matter"	"What is"
+# Line 2: My own definition of matter is any object that has an indefinite volume and mass.
+# Semantic graph: [object/NN
+#                  nsubj:[definition/NN poss:My/PRP$ amod:own/JJ prep:[of/IN pobj:matter/NN]]
+#                  cop:is/VBZ
+#                  det:any/DT
+#                  rcmod:[has/VBZ
+#                         nsubj:that/WDT
+#                         dobj:[volume/NN det:an/DT amod:indefinite/JJ cc:and/CC conj:mass/NN]]]
+#   Detected 3 clause(s).
+#   - SVO (S: My@1, V: "has", O: definition@3)
+#   - SVC (C: object@8, V: is@6, S: definition@3)
+#   - SVO (V: has@10, S: object@8, O: volume@13)
+2	"My"	"has"	"own definition of matter"
+2	"My own definition of matter"	"is"	"any object"
+2	"any object"	"has"	"an indefinite volume and mass"
+# Line 3: All matter can be detected and measured even if it cannot be seen.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:[matter/NN det:All/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  ccomp:[seen/VBN
+#                         advmod:even/RB
+#                         dep:if/IN
+#                         nsubjpass:it/PRP
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB]]
+#   Detected 3 clause(s).
+#   - SVO (V: detected@5, S: matter@2, CCOMP: seen@14)
+#   - SVO (V: measured@7, S: matter@2, CCOMP: seen@14)
+#   - SV (V: seen@14, S: it@10, A-: even@8)
+3	"All matter"	"can be detected"	"even if it can not be seen"
+3	"All matter"	"can be measured"	"even if it can not be seen"
+3	"it"	"can not be seen"
+# Line 4: Everyday you witness physical changes, and chemical changes; from you car's metal oxidating little by little to, people smoking those cigarettes.
+# Semantic graph: [witness/VBZ
+#                  advmod:Everyday/RB
+#                  nsubj:you/PRP
+#                  dobj:[changes/NNS
+#                        amod:physical/JJ
+#                        cc:and/CC
+#                        conj:[changes/NNS nn:chemical/NN]]
+#                  prep:[from/IN pobj:you/PRP]
+#                  dobj:[metal/NN
+#                        poss:[car/NN possessive:'s/POS]
+#                        partmod:[oxidating/VBG
+#                                 advmod:little/RB
+#                                 prep:[by/IN pobj:[little/JJ dep:to/TO]]
+#                                 dobj:[people/NNS
+#                                       partmod:[smoking/VBG dobj:[cigarettes/NNS det:those/DT]]]]]]
+#   Detected 4 clause(s).
+#   - SVOC (V: witness@3, S: you@2, A?: Everyday@1, O: changes@5, A?: from@11, O: metal@15)
+#   - SVA (V: "be oxidating", S: metal@15, A!: little@17, A?: by@18, O: people@22)
+#   - SVO (S: car@13, V: "has", O: metal@15)
+#   - SVA (V: "be smoking", S: people@22, O: cigarettes@25)
+4	"you"	"witness"	"physical changes and chemical changes car 's metal oxidating little by little to people smoking those cigarettes Everyday"
+4	"you"	"witness"	"physical changes and chemical changes from you car 's metal oxidating little by little to people smoking those cigarettes"
+4	"you"	"witness"	"physical changes and chemical changes car 's metal oxidating little by little to people smoking those cigarettes"
+4	"car 's metal"	"be oxidating"	"little by little to people smoking those cigarettes"
+4	"car 's metal"	"be oxidating"	"little people smoking those cigarettes"
+4	"car"	"has"	"metal oxidating little by little to people smoking those cigarettes"
+4	"people"	"be smoking"	"those cigarettes"
+# Line 5: Physical change is any form of matter changing shape.
+# Semantic graph: [form/NN
+#                  nsubj:[change/NN amod:Physical/JJ]
+#                  cop:is/VBZ
+#                  det:any/DT
+#                  prep:[of/IN pobj:[shape/NN nn:matter/NN amod:changing/VBG]]]
+#   Detected 1 clause(s).
+#   - SVC (C: form@5, V: is@3, S: change@2, A?: of@6)
+5	"Physical change"	"is"	"any form of matter changing shape"
+5	"Physical change"	"is"	"any form"
+# Line 6: Where as chemical change is any matter morphing into another substance.
+# Semantic graph: [is/VBZ
+#                  advmod:Where/WRB
+#                  prep:[as/IN pobj:[change/NN nn:chemical/NN]]
+#                  nsubj:[morphing/NN det:any/DT nn:matter/NN]
+#                  prep:[into/IN pobj:[substance/NN det:another/DT]]]
+#   Detected 1 clause(s).
+#   - SVA (V: is@5, S: morphing@8, A?: Where@1, A?: as@2, A!: into@9)
+6	"any matter morphing"	"is"	"into another substance Where"
+6	"any matter morphing"	"is"	"into another substance as chemical change"
+6	"any matter morphing"	"is"	"into another substance"
+# Line 7: To be able to do such a radical change energy is needed.
+# Semantic graph: [needed/VBN
+#                  csubjpass:[able/JJ
+#                             aux:To/TO
+#                             cop:be/VB
+#                             xcomp:[do/VB
+#                                    aux:to/TO
+#                                    dobj:[energy/NN
+#                                          predet:such/PDT
+#                                          det:a/DT
+#                                          amod:radical/JJ
+#                                          nn:change/NN]]]
+#                  auxpass:is/VBZ]
+#   Detected 1 clause(s).
+#   - SV (V: needed@12, S: able@3)
+7	"To be able to do such a radical change energy"	"is needed"
+# Line 8: Energy can neither be destroyed nor created.
+# Semantic graph: [destroyed/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  advmod:neither/RB
+#                  auxpass:be/VB
+#                  cc:nor/CC
+#                  conj:created/VBD]
+#   Detected 2 clause(s).
+#   - SV (V: destroyed@5, S: Energy@1, A?: neither@3)
+#   - SV (V: created@7, S: Energy@1)
+8	"Energy"	"can be destroyed"	"neither"
+8	"Energy"	"can be destroyed"
+8	"Energy"	"created"

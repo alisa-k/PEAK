@@ -1,0 +1,176 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what objects and substances are made of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN
+#                         dep:what/WP
+#                         nsubjpass:[objects/NNS cc:and/CC conj:substances/NNS]
+#                         auxpass:are/VBP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@8)
+#   - SVA (V: made@8, S: objects@4, A!: of@9)
+1	"Matter"	"is"	"what objects and substances are made of"
+1	"objects and substances"	"are made"	"of"
+# Line 2: Matter can be detected or measured because it has volume and mass.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:measured/VBN
+#                  advcl:[has/VBZ
+#                         mark:because/IN
+#                         nsubj:it/PRP
+#                         dobj:[volume/NN cc:and/CC conj:mass/NN]]]
+#   Detected 3 clause(s).
+#   - SVA (V: detected@4, S: Matter@1, A!: has@9)
+#   - SVA (V: measured@6, S: Matter@1, A!: has@9)
+#   - SVO (V: has@9, S: it@8, O: volume@10)
+2	"Matter"	"can be detected"	"because it has volume and mass"
+2	"Matter"	"can be measured"	"because it has volume and mass"
+2	"it"	"has"	"volume and mass"
+# Line 3: Properties of matter classify and identify matter.
+# Semantic graph: [classify/VB
+#                  nsubj:[Properties/NNP prep:[of/IN pobj:matter/NN]]
+#                  cc:and/CC
+#                  conj:identify/VB
+#                  dobj:matter/NN]
+#   Detected 2 clause(s).
+#   - SVO (V: classify@4, S: Properties@1, O: matter@7)
+#   - SVO (V: identify@6, S: Properties@1, O: matter@7)
+3	"Properties of matter"	"classify"	"matter"
+3	"Properties of matter"	"identify"	"matter"
+# Line 4: Physical properties are those that you cant change the make up of matter.
+# Semantic graph: [those/DT
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  cop:are/VBP
+#                  dep:[cant/MD
+#                       complm:that/IN
+#                       nsubj:you/PRP
+#                       dep:[change/VB
+#                            dobj:[make/NN det:the/DT]
+#                            prt:up/RP
+#                            prep:[of/IN pobj:matter/NN]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: those@4, V: are@3, S: properties@2)
+#   - SV (V: cant@7, S: you@6)
+4	"Physical properties"	"are"	"those that you cant change the make up of matter"
+4	"you"	"cant"
+# Line 5: Chemical properties are described by there ability to change.
+# Semantic graph: [described/VBN
+#                  nsubjpass:[properties/NNS nn:Chemical/NNP]
+#                  auxpass:are/VBP
+#                  prep:[by/IN pobj:[ability/NN advmod:there/RB]]
+#                  xcomp:[change/VB aux:to/TO]]
+#   Detected 1 clause(s).
+#   - SVO (V: described@4, S: properties@2, A?: by@5, XCOMP: change@9)
+5	"Chemical properties"	"are described"	"by there ability to change"
+5	"Chemical properties"	"are described"	"to change"
+# Line 6: Physical change is if an object or substance size or shape change but not its chemical properties.
+# Semantic graph: [is/VBZ
+#                  nsubj:[change/NN amod:Physical/JJ]
+#                  advcl:[change/VBP
+#                         mark:if/IN
+#                         nsubj:[size/NN
+#                                det:an/DT
+#                                nn:[object/NN cc:or/CC conj:substance/NN]
+#                                cc:or/CC
+#                                conj:shape/NN]
+#                         cc:but/CC
+#                         conj:[properties/NNS neg:not/RB poss:its/PRP$ nn:chemical/NN]]]
+#   Detected 4 clause(s).
+#   - SVA (V: is@3, S: change@2, A!: change@12)
+#   - SV (V: change@12, S: size@9)
+#   - SV (V: properties@17, S: size@9)
+#   - SVO (S: its@15, V: "has", O: properties@17)
+6	"Physical change"	"is"	"if an object or substance size or shape change but not its chemical properties"
+6	"an object or substance size or shape"	"change"
+6	"an object or substance size or shape"	"not its chemical properties"
+6	"its"	"has"	"not chemical properties"
+# Line 7: A chemical change is an objects properties change and also producing new substances.
+# Semantic graph: [change/NN
+#                  nsubj:[change/NN det:A/DT nn:chemical/NN]
+#                  cop:is/VBZ
+#                  det:an/DT
+#                  nn:objects/NNS
+#                  nn:properties/NNS
+#                  cc:and/CC
+#                  conj:[producing/VBG advmod:also/RB dobj:[substances/NNS amod:new/JJ]]]
+#   Detected 2 clause(s).
+#   - SVC (C: change@8, V: is@4, S: change@3)
+#   - SVO (V: producing@11, S: change@3, A?: also@10, O: substances@13)
+7	"A chemical change"	"is"	"an objects properties change"
+7	"A chemical change"	"producing"	"new substances also"
+7	"A chemical change"	"producing"	"new substances"
+# Line 8: All matter has energy.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+8	"All matter"	"has"	"energy"
+# Line 9: When a light is on it can create fire wind and all other things.
+# Semantic graph: [create/VB
+#                  advcl:[is/VBZ
+#                         advmod:When/WRB
+#                         nsubj:[light/NN det:a/DT]
+#                         prep:[on/IN pobj:it/PRP]]
+#                  aux:can/MD
+#                  dobj:[wind/NN nn:fire/NN cc:and/CC conj:[things/NNS det:all/DT amod:other/JJ]]]
+#   Detected 1 clause(s).
+#   - SVA (V: is@4, S: light@3, A?: When@1, A!: on@5)
+9	"a light"	"is"	"on it When"
+9	"a light"	"is"	"on it"
+# Line 10: 1.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 11: Properties of matter helps classify and identify matter
+# Semantic graph: [helps/VBZ
+#                  nsubj:[Properties/NNP prep:[of/IN pobj:matter/NN]]
+#                  xcomp:[classify/VB cc:and/CC conj:identify/VB dobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: helps@4, S: Properties@1, XCOMP: classify@5)
+11	"Properties of matter"	"helps"	"classify matter"
+11	"Properties of matter"	"helps"	"identify matter"
+# Line 12: 2.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 13: When an object or substance size or shape change but not its chemical properties is called a physical change
+# Semantic graph: [called/VBN
+#                  advmod:When/WRB
+#                  nsubjpass:[size/NN
+#                             det:an/DT
+#                             nn:[object/NN cc:or/CC conj:substance/NN]
+#                             cc:or/CC
+#                             conj:[change/NN nn:shape/NN]
+#                             cc:[not/RB cc:but/CC]
+#                             conj:[properties/NNS poss:its/PRP$ nn:chemical/NN]]
+#                  auxpass:is/VBZ
+#                  dobj:[change/NN det:a/DT amod:physical/JJ]]
+#   Detected 2 clause(s).
+#   - SVO (S: its@12, V: "has", O: properties@14)
+#   - SVO (V: called@16, S: size@6, A?: When@1, O: change@19)
+13	"its"	"has"	"chemical properties"
+13	"an object or substance size or shape change but not its chemical properties"	"is called"	"a physical change When"
+13	"an object or substance size or shape change but not its chemical properties"	"is called"	"a physical change"

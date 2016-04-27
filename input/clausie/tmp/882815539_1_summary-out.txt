@@ -1,0 +1,39 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the things every object is made of.
+# Semantic graph: [things/NNS
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[made/VBN nsubjpass:[object/NN det:every/DT] auxpass:is/VBZ prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: things@4, V: is@2, S: Matter@1)
+#   - SVA (V: made@8, S: object@6, A!: of@9)
+1	"Matter"	"is"	"the things"
+1	"every object"	"is made"	"of the things"
+# Line 2: Everything has matter.
+# Semantic graph: [has/VBZ nsubj:Everything/NNP dobj:matter/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Everything@1, O: matter@3)
+2	"Everything"	"has"	"matter"

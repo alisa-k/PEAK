@@ -1,0 +1,155 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Matter is every where the clothes I wear the food I eat, the air I breathe all matter.
+# Semantic graph: [every/DT
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  dep:[breathe/VBZ
+#                       advcl:[wear/VBP
+#                              advmod:where/WRB
+#                              nsubj:[I/NN det:the/DT nn:clothes/NNS]
+#                              dobj:[food/NN det:the/DT rcmod:[eat/VBP nsubj:I/PRP]]]
+#                       nsubj:[I/NN det:the/DT nn:air/NN]
+#                       advmod:[matter/NN det:all/DT]]]
+#   Detected 4 clause(s).
+#   - SVC (C: every@3, V: is@2, S: Matter@1)
+#   - SVO (V: wear@8, S: I@7, A?: where@4, O: food@10)
+#   - SVO (V: eat@12, S: I@11, O: food@10)
+#   - SVA (V: breathe@17, S: I@16, A?: wear@8, A!: matter@19)
+1	"Matter"	"is"	"every where the clothes I wear the food the air I breathe all matter"
+1	"the clothes I"	"wear"	"the food where"
+1	"the clothes I"	"wear"	"the food"
+1	"I"	"eat"	"the food"
+1	"the air I"	"breathe"	"all matter where the clothes I wear the food"
+1	"the air I"	"breathe"	"all matter"
+# Line 2 (id 2): You are in contact with matter every nanosecond of your life.
+# Semantic graph: [are/VBP
+#                  nsubj:You/PRP
+#                  prep:[in/IN pobj:contact/NN]
+#                  prep:[with/IN
+#                        pcomp:[matter/NN
+#                               dobj:[nanosecond/NN
+#                                     det:every/DT
+#                                     prep:[of/IN pobj:[life/NN poss:your/PRP$]]]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: are@2, S: You@1, A!: in@3, A?: with@5)
+#   - SVO (S: your@10, V: "has", O: life@11)
+2	"You"	"are"	"in contact with matter every nanosecond of your life"
+2	"You"	"are"	"in contact"
+2	"your"	"has"	"life"
+# Line 3 (id 3): When you chop vegetables for a soup you put physical cough on the vegetables.
+# Semantic graph: [put/VBD
+#                  advcl:[chop/VB
+#                         advmod:When/WRB
+#                         nsubj:you/PRP
+#                         dobj:[vegetables/NNS prep:[for/IN pobj:[soup/NN det:a/DT]]]]
+#                  nsubj:you/PRP
+#                  dobj:[cough/NN amod:physical/JJ]
+#                  prep:[on/IN pobj:[vegetables/NNS det:the/DT]]]
+#   Detected 2 clause(s).
+#   - SVO (V: chop@3, S: you@2, A?: When@1, O: vegetables@4)
+#   - SVOA (V: put@9, S: you@8, A?: chop@3, O: cough@11, A!: on@12)
+3	"you"	"chop"	"vegetables for a soup When"
+3	"you"	"chop"	"vegetables for a soup"
+3	"you"	"put"	"physical cough on the vegetables When you chop vegetables for a soup"
+3	"you"	"put"	"physical cough on the vegetables"
+# Line 4 (id 4): After you eat those vegetables they are broken down chemically in your body to absorb all the vitamins and minerals.
+# Semantic graph: [broken/VBN
+#                  advcl:[eat/VBP mark:After/IN nsubj:you/PRP dobj:[vegetables/NNS det:those/DT]]
+#                  nsubjpass:they/PRP
+#                  auxpass:are/VBP
+#                  prt:down/RP
+#                  advmod:chemically/RB
+#                  prep:[in/IN
+#                        pobj:[body/NN
+#                              poss:your/PRP$
+#                              infmod:[absorb/VB
+#                                      aux:to/TO
+#                                      dobj:[vitamins/NNS
+#                                            dep:all/PDT
+#                                            det:the/DT
+#                                            cc:and/CC
+#                                            conj:minerals/NNS]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: eat@3, S: you@2, O: vegetables@5)
+#   - SVA (V: broken@8, S: they@6, A?: eat@3, A!: chemically@10, A?: in@11)
+#   - SVO (S: your@12, V: "has", O: body@13)
+4	"you"	"eat"	"those vegetables"
+4	"they"	"are broken down"	"chemically After you eat those vegetables"
+4	"they"	"are broken down"	"chemically in your body to absorb all the vitamins and minerals"
+4	"they"	"are broken down"	"chemically"
+4	"your"	"has"	"body to absorb all the vitamins and minerals"
+# Line 5 (id 5): In those vitamins and minerals is energy that fuels your body and keeps you alive but that energy is not destroyed it is released as heat and used somewhere else.
+# Semantic graph: [energy/NN
+#                  prep:[In/IN pobj:those/DT]
+#                  nsubj:[vitamins/NNS cc:and/CC conj:minerals/NNS]
+#                  cop:is/VBZ
+#                  rcmod:[fuels/VBZ
+#                         nsubj:that/WDT
+#                         dobj:[body/NN poss:your/PRP$]
+#                         cc:and/CC
+#                         conj:[keeps/VBZ xcomp:[alive/JJ nsubj:you/PRP]]
+#                         cc:but/CC
+#                         conj:[destroyed/VBN
+#                               dep:that/IN
+#                               nsubjpass:energy/NN
+#                               auxpass:is/VBZ
+#                               neg:not/RB
+#                               ccomp:[released/VBN
+#                                      nsubjpass:it/PRP
+#                                      auxpass:is/VBZ
+#                                      prep:[as/IN pobj:heat/NN]
+#                                      cc:and/CC
+#                                      conj:[used/VBN advmod:[else/RB advmod:somewhere/RB]]]]]]
+#   Detected 8 clause(s).
+#   - SVC (C: energy@7, V: is@6, S: vitamins@3, A?: In@1)
+#   - SVO (V: fuels@9, S: energy@7, O: body@11)
+#   - SVC (V: keeps@13, S: energy@7, XCOMP: alive@15)
+#   - SVO (S: your@10, V: "has", O: body@11)
+#   - SV (V: alive@15, S: you@14)
+#   - SVO (V: destroyed@21, S: energy@18, CCOMP: released@24)
+#   - SVA (V: released@24, S: it@22, A!: as@25)
+#   - SVA (V: used@28, S: it@22, A!: else@30)
+5	"vitamins and minerals"	"is"	"energy In those"
+5	"vitamins and minerals"	"is"	"energy"
+5	"In those energy"	"fuels"	"your body"
+5	"In those energy"	"keeps"	"you alive"
+5	"your"	"has"	"body"
+5	"you"	"alive"
+5	"energy"	"is not destroyed"	"it is released as heat and used somewhere else"
+5	"it"	"is released"	"as heat"
+5	"it"	"is used"	"somewhere else"
+# Line 6 (id 6): I am putting mechanical energy to work right now in writing this paper.
+# Semantic graph: [putting/VBG
+#                  nsubj:I/PRP
+#                  aux:am/VBP
+#                  dobj:[energy/NN amod:mechanical/JJ]
+#                  xcomp:[work/VB
+#                         aux:to/TO
+#                         advmod:[now/RB advmod:right/RB]
+#                         prep:[in/IN pcomp:[writing/VBG dobj:[paper/NN det:this/DT]]]]]
+#   Detected 1 clause(s).
+#   - SVOC (V: putting@3, S: I@1, O: energy@5, XCOMP: work@7)
+6	"I"	"am putting"	"mechanical energy to work right now in writing this paper"
+6	"I"	"am putting"	"mechanical energy to work right now"

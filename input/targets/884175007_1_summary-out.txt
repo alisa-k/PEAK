@@ -1,0 +1,85 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is an important part of living.
+# Semantic graph: [part/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:an/DT
+#                  amod:important/JJ
+#                  prep:[of/IN pobj:living/VBG]]
+#   Detected 1 clause(s).
+#   - SVC (C: part@5, V: is@2, S: Matter@1, A?: of@6)
+1	"Matter"	"is"	"an important part of living"
+1	"Matter"	"is"	"an important part"
+# Line 2: All objects and substances have matter.
+# Semantic graph: [have/VBP
+#                  nsubj:[objects/NNS det:All/DT cc:and/CC conj:substances/NNS]
+#                  dobj:matter/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: have@5, S: objects@2, O: matter@6)
+2	"All objects and substances"	"have"	"matter"
+# Line 3: A certain amount of material takes up space where there is matter.
+# Semantic graph: [takes/VBZ
+#                  nsubj:[amount/NN det:A/DT amod:certain/JJ prep:[of/IN pobj:material/NN]]
+#                  prt:up/RP
+#                  dobj:space/NN
+#                  advcl:[is/VBZ advmod:where/WRB expl:there/EX nsubj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVOA (V: takes@6, S: amount@3, O: space@8, A!: is@11)
+#   - EXISTENTIAL (V: is@11, S: matter@12, A?: where@9)
+3	"A certain amount of material"	"takes up"	"space where there is matter"
+3	"matter"	"there is"	"where"
+3	"matter"	"there is"
+# Line 4: Matter is made up of properties.
+# Semantic graph: [made/VBN
+#                  nsubjpass:Matter/NNP
+#                  auxpass:is/VBZ
+#                  prt:up/RP
+#                  prep:[of/IN pobj:properties/NNS]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@3, S: Matter@1, A!: of@5)
+4	"Matter"	"is made up"	"of properties"
+# Line 5: Physical change is size and shape while chemical is ash, gas, smoke.
+# Semantic graph: [smoke/VBP
+#                  nsubj:[change/NN
+#                         amod:Physical/JJ
+#                         rcmod:[size/NN
+#                                cop:is/VBZ
+#                                cc:and/CC
+#                                conj:shape/NN
+#                                advcl:[ash/JJ mark:while/IN nsubj:chemical/NN cop:is/VBZ]]
+#                         appos:gas/NN]]
+#   Detected 3 clause(s).
+#   - SVC (S: change@2, V: "is", C: gas@12)
+#   - SVC (C: ash@10, V: is@9, S: chemical@8)
+#   - SV (V: smoke@14, S: change@2)
+5	"Physical change"	"is"	"gas"
+5	"chemical"	"is"	"ash"
+5	"Physical change"	"smoke"
+# Line 6: Energy is a property of matter.
+# Semantic graph: [property/NN nsubj:Energy/NNP cop:is/VBZ det:a/DT prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+6	"Energy"	"is"	"a property of matter"
+6	"Energy"	"is"	"a property"

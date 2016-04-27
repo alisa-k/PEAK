@@ -1,0 +1,166 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Matter is what makes up our earth.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[makes/VBZ nsubj:what/WP prt:up/RP dobj:[earth/NN poss:our/PRP$]]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: makes@4)
+#   - SVO (V: makes@4, S: what@3, O: earth@7)
+#   - SVO (S: our@6, V: "has", O: earth@7)
+1	"Matter"	"is"	"what makes up our earth"
+1	"what"	"makes up"	"our earth"
+1	"our"	"has"	"earth"
+# Line 2 (id 2): It contain volume as well as mass which makes it measurable.
+# Semantic graph: [contain/VBP
+#                  nsubj:It/PRP
+#                  dobj:[volume/NN
+#                        cc:[well/RB advmod:as/RB mwe:as/IN]
+#                        conj:[mass/NN
+#                              rcmod:[makes/VBZ
+#                                     nsubj:which/WDT
+#                                     xcomp:[measurable/JJ nsubj:it/PRP]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: contain@2, S: It@1, O: volume@3)
+#   - SVO (V: makes@9, S: mass@7, XCOMP: measurable@11)
+#   - SV (V: measurable@11, S: it@10)
+2	"It"	"contain"	"volume as well as mass"
+2	"mass"	"makes"	"it measurable"
+2	"it"	"measurable"
+# Line 3 (id 3): You senses is what helps classify matter.
+# Semantic graph: [is/VBZ
+#                  nsubj:You/PRP
+#                  advmod:senses/RB
+#                  ccomp:[helps/VBZ nsubj:what/WP xcomp:[classify/VB dobj:matter/NN]]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@3, S: You@1, A?: senses@2, CCOMP: helps@5)
+#   - SVO (V: helps@5, S: what@4, XCOMP: classify@6)
+3	"You"	"is"	"what helps classify matter senses"
+3	"You"	"is"	"what helps classify matter"
+3	"what"	"helps"	"classify matter"
+# Line 4 (id 4): The two types of physical properties is size and shape.
+# Semantic graph: [size/NN
+#                  nsubj:[types/NNS
+#                         det:The/DT
+#                         num:two/CD
+#                         prep:[of/IN pobj:[properties/NNS amod:physical/JJ]]]
+#                  cop:is/VBZ
+#                  cc:and/CC
+#                  conj:shape/NN]
+#   Detected 1 clause(s).
+#   - SVC (C: size@8, V: is@7, S: types@3)
+4	"The two types of physical properties"	"is"	"size and shape"
+# Line 5 (id 5): Chemical changes don't change in size and shape but change into new substances.
+# Semantic graph: [change/VB
+#                  nsubj:[changes/NNS nn:Chemical/NNP]
+#                  aux:do/VBP
+#                  neg:n't/RB
+#                  prep:[in/IN pobj:[size/NN cc:and/CC conj:shape/NN]]
+#                  cc:but/CC
+#                  conj:[change/VBP prep:[into/IN pobj:[substances/NNS amod:new/JJ]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: change@5, S: changes@2, A!: in@6)
+#   - SVA (V: change@11, S: changes@2, A!: into@12)
+5	"Chemical changes"	"do n't change"	"in size and shape"
+5	"Chemical changes"	"change"	"into new substances"
+# Line 6 (id 6): One very important property of matter is energy.
+# Semantic graph: [energy/NN
+#                  nsubj:[property/NN
+#                         num:One/CD
+#                         amod:[important/JJ advmod:very/RB]
+#                         prep:[of/IN pobj:matter/NN]]
+#                  cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@8, V: is@7, S: property@4)
+6	"One very important property of matter"	"is"	"energy"
+# Line 7 (id 7): To make matter function or work properly you need energy to make it happen.
+# Semantic graph: [need/VBP
+#                  dep:[make/VB
+#                       aux:To/TO
+#                       dobj:[function/NN nn:matter/NN]
+#                       cc:or/CC
+#                       conj:[work/VB advmod:properly/RB]]
+#                  nsubj:you/PRP
+#                  dobj:energy/NN
+#                  xcomp:[make/VB aux:to/TO ccomp:[happen/VB nsubj:it/PRP]]]
+#   Detected 2 clause(s).
+#   - SVOC (V: need@9, S: you@8, O: energy@10, XCOMP: make@12)
+#   - SV (V: happen@14, S: it@13)
+7	"you"	"need"	"energy to make it happen"
+7	"it"	"happen"
+# Line 8 (id 8): Energy is one very important substance as well as strong.
+# Semantic graph: [substance/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  num:one/CD
+#                  advmod:very/RB
+#                  amod:important/JJ
+#                  cc:[well/RB advmod:as/RB mwe:as/IN]
+#                  conj:strong/JJ]
+#   Detected 1 clause(s).
+#   - SVC (C: substance@6, V: is@2, S: Energy@1, A?: very@4)
+8	"Energy"	"is"	"one important substance as well as strong very"
+8	"Energy"	"is"	"one important substance as well as strong"
+# Line 9 (id 9): Energy is used to create all kinds of substances which makes non-destroyable.
+# Semantic graph: [used/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  xcomp:[create/VB
+#                         aux:to/TO
+#                         dobj:[kinds/NNS
+#                               det:all/DT
+#                               prep:[of/IN
+#                                     pobj:[substances/NNS
+#                                           rcmod:[makes/VBZ
+#                                                  nsubj:which/WDT
+#                                                  acomp:non-destroyable/JJ]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: used@3, S: Energy@1, XCOMP: create@5)
+#   - SVC (V: makes@11, S: substances@9, ACOMP: non-destroyable@12)
+9	"Energy"	"is used"	"to create all kinds of substances"
+9	"substances"	"makes"	"non-destroyable"
+# Line 10 (id 10): Mechanical energy on the other hand is energy an object has because motion which is kinetic energy and position which is potential energy.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN
+#                         amod:Mechanical/JJ
+#                         prep:[on/IN pobj:[hand/NN det:the/DT amod:other/JJ]]]
+#                  cop:is/VBZ
+#                  rcmod:[because/IN nsubj:[object/NN det:an/DT] aux:has/VBZ pobj:motion/NN]
+#                  rcmod:[energy/NN
+#                         nsubj:which/WDT
+#                         cop:is/VBZ
+#                         amod:kinetic/JJ
+#                         cc:and/CC
+#                         conj:position/NN
+#                         rcmod:[energy/NN nsubj:which/WDT cop:is/VBZ amod:potential/JJ]]]
+#   Detected 4 clause(s).
+#   - SVC (C: energy@8, V: is@7, S: energy@2)
+#   - SVO (V: because@12, S: object@10, A?: motion@13, O: energy@8)
+#   - SVC (C: energy@17, V: is@15, S: energy@8)
+#   - SVC (C: energy@23, V: is@21, S: energy@17)
+10	"Mechanical energy on the other hand"	"is"	"energy"
+10	"an object"	"has because"	"motion energy"
+10	"an object"	"has because"	"energy"
+10	"energy"	"is"	"kinetic energy and position"
+10	"kinetic energy and position"	"is"	"potential energy"

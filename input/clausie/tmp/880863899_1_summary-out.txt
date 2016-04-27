@@ -1,0 +1,147 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: This information was about matter.
+# Semantic graph: [was/VBD nsubj:[information/NN det:This/DT] prep:[about/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: was@3, S: information@2, A!: about@4)
+1	"This information"	"was"	"about matter"
+# Line 2: Matter is any object that has mass and volume.
+# Semantic graph: [object/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:any/DT
+#                  rcmod:[has/VBZ nsubj:that/WDT dobj:[mass/NN cc:and/CC conj:volume/NN]]]
+#   Detected 2 clause(s).
+#   - SVC (C: object@4, V: is@2, S: Matter@1)
+#   - SVO (V: has@6, S: object@4, O: mass@7)
+2	"Matter"	"is"	"any object"
+2	"any object"	"has"	"mass and volume"
+# Line 3: Matter has two properties, each are physical and chemical.
+# Semantic graph: [physical/JJ
+#                  ccomp:[has/VBZ nsubj:Matter/NNP dobj:[properties/NNS num:two/CD]]
+#                  nsubj:each/DT
+#                  cop:are/VBP
+#                  cc:and/CC
+#                  conj:chemical/JJ]
+#   Detected 2 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: properties@4)
+#   - SVC (C: physical@8, V: are@7, S: each@6, CCOMP: has@2)
+3	"Matter"	"has"	"two properties"
+3	"each"	"are"	"physical and chemical Matter has two properties"
+# Line 4: The difference between physical and chemical change is that chemical change produce a new substance.
+# Semantic graph: [is/VBZ
+#                  nsubj:[difference/NN
+#                         det:The/DT
+#                         prep:[between/IN
+#                               pobj:[change/NN amod:[physical/NN cc:and/CC conj:chemical/NN]]]]
+#                  ccomp:[produce/VBP
+#                         complm:that/IN
+#                         nsubj:[change/NN nn:chemical/NN]
+#                         dobj:[substance/NN det:a/DT amod:new/JJ]]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@8, S: difference@2, CCOMP: produce@12)
+#   - SVO (V: produce@12, S: change@11, O: substance@15)
+4	"The difference between physical and chemical change"	"is"	"that chemical change produce a new substance"
+4	"chemical change"	"produce"	"a new substance"
+# Line 5: Another property of matter is energy.
+# Semantic graph: [energy/NN
+#                  nsubj:[property/NN det:Another/DT prep:[of/IN pobj:matter/NN]]
+#                  cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@6, V: is@5, S: property@2)
+5	"Another property of matter"	"is"	"energy"
+# Line 6: Some forms of energy are law of conservation, mechanical energy, kinetic energy, and potential energy.
+# Semantic graph: [law/NN
+#                  nsubj:[forms/NNS det:Some/DT prep:[of/IN pobj:energy/NN]]
+#                  cop:are/VBP
+#                  prep:[of/IN
+#                        pobj:[conservation/NN
+#                              conj:[energy/NN amod:mechanical/JJ]
+#                              conj:[energy/NN amod:kinetic/JJ]
+#                              cc:and/CC
+#                              conj:[energy/NN amod:potential/JJ]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: law@6, V: are@5, S: forms@2, A?: of@7)
+6	"Some forms of energy"	"are"	"law of conservation mechanical energy kinetic energy and potential energy"
+6	"Some forms of energy"	"are"	"law"
+# Line 7: Law of conservation of energy cannot be created or destroyed while transferring an object to another.
+# Semantic graph: [created/VBN
+#                  nsubjpass:[Law/NNP
+#                             prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#                  aux:can/MD
+#                  neg:not/RB
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:destroyed/VBN
+#                  prep:[while/IN
+#                        pcomp:[transferring/VBG
+#                               dobj:[object/NN det:an/DT]
+#                               prep:[to/TO pobj:another/DT]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: created@9, S: Law@1, A!: while@12)
+#   - SVA (V: destroyed@11, S: Law@1, A!: while@12)
+7	"Law of conservation of energy"	"can not be created"	"while transferring an object to another"
+7	"Law of conservation of energy"	"can not be destroyed"	"while transferring an object to another"
+# Line 8: Mechanical energy is when the object gets energy from its motion or position.
+# Semantic graph: [is/VBZ
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  advcl:[gets/VBZ
+#                         advmod:when/WRB
+#                         nsubj:[object/NN det:the/DT]
+#                         dobj:energy/NN
+#                         prep:[from/IN pobj:[motion/NN poss:its/PRP$ cc:or/CC conj:position/NN]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: is@3, S: energy@2, A!: gets@7)
+#   - SVOA (V: gets@7, S: object@6, A?: when@4, O: energy@8, A!: from@9)
+#   - SVO (S: its@10, V: "has", O: motion@11)
+8	"Mechanical energy"	"is"	"when the object gets energy from its motion or position"
+8	"the object"	"gets"	"energy from its motion or position when"
+8	"the object"	"gets"	"energy from its motion or position"
+8	"its"	"has"	"motion or position"
+# Line 9: Kinetic energy is the energy given to an object while moving potential energy is the energy a object gets by its position or shape.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Kinetic/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[given/VBN pcomp:[to/TO pobj:[object/NN det:an/DT]]]
+#                  advcl:[energy/NN
+#                         mark:while/IN
+#                         csubj:[moving/VBG dobj:[energy/NN amod:potential/JJ]]
+#                         cop:is/VBZ
+#                         det:the/DT
+#                         rcmod:[gets/VBZ
+#                                nsubj:[object/NN det:a/DT]
+#                                prep:[by/IN
+#                                      pobj:[position/NN poss:its/PRP$ cc:or/CC conj:shape/NN]]]]]
+#   Detected 4 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2, A?: given@6, A?: energy@16)
+#   - SVC (C: energy@16, V: is@14, S: moving@11)
+#   - SVOA (V: gets@19, S: object@18, A!: by@20, O: energy@16)
+#   - SVO (S: its@21, V: "has", O: position@22)
+9	"Kinetic energy"	"is"	"the energy given to an object"
+9	"Kinetic energy"	"is"	"the energy while moving potential energy is the energy"
+9	"Kinetic energy"	"is"	"the energy"
+9	"moving potential energy"	"is"	"the energy"
+9	"a object"	"gets"	"by its position or shape while the energy"
+9	"its"	"has"	"position or shape"

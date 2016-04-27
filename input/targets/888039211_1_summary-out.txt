@@ -1,0 +1,167 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All matter consists of volume and mass.
+# Semantic graph: [consists/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  prep:[of/IN pobj:[volume/NN cc:and/CC conj:mass/NN]]]
+#   Detected 1 clause(s).
+#   - SVA (V: consists@3, S: matter@2, A!: of@4)
+1	"All matter"	"consists"	"of volume and mass"
+# Line 2: Physical and chemical properties help classify matter.
+# Semantic graph: [help/VBP
+#                  nsubj:[properties/NNS amod:[Physical/JJ cc:and/CC conj:chemical/JJ]]
+#                  xcomp:[classify/VB dobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: help@5, S: properties@4, XCOMP: classify@6)
+2	"Physical and chemical properties"	"help"	"classify matter"
+# Line 3: While the physical property doesn't change the matter, the chemical property changes the matter creating new substances.
+# Semantic graph: [changes/VBZ
+#                  advcl:[change/VB
+#                         mark:While/IN
+#                         nsubj:[property/NN det:the/DT amod:physical/JJ]
+#                         aux:does/VBZ
+#                         neg:n't/RB
+#                         dobj:[matter/NN det:the/DT]]
+#                  nsubj:[property/NN det:the/DT nn:chemical/NN]
+#                  dobj:[matter/NN
+#                        det:the/DT
+#                        partmod:[creating/VBG dobj:[substances/NNS amod:new/JJ]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: change@7, S: property@4, O: matter@9)
+#   - SVO (V: changes@14, S: property@13, A?: change@7, O: matter@16)
+#   - SVA (V: "be creating", S: matter@16, O: substances@19)
+3	"the physical property"	"does n't change"	"the matter"
+3	"the chemical property"	"changes"	"the matter creating new substances While the physical property does n't change the matter"
+3	"the chemical property"	"changes"	"the matter creating new substances"
+3	"the matter"	"be creating"	"new substances"
+# Line 4: Different types of matter that can be observed are, animals, bikes, trees, dust mites, and air, which are just examples of matter.
+# Semantic graph: [are/VBP
+#                  nsubj:[types/NNS
+#                         amod:Different/JJ
+#                         prep:[of/IN
+#                               pobj:[matter/NN
+#                                     rcmod:[observed/JJ nsubj:that/WDT aux:can/MD cop:be/VB]]]]
+#                  dobj:[animals/NNS
+#                        conj:bikes/NNS
+#                        conj:trees/NNS
+#                        conj:[mites/NNS nn:dust/NN]
+#                        cc:and/CC
+#                        conj:air/NN
+#                        rcmod:[examples/NNS
+#                               nsubj:which/WDT
+#                               cop:are/VBP
+#                               advmod:just/RB
+#                               prep:[of/IN pobj:matter/NN]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: observed@8, V: be@7, S: matter@4)
+#   - SVO (V: are@9, S: types@2, O: animals@11)
+#   - SVC (C: examples@26, V: are@24, S: animals@11, A?: just@25, A?: of@27)
+4	"matter"	"can be"	"observed"
+4	"Different types of matter"	"are"	"animals bikes trees dust mites and air"
+4	"animals bikes trees dust mites and air"	"are"	"examples just"
+4	"animals bikes trees dust mites and air"	"are"	"examples of matter"
+4	"animals bikes trees dust mites and air"	"are"	"examples"
+# Line 5: All matter also consists of energy.
+# Semantic graph: [consists/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  advmod:also/RB
+#                  prep:[of/IN pobj:energy/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: consists@4, S: matter@2, A?: also@3, A!: of@5)
+5	"All matter"	"consists"	"of energy also"
+5	"All matter"	"consists"	"of energy"
+# Line 6: The law of conservation of energy describes how even though energy cannot be created or destroyed, it can be transferred from one object to another.
+# Semantic graph: [describes/VBZ
+#                  nsubj:[law/NN
+#                         det:The/DT
+#                         prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#                  ccomp:[transferred/VBN
+#                         advmod:how/WRB
+#                         advcl:[created/VBN
+#                                advmod:even/RB
+#                                dep:though/IN
+#                                nsubjpass:energy/NN
+#                                aux:can/MD
+#                                neg:not/RB
+#                                auxpass:be/VB
+#                                cc:or/CC
+#                                conj:destroyed/VBN]
+#                         nsubjpass:it/PRP
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[from/IN pobj:[object/NN num:one/CD]]
+#                         prep:[to/TO pobj:another/DT]]]
+#   Detected 4 clause(s).
+#   - SVO (V: describes@7, S: law@2, CCOMP: transferred@22)
+#   - SV (V: created@15, S: energy@11, A-: even@9)
+#   - SV (V: destroyed@17, S: energy@11, A-: even@9)
+#   - SVA (V: transferred@22, S: it@19, A?: how@8, A?: created@15, A!: from@23, A?: to@26)
+6	"The law of conservation of energy"	"describes"	"how even though energy can not be created or destroyed it can be transferred from one object to another"
+6	"energy"	"can not be created"
+6	"energy"	"can not be destroyed"
+6	"it"	"can be transferred"	"from one object how"
+6	"it"	"can be transferred"	"from one object even though energy can not be created or destroyed"
+6	"it"	"can be transferred"	"from one object to another"
+6	"it"	"can be transferred"	"from one object"
+# Line 7: There are two different types of mechanical energy is kinetic energy and potential energy.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[types/NNS
+#                         num:two/CD
+#                         amod:different/JJ
+#                         prep:[of/IN pobj:[energy/NN amod:mechanical/JJ]]
+#                         rcmod:[energy/NN
+#                                cop:is/VBZ
+#                                amod:kinetic/JJ
+#                                cc:and/CC
+#                                conj:[energy/NN amod:potential/JJ]]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: types@5)
+7	"two different types of mechanical energy"	"There are"
+# Line 8: The kinetic energy takes up the energy of a moving object, while the potential takes up the energy of the position of the object.
+# Semantic graph: [takes/VBZ
+#                  nsubj:[energy/NN det:The/DT amod:kinetic/JJ]
+#                  prt:up/RP
+#                  dobj:[energy/NN
+#                        det:the/DT
+#                        prep:[of/IN
+#                              pobj:[object/NN
+#                                    det:a/DT
+#                                    amod:moving/VBG
+#                                    dep:[takes/VBZ
+#                                         mark:while/IN
+#                                         nsubj:[potential/NN det:the/DT]
+#                                         prt:up/RP
+#                                         dobj:[energy/NN
+#                                               det:the/DT
+#                                               prep:[of/IN
+#                                                     pobj:[position/NN
+#                                                           det:the/DT
+#                                                           prep:[of/IN
+#                                                                 pobj:[object/NN det:the/DT]]]]]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: takes@4, S: energy@3, O: energy@7)
+#   - SVO (V: takes@16, S: potential@15, O: energy@19)
+8	"The kinetic energy"	"takes up"	"the energy of a moving object while the potential takes up the energy of the position of the object"
+8	"the potential"	"takes up"	"the energy of the position of the object"

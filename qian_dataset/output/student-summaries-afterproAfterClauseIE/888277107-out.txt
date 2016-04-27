@@ -1,0 +1,84 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Matter is the mass and volume of an object.
+# Semantic graph: [mass/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  cc:and/CC
+#                  conj:volume/NN
+#                  prep:[of/IN pobj:[object/NN det:an/DT]]]
+#   Detected 1 clause(s).
+#   - SVC (C: mass@4, V: is@2, S: Matter@1, A?: of@7)
+1	"Matter"	"is"	"the mass and volume of an object"
+1	"Matter"	"is"	"the mass and volume"
+# Line 2 (id 2): All matter has energy.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+2	"All matter"	"has"	"energy"
+# Line 3 (id 3): Matter can be detected no matter what, because it takes up volume and contains some kind of mass.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  dobj:[matter/NN det:no/DT rcmod:what/WP]
+#                  advcl:[takes/VBZ
+#                         mark:because/IN
+#                         nsubj:it/PRP
+#                         prt:up/RP
+#                         dobj:volume/NN
+#                         cc:and/CC
+#                         conj:[contains/VBZ
+#                               dobj:[kind/NN det:some/DT prep:[of/IN pobj:mass/NN]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: detected@4, S: Matter@1, O: matter@6, A?: takes@11)
+#   - SVO (V: takes@11, S: it@10, O: volume@13)
+#   - SVO (V: contains@15, S: it@10, O: kind@17)
+3	"Matter"	"can be detected"	"no matter because it takes up volume and contains some kind of mass"
+3	"Matter"	"can be detected"	"no matter"
+3	"it"	"takes up"	"volume"
+3	"it"	"contains"	"some kind of mass"
+# Line 4 (id 4): Properties help to classify matter.
+# Semantic graph: [help/VBP nsubj:Properties/NNP xcomp:[classify/VB aux:to/TO dobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: help@2, S: Properties@1, XCOMP: classify@4)
+4	"Properties"	"help"	"to classify matter"
+# Line 5 (id 5): Matter can be detected under all circumstances, because of the volume and mass.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[under/IN
+#                        pobj:[circumstances/NNS det:all/DT]
+#                        advmod:because/RB
+#                        prep:[of/IN pobj:[volume/NN det:the/DT cc:and/CC conj:mass/NN]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: detected@4, S: Matter@1, A!: under@5)
+5	"Matter"	"can be detected"	"under all circumstances because of the volume and mass"
+# Line 6 (id 6): All matter contains energy.
+# Semantic graph: [contains/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: contains@3, S: matter@2, O: energy@4)
+6	"All matter"	"contains"	"energy"

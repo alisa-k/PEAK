@@ -1,0 +1,136 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Matter is the stuff that everything is made up of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:everything/NN
+#                         auxpass:is/VBZ
+#                         prt:up/RP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@8)
+#   - SVA (V: made@8, S: everything@6, A!: of@10)
+1	"Matter"	"is"	"the stuff that everything is made up of"
+1	"everything"	"is made up"	"of"
+# Line 2 (id 2): All matter has mass and volume.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:[mass/NN cc:and/CC conj:volume/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: mass@4)
+2	"All matter"	"has"	"mass and volume"
+# Line 3 (id 3): It has physical properties which can be changed by the appearance only and has chemical properties which a substance can be changed into something different that can't be undone.
+# Semantic graph: [has/VBZ
+#                  nsubj:It/PRP
+#                  dobj:[properties/NNS
+#                        amod:physical/JJ
+#                        rcmod:[changed/VBN
+#                               nsubjpass:which/WDT
+#                               aux:can/MD
+#                               auxpass:be/VB
+#                               prep:[by/IN pobj:[appearance/NN det:the/DT]]
+#                               advmod:only/RB]]
+#                  cc:and/CC
+#                  conj:[has/VBZ
+#                        dobj:[properties/NNS
+#                              nn:chemical/NN
+#                              rcmod:[changed/VBN
+#                                     dobj:which/WDT
+#                                     nsubjpass:[substance/NN det:a/DT]
+#                                     aux:can/MD
+#                                     auxpass:be/VB
+#                                     prep:[into/IN
+#                                           pobj:[something/NN
+#                                                 amod:different/JJ
+#                                                 rcmod:[undone/VBN
+#                                                        nsubjpass:that/WDT
+#                                                        aux:ca/MD
+#                                                        neg:n't/RB
+#                                                        auxpass:be/VB]]]]]]]
+#   Detected 5 clause(s).
+#   - SVO (V: has@2, S: It@1, O: properties@4)
+#   - SVO (V: has@14, S: It@1, O: properties@16)
+#   - SVA (V: changed@8, S: properties@4, A!: by@9, A?: only@12)
+#   - SVO (V: changed@22, S: substance@19, O: properties@16, A?: into@23)
+#   - SV (V: undone@30, S: something@24)
+3	"It"	"has"	"physical properties"
+3	"It"	"has"	"chemical properties"
+3	"physical properties"	"can be changed"	"by the appearance only"
+3	"physical properties"	"can be changed"	"by the appearance"
+3	"a substance"	"can be changed"	"chemical properties into something different"
+3	"a substance"	"can be changed"	"chemical properties"
+3	"something different"	"ca n't be undone"
+# Line 4 (id 4): Energy can be transferred but never be destroyed.
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  parataxis:[destroyed/VBN dep:but/CC neg:never/RB auxpass:be/VB]]
+#   Detected 1 clause(s).
+#   - SV (V: transferred@4, S: Energy@1)
+4	"Energy"	"can be transferred"
+# Line 5 (id 5): There are two type of energy, kinetic and potential.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[type/NN
+#                         num:two/CD
+#                         prep:[of/IN
+#                               pobj:[energy/NN conj:kinetic/NN cc:and/CC conj:potential/NN]]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: type@4)
+5	"two type of energy kinetic and potential"	"There are"
+# Line 6 (id 6): Kinetic is energy that an object has as it moves.
+# Semantic graph: [energy/NN
+#                  nsubj:Kinetic/NNP
+#                  cop:is/VBZ
+#                  ccomp:[has/VBZ
+#                         complm:that/IN
+#                         nsubj:[object/NN det:an/DT]
+#                         advcl:[moves/VBZ mark:as/IN nsubj:it/PRP]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@3, V: is@2, S: Kinetic@1, CCOMP: has@7)
+#   - SVA (V: has@7, S: object@6, A!: moves@10)
+#   - SV (V: moves@10, S: it@9)
+6	"Kinetic"	"is"	"energy that an object has as it moves"
+6	"an object"	"has"	"as it moves"
+6	"it"	"moves"
+# Line 7 (id 7): Potential energy is the energy it has do to its position or shape.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Potential/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[do/VBP
+#                         nsubj:it/PRP
+#                         aux:has/VBZ
+#                         prep:[to/TO pobj:[position/NN poss:its/PRP$ cc:or/CC conj:shape/NN]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2)
+#   - SVO (V: do@8, S: it@6, A?: to@9, O: energy@5)
+#   - SVO (S: its@10, V: "has", O: position@11)
+7	"Potential energy"	"is"	"the energy"
+7	"it"	"has do"	"to its position or shape the energy"
+7	"it"	"has do"	"the energy"
+7	"its"	"has"	"position or shape"

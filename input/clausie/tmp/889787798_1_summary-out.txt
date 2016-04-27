@@ -1,0 +1,172 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All objects contain matter.
+# Semantic graph: [contain/VBP nsubj:[objects/NNS det:All/DT] dobj:matter/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: contain@3, S: objects@2, O: matter@4)
+1	"All objects"	"contain"	"matter"
+# Line 2: Matter is.
+# Semantic graph: [is/VBZ nsubj:Matter/NNP]
+#   Detected 1 clause(s).
+#   - SV (V: is@2, S: Matter@1)
+2	"Matter"	"is"
+# Line 3: The "stuff" in which all objects are made up of.
+# Semantic graph: [stuff/NN
+#                  det:The/DT
+#                  prep:[in/IN
+#                        pcomp:[made/VBN
+#                               dep:which/WDT
+#                               nsubjpass:[objects/NNS det:all/DT]
+#                               auxpass:are/VBP
+#                               prt:up/RP
+#                               prep:of/IN]]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@10, S: objects@8, A!: of@12)
+3	"all objects"	"are made up"	"of"
+# Line 4: We can figure out matter by its volume and mass.
+# Semantic graph: [figure/VB
+#                  nsubj:We/PRP
+#                  aux:can/MD
+#                  prt:out/RP
+#                  dobj:matter/NN
+#                  prep:[by/IN pobj:[volume/NN poss:its/PRP$ cc:and/CC conj:mass/NN]]]
+#   Detected 2 clause(s).
+#   - SVO (V: figure@3, S: We@1, O: matter@5, A?: by@6)
+#   - SVO (S: its@7, V: "has", O: volume@8)
+4	"We"	"can figure out"	"matter by its volume and mass"
+4	"We"	"can figure out"	"matter"
+4	"its"	"has"	"volume and mass"
+# Line 5: Matter can be classified by physical and chemical properties of an object.
+# Semantic graph: [classified/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[by/IN
+#                        pobj:[properties/NNS
+#                              amod:[physical/NN cc:and/CC conj:chemical/NN]
+#                              prep:[of/IN pobj:[object/NN det:an/DT]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: classified@4, S: Matter@1, A!: by@5)
+5	"Matter"	"can be classified"	"by physical and chemical properties of an object"
+# Line 6: The difference between a physical and chemical change is that a physical change, changes the outside of an object and a chemical change, changes everything it contained
+# Semantic graph: [is/VBZ
+#                  nsubj:[difference/NN
+#                         det:The/DT
+#                         prep:[between/IN
+#                               pobj:[change/NN
+#                                     det:a/DT
+#                                     amod:[physical/NN cc:and/CC conj:chemical/NN]]]]
+#                  ccomp:[changes/VBZ
+#                         complm:that/IN
+#                         nsubj:[change/NN
+#                                det:a/DT
+#                                amod:physical/JJ
+#                                appos:[changes/NNS
+#                                       dep:[outside/NN
+#                                            det:the/DT
+#                                            prep:[of/IN
+#                                                  pobj:[object/NN
+#                                                        det:an/DT
+#                                                        cc:and/CC
+#                                                        conj:[change/NN
+#                                                              det:a/DT
+#                                                              amod:chemical/JJ]]]]]]
+#                         dobj:[everything/NN rcmod:[contained/VBD nsubj:it/PRP]]]]
+#   Detected 4 clause(s).
+#   - SVC (V: is@9, S: difference@2, CCOMP: changes@26)
+#   - SVC (S: change@13, V: "is", C: changes@15)
+#   - SVO (V: changes@26, S: change@13, O: everything@27)
+#   - SVO (V: contained@29, S: it@28, O: everything@27)
+6	"The difference between a physical and chemical change"	"is"	"that a physical change changes everything"
+6	"a physical change"	"is"	"changes the outside of an object and a chemical change"
+6	"a physical change"	"changes"	"everything"
+6	"it"	"contained"	"everything"
+# Line 8: Energy is in all matter and in all objects.
+# Semantic graph: [is/VBZ
+#                  nsubj:Energy/NNP
+#                  prep:[in/IN
+#                        pobj:[objects/NNS
+#                              dep:[matter/NN det:all/DT cc:and/CC conj:[in/IN pobj:all/DT]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: is@2, S: Energy@1, A!: in@3)
+8	"Energy"	"is"	"in all matter and in all objects"
+# Line 9: Energy can be transferred from one object to the next but it cannot be destroyed or changed.
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[from/IN pobj:[object/NN num:one/CD]]
+#                  prep:[to/TO pobj:[next/JJ det:the/DT]]
+#                  cc:but/CC
+#                  conj:[destroyed/VBN
+#                        nsubjpass:it/PRP
+#                        aux:can/MD
+#                        neg:not/RB
+#                        auxpass:be/VB
+#                        cc:or/CC
+#                        conj:changed/VBN]]
+#   Detected 3 clause(s).
+#   - SVA (V: transferred@4, S: Energy@1, A!: from@5, A?: to@8)
+#   - SV (V: destroyed@16, S: it@12)
+#   - SV (V: changed@18, S: it@12)
+9	"Energy"	"can be transferred"	"from one object to the next"
+9	"Energy"	"can be transferred"	"from one object"
+9	"it"	"can not be destroyed"
+9	"it"	"can not be changed"
+# Line 10: That is the law of conservation of energy.
+# Semantic graph: [law/NN
+#                  nsubj:That/DT
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: law@4, V: is@2, S: That@1, A?: of@5)
+10	"That"	"is"	"the law of conservation of energy"
+10	"That"	"is"	"the law"
+# Line 11: There is one types of energy mechanical energy is which the energy an object contains in its position or motion.
+# Semantic graph: [is/VBZ
+#                  expl:There/EX
+#                  nsubj:[types/NNS
+#                         num:one/CD
+#                         prep:[of/IN pobj:energy/NN]
+#                         rcmod:[is/VBZ
+#                                nsubj:[energy/NN amod:mechanical/JJ]
+#                                ccomp:[contains/VBZ
+#                                       dobj:which/WDT
+#                                       nsubj:[energy/NN det:the/DT dep:[object/NN det:an/DT]]
+#                                       prep:[in/IN
+#                                             pobj:[position/NN
+#                                                   poss:its/PRP$
+#                                                   cc:or/CC
+#                                                   conj:motion/NN]]]]]]
+#   Detected 4 clause(s).
+#   - EXISTENTIAL (V: is@2, S: types@4)
+#   - SVOC (V: is@9, S: energy@8, CCOMP: contains@15, O: types@4)
+#   - SVO (V: contains@15, S: energy@12, O: which@10, A?: in@16)
+#   - SVO (S: its@17, V: "has", O: position@18)
+11	"one types of energy"	"There is"
+11	"mechanical energy"	"is"	"which the energy an object contains in its position or motion one types of energy"
+11	"the energy an object"	"contains"	"which in its position or motion"
+11	"the energy an object"	"contains"	"which"
+11	"its"	"has"	"position or motion"

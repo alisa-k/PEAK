@@ -1,0 +1,138 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All living objects have matter.
+# Semantic graph: [have/VBP nsubj:[objects/NNS det:All/DT amod:living/VBG] dobj:matter/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: have@4, S: objects@3, O: matter@5)
+1	"All living objects"	"have"	"matter"
+# Line 2: Matter is a substance of what a physical object can contain.
+# Semantic graph: [substance/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[of/IN
+#                        pcomp:[contain/VB
+#                               dobj:what/WP
+#                               nsubj:[object/NN det:a/DT amod:physical/JJ]
+#                               aux:can/MD]]]
+#   Detected 2 clause(s).
+#   - SVC (C: substance@4, V: is@2, S: Matter@1, A?: of@5)
+#   - SVO (V: contain@11, S: object@9, O: what@6)
+2	"Matter"	"is"	"a substance of what a physical object can contain"
+2	"Matter"	"is"	"a substance"
+2	"a physical object"	"can contain"	"what"
+# Line 3: Matter can be things such as dirt, cars, rock, and trees.
+# Semantic graph: [things/NNS
+#                  nsubj:Matter/NNP
+#                  aux:can/MD
+#                  cop:be/VB
+#                  prep:[as/IN
+#                        mwe:such/JJ
+#                        pobj:[dirt/NN conj:cars/NNS conj:rock/NN cc:and/CC conj:trees/NNS]]]
+#   Detected 1 clause(s).
+#   - SVC (C: things@4, V: be@3, S: Matter@1, A?: as@6)
+3	"Matter"	"can be"	"things such as dirt cars rock and trees"
+3	"Matter"	"can be"	"things"
+# Line 4: All matter can be detected and measured because it takes up space.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:[matter/NN det:All/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  advcl:[takes/VBZ mark:because/IN nsubj:it/PRP prt:up/RP dobj:space/NN]]
+#   Detected 3 clause(s).
+#   - SVA (V: detected@5, S: matter@2, A!: takes@10)
+#   - SVA (V: measured@7, S: matter@2, A!: takes@10)
+#   - SVO (V: takes@10, S: it@9, O: space@12)
+4	"All matter"	"can be detected"	"because it takes up space"
+4	"All matter"	"can be measured"	"because it takes up space"
+4	"it"	"takes up"	"space"
+# Line 5: All matter has both physical and chemical properties.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[properties/NNS
+#                        det:both/DT
+#                        amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: properties@8)
+5	"All matter"	"has"	"both physical and chemical properties"
+# Line 6: It also has three types of energy they are mechanical energy, kinetic energy, and potential energy.
+# Semantic graph: [has/VBZ
+#                  nsubj:It/PRP
+#                  advmod:also/RB
+#                  dobj:[types/NNS
+#                        num:three/CD
+#                        prep:[of/IN pobj:energy/NN]
+#                        rcmod:[energy/NN
+#                               nsubj:they/PRP
+#                               cop:are/VBP
+#                               amod:mechanical/JJ
+#                               conj:[energy/NN amod:kinetic/JJ]
+#                               cc:and/CC
+#                               conj:[energy/NN amod:potential/JJ]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@3, S: It@1, A?: also@2, O: types@5)
+#   - SVOC (C: energy@11, V: are@9, S: they@8, O: types@5)
+6	"It"	"has"	"three types of energy also"
+6	"It"	"has"	"three types of energy"
+6	"they"	"are"	"mechanical energy kinetic energy and potential energy three types of energy"
+# Line 7: These types of energy are in all substances which are in matter.
+# Semantic graph: [are/VBP
+#                  nsubj:[types/NNS det:These/DT prep:[of/IN pobj:energy/NN]]
+#                  prep:[in/IN
+#                        pobj:[substances/NNS
+#                              det:all/DT
+#                              rcmod:[are/VBP nsubj:which/WDT prep:[in/IN pobj:matter/NN]]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: are@5, S: types@2, A!: in@6)
+#   - SVA (V: are@10, S: substances@8, A!: in@11)
+7	"These types of energy"	"are"	"in all substances"
+7	"all substances"	"are"	"in matter"
+# Line 8: There are also proeprties in matter.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  advmod:also/RB
+#                  nsubj:[proeprties/NNS prep:[in/IN pobj:matter/NN]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: proeprties@4, A?: also@3)
+8	"proeprties in matter"	"There are"	"also"
+8	"proeprties in matter"	"There are"
+# Line 9: The physical properties of matter are those that can be oberved without changing the make up, or identity of matter.
+# Semantic graph: [those/DT
+#                  nsubj:[properties/NNS det:The/DT amod:physical/JJ prep:[of/IN pobj:matter/NN]]
+#                  cop:are/VBP
+#                  rcmod:[oberved/VBN
+#                         nsubjpass:that/WDT
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[without/IN
+#                               pcomp:[changing/VBG dobj:[make/NN det:the/DT] prt:up/RP]]]
+#                  cc:or/CC
+#                  conj:[identity/NN prep:[of/IN pobj:matter/NN]]]
+#   Detected 2 clause(s).
+#   - SVC (C: those@7, V: are@6, S: properties@3)
+#   - SVA (V: oberved@11, S: those@7, A!: without@12)
+9	"The physical properties of matter"	"are"	"those or identity of matter"
+9	"those or identity of matter"	"can be oberved"	"without changing the make up"

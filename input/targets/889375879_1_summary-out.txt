@@ -1,0 +1,99 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter has volume and has a mass.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:volume/NN
+#                  cc:and/CC
+#                  conj:[has/VBZ dobj:[mass/NN det:a/DT]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: volume@3)
+#   - SVO (V: has@5, S: Matter@1, O: mass@7)
+1	"Matter"	"has"	"volume"
+1	"Matter"	"has"	"a mass"
+# Line 2: It can be detected and measured.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:It/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN]
+#   Detected 2 clause(s).
+#   - SV (V: detected@4, S: It@1)
+#   - SV (V: measured@6, S: It@1)
+2	"It"	"can be detected"
+2	"It"	"can be measured"
+# Line 3: Physical properties can be observed without changing its identity.
+# Semantic graph: [observed/VBN
+#                  nsubjpass:[properties/NNS amod:Physical/JJ]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[without/IN pcomp:[changing/VBG dobj:[identity/NN poss:its/PRP$]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: observed@5, S: properties@2, A!: without@6)
+#   - SVO (S: its@8, V: "has", O: identity@9)
+3	"Physical properties"	"can be observed"	"without changing its identity"
+3	"its"	"has"	"identity"
+# Line 4: Chemical properties is matter changed into other matter.
+# Semantic graph: [changed/VBN
+#                  nsubjpass:[properties/NNS nn:Chemical/NNP]
+#                  auxpass:is/VBZ
+#                  advmod:matter/NN
+#                  prep:[into/IN pobj:[matter/NN amod:other/JJ]]]
+#   Detected 1 clause(s).
+#   - SVA (V: changed@5, S: properties@2, A?: matter@4, A!: into@6)
+4	"Chemical properties"	"is changed"	"into other matter matter"
+4	"Chemical properties"	"is changed"	"into other matter"
+# Line 5: Energy is a property of matter.
+# Semantic graph: [property/NN nsubj:Energy/NNP cop:is/VBZ det:a/DT prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+5	"Energy"	"is"	"a property of matter"
+5	"Energy"	"is"	"a property"
+# Line 6: Properties help us classify matter.
+# Semantic graph: [help/VBP nsubj:Properties/NNP ccomp:[classify/VB nsubj:us/PRP dobj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVO (V: help@2, S: Properties@1, CCOMP: classify@4)
+#   - SVO (V: classify@4, S: us@3, O: matter@5)
+6	"Properties"	"help"	"us classify matter"
+6	"us"	"classify"	"matter"
+# Line 7: Mechanical energy is the energy an object has because of its position or motion.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[of/IN
+#                         nsubj:[object/NN det:an/DT]
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[position/NN poss:its/PRP$ cc:or/CC conj:motion/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2)
+#   - SVO (V: of@10, S: object@7, A?: because@9, A?: position@12, O: energy@5)
+#   - SVO (S: its@11, V: "has", O: position@12)
+7	"Mechanical energy"	"is"	"the energy"
+7	"an object"	"has of"	"the energy because"
+7	"an object"	"has of"	"its position or motion the energy"
+7	"an object"	"has of"	"the energy"
+7	"its"	"has"	"position or motion"

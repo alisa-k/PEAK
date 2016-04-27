@@ -1,0 +1,199 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Matter is 'stuff' that all substances in the universe is made.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[substances/NNS
+#                                    det:all/DT
+#                                    prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                         auxpass:is/VBZ]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@13)
+#   - SV (V: made@13, S: substances@8)
+1	"Matter"	"is"	"stuff that all substances in the universe is made"
+1	"all substances in the universe"	"is made"
+# Line 2 (id 2): It's everywhere.
+# Semantic graph: ['s/VBZ nsubj:It/PRP advmod:everywhere/RB]
+#   Detected 1 clause(s).
+#   - SVA (V: 's@2, S: It@1, A!: everywhere@3)
+2	"It"	"'s"	"everywhere"
+# Line 3 (id 3): Since matter takes up space and takes up a certain amount of it, all matter can be detected and measured the way you classify these is by their physical properties things like is it a solid, liquid or gas, how much it weighs, basically the makeup.
+# Semantic graph: [detected/VBN
+#                  advcl:[takes/VBZ
+#                         mark:Since/IN
+#                         nsubj:matter/NN
+#                         prt:up/RP
+#                         dobj:space/NN
+#                         cc:and/CC
+#                         conj:[takes/VBZ
+#                               prt:up/RP
+#                               dobj:[amount/NN
+#                                     det:a/DT
+#                                     amod:certain/JJ
+#                                     prep:[of/IN pobj:it/PRP]]]]
+#                  nsubjpass:[matter/NN det:all/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  dobj:[way/NN
+#                        det:the/DT
+#                        rcmod:[classify/VB
+#                               nsubj:you/PRP
+#                               ccomp:[is/VBZ
+#                                      nsubj:these/DT
+#                                      prep:[by/IN
+#                                            pobj:[things/NNS
+#                                                  poss:their/PRP$
+#                                                  amod:physical/JJ
+#                                                  nn:properties/NNS]]]]]
+#                  advcl:[it/PRP
+#                         mark:like/IN
+#                         cop:is/VBZ
+#                         dep:[solid/JJ det:a/DT conj:liquid/NN cc:or/CC conj:gas/NN]]
+#                  parataxis:[weighs/VBZ dep:[much/JJ advmod:how/WRB] nsubj:it/PRP]
+#                  dobj:[makeup/NN advmod:basically/RB det:the/DT]]
+#   Detected 8 clause(s).
+#   - SVO (V: takes@3, S: matter@2, O: space@5)
+#   - SVO (V: takes@7, S: matter@2, O: amount@11)
+#   - SVOC (V: detected@19, S: matter@16, A?: takes@3, O: way@23, A?: it@35, O: makeup@50)
+#   - SVOC (V: measured@21, S: matter@16, A?: takes@3, O: way@23, A?: it@35, O: makeup@50)
+#   - SVOC (V: classify@25, S: you@24, CCOMP: is@27, O: way@23)
+#   - SVA (V: is@27, S: these@26, A!: by@28)
+#   - SVO (S: their@29, V: "has", O: things@32)
+#   - SVO (S: it@45, V: weighs@46, O: detected@19)
+3	"matter"	"takes up"	"space"
+3	"matter"	"takes up"	"a certain amount of it"
+3	"all matter"	"can be detected"	"the way basically the makeup Since matter takes up space and takes up a certain amount of it"
+3	"all matter"	"can be detected"	"the way like is it a solid liquid or gas basically the makeup"
+3	"all matter"	"can be detected"	"the way basically the makeup"
+3	"all matter"	"can be measured"	"the way basically the makeup Since matter takes up space and takes up a certain amount of it"
+3	"all matter"	"can be measured"	"the way like is it a solid liquid or gas basically the makeup"
+3	"all matter"	"can be measured"	"the way basically the makeup"
+3	"you"	"classify"	"these is by their physical properties things the way"
+3	"these"	"is"	"by their physical properties things"
+3	"their"	"has"	"physical properties things"
+3	"it"	"weighs"	"Since matter takes up space and takes up a certain amount of it all matter can be detected and measured the way like is it a solid liquid or gas basically the makeup"
+# Line 4 (id 4): Energy is closely related to matter because it's a property of matter.
+# Semantic graph: [related/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  advmod:closely/RB
+#                  xcomp:[matter/VB
+#                         aux:to/TO
+#                         advcl:[property/NN
+#                                mark:because/IN
+#                                nsubj:it/PRP
+#                                cop:'s/VBZ
+#                                det:a/DT
+#                                prep:[of/IN pobj:matter/NN]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: related@4, S: Energy@1, A?: closely@3, XCOMP: matter@6)
+#   - SVC (C: property@11, V: 's@9, S: it@8, A?: of@12)
+4	"Energy"	"is related"	"to matter because it 's a property of matter closely"
+4	"Energy"	"is related"	"to matter because it 's a property of matter"
+4	"it"	"'s"	"a property of matter"
+4	"it"	"'s"	"a property"
+# Line 5 (id 5): The law of energy is that it cannot be created nor destroyed, it simply transferred.
+# Semantic graph: [transferred/VBD
+#                  ccomp:[is/VBZ
+#                         nsubj:[law/NN det:The/DT prep:[of/IN pobj:energy/NN]]
+#                         ccomp:[created/VBN
+#                                complm:that/IN
+#                                nsubjpass:it/PRP
+#                                aux:can/MD
+#                                neg:not/RB
+#                                auxpass:be/VB
+#                                cc:nor/CC
+#                                conj:destroyed/VBD]]
+#                  nsubj:it/PRP
+#                  advmod:simply/RB]
+#   Detected 4 clause(s).
+#   - SVC (V: is@5, S: law@2, CCOMP: created@11)
+#   - SV (V: created@11, S: it@7)
+#   - SV (V: destroyed@13, S: it@7)
+#   - SVO (V: transferred@17, S: it@15, CCOMP: is@5, A?: simply@16)
+5	"The law of energy"	"is"	"that it can not be created nor destroyed"
+5	"it"	"can not be created"
+5	"it"	"destroyed"
+5	"it"	"transferred"	"The law of energy is that it can not be created nor destroyed simply"
+5	"it"	"transferred"	"The law of energy is that it can not be created nor destroyed"
+# Line 6 (id 6): Matter can undergo either physical or chemical change.
+# Semantic graph: [undergo/VB
+#                  nsubj:Matter/NNP
+#                  aux:can/MD
+#                  dobj:[change/NN det:either/DT amod:[physical/NN cc:or/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: undergo@3, S: Matter@1, O: change@8)
+6	"Matter"	"can undergo"	"either physical or chemical change"
+# Line 7 (id 7): A physical change is changing like size and shape without changing the chemical properties but a chemical is exactly their changing.
+# Semantic graph: [changing/VBG
+#                  nsubj:[change/NN det:A/DT amod:physical/JJ]
+#                  aux:is/VBZ
+#                  prep:[like/IN pobj:[size/NN cc:and/CC conj:shape/NN]]
+#                  prep:[without/IN
+#                        pcomp:[changing/VBG dobj:[properties/NNS det:the/DT nn:chemical/NN]]]
+#                  cc:but/CC
+#                  conj:[changing/NN
+#                        nsubj:[chemical/NN det:a/DT]
+#                        cop:is/VBZ
+#                        advmod:exactly/RB
+#                        poss:their/PRP$]]
+#   Detected 3 clause(s).
+#   - SVA (V: changing@5, S: change@3, A!: like@6, A?: without@10)
+#   - SVC (C: changing@21, V: is@18, S: chemical@17, A?: exactly@19)
+#   - SVO (S: their@20, V: "has", O: changing@21)
+7	"A physical change"	"is changing"	"like size and shape without changing the chemical properties"
+7	"A physical change"	"is changing"	"like size and shape"
+7	"a chemical"	"is"	"their changing exactly"
+7	"a chemical"	"is"	"their changing"
+7	"their"	"has"	"changing"
+# Line 8 (id 8): The chemical properties like burning paper mechanical energy is energy by an object created by its position or motion.
+# Semantic graph: [energy/NN
+#                  nsubj:[properties/NNS
+#                         det:The/DT
+#                         amod:chemical/JJ
+#                         prep:[like/IN
+#                               pobj:[energy/NN nn:burning/NN nn:paper/NN amod:mechanical/JJ]]]
+#                  cop:is/VBZ
+#                  prep:[by/IN
+#                        pobj:[object/NN
+#                              det:an/DT
+#                              partmod:[created/VBN
+#                                       prep:[by/IN
+#                                             pobj:[position/NN
+#                                                   poss:its/PRP$
+#                                                   cc:or/CC
+#                                                   conj:motion/NN]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@10, V: is@9, S: properties@3, A?: by@11)
+#   - SVA (V: "be created", S: object@13, A!: by@15)
+#   - SVO (S: its@16, V: "has", O: position@17)
+8	"The chemical properties like burning paper mechanical energy"	"is"	"energy by an object created by its position or motion"
+8	"The chemical properties like burning paper mechanical energy"	"is"	"energy"
+8	"an object"	"be created"	"by its position or motion"
+8	"its"	"has"	"position or motion"

@@ -1,0 +1,166 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: This passage talked about matter, the differences between physical and chemical changes, how energy is related to matter, the law of conservation of energy, and mechanical energy.
+# Semantic graph: [talked/VBD
+#                  nsubj:[passage/NN det:This/DT]
+#                  prep:[about/IN
+#                        pobj:[matter/NN
+#                              appos:[differences/NNS
+#                                     det:the/DT
+#                                     prep:[between/IN
+#                                           pobj:[changes/NNS
+#                                                 amod:[physical/NN cc:and/CC conj:chemical/NN]]]]]]
+#                  ccomp:[related/VBN
+#                         advmod:how/WRB
+#                         nsubjpass:energy/NN
+#                         auxpass:is/VBZ
+#                         prep:[to/TO
+#                               pobj:[matter/NN
+#                                     conj:[law/NN
+#                                           det:the/DT
+#                                           prep:[of/IN
+#                                                 pobj:[conservation/NN
+#                                                       prep:[of/IN pobj:energy/NN]]]]
+#                                     cc:and/CC
+#                                     conj:[energy/NN amod:mechanical/JJ]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: talked@3, S: passage@2, A?: about@4, CCOMP: related@18)
+#   - SVC (S: matter@5, V: "is", C: differences@8)
+#   - SVA (V: related@18, S: energy@16, A?: how@15, A!: to@19)
+1	"This passage"	"talked"	"about matter how energy is related to matter the law of conservation of energy and mechanical energy"
+1	"This passage"	"talked"	"how energy is related to matter the law of conservation of energy and mechanical energy"
+1	"matter"	"is"	"the differences between physical and chemical changes"
+1	"energy"	"is related"	"to matter the law of conservation of energy and mechanical energy how"
+1	"energy"	"is related"	"to matter the law of conservation of energy and mechanical energy"
+# Line 2: Matter is what everything in the universe is made of, it has volume, shape, and mass.
+# Semantic graph: [has/VBZ
+#                  ccomp:[is/VBZ
+#                         nsubj:Matter/NNP
+#                         ccomp:[made/VBN
+#                                dep:what/WP
+#                                nsubjpass:[everything/NN
+#                                           prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                                auxpass:is/VBZ
+#                                prep:of/IN]]
+#                  nsubj:it/PRP
+#                  dobj:[volume/NN conj:shape/NN cc:and/CC conj:mass/NN]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@9)
+#   - SVA (V: made@9, S: everything@4, A!: of@10)
+#   - SVOC (V: has@13, S: it@12, CCOMP: is@2, O: volume@14)
+2	"Matter"	"is"	"what everything in the universe is made of"
+2	"everything in the universe"	"is made"	"of"
+2	"it"	"has"	"Matter is what everything in the universe is made of volume shape and mass"
+# Line 3: You can determine the different classifications of matter by its, physical, chemical, or energy structure.
+# Semantic graph: [determine/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dobj:[classifications/NNS
+#                        det:the/DT
+#                        amod:different/JJ
+#                        prep:[of/IN pobj:matter/NN]]
+#                  prep:[by/IN
+#                        pobj:[its/PRP$
+#                              conj:physical/JJ
+#                              conj:chemical/NN
+#                              cc:or/CC
+#                              conj:[structure/NN nn:energy/NN]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: determine@3, S: You@1, O: classifications@6, A?: by@9)
+3	"You"	"can determine"	"the different classifications of matter by its physical chemical or energy structure"
+3	"You"	"can determine"	"the different classifications of matter"
+# Line 4: Physical changes change the makeup or identity of matter, while chemical changes changes are based on abilities to change into a new kind of matter.
+# Semantic graph: [change/VBP
+#                  nsubj:[changes/NNS amod:Physical/JJ]
+#                  dobj:[makeup/NN
+#                        det:the/DT
+#                        cc:or/CC
+#                        conj:identity/NN
+#                        prep:[of/IN pobj:matter/NN]]
+#                  advcl:[based/VBN
+#                         mark:while/IN
+#                         nsubjpass:[changes/NNS amod:chemical/JJ nn:changes/NNS]
+#                         auxpass:are/VBP
+#                         prep:[on/IN pobj:abilities/NNS]
+#                         xcomp:[change/VB
+#                                aux:to/TO
+#                                prep:[into/IN
+#                                      pobj:[kind/NN
+#                                            det:a/DT
+#                                            amod:new/JJ
+#                                            prep:[of/IN pobj:matter/NN]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: change@3, S: changes@2, O: makeup@5, A?: based@16)
+#   - SVO (V: based@16, S: changes@14, A?: on@17, XCOMP: change@20)
+4	"Physical changes"	"change"	"the makeup or identity of matter while chemical changes changes are based on abilities to change into a new kind of matter"
+4	"Physical changes"	"change"	"the makeup or identity of matter"
+4	"chemical changes changes"	"are based"	"on abilities to change into a new kind of matter"
+4	"chemical changes changes"	"are based"	"to change into a new kind of matter"
+# Line 5: Matter has two types of energies.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[types/NNS num:two/CD prep:[of/IN pobj:energies/NNS]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: types@4)
+5	"Matter"	"has"	"two types of energies"
+# Line 6: Kinetic and potential.
+# Semantic graph: [Kinetic/NNP cc:and/CC conj:potential/NN]
+#   Detected 0 clause(s).
+# Line 7: The law of conservation of energy is that it can be transferred but not created or destroyed.
+# Semantic graph: [is/VBZ
+#                  nsubj:[law/NN
+#                         det:The/DT
+#                         prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#                  ccomp:[transferred/VBN
+#                         complm:that/IN
+#                         nsubjpass:it/PRP
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         cc:[not/RB cc:but/CC]
+#                         conj:created/VBN
+#                         cc:or/CC
+#                         conj:destroyed/VBN]]
+#   Detected 4 clause(s).
+#   - SVC (V: is@7, S: law@2, CCOMP: transferred@12)
+#   - SV (V: transferred@12, S: it@9)
+#   - SV (V: destroyed@17, S: it@9)
+#   - SV (V: created@15, S: it@9)
+7	"The law of conservation of energy"	"is"	"that it can be transferred but not created or destroyed"
+7	"it"	"can be transferred"
+7	"it"	"can be destroyed"
+7	"it"	"can be created"
+# Line 8: Last mechanical energy is what an object has in motion or position.
+# Semantic graph: [is/VBZ
+#                  nsubj:[energy/NN amod:Last/JJ amod:mechanical/JJ]
+#                  ccomp:[in/IN
+#                         dobj:what/WP
+#                         nsubj:[object/NN det:an/DT]
+#                         aux:has/VBZ
+#                         pobj:[motion/NN cc:or/CC conj:position/NN]]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@4, S: energy@3, CCOMP: in@9)
+#   - SVO (V: in@9, S: object@7, O: what@5, A?: motion@10)
+8	"Last mechanical energy"	"is"	"what an object has in motion or position"
+8	"an object"	"has in"	"what motion or position"
+8	"an object"	"has in"	"what"

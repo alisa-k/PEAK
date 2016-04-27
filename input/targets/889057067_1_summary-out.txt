@@ -1,0 +1,139 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what we're surround by.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[surround/VBG dep:what/WP nsubj:we/PRP aux:'re/VBP prep:by/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: surround@6)
+#   - SVA (V: surround@6, S: we@4, A!: by@7)
+1	"Matter"	"is"	"what we 're surround by"
+1	"we"	"'re surround"	"by"
+# Line 2: Everyday trees, rocks, buildings, etc.
+# Semantic graph: [trees/NNS amod:Everyday/JJ appos:rocks/NNS appos:buildings/NNS appos:etc./FW]
+#   Detected 3 clause(s).
+#   - SVC (S: trees@2, V: "is", C: rocks@4)
+#   - SVC (S: trees@2, V: "is", C: buildings@6)
+#   - SVC (S: trees@2, V: "is", C: etc.@8)
+2	"Everyday trees"	"is"	"rocks"
+2	"Everyday trees"	"is"	"buildings"
+2	"Everyday trees"	"is"	"etc."
+# Line 3: We observe them without noticing sometimes.
+# Semantic graph: [observe/VBP
+#                  nsubj:We/PRP
+#                  dobj:them/PRP
+#                  prep:[without/IN pcomp:[noticing/VBG advmod:sometimes/RB]]]
+#   Detected 1 clause(s).
+#   - SVO (V: observe@2, S: We@1, O: them@3, A?: without@4)
+3	"We"	"observe"	"them without noticing sometimes"
+3	"We"	"observe"	"them"
+# Line 4: They have an affect on us because we know what we get from them.
+# Semantic graph: [have/VBP
+#                  nsubj:They/PRP
+#                  dobj:[affect/NN det:an/DT prep:[on/IN pobj:us/PRP]]
+#                  advcl:[know/VBP
+#                         mark:because/IN
+#                         nsubj:we/PRP
+#                         ccomp:[get/VBP dobj:what/WP nsubj:we/PRP prep:[from/IN pobj:them/PRP]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: have@2, S: They@1, O: affect@4, A?: know@9)
+#   - SVO (V: know@9, S: we@8, CCOMP: get@12)
+#   - SVOA (V: get@12, S: we@11, O: what@10, A!: from@13)
+4	"They"	"have"	"an affect on us because we know what we get from them"
+4	"They"	"have"	"an affect on us"
+4	"we"	"know"	"what we get from them"
+4	"we"	"get"	"what from them"
+# Line 5: Like we receive oxygen from trees we use rocks as landscape stone for house and building are important place people go to for certain things.
+# Semantic graph: [use/VBP
+#                  prep:[Like/IN
+#                        pcomp:[receive/VB
+#                               nsubj:we/PRP
+#                               dobj:oxygen/NN
+#                               prep:[from/IN pobj:trees/NNS]]]
+#                  nsubj:we/PRP
+#                  dobj:rocks/NNS
+#                  advcl:[important/JJ
+#                         mark:as/IN
+#                         nsubj:[stone/NN
+#                                nn:landscape/NN
+#                                prep:[for/IN pobj:[house/NN cc:and/CC conj:building/NN]]]
+#                         cop:are/VBP
+#                         ccomp:[go/VBP
+#                                nsubj:[people/NNS nn:place/NN]
+#                                prep:to/TO
+#                                prep:[for/IN pobj:[things/NNS amod:certain/JJ]]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: receive@3, S: we@2, O: oxygen@4, A?: from@5)
+#   - SVO (V: use@8, S: we@7, A?: Like@1, O: rocks@9, A?: important@18)
+#   - SVC (C: important@18, V: are@17, S: stone@12, CCOMP: go@21)
+#   - SVA (V: go@21, S: people@20, A!: to@22, A?: for@23)
+5	"we"	"receive"	"oxygen from trees"
+5	"we"	"receive"	"oxygen"
+5	"we"	"use"	"rocks Like we receive oxygen from trees"
+5	"we"	"use"	"rocks as landscape stone for house and building are important place people go to for certain things"
+5	"we"	"use"	"rocks"
+5	"landscape stone for house and building"	"are"	"important place people go to for certain things"
+5	"place people"	"go"	"to for certain things"
+5	"place people"	"go"	"to"
+# Line 6: Like grocery store, dentist, post office, toy stores.
+# Semantic graph: [toy/VBZ
+#                  prep:[Like/IN pobj:[store/NN nn:grocery/NN]]
+#                  nsubj:[dentist/NN appos:[office/NN nn:post/NN]]
+#                  dobj:stores/NNS]
+#   Detected 2 clause(s).
+#   - SVC (S: dentist@5, V: "is", C: office@8)
+#   - SVO (V: toy@10, S: dentist@5, A?: Like@1, O: stores@11)
+6	"dentist"	"is"	"post office"
+6	"dentist"	"toy"	"stores Like grocery store"
+6	"dentist"	"toy"	"stores"
+# Line 7: Matter is also a substance that are people, jobs like at retail stores anything that is flammable like propane tanks.
+# Semantic graph: [substance/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  advmod:also/RB
+#                  det:a/DT
+#                  rcmod:[people/NNS
+#                         nsubj:that/WDT
+#                         cop:are/VBP
+#                         appos:[jobs/NNS
+#                                prep:[at/IN
+#                                      dep:like/JJ
+#                                      pobj:[anything/NN
+#                                            amod:retail/JJ
+#                                            nn:stores/NNS
+#                                            rcmod:[flammable/JJ
+#                                                   nsubj:that/WDT
+#                                                   cop:is/VBZ
+#                                                   prep:[like/IN pobj:[tanks/NNS nn:propane/NN]]]]]]]]
+#   Detected 4 clause(s).
+#   - SVC (C: substance@5, V: is@2, S: Matter@1, A?: also@3)
+#   - SVC (C: people@8, V: are@7, S: substance@5)
+#   - SVC (S: people@8, V: "is", C: jobs@10)
+#   - SVC (C: flammable@18, V: is@17, S: anything@15, A?: like@19)
+7	"Matter"	"is"	"a substance also"
+7	"Matter"	"is"	"a substance"
+7	"a substance"	"are"	"people"
+7	"that are people"	"is"	"jobs like at retail stores anything"
+7	"retail stores anything"	"is"	"flammable like propane tanks"
+7	"retail stores anything"	"is"	"flammable"

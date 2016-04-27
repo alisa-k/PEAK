@@ -1,0 +1,111 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Matter is the stuff that all objects in the world are made up of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[objects/NNS
+#                                    det:all/DT
+#                                    prep:[in/IN pobj:[world/NN det:the/DT]]]
+#                         auxpass:are/VBP
+#                         prt:up/RP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@12)
+#   - SVA (V: made@12, S: objects@7, A!: of@14)
+1	"Matter"	"is"	"the stuff that all objects in the world are made up of"
+1	"all objects in the world"	"are made up"	"of"
+# Line 2 (id 2): You can be sure that everything in the world has matter.
+# Semantic graph: [sure/JJ
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  cop:be/VB
+#                  ccomp:[has/VBZ
+#                         complm:that/IN
+#                         nsubj:[everything/NN prep:[in/IN pobj:[world/NN det:the/DT]]]
+#                         dobj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVC (C: sure@4, V: be@3, S: You@1, CCOMP: has@10)
+#   - SVO (V: has@10, S: everything@6, O: matter@11)
+2	"You"	"can be"	"sure that everything in the world has matter"
+2	"everything in the world"	"has"	"matter"
+# Line 3 (id 3): Even water which as no definite shape or a gas with no definite shape or volume has matter.
+# Semantic graph: [water/NN
+#                  dep:Even/RB
+#                  rcmod:[has/VBZ
+#                         nsubj:which/WDT
+#                         prep:[as/IN
+#                               pobj:[shape/NN
+#                                     det:no/DT
+#                                     amod:definite/JJ
+#                                     cc:or/CC
+#                                     conj:[gas/NN
+#                                           det:a/DT
+#                                           prep:[with/IN
+#                                                 pobj:[shape/NN
+#                                                       det:no/DT
+#                                                       amod:definite/JJ
+#                                                       cc:or/CC
+#                                                       conj:volume/NN]]]]]
+#                         dobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@17, S: water@2, A?: as@4, O: matter@18)
+3	"Even water"	"has"	"matter as no definite shape or a gas with no definite shape or volume"
+3	"Even water"	"has"	"matter"
+# Line 4 (id 4): Without matter, the world would literally fall apart matter is detected by both mass and volume.
+# Semantic graph: [fall/VB
+#                  prep:[Without/IN pobj:matter/NN]
+#                  nsubj:[world/NN det:the/DT]
+#                  aux:would/MD
+#                  advmod:literally/RB
+#                  prt:apart/RP
+#                  dobj:[matter/NN
+#                        rcmod:[detected/VBN
+#                               auxpass:is/VBZ
+#                               prep:[by/IN
+#                                     pobj:[mass/NN preconj:both/DT cc:and/CC conj:volume/NN]]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: fall@8, S: world@5, A?: Without@1, A?: literally@7, O: matter@10)
+4	"the world"	"would fall apart"	"matter Without matter"
+4	"the world"	"would fall apart"	"matter literally"
+4	"the world"	"would fall apart"	"matter"
+# Line 5 (id 5): That is how you would know it is matter.
+# Semantic graph: [is/VBZ
+#                  nsubj:That/DT
+#                  ccomp:[know/VB
+#                         advmod:how/WRB
+#                         nsubj:you/PRP
+#                         aux:would/MD
+#                         ccomp:[matter/NN nsubj:it/PRP cop:is/VBZ]]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@2, S: That@1, CCOMP: know@6)
+#   - SVO (V: know@6, S: you@4, A?: how@3, CCOMP: matter@9)
+#   - SVC (C: matter@9, V: is@8, S: it@7)
+5	"That"	"is"	"how you would know it is matter"
+5	"you"	"would know"	"it is matter how"
+5	"you"	"would know"	"it is matter"
+5	"it"	"is"	"matter"

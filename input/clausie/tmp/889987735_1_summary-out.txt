@@ -1,0 +1,198 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Everything we see around us is made up of matter.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[Everything/NN
+#                             rcmod:[see/VBP nsubj:we/PRP prt:around/RP dobj:us/PRP]]
+#                  auxpass:is/VBZ
+#                  prt:up/RP
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVOO (V: see@3, S: we@2, O: us@5, IO: Everything@1)
+#   - SVA (V: made@7, S: Everything@1, A!: of@9)
+1	"we"	"see around"	"us Everything"
+1	"Everything"	"is made up"	"of matter"
+# Line 2: From a simple bicycle to a dust particle, they both have volume and mass.
+# Semantic graph: [have/VBP
+#                  prep:[From/IN
+#                        pobj:[bicycle/NN
+#                              det:a/DT
+#                              amod:simple/JJ
+#                              prep:[to/TO pobj:[particle/NN det:a/DT nn:dust/NN]]]]
+#                  nsubj:they/PRP
+#                  dep:both/DT
+#                  dobj:[volume/NN cc:and/CC conj:mass/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: have@12, S: they@10, A?: From@1, O: volume@13)
+2	"they"	"have"	"volume and mass From a simple bicycle to a dust particle"
+2	"they"	"have"	"volume and mass"
+# Line 3: All matter has different properties that distinguish themselves from one another.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[properties/NNS
+#                        amod:different/JJ
+#                        rcmod:[distinguish/VB
+#                               nsubj:that/WDT
+#                               dobj:themselves/PRP
+#                               prep:[from/IN pobj:[one/CD dep:another/DT]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: properties@5)
+#   - SVO (V: distinguish@7, S: properties@5, O: themselves@8, A?: from@9)
+3	"All matter"	"has"	"different properties"
+3	"different properties"	"distinguish"	"themselves from one another"
+3	"different properties"	"distinguish"	"themselves"
+# Line 4: These properties may either be physical or chemical properties.
+# Semantic graph: [properties/NNS
+#                  nsubj:[properties/NNS det:These/DT]
+#                  aux:may/MD
+#                  advmod:either/RB
+#                  cop:be/VB
+#                  amod:[physical/NN cc:or/CC conj:chemical/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: properties@9, V: be@5, S: properties@2, A?: either@4)
+4	"These properties"	"may be"	"physical or chemical properties either"
+4	"These properties"	"may be"	"physical or chemical properties"
+# Line 5: Physical properties is when the identity of the object doesn't change.
+# Semantic graph: [is/VBZ
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  advcl:[change/VB
+#                         advmod:when/WRB
+#                         nsubj:[identity/NN det:the/DT prep:[of/IN pobj:[object/NN det:the/DT]]]
+#                         aux:does/VBZ
+#                         neg:n't/RB]]
+#   Detected 2 clause(s).
+#   - SVA (V: is@3, S: properties@2, A!: change@12)
+#   - SV (V: change@12, S: identity@6, A?: when@4)
+5	"Physical properties"	"is"	"when the identity of the object does n't change"
+5	"the identity of the object"	"does n't change"	"when"
+5	"the identity of the object"	"does n't change"
+# Line 6: While, a chemical property is when the object changes its appearance into a new kind of matter.
+# Semantic graph: [changes/VBZ
+#                  advcl:[when/WRB
+#                         mark:While/IN
+#                         nsubj:[property/NN det:a/DT nn:chemical/NN]
+#                         cop:is/VBZ]
+#                  nsubj:[object/NN det:the/DT]
+#                  dobj:[appearance/NN poss:its/PRP$]
+#                  prep:[into/IN pobj:[kind/NN det:a/DT amod:new/JJ prep:[of/IN pobj:matter/NN]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: when@7, V: is@6, S: property@5)
+#   - SVO (V: changes@10, S: object@9, A?: when@7, O: appearance@12, A?: into@13)
+#   - SVO (S: its@11, V: "has", O: appearance@12)
+6	"a chemical property"	"is"	"when"
+6	"the object"	"changes"	"its appearance While a chemical property is when"
+6	"the object"	"changes"	"its appearance into a new kind of matter"
+6	"the object"	"changes"	"its appearance"
+6	"its"	"has"	"appearance"
+# Line 7: There are two types of changes involved in matter.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[types/NNS
+#                         num:two/CD
+#                         prep:[of/IN
+#                               pobj:[changes/NNS
+#                                     partmod:[involved/VBN prep:[in/IN pobj:matter/NN]]]]]]
+#   Detected 2 clause(s).
+#   - EXISTENTIAL (V: are@2, S: types@4)
+#   - SVA (V: "be involved", S: changes@6, A!: in@8)
+7	"two types of changes involved in matter"	"There are"
+7	"changes"	"be involved"	"in matter"
+# Line 8: The first is a physical change which is only a change in size and shape.
+# Semantic graph: [change/NN
+#                  nsubj:[first/JJ det:The/DT]
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  amod:physical/JJ
+#                  rcmod:[change/NN
+#                         nsubj:which/WDT
+#                         cop:is/VBZ
+#                         advmod:only/RB
+#                         det:a/DT
+#                         prep:[in/IN pobj:[size/NN cc:and/CC conj:shape/NN]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: change@6, V: is@3, S: first@2)
+#   - SVC (C: change@11, V: is@8, S: change@6, A?: only@9, A?: in@12)
+8	"The first"	"is"	"a physical change"
+8	"a physical change"	"is"	"a change only"
+8	"a physical change"	"is"	"a change in size and shape"
+8	"a physical change"	"is"	"a change"
+# Line 9: However, a chemical change is where new substances are produced.
+# Semantic graph: [is/VBZ
+#                  advmod:However/RB
+#                  nsubj:[change/NN det:a/DT nn:chemical/NN]
+#                  advcl:[produced/VBN
+#                         advmod:where/WRB
+#                         nsubjpass:[substances/NNS amod:new/JJ]
+#                         auxpass:are/VBP]]
+#   Detected 2 clause(s).
+#   - SVA (V: is@6, S: change@5, A?: However@1, A!: produced@11)
+#   - SV (V: produced@11, S: substances@9, A?: where@7)
+9	"a chemical change"	"is"	"where new substances are produced However"
+9	"a chemical change"	"is"	"where new substances are produced"
+9	"new substances"	"are produced"	"where"
+9	"new substances"	"are produced"
+# Line 10: Another property that is found in matter is energy.
+# Semantic graph: [energy/NN
+#                  nsubj:[property/NN
+#                         det:Another/DT
+#                         rcmod:[found/VBN
+#                                nsubjpass:that/WDT
+#                                auxpass:is/VBZ
+#                                prep:[in/IN pobj:matter/NN]]]
+#                  cop:is/VBZ]
+#   Detected 2 clause(s).
+#   - SVA (V: found@5, S: property@2, A!: in@6)
+#   - SVC (C: energy@9, V: is@8, S: property@2)
+10	"Another property"	"is found"	"in matter"
+10	"Another property"	"is"	"energy"
+# Line 11: The three different forms of energy, ar emechanical, kinetic, and potential.
+# Semantic graph: [ar/VBP
+#                  nsubj:[forms/NNS
+#                         det:The/DT
+#                         num:three/CD
+#                         amod:different/JJ
+#                         prep:[of/IN pobj:energy/NN]]
+#                  dobj:[emechanical/NN conj:kinetic/NN cc:and/CC conj:potential/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: ar@8, S: forms@4, O: emechanical@9)
+11	"The three different forms of energy"	"ar"	"emechanical kinetic and potential"
+# Line 12: All three can be transferred but they are not created or destroyed.
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:[three/CD det:All/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:but/CC
+#                  conj:[created/VBN
+#                        nsubjpass:they/PRP
+#                        auxpass:are/VBP
+#                        neg:not/RB
+#                        cc:or/CC
+#                        conj:destroyed/VBN]]
+#   Detected 3 clause(s).
+#   - SV (V: transferred@5, S: three@2)
+#   - SV (V: created@10, S: they@7)
+#   - SV (V: destroyed@12, S: they@7)
+12	"All three"	"can be transferred"
+12	"they"	"are not created"
+12	"they"	"are not destroyed"

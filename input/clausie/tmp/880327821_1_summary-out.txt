@@ -1,0 +1,82 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: I think the important information in the passage are, matter takes space and contains a certain amount of material.
+# Semantic graph: [think/VBP
+#                  nsubj:I/PRP
+#                  ccomp:[are/VBP
+#                         nsubj:[information/NN
+#                                det:the/DT
+#                                amod:important/JJ
+#                                prep:[in/IN pobj:[passage/NN det:the/DT]]]
+#                         conj:[takes/VBZ advmod:matter/NN dobj:space/NN]
+#                         cc:and/CC
+#                         conj:[contains/VBZ
+#                               dobj:[amount/NN
+#                                     det:a/DT
+#                                     amod:certain/JJ
+#                                     prep:[of/IN pobj:material/NN]]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: think@2, S: I@1, CCOMP: are@9)
+#   - SV (V: are@9, S: information@5)
+#   - SVO (V: takes@12, S: information@5, A?: matter@11, O: space@13)
+#   - SVO (V: contains@15, S: information@5, O: amount@18)
+1	"I"	"think"	"the important information in the passage are matter takes space and contains a certain amount of material"
+1	"the important information in the passage"	"are"
+1	"the important information in the passage"	"takes"	"space matter"
+1	"the important information in the passage"	"takes"	"space"
+1	"the important information in the passage"	"contains"	"a certain amount of material"
+# Line 2: Another important information in the passage is matter can be detected and measured.
+# Semantic graph: [matter/NN
+#                  nsubj:[information/NN
+#                         det:Another/DT
+#                         amod:important/JJ
+#                         prep:[in/IN pobj:[passage/NN det:the/DT]]]
+#                  cop:is/VBZ
+#                  rcmod:[detected/VBN aux:can/MD auxpass:be/VB cc:and/CC conj:measured/VBN]]
+#   Detected 1 clause(s).
+#   - SVC (C: matter@8, V: is@7, S: information@3)
+2	"Another important information in the passage"	"is"	"matter"
+# Line 3: The last thing in the passage that I think is important is matter as both physical and chemical properties.
+# Semantic graph: [matter/NN
+#                  nsubj:[thing/NN
+#                         det:The/DT
+#                         amod:last/JJ
+#                         prep:[in/IN
+#                               pobj:[passage/NN
+#                                     det:the/DT
+#                                     dep:[think/VBP
+#                                          complm:that/IN
+#                                          nsubj:I/PRP
+#                                          ccomp:[important/JJ cop:is/VBZ]]]]]
+#                  cop:is/VBZ
+#                  prep:[as/IN
+#                        pobj:[properties/NNS
+#                              det:both/DT
+#                              amod:[physical/NN cc:and/CC conj:chemical/NN]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: think@9, S: I@8, CCOMP: important@11)
+#   - SVC (C: matter@13, V: is@12, S: thing@3, A?: as@14)
+3	"I"	"think"	"is important"
+3	"The last thing in the passage that I think is important"	"is"	"matter as both physical and chemical properties"
+3	"The last thing in the passage that I think is important"	"is"	"matter"

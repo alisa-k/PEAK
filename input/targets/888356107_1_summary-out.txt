@@ -1,0 +1,141 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the "stuff" that thing are made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  dep:[made/VBN complm:that/IN nsubjpass:thing/NN auxpass:are/VBP prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@5, V: is@2, S: Matter@1)
+#   - SVA (V: made@10, S: thing@8, A!: of@11)
+1	"Matter"	"is"	"the stuff that thing are made of"
+1	"thing"	"are made"	"of"
+# Line 2: It can be measured and detected, because all matter has mass or volume.
+# Semantic graph: [measured/VBN
+#                  nsubjpass:It/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:detected/VBN
+#                  advcl:[has/VBZ
+#                         mark:because/IN
+#                         nsubj:[matter/NN det:all/DT]
+#                         dobj:[mass/NN cc:or/CC conj:volume/NN]]]
+#   Detected 3 clause(s).
+#   - SVA (V: measured@4, S: It@1, A!: has@11)
+#   - SVA (V: detected@6, S: It@1, A!: has@11)
+#   - SVO (V: has@11, S: matter@10, O: mass@12)
+2	"It"	"can be measured"	"because all matter has mass or volume"
+2	"It"	"can be detected"	"because all matter has mass or volume"
+2	"all matter"	"has"	"mass or volume"
+# Line 3: Matter is classified by its properties, for example physical properties and chemical properties.
+# Semantic graph: [classified/VBN
+#                  nsubjpass:Matter/NNP
+#                  auxpass:is/VBZ
+#                  prep:[by/IN pobj:[properties/NNS poss:its/PRP$]]
+#                  prep:[for/IN
+#                        pobj:[properties/NNS
+#                              nn:example/NN
+#                              amod:physical/JJ
+#                              cc:and/CC
+#                              conj:[properties/NNS nn:chemical/NN]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: classified@3, S: Matter@1, A!: by@4, A?: for@8)
+#   - SVO (S: its@5, V: "has", O: properties@6)
+3	"Matter"	"is classified"	"by its properties for example physical properties and chemical properties"
+3	"Matter"	"is classified"	"by its properties"
+3	"its"	"has"	"properties"
+# Line 4: A physical change is when something has changed its size, shape, form but not chemically it is still the same substance.
+# Semantic graph: [is/VBZ
+#                  nsubj:[change/NN det:A/DT amod:physical/JJ]
+#                  advcl:[changed/VBN
+#                         advmod:when/WRB
+#                         nsubj:something/NN
+#                         aux:has/VBZ
+#                         dobj:[size/NN poss:its/PRP$ appos:[shape/NN appos:form/NN]]]
+#                  cc:but/CC
+#                  conj:[substance/NN
+#                        dep:[not/RB dep:chemically/RB]
+#                        nsubj:it/PRP
+#                        cop:is/VBZ
+#                        advmod:still/RB
+#                        det:the/DT
+#                        amod:same/JJ]]
+#   Detected 6 clause(s).
+#   - SVA (V: is@4, S: change@3, A!: changed@8)
+#   - SVO (V: changed@8, S: something@6, A?: when@5, O: size@10)
+#   - SVO (S: its@9, V: "has", O: size@10)
+#   - SVC (S: size@10, V: "is", C: shape@12)
+#   - SVC (S: shape@12, V: "is", C: form@14)
+#   - SVC (C: substance@23, V: is@19, S: it@18, A?: still@20)
+4	"A physical change"	"is"	"when something has changed its size"
+4	"something"	"has changed"	"its size when"
+4	"something"	"has changed"	"its size"
+4	"its"	"has"	"size"
+4	"its size"	"is"	"shape"
+4	"shape"	"is"	"form"
+4	"it"	"is"	"not chemically the same substance still"
+4	"it"	"is"	"not chemically the same substance"
+# Line 5: A chemical change has changed its properties, it is no longer what it was before.
+# Semantic graph: [is/VBZ
+#                  ccomp:[changed/VBN
+#                         nsubj:[change/NN det:A/DT nn:chemical/NN]
+#                         aux:has/VBZ
+#                         dobj:[properties/NNS poss:its/PRP$]]
+#                  nsubj:it/PRP
+#                  advmod:[longer/RB
+#                          advmod:no/RB
+#                          dep:[was/VBD dobj:what/WP nsubj:it/PRP advmod:before/RB]]]
+#   Detected 4 clause(s).
+#   - SVO (V: changed@5, S: change@3, O: properties@7)
+#   - SVO (S: its@6, V: "has", O: properties@7)
+#   - SVC (V: is@10, S: it@9, CCOMP: changed@5, A?: longer@12)
+#   - SVO (V: was@15, S: it@14, O: what@13, A?: before@16)
+5	"A chemical change"	"has changed"	"its properties"
+5	"its"	"has"	"properties"
+5	"it"	"is"	"A chemical change has changed its properties no longer what it was before"
+5	"it"	"is"	"A chemical change has changed its properties"
+5	"it"	"was"	"what before"
+5	"it"	"was"	"what"
+# Line 6: Energy is a property of matter, it is not created nor destroyed.
+# Semantic graph: [created/VBN
+#                  ccomp:[property/NN
+#                         nsubj:Energy/NNP
+#                         cop:is/VBZ
+#                         det:a/DT
+#                         prep:[of/IN pobj:matter/NN]]
+#                  nsubjpass:it/PRP
+#                  auxpass:is/VBZ
+#                  neg:not/RB
+#                  cc:nor/CC
+#                  conj:destroyed/VBN]
+#   Detected 3 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+#   - SVO (V: created@11, S: it@8, CCOMP: property@4)
+#   - SVO (V: destroyed@13, S: it@8, CCOMP: property@4)
+6	"Energy"	"is"	"a property of matter"
+6	"Energy"	"is"	"a property"
+6	"it"	"is not created"	"Energy is a property of matter"
+6	"it"	"is not destroyed"	"Energy is a property of matter"

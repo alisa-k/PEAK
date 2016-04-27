@@ -1,0 +1,144 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is everywhere, everything contains matter.
+# Semantic graph: [contains/VBZ
+#                  ccomp:[is/VBZ nsubj:Matter/NNP advmod:everywhere/RB]
+#                  nsubj:everything/NN
+#                  dobj:matter/NN]
+#   Detected 2 clause(s).
+#   - SVA (V: is@2, S: Matter@1, A!: everywhere@3)
+#   - SVOC (V: contains@6, S: everything@5, CCOMP: is@2, O: matter@7)
+1	"Matter"	"is"	"everywhere"
+1	"everything"	"contains"	"Matter is everywhere matter"
+# Line 2: There are two different properties which are physical and chemical.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[properties/NNS
+#                         num:two/CD
+#                         amod:different/JJ
+#                         rcmod:[physical/JJ
+#                                nsubj:which/WDT
+#                                cop:are/VBP
+#                                cc:and/CC
+#                                conj:chemical/JJ]]]
+#   Detected 2 clause(s).
+#   - EXISTENTIAL (V: are@2, S: properties@5)
+#   - SVC (C: physical@8, V: are@7, S: properties@5)
+2	"two different properties"	"There are"
+2	"two different properties"	"are"	"physical and chemical"
+# Line 3: Physical can be observed without changing the identity or matter.
+# Semantic graph: [observed/VBN
+#                  nsubjpass:Physical/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[without/IN
+#                        pcomp:[changing/VBG
+#                               dobj:[identity/NN det:the/DT cc:or/CC conj:matter/NN]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: observed@4, S: Physical@1, A!: without@5)
+3	"Physical"	"can be observed"	"without changing the identity or matter"
+# Line 4: Chemical properties describes matter that can change into a new kind of matter with different properties.
+# Semantic graph: [describes/VBZ
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  dobj:[matter/NN
+#                        rcmod:[change/VB
+#                               nsubj:that/WDT
+#                               aux:can/MD
+#                               prep:[into/IN
+#                                     pobj:[kind/NN
+#                                           det:a/DT
+#                                           amod:new/JJ
+#                                           prep:[of/IN pobj:matter/NN]]]
+#                               prep:[with/IN pobj:[properties/NNS amod:different/JJ]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: describes@3, S: properties@2, O: matter@4)
+#   - SVA (V: change@7, S: matter@4, A!: into@8, A?: with@14)
+4	"Chemical properties"	"describes"	"matter"
+4	"matter"	"can change"	"into a new kind of matter with different properties"
+4	"matter"	"can change"	"into a new kind of matter"
+# Line 5: Energy is also a property of matter.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  advmod:also/RB
+#                  det:a/DT
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@5, V: is@2, S: Energy@1, A?: also@3, A?: of@6)
+5	"Energy"	"is"	"a property also"
+5	"Energy"	"is"	"a property of matter"
+5	"Energy"	"is"	"a property"
+# Line 6: There are three types of energy: mechanical, kinetic and potential.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[types/NNS
+#                         num:three/CD
+#                         prep:[of/IN pobj:energy/NN]
+#                         dep:mechanical/JJ
+#                         amod:[kinetic/JJ cc:and/CC conj:potential/JJ]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: types@4)
+6	"three types of energy mechanical kinetic and potential"	"There are"
+# Line 7: Mechanical energy is what energy an object has because of motion.
+# Semantic graph: [is/VBZ
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  ccomp:[of/IN
+#                         dobj:[energy/NN det:what/WP]
+#                         nsubj:[object/NN det:an/DT]
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:motion/NN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@3, S: energy@2, CCOMP: of@10)
+#   - SVO (V: of@10, S: object@7, O: energy@5, A?: because@9, A?: motion@11)
+7	"Mechanical energy"	"is"	"what energy an object has because of motion"
+7	"an object"	"has of"	"what energy because"
+7	"an object"	"has of"	"what energy motion"
+7	"an object"	"has of"	"what energy"
+# Line 8: Kinetic energy is the energy an object has because it ismoving.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Kinetic/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[has/VBZ
+#                         nsubj:[object/NN det:an/DT]
+#                         advcl:[ismoving/VBD mark:because/IN nsubj:it/PRP]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2)
+#   - SVO (V: has@8, S: object@7, A?: ismoving@11, O: energy@5)
+#   - SV (V: ismoving@11, S: it@10)
+8	"Kinetic energy"	"is"	"the energy"
+8	"an object"	"has"	"because it ismoving the energy"
+8	"an object"	"has"	"the energy"
+8	"it"	"ismoving"
+# Line 9: Potential energy is the energy because of an objects position.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Potential/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN advmod:because/RB pobj:[position/NN det:an/DT nn:objects/NNS]]]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2, A?: of@7)
+9	"Potential energy"	"is"	"the energy because of an objects position"
+9	"Potential energy"	"is"	"the energy"

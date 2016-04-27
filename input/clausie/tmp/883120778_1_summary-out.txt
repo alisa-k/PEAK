@@ -1,0 +1,242 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: The passage I have just read focuses on matter and other element that have to do with matter.
+# Semantic graph: [focuses/VBZ
+#                  nsubj:[passage/NN
+#                         det:The/DT
+#                         rcmod:[read/VBN nsubj:I/PRP aux:have/VBP advmod:just/RB]]
+#                  prep:[on/IN
+#                        pobj:[element/NN
+#                              nn:[matter/NN cc:and/CC conj:other/JJ]
+#                              rcmod:[have/VBP
+#                                     nsubj:that/WDT
+#                                     xcomp:[do/VB aux:to/TO prep:[with/IN pobj:matter/NN]]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: read@6, S: I@3, A?: just@5, O: passage@2)
+#   - SVA (V: focuses@7, S: passage@2, A!: on@8)
+#   - SVO (V: have@14, S: element@12, XCOMP: do@16)
+1	"I"	"have read"	"The passage just"
+1	"I"	"have read"	"The passage"
+1	"The passage"	"focuses"	"on matter and other element"
+1	"matter and other element"	"have"	"to do with matter"
+# Line 2: Matter is substances of which any physical object is made.
+# Semantic graph: [substances/NNS
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  rcmod:[made/VBN
+#                         rel:[of/IN pobj:which/WDT]
+#                         nsubjpass:[object/NN det:any/DT amod:physical/JJ]
+#                         auxpass:is/VBZ]]
+#   Detected 2 clause(s).
+#   - SVC (C: substances@3, V: is@2, S: Matter@1)
+#   - SVA (V: made@10, S: object@8, S: of@4)
+2	"Matter"	"is"	"substances"
+2	"any physical object"	"is made"	"of substances"
+# Line 3: In other words matter is what everything is made of.
+# Semantic graph: [is/VBZ
+#                  prep:[In/IN pobj:[words/NNS amod:other/JJ]]
+#                  nsubj:matter/NN
+#                  ccomp:[made/VBN dep:what/WP nsubjpass:everything/NN auxpass:is/VBZ prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@5, S: matter@4, A?: In@1, CCOMP: made@9)
+#   - SVA (V: made@9, S: everything@7, A!: of@10)
+3	"matter"	"is"	"what everything is made of In other words"
+3	"matter"	"is"	"what everything is made of"
+3	"everything"	"is made"	"of"
+# Line 4: Matter can be measured and detected because it contains a certain amount of material which takes up space matter can be classified in many ways.
+# Semantic graph: [measured/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:detected/VBN
+#                  advcl:[contains/VBZ
+#                         mark:because/IN
+#                         nsubj:it/PRP
+#                         dobj:[amount/NN
+#                               det:a/DT
+#                               amod:certain/JJ
+#                               prep:[of/IN pobj:material/NN]
+#                               rcmod:[takes/VBZ
+#                                      nsubj:which/WDT
+#                                      prt:up/RP
+#                                      ccomp:[classified/VBN
+#                                             nsubjpass:[matter/NN nn:space/NN]
+#                                             aux:can/MD
+#                                             auxpass:be/VB
+#                                             prep:[in/IN pobj:[ways/NNS amod:many/JJ]]]]]]]
+#   Detected 5 clause(s).
+#   - SVA (V: measured@4, S: Matter@1, A!: contains@9)
+#   - SVA (V: detected@6, S: Matter@1, A!: contains@9)
+#   - SVO (V: contains@9, S: it@8, O: amount@12)
+#   - SVO (V: takes@16, S: amount@12, CCOMP: classified@22)
+#   - SVA (V: classified@22, S: matter@19, A!: in@23)
+4	"Matter"	"can be measured"	"because it contains a certain amount of material"
+4	"Matter"	"can be detected"	"because it contains a certain amount of material"
+4	"it"	"contains"	"a certain amount of material"
+4	"a certain amount of material"	"takes up"	"space matter can be classified in many ways"
+4	"space matter"	"can be classified"	"in many ways"
+# Line 5: There is many ways to classify matter.
+# Semantic graph: [is/VBZ
+#                  expl:There/EX
+#                  nsubj:[ways/NNS amod:many/JJ infmod:[classify/VB aux:to/TO dobj:matter/NN]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: is@2, S: ways@4)
+5	"many ways to classify matter"	"There is"
+# Line 6: An example is a cork and clay.
+# Semantic graph: [cork/NN
+#                  nsubj:[example/NN det:An/DT]
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  cc:and/CC
+#                  conj:clay/NN]
+#   Detected 1 clause(s).
+#   - SVC (C: cork@5, V: is@3, S: example@2)
+6	"An example"	"is"	"a cork and clay"
+# Line 7: If you drop both objects into water the cork will float, but the clay on the otherhand would.
+# Semantic graph: [float/VB
+#                  advcl:[drop/VB
+#                         mark:If/IN
+#                         nsubj:you/PRP
+#                         dobj:[objects/NNS det:both/DT]
+#                         prep:[into/IN pobj:water/NN]]
+#                  nsubj:[cork/NN det:the/DT]
+#                  aux:will/MD
+#                  cc:but/CC
+#                  conj:[would/MD
+#                        nsubj:[clay/NN det:the/DT prep:[on/IN pobj:[otherhand/NN det:the/DT]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: drop@3, S: you@2, O: objects@5, A?: into@6)
+#   - SV (V: float@11, S: cork@9, A?: drop@3)
+#   - SV (V: would@19, S: clay@15)
+7	"you"	"drop"	"both objects into water"
+7	"you"	"drop"	"both objects"
+7	"the cork"	"will float"	"If you drop both objects into water"
+7	"the cork"	"will float"
+7	"the clay on the otherhand"	"would"
+# Line 8: That is one way you can classify matter.
+# Semantic graph: [way/NN
+#                  nsubj:That/DT
+#                  cop:is/VBZ
+#                  num:one/CD
+#                  rcmod:[classify/VB nsubj:you/PRP aux:can/MD dobj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVC (C: way@4, V: is@2, S: That@1)
+#   - SVOO (V: classify@7, S: you@5, O: matter@8, IO: way@4)
+8	"That"	"is"	"one way"
+8	"you"	"can classify"	"matter one way"
+# Line 9: Every object can have a physical or chemical change.
+# Semantic graph: [have/VB
+#                  nsubj:[object/NN det:Every/DT]
+#                  aux:can/MD
+#                  dobj:[change/NN det:a/DT amod:[physical/NN cc:or/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: have@4, S: object@2, O: change@9)
+9	"Every object"	"can have"	"a physical or chemical change"
+# Line 10: For example, if you break a pencil in two you change the size and shape but not what is made of.
+# Semantic graph: [change/VBP
+#                  prep:[For/IN pobj:example/NN]
+#                  advcl:[break/VBP
+#                         mark:if/IN
+#                         nsubj:you/PRP
+#                         dobj:[pencil/NN det:a/DT prep:[in/IN pobj:two/CD]]]
+#                  nsubj:you/PRP
+#                  dobj:[size/NN det:the/DT cc:and/CC conj:shape/NN]
+#                  dep:[not/RB
+#                       dep:but/CC
+#                       dep:[made/VBN nsubjpass:what/WP auxpass:is/VBZ prep:of/IN]]]
+#   Detected 3 clause(s).
+#   - SVO (V: break@6, S: you@5, O: pencil@8)
+#   - SVO (V: change@12, S: you@11, A?: For@1, A?: break@6, O: size@14)
+#   - SVA (V: made@21, S: what@19, A!: of@22)
+10	"you"	"break"	"a pencil in two"
+10	"you"	"change"	"the size and shape For example"
+10	"you"	"change"	"the size and shape if you break a pencil in two"
+10	"you"	"change"	"the size and shape"
+10	"what"	"is made"	"of"
+# Line 11: A chemical change is if you burn paper, the paper turnsinto ashes, and smoke it is no longer paper.
+# Semantic graph: [ashes/VBZ
+#                  ccomp:[is/VBZ
+#                         nsubj:[change/NN det:A/DT nn:chemical/NN]
+#                         advcl:[burn/VBP mark:if/IN nsubj:you/PRP dobj:paper/NN]]
+#                  nsubj:[turnsinto/NN det:the/DT nn:paper/NN]
+#                  cc:and/CC
+#                  conj:[smoke/VBP
+#                        ccomp:[paper/NN nsubj:it/PRP cop:is/VBZ det:no/DT amod:longer/JJR]]]
+#   Detected 5 clause(s).
+#   - SVA (V: is@4, S: change@3, A!: burn@7)
+#   - SVO (V: burn@7, S: you@6, O: paper@8)
+#   - SVO (V: ashes@13, S: turnsinto@12, CCOMP: is@4)
+#   - SVOC (V: smoke@16, S: turnsinto@12, CCOMP: is@4, CCOMP: paper@21)
+#   - SVC (C: paper@21, V: is@18, S: it@17)
+11	"A chemical change"	"is"	"if you burn paper"
+11	"you"	"burn"	"paper"
+11	"the paper turnsinto"	"ashes"	"A chemical change is if you burn paper"
+11	"the paper turnsinto"	"smoke"	"A chemical change is if you burn paper it is no longer paper"
+11	"it"	"is"	"no longer paper"
+# Line 12: Energy is heated to matter, because matter contains energy and is a property of matter.
+# Semantic graph: [heated/JJ
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  xcomp:[matter/VB aux:to/TO]
+#                  advcl:[contains/VBZ
+#                         mark:because/IN
+#                         nsubj:matter/NN
+#                         dobj:energy/NN
+#                         cc:and/CC
+#                         conj:[property/NN cop:is/VBZ det:a/DT prep:[of/IN pobj:matter/NN]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: heated@3, V: is@2, S: Energy@1, XCOMP: matter@5, A?: contains@9)
+#   - SVO (V: contains@9, S: matter@8, O: energy@10)
+#   - SVC (C: property@14, V: is@12, S: matter@8, A?: of@15)
+12	"Energy"	"is"	"heated to matter because matter contains energy and is a property of matter"
+12	"Energy"	"is"	"heated to matter"
+12	"matter"	"contains"	"energy"
+12	"matter"	"is"	"a property of matter"
+12	"matter"	"is"	"a property"
+# Line 13: Matter contains certain amount of material that takes up space which can be measured and detected.
+# Semantic graph: [contains/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[amount/NN
+#                        amod:certain/JJ
+#                        prep:[of/IN pobj:material/NN]
+#                        rcmod:[takes/VBZ
+#                               nsubj:that/WDT
+#                               prt:up/RP
+#                               dobj:[space/NN
+#                                     rcmod:[measured/VBN
+#                                            nsubjpass:which/WDT
+#                                            aux:can/MD
+#                                            auxpass:be/VB
+#                                            cc:and/CC
+#                                            conj:detected/VBN]]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: contains@2, S: Matter@1, O: amount@4)
+#   - SVO (V: takes@8, S: amount@4, O: space@10)
+#   - SV (V: measured@14, S: space@10)
+#   - SV (V: detected@16, S: space@10)
+13	"Matter"	"contains"	"certain amount of material"
+13	"certain amount of material"	"takes up"	"space"
+13	"space"	"can be measured"
+13	"space"	"can be detected"

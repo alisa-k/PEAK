@@ -1,0 +1,126 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Matter are what all objects and substances are made up of.
+# Semantic graph: [are/VBP
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN
+#                         dep:what/WP
+#                         nsubjpass:[objects/NNS det:all/DT cc:and/CC conj:substances/NNS]
+#                         auxpass:are/VBP
+#                         prt:up/RP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: are@2, S: Matter@1, CCOMP: made@9)
+#   - SVA (V: made@9, S: objects@5, A!: of@11)
+1	"Matter"	"are"	"what all objects and substances are made up of"
+1	"all objects and substances"	"are made up"	"of"
+# Line 2 (id 2): All matter has energy, volume and mass.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[energy/NN conj:volume/NN cc:and/CC conj:mass/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+2	"All matter"	"has"	"energy volume and mass"
+# Line 3 (id 3): In order to classify matter, we have have physical and chemical properties are the density, ductility, malleability, boilling point, melting point, electrical conductivity solubility, and I'm sure much more.
+# Semantic graph: [have/VBP
+#                  dep:[classify/VB mark:In/IN dep:order/NN aux:to/TO dobj:matter/NN]
+#                  nsubj:we/PRP
+#                  aux:have/VBP
+#                  dobj:[properties/NNS
+#                        amod:[physical/NN cc:and/CC conj:chemical/NN]
+#                        rcmod:[conductivity/NN
+#                               cop:are/VBP
+#                               det:the/DT
+#                               nn:density/NN
+#                               dep:ductility/NN
+#                               dep:malleability/NN
+#                               amod:boilling/VBG
+#                               nn:point/NN
+#                               dep:melting/NN
+#                               nn:point/NN
+#                               amod:electrical/JJ
+#                               advmod:solubility/RB]]
+#                  cc:and/CC
+#                  conj:[sure/JJ nsubj:I/PRP cop:'m/VBP advmod:[more/RBR advmod:much/RB]]]
+#   Detected 2 clause(s).
+#   - SVO (V: have@9, S: we@7, O: properties@13)
+#   - SVC (C: sure@35, V: 'm@34, S: I@33, A?: more@37)
+3	"we"	"have have"	"physical and chemical properties"
+3	"I"	"'m"	"sure much more"
+3	"I"	"'m"	"sure"
+# Line 4 (id 4): Energy can be transferred from one object or system to another, but energy can't be created nor destroyed.
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[from/IN pobj:[object/NN num:one/CD cc:or/CC conj:system/NN]]
+#                  prep:[to/TO pobj:another/DT]
+#                  cc:but/CC
+#                  conj:[created/VBN
+#                        nsubjpass:energy/NN
+#                        aux:ca/MD
+#                        neg:n't/RB
+#                        auxpass:be/VB
+#                        cc:nor/CC
+#                        conj:destroyed/VBD]]
+#   Detected 3 clause(s).
+#   - SVA (V: transferred@4, S: Energy@1, A!: from@5, A?: to@10)
+#   - SV (V: created@18, S: energy@14)
+#   - SV (V: destroyed@20, S: energy@14)
+4	"Energy"	"can be transferred"	"from one object or system to another"
+4	"Energy"	"can be transferred"	"from one object or system"
+4	"energy"	"ca n't be created"
+4	"energy"	"destroyed"
+# Line 5 (id 5): Mechanical energy are kinetic energy and potential energy kinetic energy deals with the energy with object while its moving.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:are/VBP
+#                  amod:kinetic/JJ
+#                  cc:and/CC
+#                  conj:[deals/NNS amod:potential/JJ nn:energy/NN nn:kinetic/NN nn:energy/NN]
+#                  prep:[with/IN pobj:[energy/NN det:the/DT prep:[with/IN pobj:object/NN]]]
+#                  prep:[while/IN pobj:[moving/VBG poss:its/PRP$]]]
+#   Detected 2 clause(s).
+#   - SVC (C: energy@5, V: are@3, S: energy@2, A?: with@12, A?: while@17)
+#   - SVO (S: its@18, V: "has", O: moving@19)
+5	"Mechanical energy"	"are"	"kinetic energy and potential energy kinetic energy deals with the energy with object"
+5	"Mechanical energy"	"are"	"kinetic energy and potential energy kinetic energy deals while its moving"
+5	"Mechanical energy"	"are"	"kinetic energy and potential energy kinetic energy deals"
+5	"its"	"has"	"moving"
+# Line 6 (id 6): Potential energy is the energy and object has because of its position or shape.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Potential/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  cc:and/CC
+#                  conj:object/NN
+#                  rcmod:[of/IN
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[position/NN poss:its/PRP$ cc:or/CC conj:shape/NN]]]
+#   Detected 2 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2)
+#   - SVO (S: its@11, V: "has", O: position@12)
+6	"Potential energy"	"is"	"the energy and object"
+6	"its"	"has"	"position or shape"

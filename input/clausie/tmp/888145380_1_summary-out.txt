@@ -1,0 +1,119 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Physical substance of a material.
+# Semantic graph: [substance/NN amod:Physical/JJ prep:[of/IN pobj:[material/NN det:a/DT]]]
+#   Detected 0 clause(s).
+# Line 2: All things in the universe are made up of matter.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[things/NNS det:All/DT prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                  auxpass:are/VBP
+#                  prt:up/RP
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@7, S: things@2, A!: of@9)
+2	"All things in the universe"	"are made up"	"of matter"
+# Line 3: Because matter consists of volume and mass.
+# Semantic graph: [consists/VBZ
+#                  csubj:[matter/VBP mark:Because/IN]
+#                  prep:[of/IN pobj:[volume/NN cc:and/CC conj:mass/NN]]]
+#   Detected 1 clause(s).
+#   - SVA (V: consists@3, S: matter@2, A!: of@4)
+3	"Because matter"	"consists"	"of volume and mass"
+# Line 4: Properties identify and classify matter.
+# Semantic graph: [identify/VB nsubj:Properties/NNP cc:and/CC conj:classify/VB dobj:matter/NN]
+#   Detected 2 clause(s).
+#   - SVO (V: identify@2, S: Properties@1, O: matter@5)
+#   - SVO (V: classify@4, S: Properties@1, O: matter@5)
+4	"Properties"	"identify"	"matter"
+4	"Properties"	"classify"	"matter"
+# Line 5: Physical change the chemical properties can not be change.
+# Semantic graph: [change/VBP
+#                  nsubj:Physical/NNP
+#                  ccomp:[change/NN
+#                         nsubj:[properties/NNS det:the/DT nn:chemical/NN]
+#                         aux:can/MD
+#                         neg:not/RB
+#                         cop:be/VB]]
+#   Detected 2 clause(s).
+#   - SVO (V: change@2, S: Physical@1, CCOMP: change@9)
+#   - SVC (C: change@9, V: be@8, S: properties@5)
+5	"Physical"	"change"	"the chemical properties can not be change"
+5	"the chemical properties"	"can not be"	"change"
+# Line 6: However the size and shape can be changes.
+# Semantic graph: [changes/NNS
+#                  advmod:However/RB
+#                  nsubj:[size/NN det:the/DT cc:and/CC conj:shape/NN]
+#                  aux:can/MD
+#                  cop:be/VB]
+#   Detected 1 clause(s).
+#   - SVC (C: changes@8, V: be@7, S: size@3, A?: However@1)
+6	"the size and shape"	"can be"	"changes However"
+6	"the size and shape"	"can be"	"changes"
+# Line 7: Energy is the property of matter.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+7	"Energy"	"is"	"the property of matter"
+7	"Energy"	"is"	"the property"
+# Line 8: Energy can be transferred from one object to a system to another.
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[from/IN pobj:[object/NN num:one/CD]]
+#                  prep:[to/TO pobj:[system/NN det:a/DT]]
+#                  prep:[to/TO pobj:another/DT]]
+#   Detected 1 clause(s).
+#   - SVA (V: transferred@4, S: Energy@1, A!: from@5, A?: to@8, A?: to@11)
+8	"Energy"	"can be transferred"	"from one object to a system"
+8	"Energy"	"can be transferred"	"from one object to another"
+8	"Energy"	"can be transferred"	"from one object"
+# Line 9: Energy can be destroyed or created.
+# Semantic graph: [destroyed/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:created/VBN]
+#   Detected 2 clause(s).
+#   - SV (V: destroyed@4, S: Energy@1)
+#   - SV (V: created@6, S: Energy@1)
+9	"Energy"	"can be destroyed"
+9	"Energy"	"can be created"
+# Line 10: Energy an object has because of its motion or position.
+# Semantic graph: [of/IN
+#                  nsubj:[Energy/NNP dep:[object/NN det:an/DT]]
+#                  aux:has/VBZ
+#                  advmod:because/RB
+#                  pobj:[motion/NN poss:its/PRP$ cc:or/CC conj:position/NN]]
+#   Detected 2 clause(s).
+#   - SVA (V: of@6, S: Energy@1, A?: because@5, A!: motion@8)
+#   - SVO (S: its@7, V: "has", O: motion@8)
+10	"Energy an object"	"has of"	"its motion or position because"
+10	"Energy an object"	"has of"	"its motion or position"
+10	"its"	"has"	"motion or position"

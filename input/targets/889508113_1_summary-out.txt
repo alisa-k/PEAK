@@ -1,0 +1,144 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: To go right to it, matter is everything.
+# Semantic graph: [everything/NN
+#                  purpcl:[go/VB aux:To/TO advmod:[right/RB prep:[to/TO pobj:it/PRP]]]
+#                  nsubj:matter/NN
+#                  cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: everything@9, V: is@8, S: matter@7, A?: go@2)
+1	"matter"	"is"	"everything To go right to it"
+1	"matter"	"is"	"everything"
+# Line 2: When I say everything, I mean it.
+# Semantic graph: [mean/VBP
+#                  advcl:[say/VBP advmod:When/WRB nsubj:I/PRP dobj:everything/NN]
+#                  nsubj:I/PRP
+#                  dobj:it/PRP]
+#   Detected 2 clause(s).
+#   - SVO (V: say@3, S: I@2, A?: When@1, O: everything@4)
+#   - SVO (V: mean@7, S: I@6, A?: say@3, O: it@8)
+2	"I"	"say"	"everything When"
+2	"I"	"say"	"everything"
+2	"I"	"mean"	"it When I say everything"
+2	"I"	"mean"	"it"
+# Line 3: That includes humans and the world.
+# Semantic graph: [includes/VBZ
+#                  nsubj:That/DT
+#                  dobj:[humans/NNS cc:and/CC conj:[world/NN det:the/DT]]]
+#   Detected 1 clause(s).
+#   - SVO (V: includes@2, S: That@1, O: humans@3)
+3	"That"	"includes"	"humans and the world"
+# Line 4: And yes, if ever needed to measure this "matter", it can be done due to that it has volume and mass.
+# Semantic graph: [done/VBN
+#                  cc:And/CC
+#                  nsubjpass:yes/RB
+#                  advcl:[needed/VBD
+#                         mark:if/IN
+#                         advmod:ever/RB
+#                         xcomp:[measure/VB aux:to/TO dobj:[matter/NN det:this/DT]]]
+#                  nsubjpass:it/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  acomp:[due/JJ prep:to/TO]
+#                  ccomp:[has/VBZ
+#                         complm:that/IN
+#                         nsubj:it/PRP
+#                         dobj:[volume/NN cc:and/CC conj:mass/NN]]]
+#   Detected 3 clause(s).
+#   - SVO (V: done@17, S: yes@2, A?: needed@6, ACOMP: due@18, CCOMP: has@22)
+#   - SVO (V: done@17, S: it@14, A?: needed@6, ACOMP: due@18, CCOMP: has@22)
+#   - SVO (V: has@22, S: it@21, O: volume@23)
+4	"yes"	"it can be done"	"due to that it has volume and mass if ever needed to measure this matter"
+4	"yes"	"it can be done"	"due to that it has volume and mass"
+4	"it"	"yes can be done"	"due to that it has volume and mass if ever needed to measure this matter"
+4	"it"	"yes can be done"	"due to that it has volume and mass"
+4	"it"	"has"	"volume and mass"
+# Line 5: It has also been known that energy is a property of matter.
+# Semantic graph: [known/VBN
+#                  nsubjpass:It/PRP
+#                  aux:has/VBZ
+#                  advmod:also/RB
+#                  auxpass:been/VBN
+#                  ccomp:[property/NN
+#                         complm:that/IN
+#                         nsubj:energy/NN
+#                         cop:is/VBZ
+#                         det:a/DT
+#                         prep:[of/IN pobj:matter/NN]]]
+#   Detected 2 clause(s).
+#   - SVO (V: known@5, S: It@1, A?: also@3, CCOMP: property@10)
+#   - SVC (C: property@10, V: is@8, S: energy@7, A?: of@11)
+5	"It"	"has been known"	"that energy is a property of matter also"
+5	"It"	"has been known"	"that energy is a property of matter"
+5	"energy"	"is"	"a property of matter"
+5	"energy"	"is"	"a property"
+# Line 6: The substance has been known to even have its own law, and it is called law of conservation of energy.
+# Semantic graph: [known/VBN
+#                  nsubjpass:[substance/NN det:The/DT]
+#                  aux:has/VBZ
+#                  auxpass:been/VBN
+#                  xcomp:[have/VB
+#                         aux:to/TO
+#                         advmod:even/RB
+#                         dobj:[law/NN poss:its/PRP$ amod:own/JJ]]
+#                  cc:and/CC
+#                  conj:[called/VBN
+#                        nsubjpass:it/PRP
+#                        auxpass:is/VBZ
+#                        dobj:[law/NN
+#                              prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: known@5, S: substance@2, XCOMP: have@8)
+#   - SVO (S: its@9, V: "has", O: law@11)
+#   - SVO (V: called@16, S: it@14, O: law@17)
+6	"The substance"	"has been known"	"to have its own law"
+6	"its"	"has"	"own law"
+6	"it"	"is called"	"law of conservation of energy"
+# Line 7: What this mean is energy can travel and be transferred to another energy, but it cannot be created and destroyed.
+# Semantic graph: [travel/VB
+#                  csubjpass:[energy/NN dobj:What/WP nsubj:[mean/NN det:this/DT] cop:is/VBZ]
+#                  aux:can/MD
+#                  cc:and/CC
+#                  conj:[transferred/VBN
+#                        auxpass:be/VB
+#                        prep:[to/TO pobj:[energy/NN det:another/DT]]]
+#                  cc:but/CC
+#                  conj:[created/VBN
+#                        nsubjpass:it/PRP
+#                        aux:can/MD
+#                        neg:not/RB
+#                        auxpass:be/VB
+#                        cc:and/CC
+#                        conj:destroyed/VBN]]
+#   Detected 5 clause(s).
+#   - SVOC (C: energy@5, V: is@4, S: mean@3, O: What@1)
+#   - SV (V: travel@7, S: energy@5)
+#   - SVA (V: transferred@10, S: energy@5, A!: to@11)
+#   - SV (V: created@20, S: it@16)
+#   - SV (V: destroyed@22, S: it@16)
+7	"this mean"	"is"	"energy What"
+7	"What this mean is energy"	"can travel"
+7	"What this mean is energy"	"can be transferred"	"to another energy"
+7	"it"	"can not be created"
+7	"it"	"can not be destroyed"

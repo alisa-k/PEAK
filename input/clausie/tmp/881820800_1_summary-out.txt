@@ -1,0 +1,140 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what everything is made of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN dep:what/WP nsubjpass:everything/NN auxpass:is/VBZ prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@6)
+#   - SVA (V: made@6, S: everything@4, A!: of@7)
+1	"Matter"	"is"	"what everything is made of"
+1	"everything"	"is made"	"of"
+# Line 2: Some of the matter is too small, so a microscope might be needed.
+# Semantic graph: [small/JJ
+#                  nsubj:[Some/DT prep:[of/IN pobj:[matter/NN det:the/DT]]]
+#                  cop:is/VBZ
+#                  advmod:too/RB
+#                  dep:so/IN
+#                  ccomp:[needed/VBN
+#                         nsubjpass:[microscope/NN det:a/DT]
+#                         aux:might/MD
+#                         auxpass:be/VB]]
+#   Detected 2 clause(s).
+#   - SVC (C: small@7, V: is@5, S: Some@1, A?: too@6, CCOMP: needed@14)
+#   - SV (V: needed@14, S: microscope@11)
+2	"Some of the matter"	"is"	"small so too a microscope might be needed"
+2	"Some of the matter"	"is"	"small so a microscope might be needed"
+2	"a microscope"	"might be needed"
+# Line 3: To classify matter, it has properties.
+# Semantic graph: [has/VBZ
+#                  purpcl:[classify/VB aux:To/TO dobj:matter/NN]
+#                  nsubj:it/PRP
+#                  dobj:properties/NNS]
+#   Detected 1 clause(s).
+#   - SVO (V: has@6, S: it@5, A?: classify@2, O: properties@7)
+3	"it"	"has"	"properties To classify matter"
+3	"it"	"has"	"properties"
+# Line 4: The way change is physically and chemically.
+# Semantic graph: [physically/RB
+#                  nsubj:[change/NN det:The/DT nn:way/NN]
+#                  cop:is/VBZ
+#                  cc:and/CC
+#                  conj:chemically/VBG]
+#   Detected 2 clause(s).
+#   - SVC (C: physically@5, V: is@4, S: change@3)
+#   - SVC (C: chemically@7, V: is@4, S: change@3)
+4	"The way change"	"is"	"physically"
+4	"The way change"	"is"	"chemically"
+# Line 5: Physical change is by physically changing the object.
+# Semantic graph: [is/VBZ
+#                  nsubj:[change/NN amod:Physical/JJ]
+#                  prep:[by/IN pobj:physically/NNP]
+#                  xcomp:[changing/VBG dobj:[object/NN det:the/DT]]]
+#   Detected 1 clause(s).
+#   - SVC (V: is@3, S: change@2, A?: by@4, XCOMP: changing@6)
+5	"Physical change"	"is"	"by physically changing the object"
+5	"Physical change"	"is"	"changing the object"
+# Line 6: And chemically change is chemically changing an object.
+# Semantic graph: [changing/VBG
+#                  cc:And/CC
+#                  advmod:chemically/RB
+#                  nsubj:change/NN
+#                  aux:is/VBZ
+#                  advmod:chemically/RB
+#                  dobj:[object/NN det:an/DT]]
+#   Detected 1 clause(s).
+#   - SVO (V: changing@6, S: change@3, A?: chemically@2, A?: chemically@5, O: object@8)
+6	"change"	"is changing"	"an object chemically"
+6	"change"	"is changing"	"an object chemically"
+6	"change"	"is changing"	"an object"
+# Line 7: This could be change be energy, which all matter has.
+# Semantic graph: [change/VB
+#                  nsubj:This/DT
+#                  aux:could/MD
+#                  aux:be/VB
+#                  xcomp:[energy/NN
+#                         cop:be/VB
+#                         rcmod:[has/VBZ nsubj:which/WDT advmod:[matter/NN det:all/DT]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: change@4, S: This@1, XCOMP: energy@6)
+#   - SV (V: has@11, S: energy@6, A?: matter@10)
+7	"This"	"could be change"	"be energy"
+7	"energy"	"has"	"all matter"
+7	"energy"	"has"
+# Line 8: And energy that can't be created or destroyed is law of conservation energy.
+# Semantic graph: [law/NN
+#                  cc:And/CC
+#                  nsubj:[energy/NN
+#                         rcmod:[created/VBN
+#                                nsubjpass:that/WDT
+#                                aux:ca/MD
+#                                neg:n't/RB
+#                                auxpass:be/VB
+#                                cc:or/CC
+#                                conj:destroyed/VBN]]
+#                  cop:is/VBZ
+#                  prep:[of/IN pobj:[energy/NN nn:conservation/NN]]]
+#   Detected 3 clause(s).
+#   - SV (V: created@7, S: energy@2)
+#   - SV (V: destroyed@9, S: energy@2)
+#   - SVC (C: law@11, V: is@10, S: energy@2, A?: of@12)
+8	"energy"	"ca n't be created"
+8	"energy"	"ca n't be destroyed"
+8	"energy"	"is"	"And law of conservation energy"
+8	"energy"	"is"	"And law"
+# Line 9: The other energy is mathematical energy, energy object has from motion or position.
+# Semantic graph: [from/IN
+#                  ccomp:[energy/NN
+#                         nsubj:[energy/NN det:The/DT amod:other/JJ]
+#                         cop:is/VBZ
+#                         amod:mathematical/JJ]
+#                  nsubj:[object/NN nn:energy/NN]
+#                  aux:has/VBZ
+#                  pobj:[motion/NN cc:or/CC conj:position/NN]]
+#   Detected 2 clause(s).
+#   - SVC (C: energy@6, V: is@4, S: energy@3)
+#   - SVO (V: from@11, S: object@9, CCOMP: energy@6, A?: motion@12)
+9	"The other energy"	"is"	"mathematical energy"
+9	"energy object"	"has from"	"The other energy is mathematical energy motion or position"
+9	"energy object"	"has from"	"The other energy is mathematical energy"

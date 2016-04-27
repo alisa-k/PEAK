@@ -1,0 +1,83 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the "stuff" that everything in the universe made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  dep:[made/VBD
+#                       complm:that/IN
+#                       nsubj:[everything/NN prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                       prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@5, V: is@2, S: Matter@1)
+#   - SVA (V: made@12, S: everything@8, A!: of@13)
+1	"Matter"	"is"	"the stuff that everything in the universe made of"
+1	"everything in the universe"	"made"	"of"
+# Line 2: Matter can be measured and detected because it has mass and volume.
+# Semantic graph: [measured/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:detected/VBN
+#                  advcl:[has/VBZ
+#                         mark:because/IN
+#                         nsubj:it/PRP
+#                         dobj:[mass/NN cc:and/CC conj:volume/NN]]]
+#   Detected 3 clause(s).
+#   - SVA (V: measured@4, S: Matter@1, A!: has@9)
+#   - SVA (V: detected@6, S: Matter@1, A!: has@9)
+#   - SVO (V: has@9, S: it@8, O: mass@10)
+2	"Matter"	"can be measured"	"because it has mass and volume"
+2	"Matter"	"can be detected"	"because it has mass and volume"
+2	"it"	"has"	"mass and volume"
+# Line 3: All matter in the universe have some energy in them.
+# Semantic graph: [have/VBP
+#                  nsubj:[matter/NN det:All/DT prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                  dobj:[energy/NN det:some/DT prep:[in/IN pobj:them/PRP]]]
+#   Detected 1 clause(s).
+#   - SVO (V: have@6, S: matter@2, O: energy@8)
+3	"All matter in the universe"	"have"	"some energy in them"
+# Line 4: Energy can be stored but never destroyed and that is the law of conservation of energy.
+# Semantic graph: [stored/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:but/CC
+#                  conj:[destroyed/VBN neg:never/RB]
+#                  cc:and/CC
+#                  conj:[law/NN
+#                        nsubj:that/DT
+#                        cop:is/VBZ
+#                        det:the/DT
+#                        prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]]
+#   Detected 3 clause(s).
+#   - SV (V: stored@4, S: Energy@1)
+#   - SV (V: destroyed@7, S: Energy@1)
+#   - SVC (C: law@12, V: is@10, S: that@9, A?: of@13)
+4	"Energy"	"can be stored"
+4	"Energy"	"can be never destroyed"
+4	"that"	"is"	"the law of conservation of energy"
+4	"that"	"is"	"the law"

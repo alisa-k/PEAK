@@ -1,0 +1,276 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is an important part of our lives.
+# Semantic graph: [part/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:an/DT
+#                  amod:important/JJ
+#                  prep:[of/IN pobj:[lives/NNS poss:our/PRP$]]]
+#   Detected 2 clause(s).
+#   - SVC (C: part@5, V: is@2, S: Matter@1, A?: of@6)
+#   - SVO (S: our@7, V: "has", O: lives@8)
+1	"Matter"	"is"	"an important part of our lives"
+1	"Matter"	"is"	"an important part"
+1	"our"	"has"	"lives"
+# Line 2: If we didn't have matter we wouldn't have all these object in the world.
+# Semantic graph: [have/VB
+#                  advcl:[have/VB mark:If/IN nsubj:we/PRP aux:did/VBD neg:n't/RB dobj:matter/NN]
+#                  nsubj:we/PRP
+#                  aux:would/MD
+#                  neg:n't/RB
+#                  dobj:[object/NN
+#                        predet:all/PDT
+#                        det:these/DT
+#                        prep:[in/IN pobj:[world/NN det:the/DT]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: have@5, S: we@2, O: matter@6)
+#   - SVO (V: have@10, S: we@7, A?: have@5, O: object@13)
+2	"we"	"did n't have"	"matter"
+2	"we"	"would n't have"	"all these object in the world If we did n't have matter"
+2	"we"	"would n't have"	"all these object in the world"
+# Line 3: We know this because all matter makes up space (has volume) and contains a certain amount of material (has mass) that why we can detect it.
+# Semantic graph: [know/VBP
+#                  nsubj:We/PRP
+#                  dobj:this/DT
+#                  advcl:[makes/VBZ
+#                         mark:because/IN
+#                         nsubj:[matter/NN det:all/DT]
+#                         prt:up/RP
+#                         dobj:[space/NN dep:[has/VBZ dobj:volume/NN]]
+#                         cc:and/CC
+#                         conj:[contains/VBZ
+#                               dobj:[amount/NN
+#                                     det:a/DT
+#                                     amod:certain/JJ
+#                                     prep:[of/IN pobj:material/NN]]]
+#                         parataxis:[has/VBZ dobj:mass/NN]
+#                         ccomp:[detect/VB
+#                                dep:that/IN
+#                                advmod:why/WRB
+#                                nsubj:we/PRP
+#                                aux:can/MD
+#                                dobj:it/PRP]]]
+#   Detected 4 clause(s).
+#   - SVO (V: know@2, S: We@1, O: this@3, A?: makes@7)
+#   - SVOC (V: makes@7, S: matter@6, O: space@9, CCOMP: detect@29)
+#   - SVOC (V: contains@15, S: matter@6, O: amount@18, CCOMP: detect@29)
+#   - SVO (V: detect@29, S: we@27, A-: why@26, O: it@30)
+3	"We"	"know"	"this because all matter makes up space has volume and contains a certain amount of material that why we can detect it"
+3	"We"	"know"	"this"
+3	"all matter"	"makes up"	"space has volume that why we can detect it"
+3	"all matter"	"contains"	"a certain amount of material that why we can detect it"
+3	"we"	"can detect"	"it"
+# Line 4: Matter allows us to be able to touch and see rocks, trees, bicycles, and different types of animals.
+# Semantic graph: [allows/VBZ
+#                  nsubj:Matter/NNP
+#                  xcomp:[able/JJ
+#                         nsubj:us/PRP
+#                         aux:to/TO
+#                         cop:be/VB
+#                         xcomp:[touch/VB
+#                                aux:to/TO
+#                                cc:and/CC
+#                                conj:see/VB
+#                                dobj:[rocks/NNS
+#                                      conj:trees/NNS
+#                                      conj:bicycles/NNS
+#                                      cc:and/CC
+#                                      conj:[types/NNS
+#                                            amod:different/JJ
+#                                            prep:[of/IN pobj:animals/NNS]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: allows@2, S: Matter@1, XCOMP: able@6)
+#   - SVC (C: able@6, V: be@5, S: us@3, XCOMP: touch@8)
+4	"Matter"	"allows"	"us to be able to touch rocks trees bicycles and different types of animals"
+4	"Matter"	"allows"	"us to be able to see rocks trees bicycles and different types of animals"
+4	"us"	"to be"	"able to touch rocks trees bicycles and different types of animals"
+4	"us"	"to be"	"able to see rocks trees bicycles and different types of animals"
+# Line 5: We can also smell it like smoke from a fire.
+# Semantic graph: [smell/VB
+#                  nsubj:We/PRP
+#                  aux:can/MD
+#                  advmod:also/RB
+#                  dobj:it/PRP
+#                  prep:[like/IN pobj:smoke/NN]
+#                  prep:[from/IN pobj:[fire/NN det:a/DT]]]
+#   Detected 1 clause(s).
+#   - SVO (V: smell@4, S: We@1, A?: also@3, O: it@5, A?: like@6, A?: from@8)
+5	"We"	"can smell"	"it also"
+5	"We"	"can smell"	"it like smoke"
+5	"We"	"can smell"	"it from a fire"
+5	"We"	"can smell"	"it"
+# Line 6: The air is also considered to be matter but its hard to detect because it cannot be seen.
+# Semantic graph: [considered/VBN
+#                  nsubjpass:[air/NN det:The/DT]
+#                  auxpass:is/VBZ
+#                  advmod:also/RB
+#                  xcomp:[matter/NN
+#                         aux:to/TO
+#                         cop:be/VB
+#                         prep:[but/CC
+#                               dep:[hard/JJ
+#                                    poss:its/PRP$
+#                                    xcomp:[detect/VB
+#                                           aux:to/TO
+#                                           advcl:[seen/VBN
+#                                                  mark:because/IN
+#                                                  nsubjpass:it/PRP
+#                                                  aux:can/MD
+#                                                  neg:not/RB
+#                                                  auxpass:be/VB]]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: considered@5, S: air@2, A?: also@4, XCOMP: matter@8)
+#   - SVO (S: its@10, V: "has", O: hard@11)
+#   - SV (V: seen@19, S: it@15)
+6	"The air"	"is considered"	"to be matter but its hard to detect because it can not be seen also"
+6	"The air"	"is considered"	"to be matter also"
+6	"The air"	"is considered"	"to be matter but its hard to detect because it can not be seen"
+6	"The air"	"is considered"	"to be matter"
+6	"its"	"has"	"hard to detect because it can not be seen"
+6	"it"	"can not be seen"
+# Line 7: But we know it exists because when the wind blows we see the tree branches bend.
+# Semantic graph: [know/VBP
+#                  cc:But/CC
+#                  nsubj:we/PRP
+#                  ccomp:[exists/VBZ
+#                         nsubj:it/PRP
+#                         prep:[because/IN
+#                               pcomp:[blows/VBD
+#                                      advmod:when/WRB
+#                                      nsubj:[wind/NN det:the/DT]
+#                                      ccomp:[see/VBP
+#                                             nsubj:we/PRP
+#                                             ccomp:[bend/VB
+#                                                    nsubj:[branches/NNS det:the/DT nn:tree/NN]]]]]]]
+#   Detected 5 clause(s).
+#   - SVO (V: know@3, S: we@2, CCOMP: exists@5)
+#   - SVA (V: exists@5, S: it@4, A!: because@6)
+#   - SVO (V: blows@10, S: wind@9, A?: when@7, CCOMP: see@12)
+#   - SVO (V: see@12, S: we@11, CCOMP: bend@16)
+#   - SV (V: bend@16, S: branches@15)
+7	"we"	"know"	"it exists because when the wind blows we see the tree branches bend"
+7	"it"	"exists"	"because when the wind blows we see the tree branches bend"
+7	"the wind"	"blows"	"we see the tree branches bend when"
+7	"the wind"	"blows"	"we see the tree branches bend"
+7	"we"	"see"	"the tree branches bend"
+7	"the tree branches"	"bend"
+# Line 8: Properties of matter help us to classify matter.
+# Semantic graph: [help/VBP
+#                  nsubj:[Properties/NNP prep:[of/IN pobj:matter/NN]]
+#                  xcomp:[classify/VB nsubj:us/PRP aux:to/TO dobj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVO (V: help@4, S: Properties@1, XCOMP: classify@7)
+#   - SVO (V: classify@7, S: us@5, O: matter@8)
+8	"Properties of matter"	"help"	"us to classify matter"
+8	"us"	"to classify"	"matter"
+# Line 9: All matter has both physical properties and chemical properties.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[properties/NNS
+#                        preconj:both/CC
+#                        amod:physical/JJ
+#                        cc:and/CC
+#                        conj:[properties/NNS nn:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: properties@6)
+9	"All matter"	"has"	"both physical properties and chemical properties"
+# Line 10: You can observe physical properties without changing the make-up or identity, of the matter.
+# Semantic graph: [observe/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dobj:[properties/NNS amod:physical/JJ]
+#                  prep:[without/IN
+#                        pcomp:[changing/VBG
+#                               dobj:[make-up/NN
+#                                     det:the/DT
+#                                     cc:or/CC
+#                                     conj:identity/NN
+#                                     prep:[of/IN pobj:[matter/NN det:the/DT]]]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: observe@3, S: You@1, O: properties@5, A?: without@6)
+10	"You"	"can observe"	"physical properties without changing the make-up or identity of the matter"
+10	"You"	"can observe"	"physical properties"
+# Line 11: But chemical property can change its identity.
+# Semantic graph: [change/VB
+#                  cc:But/CC
+#                  nsubj:[property/NN nn:chemical/NN]
+#                  aux:can/MD
+#                  dobj:[identity/NN poss:its/PRP$]]
+#   Detected 2 clause(s).
+#   - SVO (V: change@5, S: property@3, O: identity@7)
+#   - SVO (S: its@6, V: "has", O: identity@7)
+11	"chemical property"	"can change"	"its identity"
+11	"its"	"has"	"identity"
+# Line 12: More over, energy is a property of matter, and all matter has it.
+# Semantic graph: [property/NN
+#                  advmod:[over/RB advmod:More/RBR]
+#                  nsubj:energy/NN
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[has/VBZ nsubj:[matter/NN det:all/DT] dobj:it/PRP]]
+#   Detected 2 clause(s).
+#   - SVC (C: property@7, V: is@5, S: energy@4, A?: over@2, A?: of@8)
+#   - SVO (V: has@14, S: matter@13, O: it@15)
+12	"energy"	"is"	"a property More over"
+12	"energy"	"is"	"a property of matter"
+12	"energy"	"is"	"a property"
+12	"all matter"	"has"	"it"
+# Line 13: Even though it is hard to detect it because it can't be seen or touched.
+# Semantic graph: [seen/VBN
+#                  advcl:[hard/JJ
+#                         advmod:Even/RB
+#                         dep:though/IN
+#                         nsubj:it/PRP
+#                         cop:is/VBZ
+#                         xcomp:[detect/VB aux:to/TO dobj:it/PRP prep:[because/IN pobj:it/PRP]]]
+#                  aux:ca/MD
+#                  neg:n't/RB
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:touched/VBN]
+#   Detected 1 clause(s).
+#   - SVC (C: hard@5, V: is@4, S: it@3, A-: Even@1, XCOMP: detect@7)
+13	"it"	"is"	"though hard to detect it because it"
+13	"it"	"is"	"though hard to detect it"
+# Line 14: In one form or another if it happened energy was the cause of it.
+# Semantic graph: [cause/NN
+#                  prep:[In/IN
+#                        pobj:[form/NN
+#                              num:one/CD
+#                              cc:or/CC
+#                              conj:[another/DT dep:[happened/VBD mark:if/IN nsubj:it/PRP]]]]
+#                  nsubj:energy/NN
+#                  cop:was/VBD
+#                  det:the/DT
+#                  prep:[of/IN pobj:it/PRP]]
+#   Detected 2 clause(s).
+#   - SV (V: happened@8, S: it@7)
+#   - SVC (C: cause@12, V: was@10, S: energy@9, A?: In@1, A?: of@13)
+14	"it"	"happened"
+14	"energy"	"was"	"the cause In one form or another if it happened"
+14	"energy"	"was"	"the cause of it"
+14	"energy"	"was"	"the cause"

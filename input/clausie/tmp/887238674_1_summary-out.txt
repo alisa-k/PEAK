@@ -1,0 +1,159 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Everything is made up of matter.
+# Semantic graph: [made/VBN
+#                  nsubjpass:Everything/NNP
+#                  auxpass:is/VBZ
+#                  prt:up/RP
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@3, S: Everything@1, A!: of@5)
+1	"Everything"	"is made up"	"of matter"
+# Line 2: You can detect a matter by feeling, smelling, and seeing.
+# Semantic graph: [detect/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dobj:[matter/NN det:a/DT]
+#                  prep:[by/IN pcomp:[feeling/VBG conj:smelling/VBG cc:and/CC conj:seeing/VBG]]]
+#   Detected 1 clause(s).
+#   - SVO (V: detect@3, S: You@1, O: matter@5, A?: by@6)
+2	"You"	"can detect"	"a matter by feeling smelling and seeing"
+2	"You"	"can detect"	"a matter"
+# Line 3: All matter consists of two properties which is chemical and physical.
+# Semantic graph: [consists/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  prep:[of/IN
+#                        pobj:[properties/NNS
+#                              num:two/CD
+#                              rcmod:[chemical/JJ
+#                                     nsubj:which/WDT
+#                                     cop:is/VBZ
+#                                     cc:and/CC
+#                                     conj:physical/JJ]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: consists@3, S: matter@2, A!: of@4)
+#   - SVC (C: chemical@9, V: is@8, S: properties@6)
+3	"All matter"	"consists"	"of two properties"
+3	"two properties"	"is"	"chemical and physical"
+# Line 4: Chemical properties is when there's a new substance and physical properties is when the texture like the size and shape changes.
+# Semantic graph: [is/VBZ
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  advcl:['s/VBZ
+#                         advmod:when/WRB
+#                         expl:there/EX
+#                         nsubj:[substance/NN det:a/DT amod:new/JJ]]
+#                  cc:and/CC
+#                  conj:[is/VBZ
+#                        nsubj:[properties/NNS amod:physical/JJ]
+#                        advcl:[like/VBP
+#                               advmod:when/WRB
+#                               nsubj:[texture/NN det:the/DT]
+#                               dobj:[changes/NNS
+#                                     det:the/DT
+#                                     nn:[size/NN cc:and/CC conj:shape/NN]]]]]
+#   Detected 4 clause(s).
+#   - SVA (V: is@3, S: properties@2, A!: 's@6)
+#   - EXISTENTIAL (V: 's@6, S: substance@9, A?: when@4)
+#   - SVA (V: is@13, S: properties@12, A!: like@17)
+#   - SVO (V: like@17, S: texture@16, A?: when@14, O: changes@22)
+4	"Chemical properties"	"is"	"when there 's a new substance"
+4	"a new substance"	"there 's"	"when"
+4	"a new substance"	"there 's"
+4	"physical properties"	"is"	"when the texture like the size and shape changes"
+4	"the texture"	"like"	"the size and shape changes when"
+4	"the texture"	"like"	"the size and shape changes"
+# Line 5: Every matter has energy, but you can never see or touch it.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:Every/DT]
+#                  dobj:energy/NN
+#                  cc:but/CC
+#                  conj:[see/VB
+#                        nsubj:you/PRP
+#                        aux:can/MD
+#                        neg:never/RB
+#                        cc:or/CC
+#                        conj:touch/VB
+#                        dobj:it/PRP]]
+#   Detected 3 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+#   - SVO (V: see@10, S: you@7, O: it@13)
+#   - SVO (V: touch@12, S: you@7, O: it@13)
+5	"Every matter"	"has"	"energy"
+5	"you"	"can never see"	"it"
+5	"you"	"can never touch"	"it"
+# Line 6: There is kinetic energy and potential energy.
+# Semantic graph: [is/VBZ
+#                  expl:There/EX
+#                  nsubj:[energy/NN amod:kinetic/JJ cc:and/CC conj:[energy/NN amod:potential/JJ]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: is@2, S: energy@4)
+6	"kinetic energy and potential energy"	"There is"
+# Line 7: The energy an object has when it's moving is called the kinetic energy.
+# Semantic graph: [called/VBN
+#                  nsubjpass:[energy/NN
+#                             det:The/DT
+#                             rcmod:[has/VBZ
+#                                    nsubj:[object/NN det:an/DT]
+#                                    advcl:[moving/VBG advmod:when/WRB nsubj:it/PRP aux:'s/VBZ]]]
+#                  auxpass:is/VBZ
+#                  dobj:[energy/NN det:the/DT amod:kinetic/JJ]]
+#   Detected 3 clause(s).
+#   - SVO (V: has@5, S: object@4, A?: moving@9, O: energy@2)
+#   - SV (V: moving@9, S: it@7, A?: when@6)
+#   - SVO (V: called@11, S: energy@2, O: energy@14)
+7	"an object"	"has"	"when it 's moving The energy"
+7	"an object"	"has"	"The energy"
+7	"it"	"'s moving"	"when"
+7	"it"	"'s moving"
+7	"The energy"	"is called"	"the kinetic energy"
+# Line 8: And the energy an object has in position is called potential energy.
+# Semantic graph: [called/VBN
+#                  cc:And/CC
+#                  nsubjpass:[energy/NN
+#                             det:the/DT
+#                             rcmod:[in/IN
+#                                    nsubj:[object/NN det:an/DT]
+#                                    aux:has/VBZ
+#                                    pobj:position/NN]]
+#                  auxpass:is/VBZ
+#                  dobj:[energy/NN amod:potential/JJ]]
+#   Detected 2 clause(s).
+#   - SVO (V: in@7, S: object@5, A?: position@8, O: energy@3)
+#   - SVO (V: called@10, S: energy@3, O: energy@12)
+8	"an object"	"has in"	"position the energy"
+8	"an object"	"has in"	"the energy"
+8	"the energy"	"is called"	"potential energy"
+# Line 9: We are always surrounded by matter.
+# Semantic graph: [surrounded/VBN
+#                  nsubjpass:We/PRP
+#                  auxpass:are/VBP
+#                  advmod:always/RB
+#                  prep:[by/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: surrounded@4, S: We@1, A?: always@3, A!: by@5)
+9	"We"	"are surrounded"	"by matter always"
+9	"We"	"are surrounded"	"by matter"
+# Line 10: And will always be.
+# Semantic graph: [be/VB cc:And/CC aux:will/MD advmod:always/RB]
+#   Detected 0 clause(s).

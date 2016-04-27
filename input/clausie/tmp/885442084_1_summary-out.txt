@@ -1,0 +1,146 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is everywhere on earth because every objects has matter.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  advmod:everywhere/RB
+#                  prep:[on/IN pobj:earth/NN]
+#                  advcl:[has/VBZ
+#                         mark:because/IN
+#                         nsubj:[objects/NNS det:every/DT]
+#                         dobj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVA (V: is@2, S: Matter@1, A!: everywhere@3, A?: on@4, A?: has@9)
+#   - SVO (V: has@9, S: objects@8, O: matter@10)
+1	"Matter"	"is"	"everywhere on earth"
+1	"Matter"	"is"	"everywhere because every objects has matter"
+1	"Matter"	"is"	"everywhere"
+1	"every objects"	"has"	"matter"
+# Line 2: You can detect matter with its volume and mass.
+# Semantic graph: [detect/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dobj:matter/NN
+#                  prep:[with/IN pobj:[volume/NN poss:its/PRP$ cc:and/CC conj:mass/NN]]]
+#   Detected 2 clause(s).
+#   - SVO (V: detect@3, S: You@1, O: matter@4, A?: with@5)
+#   - SVO (S: its@6, V: "has", O: volume@7)
+2	"You"	"can detect"	"matter with its volume and mass"
+2	"You"	"can detect"	"matter"
+2	"its"	"has"	"volume and mass"
+# Line 3: To help you classify matter you can use your five senses.
+# Semantic graph: [use/VB
+#                  dep:[help/VB aux:To/TO ccomp:[classify/VB nsubj:you/PRP dobj:matter/NN]]
+#                  nsubj:you/PRP
+#                  aux:can/MD
+#                  dobj:[senses/NNS poss:your/PRP$ num:five/CD]]
+#   Detected 3 clause(s).
+#   - SVO (V: classify@4, S: you@3, O: matter@5)
+#   - SVO (V: use@8, S: you@6, O: senses@11)
+#   - SVO (S: your@9, V: "has", O: senses@11)
+3	"you"	"classify"	"matter"
+3	"you"	"can use"	"your five senses"
+3	"your"	"has"	"five senses"
+# Line 4: A physical change for example is reshaping and object.
+# Semantic graph: [reshaping/VBG
+#                  nsubj:[change/NN det:A/DT amod:physical/JJ prep:[for/IN pobj:example/NN]]
+#                  aux:is/VBZ
+#                  cc:and/CC
+#                  conj:object/VBP]
+#   Detected 2 clause(s).
+#   - SV (V: reshaping@7, S: change@3)
+#   - SV (V: object@9, S: change@3)
+4	"A physical change for example"	"is reshaping"
+4	"A physical change for example"	"object"
+# Line 5: A chemical change is like burning a piece of paper.
+# Semantic graph: [is/VBZ
+#                  nsubj:[change/NN det:A/DT nn:chemical/NN]
+#                  prep:[like/IN
+#                        pcomp:[burning/VBG dobj:[piece/NN det:a/DT prep:[of/IN pobj:paper/NN]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: is@4, S: change@3, A!: like@5)
+5	"A chemical change"	"is"	"like burning a piece of paper"
+# Line 6: Energy is related to matter is it is a property of matter.
+# Semantic graph: [related/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  prep:[to/TO
+#                        pobj:[matter/NN
+#                              rcmod:[is/VBZ
+#                                     ccomp:[property/NN
+#                                            nsubj:it/PRP
+#                                            cop:is/VBZ
+#                                            det:a/DT
+#                                            prep:[of/IN pobj:matter/NN]]]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: related@3, S: Energy@1, A!: to@4)
+#   - SVC (C: property@10, V: is@8, S: it@7, A?: of@11)
+6	"Energy"	"is related"	"to matter"
+6	"it"	"is"	"a property of matter"
+6	"it"	"is"	"a property"
+# Line 7: All matter has energy.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+7	"All matter"	"has"	"energy"
+# Line 8: Energy cannot be created or destroyed.
+# Semantic graph: [created/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  neg:not/RB
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:destroyed/VBN]
+#   Detected 2 clause(s).
+#   - SV (V: created@5, S: Energy@1)
+#   - SV (V: destroyed@7, S: Energy@1)
+8	"Energy"	"can not be created"
+8	"Energy"	"can not be destroyed"
+# Line 9: That is the law of conservation.
+# Semantic graph: [law/NN nsubj:That/DT cop:is/VBZ det:the/DT prep:[of/IN pobj:conservation/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: law@4, V: is@2, S: That@1, A?: of@5)
+9	"That"	"is"	"the law of conservation"
+9	"That"	"is"	"the law"
+# Line 10: Mechanical energy is something an object has because of it's motion or position.
+# Semantic graph: [something/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  rcmod:[of/IN
+#                         nsubj:[object/NN det:an/DT]
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[motion/NN
+#                               poss:[it/PRP possessive:'s/POS]
+#                               cc:or/CC
+#                               conj:position/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: something@4, V: is@3, S: energy@2)
+#   - SVO (V: of@9, S: object@6, A?: because@8, A?: motion@12, O: something@4)
+#   - SVO (S: it@10, V: "has", O: motion@12)
+10	"Mechanical energy"	"is"	"something"
+10	"an object"	"has of"	"something because"
+10	"an object"	"has of"	"it 's motion or position something"
+10	"an object"	"has of"	"something"
+10	"it"	"has"	"motion or position"

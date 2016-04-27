@@ -1,0 +1,139 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter makes up everything we know in the universe.
+# Semantic graph: [makes/VBZ
+#                  nsubj:Matter/NNP
+#                  prt:up/RP
+#                  dobj:[everything/NN
+#                        rcmod:[know/VBP nsubj:we/PRP prep:[in/IN pobj:[universe/NN det:the/DT]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: makes@2, S: Matter@1, O: everything@4)
+#   - SVO (V: know@6, S: we@5, A?: in@7, O: everything@4)
+1	"Matter"	"makes up"	"everything"
+1	"we"	"know"	"in the universe everything"
+1	"we"	"know"	"everything"
+# Line 2: Matter has different properties, physical and chemical.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[properties/NNS
+#                        amod:different/JJ
+#                        amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: properties@4)
+2	"Matter"	"has"	"different properties physical and chemical"
+# Line 3: Physical changes do not change the make-up of the substance but chemical changes do.
+# Semantic graph: [change/VB
+#                  nsubj:[changes/NNS amod:Physical/JJ]
+#                  aux:do/VBP
+#                  neg:not/RB
+#                  dobj:[make-up/NN det:the/DT prep:[of/IN pobj:[substance/NN det:the/DT]]]
+#                  cc:but/CC
+#                  conj:[do/VBP nsubj:[changes/NNS nn:chemical/NN]]]
+#   Detected 2 clause(s).
+#   - SVO (V: change@5, S: changes@2, O: make-up@7)
+#   - SV (V: do@14, S: changes@13)
+3	"Physical changes"	"do not change"	"the make-up of the substance"
+3	"chemical changes"	"do"
+# Line 4: Energy is one property of matter, and it has many different forms.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  num:one/CD
+#                  prep:[of/IN pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[has/VBZ nsubj:it/PRP dobj:[forms/NNS amod:many/JJ amod:different/JJ]]]
+#   Detected 2 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+#   - SVO (V: has@10, S: it@9, O: forms@13)
+4	"Energy"	"is"	"one property of matter"
+4	"Energy"	"is"	"one property"
+4	"it"	"has"	"many different forms"
+# Line 5: One of the forms/types is mechanical energy.
+# Semantic graph: [energy/NN
+#                  nsubj:[One/CD prep:[of/IN pobj:[forms\/types/NNS det:the/DT]]]
+#                  cop:is/VBZ
+#                  amod:mechanical/JJ]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@7, V: is@5, S: One@1)
+5	"One of the forms\/types"	"is"	"mechanical energy"
+# Line 6: Mechanical energy is energy that an object has because of its position.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  ccomp:[of/IN
+#                         complm:that/IN
+#                         nsubj:[object/NN det:an/DT]
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[position/NN poss:its/PRP$]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@4, V: is@3, S: energy@2, CCOMP: of@10)
+#   - SVA (V: of@10, S: object@7, A?: because@9, A!: position@12)
+#   - SVO (S: its@11, V: "has", O: position@12)
+6	"Mechanical energy"	"is"	"energy that an object has because of its position"
+6	"an object"	"has of"	"its position because"
+6	"an object"	"has of"	"its position"
+6	"its"	"has"	"position"
+# Line 7: One of the most important laws of energy is the law of conservation of energy.
+# Semantic graph: [law/NN
+#                  nsubj:[One/CD
+#                         prep:[of/IN
+#                               pobj:[laws/NNS
+#                                     det:the/DT
+#                                     amod:[important/JJ advmod:most/RBS]
+#                                     prep:[of/IN pobj:energy/NN]]]]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: law@11, V: is@9, S: One@1, A?: of@12)
+7	"One of the most important laws of energy"	"is"	"the law of conservation of energy"
+7	"One of the most important laws of energy"	"is"	"the law"
+# Line 8: It says that energy cannot be destroyed or created, but it can only be transferred.
+# Semantic graph: [says/VBZ
+#                  nsubj:It/PRP
+#                  ccomp:[destroyed/VBN
+#                         complm:that/IN
+#                         nsubjpass:energy/NN
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         cc:or/CC
+#                         conj:created/VBN]
+#                  cc:but/CC
+#                  conj:[transferred/VBN
+#                        nsubjpass:it/PRP
+#                        aux:can/MD
+#                        advmod:only/RB
+#                        auxpass:be/VB]]
+#   Detected 4 clause(s).
+#   - SVO (V: says@2, S: It@1, CCOMP: destroyed@8)
+#   - SV (V: destroyed@8, S: energy@4)
+#   - SV (V: created@10, S: energy@4)
+#   - SV (V: transferred@17, S: it@13, A?: only@15)
+8	"It"	"says"	"that energy can not be destroyed or created"
+8	"energy"	"can not be destroyed"
+8	"energy"	"can not be created"
+8	"it"	"can be transferred"	"only"
+8	"it"	"can be transferred"

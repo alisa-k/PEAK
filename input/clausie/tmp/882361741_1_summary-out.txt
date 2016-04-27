@@ -1,0 +1,181 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what the universe is made out of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN
+#                         dep:what/WP
+#                         nsubjpass:[universe/NN det:the/DT]
+#                         auxpass:is/VBZ
+#                         prt:out/RP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@7)
+#   - SVA (V: made@7, S: universe@5, A!: of@9)
+1	"Matter"	"is"	"what the universe is made out of"
+1	"the universe"	"is made out"	"of"
+# Line 2: It takes up space measured in volume and it contains material measured in mass.
+# Semantic graph: [takes/VBZ
+#                  nsubj:It/PRP
+#                  prt:up/RP
+#                  dobj:[space/NN partmod:[measured/VBN prep:[in/IN pobj:volume/NN]]]
+#                  cc:and/CC
+#                  conj:[contains/VBZ
+#                        nsubj:it/PRP
+#                        dobj:[material/NN partmod:[measured/VBN prep:[in/IN pobj:mass/NN]]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: takes@2, S: It@1, O: space@4)
+#   - SVA (V: "be measured", S: space@4, A!: in@6)
+#   - SVO (V: contains@10, S: it@9, O: material@11)
+#   - SVA (V: "be measured", S: material@11, A!: in@13)
+2	"It"	"takes up"	"space measured in volume"
+2	"space"	"be measured"	"in volume"
+2	"it"	"contains"	"material measured in mass"
+2	"material"	"be measured"	"in mass"
+# Line 3: You can detect matter with your senses.
+# Semantic graph: [detect/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dobj:matter/NN
+#                  prep:[with/IN pobj:[senses/NNS poss:your/PRP$]]]
+#   Detected 2 clause(s).
+#   - SVO (V: detect@3, S: You@1, O: matter@4, A?: with@5)
+#   - SVO (S: your@6, V: "has", O: senses@7)
+3	"You"	"can detect"	"matter with your senses"
+3	"You"	"can detect"	"matter"
+3	"your"	"has"	"senses"
+# Line 4: For example see, touch and smell.
+# Semantic graph: [touch/VB advcl:[see/VBP mark:For/IN nsubj:example/NN] cc:and/CC conj:smell/VB]
+#   Detected 1 clause(s).
+#   - SV (V: see@3, S: example@2)
+4	"example"	"see"
+# Line 5: Although matter takes up space, not all matter can be seen with the naked eye, such as the air that surrounds us and gases.
+# Semantic graph: [seen/VBN
+#                  advcl:[takes/VBZ mark:Although/IN nsubj:matter/NN prt:up/RP dobj:space/NN]
+#                  nsubjpass:[matter/NN neg:not/RB det:all/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[with/IN
+#                        pobj:[eye/NN
+#                              det:the/DT
+#                              amod:naked/JJ
+#                              prep:[as/IN
+#                                    mwe:such/JJ
+#                                    pobj:[air/NN
+#                                          det:the/DT
+#                                          rcmod:[surrounds/VBZ
+#                                                 nsubj:that/WDT
+#                                                 dobj:[us/PRP cc:and/CC conj:gases/NNS]]]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: takes@3, S: matter@2, O: space@5)
+#   - SVA (V: seen@12, S: matter@9, A?: takes@3, A!: with@13)
+#   - SVO (V: surrounds@23, S: air@21, O: us@24)
+5	"matter"	"takes up"	"space"
+5	"not all matter"	"can be seen"	"with the naked eye such as the air Although matter takes up space"
+5	"not all matter"	"can be seen"	"with the naked eye such as the air"
+5	"the air"	"surrounds"	"us and gases"
+# Line 6: Not all matter is the same, properties of matter are used to identify or classify the kind of matter it is.
+# Semantic graph: [used/VBN
+#                  dep:[same/JJ dep:Not/RB nsubj:[matter/NN det:all/DT] cop:is/VBZ det:the/DT]
+#                  nsubjpass:[properties/NNS prep:[of/IN pobj:matter/NN]]
+#                  auxpass:are/VBP
+#                  xcomp:[identify/VB
+#                         aux:to/TO
+#                         cc:or/CC
+#                         conj:classify/VB
+#                         dobj:[kind/NN
+#                               det:the/DT
+#                               prep:[of/IN pobj:matter/NN]
+#                               rcmod:[is/VBZ nsubj:it/PRP]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: same@6, V: is@4, S: matter@3)
+#   - SVO (V: used@12, S: properties@8, XCOMP: identify@14)
+#   - SVO (V: is@22, S: it@21, O: kind@18)
+6	"all matter"	"is"	"Not the same"
+6	"properties of matter"	"are used"	"to identify the kind of matter"
+6	"properties of matter"	"are used"	"to classify the kind of matter"
+6	"it"	"is"	"the kind of matter"
+# Line 7: There are two types of matter.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[types/NNS num:two/CD prep:[of/IN pobj:matter/NN]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: types@4)
+7	"two types of matter"	"There are"
+# Line 8: Physical properties are the ones that do not change the make-up or identity of the matter.
+# Semantic graph: [ones/NNS
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  cop:are/VBP
+#                  det:the/DT
+#                  rcmod:[change/VB
+#                         nsubj:that/WDT
+#                         aux:do/VBP
+#                         neg:not/RB
+#                         dobj:[make-up/NN
+#                               det:the/DT
+#                               cc:or/CC
+#                               conj:identity/NN
+#                               prep:[of/IN pobj:[matter/NN det:the/DT]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: ones@5, V: are@3, S: properties@2)
+#   - SVO (V: change@9, S: ones@5, O: make-up@11)
+8	"Physical properties"	"are"	"the ones"
+8	"the ones"	"do not change"	"the make-up or identity of the matter"
+# Line 9: Chemical properties which can change its identity (new kind of matter).
+# Semantic graph: [properties/NNS
+#                  nsubj:Chemical/NNP
+#                  rcmod:[change/VB nsubj:which/WDT aux:can/MD dobj:[identity/NN poss:its/PRP$]]
+#                  dep:[kind/NN amod:new/JJ prep:[of/IN pobj:matter/NN]]]
+#   Detected 3 clause(s).
+#   - SV (V: properties@2, S: Chemical@1)
+#   - SVO (V: change@5, S: properties@2, O: identity@7)
+#   - SVO (S: its@6, V: "has", O: identity@7)
+9	"Chemical"	"properties"
+9	"Chemical properties new kind of matter"	"can change"	"its identity"
+9	"its"	"has"	"identity"
+# Line 10: For example a lite cigar with physical properties the matter keeps its original characteristic but with chemical properties it changes into a new kind of matter.
+# Semantic graph: [keeps/VBZ
+#                  prep:[For/IN
+#                        pobj:[example/NN
+#                              dep:[cigar/NN
+#                                   det:a/DT
+#                                   amod:lite/JJ
+#                                   prep:[with/IN pobj:[properties/NNS amod:physical/JJ]]]]]
+#                  nsubj:[matter/NN det:the/DT]
+#                  dobj:[characteristic/NN poss:its/PRP$ amod:original/JJ]
+#                  cc:but/CC
+#                  conj:[changes/VBZ
+#                        prep:[with/IN pobj:[properties/NNS nn:chemical/NN]]
+#                        nsubj:it/PRP
+#                        prep:[into/IN
+#                              pobj:[kind/NN det:a/DT amod:new/JJ prep:[of/IN pobj:matter/NN]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: keeps@11, S: matter@10, A?: For@1, O: characteristic@14)
+#   - SVO (S: its@12, V: "has", O: characteristic@14)
+#   - SVA (V: changes@20, S: it@19, A?: with@16, A!: into@21)
+10	"the matter"	"keeps"	"its original characteristic For example a lite cigar with physical properties"
+10	"the matter"	"keeps"	"its original characteristic"
+10	"its"	"has"	"original characteristic"
+10	"it"	"changes"	"into a new kind of matter with chemical properties"
+10	"it"	"changes"	"into a new kind of matter"

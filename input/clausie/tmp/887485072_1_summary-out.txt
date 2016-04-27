@@ -1,0 +1,244 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is all around us.
+# Semantic graph: [us/PRP nsubj:Matter/NNP cop:is/VBZ advmod:[around/RP dep:all/DT]]
+#   Detected 1 clause(s).
+#   - SVC (C: us@5, V: is@2, S: Matter@1, A?: around@4)
+1	"Matter"	"is"	"us all around"
+1	"Matter"	"is"	"us"
+# Line 2: If someone was to do a simple math problem on a piece of paper, that person would be surrounded by matter.
+# Semantic graph: [surrounded/VBN
+#                  advcl:[was/VBD
+#                         mark:If/IN
+#                         nsubj:someone/NN
+#                         xcomp:[do/VB
+#                                aux:to/TO
+#                                dobj:[problem/NN det:a/DT amod:simple/JJ nn:math/NN]
+#                                prep:[on/IN pobj:[piece/NN det:a/DT prep:[of/IN pobj:paper/NN]]]]]
+#                  nsubjpass:[person/NN det:that/DT]
+#                  aux:would/MD
+#                  auxpass:be/VB
+#                  prep:[by/IN pobj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVC (V: was@3, S: someone@2, XCOMP: do@5)
+#   - SVA (V: surrounded@20, S: person@17, A?: was@3, A!: by@21)
+2	"someone"	"was"	"to do a simple math problem on a piece of paper"
+2	"someone"	"was"	"to do a simple math problem"
+2	"that person"	"would be surrounded"	"by matter If someone was to do a simple math problem on a piece of paper"
+2	"that person"	"would be surrounded"	"by matter"
+# Line 3: It is in the seat that he or she sits in, the pencil, paper, eraser, and table.
+# Semantic graph: [is/VBZ
+#                  nsubj:It/PRP
+#                  prep:[in/IN
+#                        pobj:[seat/NN
+#                              det:the/DT
+#                              dep:[sits/VBZ
+#                                   complm:that/IN
+#                                   nsubj:[he/PRP cc:or/CC conj:she/PRP]
+#                                   prt:in/RP]
+#                              appos:[pencil/NN
+#                                     det:the/DT
+#                                     conj:paper/NN
+#                                     conj:eraser/NN
+#                                     cc:and/CC
+#                                     conj:table/NN]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: is@2, S: It@1, A!: in@3)
+#   - SVC (S: seat@5, V: "is", C: pencil@14)
+#   - SV (V: sits@10, S: he@7)
+3	"It"	"is"	"in the seat that he or she sits in"
+3	"the seat that he or she sits in"	"is"	"the pencil paper eraser and table"
+3	"he or she"	"sits in"
+# Line 4: When one thinks about it matter is amazing; matter is what all objects and substances in the universe are made out of.
+# Semantic graph: [amazing/JJ
+#                  advcl:[thinks/VBZ advmod:When/WRB nsubj:one/PRP prep:[about/IN pobj:it/PRP]]
+#                  nsubj:matter/NN
+#                  cop:is/VBZ
+#                  parataxis:[is/VBZ
+#                             nsubj:matter/NN
+#                             ccomp:[made/VBN
+#                                    dep:what/WP
+#                                    nsubjpass:[objects/NNS
+#                                               det:all/DT
+#                                               cc:and/CC
+#                                               conj:substances/NNS
+#                                               prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                                    auxpass:are/VBP
+#                                    prt:out/RP
+#                                    prep:of/IN]]]
+#   Detected 4 clause(s).
+#   - SVA (V: thinks@3, S: one@2, A?: When@1, A!: about@4)
+#   - SVC (C: amazing@8, V: is@7, S: matter@6, A?: thinks@3)
+#   - SVC (V: is@11, S: matter@10, CCOMP: made@21)
+#   - SVA (V: made@21, S: objects@14, A!: of@23)
+4	"one"	"thinks"	"about it When"
+4	"one"	"thinks"	"about it"
+4	"matter"	"is"	"amazing When one thinks about it"
+4	"matter"	"is"	"amazing"
+4	"matter"	"is"	"what all objects and substances in the universe are made out of"
+4	"all objects and substances in the universe"	"are made out"	"of"
+# Line 5: But there are two different properties to matter, the physical and chemical properties.
+# Semantic graph: [are/VBP
+#                  cc:But/CC
+#                  expl:there/EX
+#                  nsubj:[properties/NNS
+#                         num:two/CD
+#                         amod:different/JJ
+#                         prep:[to/TO
+#                               pobj:[matter/NN
+#                                     appos:[properties/NNS
+#                                            det:the/DT
+#                                            amod:[physical/NN cc:and/CC conj:chemical/NN]]]]]]
+#   Detected 2 clause(s).
+#   - EXISTENTIAL (V: are@3, S: properties@6)
+#   - SVC (S: matter@8, V: "is", C: properties@14)
+5	"two different properties to matter"	"there are"
+5	"matter"	"is"	"the physical and chemical properties"
+# Line 6: A physical property is something that can be observed without changing the make-up, or identity of the matter.
+# Semantic graph: [something/NN
+#                  nsubj:[property/NN det:A/DT amod:physical/JJ]
+#                  cop:is/VBZ
+#                  rcmod:[observed/VBN
+#                         nsubjpass:that/WDT
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[without/IN
+#                               pcomp:[changing/VBG
+#                                      dobj:[make-up/NN
+#                                            det:the/DT
+#                                            cc:or/CC
+#                                            conj:identity/NN
+#                                            prep:[of/IN pobj:[matter/NN det:the/DT]]]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: something@5, V: is@4, S: property@3)
+#   - SVA (V: observed@9, S: something@5, A!: without@10)
+6	"A physical property"	"is"	"something"
+6	"something"	"can be observed"	"without changing the make-up or identity of the matter"
+# Line 7: A chemical property is something that describes matter based on its ability to be changed into a new type of matter with different properties.
+# Semantic graph: [something/NN
+#                  nsubj:[property/NN det:A/DT nn:chemical/NN]
+#                  cop:is/VBZ
+#                  rcmod:[describes/VBZ
+#                         nsubj:that/WDT
+#                         dobj:matter/NN
+#                         prep:[based/VBN
+#                               pcomp:[on/IN
+#                                      pobj:[ability/NN
+#                                            poss:its/PRP$
+#                                            infmod:[changed/VBN
+#                                                    aux:to/TO
+#                                                    auxpass:be/VB
+#                                                    prep:[into/IN
+#                                                          pobj:[type/NN
+#                                                                det:a/DT
+#                                                                amod:new/JJ
+#                                                                prep:[of/IN pobj:matter/NN]]]
+#                                                    prep:[with/IN
+#                                                          pobj:[properties/NNS
+#                                                                amod:different/JJ]]]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: something@5, V: is@4, S: property@3)
+#   - SVO (V: describes@7, S: something@5, O: matter@8, A?: based@9)
+#   - SVO (S: its@11, V: "has", O: ability@12)
+7	"A chemical property"	"is"	"something"
+7	"something"	"describes"	"matter based on its ability to be changed into a new type of matter with different properties"
+7	"something"	"describes"	"matter"
+7	"its"	"has"	"ability to be changed into a new type of matter with different properties"
+# Line 8: Energy is a property of matter and all matter has it.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[has/VBZ advmod:[matter/NN det:all/DT] dobj:it/PRP]]
+#   Detected 2 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+#   - SVO (V: has@10, S: Energy@1, A?: matter@9, O: it@11)
+8	"Energy"	"is"	"a property of matter"
+8	"Energy"	"is"	"a property"
+8	"Energy"	"has"	"it all matter"
+8	"Energy"	"has"	"it"
+# Line 9: But energy isn't something one could see or feel.
+# Semantic graph: [something/NN
+#                  cc:But/CC
+#                  nsubj:energy/NN
+#                  cop:is/VBZ
+#                  neg:n't/RB
+#                  rcmod:[see/VB nsubj:one/PRP aux:could/MD cc:or/CC conj:feel/VB]]
+#   Detected 3 clause(s).
+#   - SVC (C: something@5, V: is@3, S: energy@2)
+#   - SVO (V: see@8, S: one@6, O: something@5)
+#   - SVO (V: feel@10, S: one@6, O: something@5)
+9	"energy"	"is n't"	"But something"
+9	"one"	"could see"	"But something"
+9	"one"	"could feel"	"But something"
+# Line 10: Energy has different forms that it comes in, but energy can never be created or destroyed, only transferred or lost.
+# Semantic graph: [has/VBZ
+#                  nsubj:Energy/NNP
+#                  dobj:[forms/NNS
+#                        amod:different/JJ
+#                        dep:[comes/VBZ complm:that/IN nsubj:it/PRP prt:in/RP]]
+#                  cc:but/CC
+#                  conj:[created/VBN
+#                        nsubjpass:energy/NN
+#                        aux:can/MD
+#                        neg:never/RB
+#                        auxpass:be/VB
+#                        cc:or/CC
+#                        conj:destroyed/VBN
+#                        conj:[transferred/VBN advmod:only/RB]
+#                        cc:or/CC
+#                        conj:lost/VBN]]
+#   Detected 6 clause(s).
+#   - SVO (V: has@2, S: Energy@1, O: forms@4)
+#   - SV (V: comes@7, S: it@6)
+#   - SV (V: created@15, S: energy@11)
+#   - SV (V: destroyed@17, S: energy@11)
+#   - SV (V: transferred@20, S: energy@11, A?: only@19)
+#   - SV (V: lost@22, S: energy@11)
+10	"Energy"	"has"	"different forms that it comes in"
+10	"it"	"comes in"
+10	"energy"	"can never be created"
+10	"energy"	"can never be destroyed"
+10	"energy"	"can never be transferred"	"only"
+10	"energy"	"can never be transferred"
+10	"energy"	"can never be lost"
+# Line 11: There are three different kinds of energy, and they are; mechanical energy, kinetic energy, and potential energy.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[kinds/NNS num:three/CD amod:different/JJ prep:[of/IN pobj:energy/NN]]
+#                  cc:and/CC
+#                  conj:[energy/NN
+#                        nsubj:they/PRP
+#                        cop:are/VBP
+#                        amod:mechanical/JJ
+#                        conj:[energy/NN amod:kinetic/JJ]
+#                        cc:and/CC
+#                        conj:[energy/NN amod:potential/JJ]]]
+#   Detected 2 clause(s).
+#   - EXISTENTIAL (V: are@2, S: kinds@5)
+#   - SVC (C: energy@14, V: are@11, S: they@10)
+11	"three different kinds of energy"	"There are"
+11	"they"	"are"	"mechanical energy kinetic energy and potential energy"

@@ -1,0 +1,116 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is a substance or material of a particular kind.
+# Semantic graph: [substance/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  cc:or/CC
+#                  conj:material/NN
+#                  prep:[of/IN pobj:[kind/NN det:a/DT amod:particular/JJ]]]
+#   Detected 1 clause(s).
+#   - SVC (C: substance@4, V: is@2, S: Matter@1, A?: of@7)
+1	"Matter"	"is"	"a substance or material of a particular kind"
+1	"Matter"	"is"	"a substance or material"
+# Line 2: Matter has volume and mass and that is why it can be measured and detected.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[volume/NN
+#                        cc:and/CC
+#                        conj:mass/NN
+#                        cc:and/CC
+#                        conj:[is/VBZ
+#                              nsubj:that/WDT
+#                              advcl:[measured/VBN
+#                                     advmod:why/WRB
+#                                     nsubjpass:it/PRP
+#                                     aux:can/MD
+#                                     auxpass:be/VB
+#                                     cc:and/CC
+#                                     conj:detected/VBN]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: volume@3)
+#   - SVA (V: is@8, S: that@7, A!: measured@13)
+#   - SV (V: measured@13, S: it@10, A-: why@9)
+#   - SV (V: detected@15, S: it@10, A-: why@9)
+2	"Matter"	"has"	"volume and mass and that is why it can be measured and detected"
+2	"that"	"is"	"why it can be measured and detected"
+2	"it"	"can be measured"
+2	"it"	"can be detected"
+# Line 3: Properties of matter are chemical and physical properties chemical properties identify matter.
+# Semantic graph: [properties/NNS
+#                  nsubj:[Properties/NNP prep:[of/IN pobj:matter/NN]]
+#                  cop:are/VBP
+#                  amod:[chemical/NN cc:and/CC conj:physical/NN]
+#                  rcmod:[identify/VBP nsubj:[properties/NNS nn:chemical/NN] dobj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVC (C: properties@8, V: are@4, S: Properties@1)
+#   - SVOO (V: identify@11, S: properties@10, O: matter@12, IO: properties@8)
+3	"Properties of matter"	"are"	"chemical and physical properties"
+3	"chemical properties"	"identify"	"matter chemical and physical properties"
+# Line 4: Physical can be observed without changing.
+# Semantic graph: [observed/VBN
+#                  nsubjpass:Physical/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[without/IN pobj:changing/VBG]]
+#   Detected 1 clause(s).
+#   - SVA (V: observed@4, S: Physical@1, A!: without@5)
+4	"Physical"	"can be observed"	"without changing"
+# Line 5: Energy is property of matter.
+# Semantic graph: [property/NN nsubj:Energy/NNP cop:is/VBZ prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@3, V: is@2, S: Energy@1, A?: of@4)
+5	"Energy"	"is"	"property of matter"
+5	"Energy"	"is"	"property"
+# Line 6: They are related.
+# Semantic graph: [related/VBN nsubjpass:They/PRP auxpass:are/VBP]
+#   Detected 1 clause(s).
+#   - SV (V: related@3, S: They@1)
+6	"They"	"are related"
+# Line 7: The law of conservation of energy is that energy can be transfer, but cannot be created or destroyed.
+# Semantic graph: [is/VBZ
+#                  nsubj:[law/NN
+#                         det:The/DT
+#                         prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#                  ccomp:[transfer/NN
+#                         complm:that/IN
+#                         nsubj:energy/NN
+#                         aux:can/MD
+#                         cop:be/VB
+#                         cc:but/CC
+#                         conj:[created/VBN
+#                               aux:can/MD
+#                               neg:not/RB
+#                               auxpass:be/VB
+#                               cc:or/CC
+#                               conj:destroyed/VBN]]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@7, S: law@2, CCOMP: transfer@12)
+#   - SVC (C: transfer@12, V: be@11, S: energy@9)
+#   - SV (V: created@18, S: energy@9)
+7	"The law of conservation of energy"	"is"	"that energy can be transfer but can not be created or destroyed"
+7	"energy"	"can be"	"transfer"
+7	"energy"	"can not be created"
+7	"energy"	"can not be destroyed"

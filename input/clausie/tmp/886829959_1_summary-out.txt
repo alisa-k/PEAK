@@ -1,0 +1,219 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Everything that you see in this world is made up of matter.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[Everything/NN
+#                             dep:[see/VBP
+#                                  complm:that/IN
+#                                  nsubj:you/PRP
+#                                  prep:[in/IN pobj:[world/NN det:this/DT]]]]
+#                  auxpass:is/VBZ
+#                  prt:up/RP
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVA (V: see@4, S: you@3, A!: in@5)
+#   - SVA (V: made@9, S: Everything@1, A!: of@11)
+1	"you"	"see"	"in this world"
+1	"Everything that you see in this world"	"is made up"	"of matter"
+# Line 2: There's not one day it it's there not to play a role in your everyday life.
+# Semantic graph: ['s/VBZ
+#                  dep:['s/VBZ expl:There/EX neg:[not/RB pobj:[day/NN num:one/CD]] nsubj:it/PRP]
+#                  nsubj:it/PRP
+#                  xcomp:[play/VB
+#                         expl:there/EX
+#                         neg:not/RB
+#                         aux:to/TO
+#                         dobj:[role/NN
+#                               det:a/DT
+#                               prep:[in/IN pobj:[life/NN poss:your/PRP$ amod:everyday/JJ]]]]]
+#   Detected 3 clause(s).
+#   - EXISTENTIAL (V: 's@2, S: it@6)
+#   - SVC (V: 's@8, S: it@7, XCOMP: play@12)
+#   - SVO (S: your@16, V: "has", O: life@18)
+2	"it"	"There 's not one day"
+2	"it"	"'s"	"there not to play a role in your everyday life"
+2	"your"	"has"	"everyday life"
+# Line 3: It has various physical and chemical characteristics and also energy.
+# Semantic graph: [has/VBZ
+#                  nsubj:It/PRP
+#                  dobj:[characteristics/NNS
+#                        amod:various/JJ
+#                        amod:[physical/NN cc:and/CC conj:chemical/NN]
+#                        cc:and/CC
+#                        conj:[energy/NN advmod:also/RB]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: It@1, O: characteristics@7)
+3	"It"	"has"	"various physical and chemical characteristics and also energy"
+# Line 4: Properties of matter be both physical and chemically an object may vary in size and shape that makes up the identity the ability to bend or flatten it is it's malleability.
+# Semantic graph: [physical/JJ
+#                  nsubj:[Properties/NNP prep:[of/IN pobj:matter/NN]]
+#                  cop:be/VBP
+#                  dep:both/DT
+#                  cc:and/CC
+#                  conj:[vary/VB
+#                        advmod:chemically/RB
+#                        nsubj:[object/NN det:an/DT]
+#                        aux:may/MD
+#                        prep:[in/IN
+#                              pobj:[size/NN
+#                                    cc:and/CC
+#                                    conj:shape/NN
+#                                    rcmod:[makes/VBZ
+#                                           nsubj:that/WDT
+#                                           prt:up/RP
+#                                           dobj:[identity/NN
+#                                                 det:the/DT
+#                                                 rcmod:[malleability/NN
+#                                                        nsubj:[ability/NN
+#                                                               det:the/DT
+#                                                               infmod:[bend/VB
+#                                                                       aux:to/TO
+#                                                                       cc:or/CC
+#                                                                       conj:flatten/VB
+#                                                                       dobj:it/PRP]]
+#                                                        cop:is/VBZ
+#                                                        poss:[it/PRP possessive:'s/POS]]]]]]]]
+#   Detected 5 clause(s).
+#   - SVC (C: physical@6, V: be@4, S: Properties@1)
+#   - SVA (V: vary@12, S: object@10, A?: chemically@8, A!: in@13)
+#   - SVO (V: makes@18, S: size@14, O: identity@21)
+#   - SVOC (C: malleability@32, V: is@29, S: ability@23, O: identity@21)
+#   - SVO (S: it@30, V: "has", O: malleability@32)
+4	"Properties of matter"	"be"	"both physical"
+4	"an object"	"may vary"	"in size and shape chemically"
+4	"an object"	"may vary"	"in size and shape"
+4	"size and shape"	"makes up"	"the identity"
+4	"the ability to bend or flatten it"	"is"	"it 's malleability the identity"
+4	"it"	"has"	"malleability"
+# Line 5: Chemical properties measure the matter's ability to change it to a different form.
+# Semantic graph: [measure/VB
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  dobj:[ability/NN
+#                        poss:[matter/NN det:the/DT possessive:'s/POS]
+#                        infmod:[change/VB
+#                                aux:to/TO
+#                                dobj:it/PRP
+#                                prep:[to/TO pobj:[form/NN det:a/DT amod:different/JJ]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: measure@3, S: properties@2, O: ability@7)
+#   - SVO (S: matter@5, V: "has", O: ability@7)
+5	"Chemical properties"	"measure"	"the matter 's ability to change it to a different form"
+5	"the matter"	"has"	"ability to change it to a different form"
+# Line 6: For example, gasoline is flammable and so it reacts to heat with an explosion that turns that gas into another form.
+# Semantic graph: [flammable/JJ
+#                  prep:[For/IN pobj:example/NN]
+#                  nsubj:gasoline/NN
+#                  cop:is/VBZ
+#                  cc:and/CC
+#                  advmod:so/RB
+#                  ccomp:[reacts/VBZ
+#                         nsubj:it/PRP
+#                         xcomp:[heat/VB
+#                                aux:to/TO
+#                                prep:[with/IN
+#                                      pobj:[explosion/NN
+#                                            det:an/DT
+#                                            rcmod:[turns/VBZ
+#                                                   nsubj:that/WDT
+#                                                   dobj:[gas/NN det:that/DT]
+#                                                   prep:[into/IN pobj:[form/NN det:another/DT]]]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: flammable@6, V: is@5, S: gasoline@4, A?: For@1, A-: so@8, CCOMP: reacts@10)
+#   - SVO (V: reacts@10, S: it@9, XCOMP: heat@12)
+#   - SVO (V: turns@17, S: explosion@15, O: gas@19, A?: into@20)
+6	"gasoline"	"is"	"flammable and it reacts to heat with an explosion For example"
+6	"gasoline"	"is"	"flammable and it reacts to heat with an explosion"
+6	"it"	"reacts"	"to heat with an explosion"
+6	"an explosion"	"turns"	"that gas into another form"
+6	"an explosion"	"turns"	"that gas"
+# Line 7: Energy is the property of matter that substance possesses that allows it to react in this way.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  ccomp:[possesses/VBZ
+#                         complm:that/IN
+#                         nsubj:substance/NN
+#                         ccomp:[allows/VBZ
+#                                complm:that/IN
+#                                xcomp:[react/VB
+#                                       nsubj:it/PRP
+#                                       aux:to/TO
+#                                       prep:[in/IN pobj:[way/NN det:this/DT]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5, CCOMP: possesses@9)
+#   - SVO (V: possesses@9, S: substance@8, CCOMP: allows@11)
+#   - SVA (V: react@14, S: it@12, A!: in@15)
+7	"Energy"	"is"	"the property of matter that substance possesses that allows it to react in this way"
+7	"Energy"	"is"	"the property that substance possesses that allows it to react in this way"
+7	"substance"	"possesses"	"that allows it to react in this way"
+7	"it"	"to react"	"in this way"
+# Line 8: Mechanical energy, can be divided up into two different forms; potential and kinetic.
+# Semantic graph: [divided/VBN
+#                  nsubjpass:[energy/NN amod:Mechanical/JJ]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prt:up/RP
+#                  prep:[into/IN
+#                        pobj:[forms/NNS
+#                              num:two/CD
+#                              amod:different/JJ
+#                              amod:[potential/JJ cc:and/CC conj:kinetic/JJ]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: divided@6, S: energy@2, A!: into@8)
+8	"Mechanical energy"	"can be divided up"	"into two different forms potential and kinetic"
+# Line 9: Potential energy is the energy an object has because of its position or shape and kinetic energy is that object has because its moving.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Potential/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[of/IN
+#                         nsubj:[object/NN det:an/DT]
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[position/NN poss:its/PRP$ cc:or/CC conj:shape/NN]]
+#                  cc:and/CC
+#                  conj:[is/VBZ
+#                        nsubj:[energy/NN amod:kinetic/JJ]
+#                        ccomp:[because/IN
+#                               complm:that/IN
+#                               nsubj:object/NN
+#                               aux:has/VBZ
+#                               pobj:[moving/NN poss:its/PRP$]]]]
+#   Detected 6 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2)
+#   - SVO (V: of@10, S: object@7, A?: because@9, A?: position@12, O: energy@5)
+#   - SVO (S: its@11, V: "has", O: position@12)
+#   - SVC (V: is@18, S: energy@17, CCOMP: because@22)
+#   - SVA (V: because@22, S: object@20, A!: moving@24)
+#   - SVO (S: its@23, V: "has", O: moving@24)
+9	"Potential energy"	"is"	"the energy"
+9	"an object"	"has of"	"the energy and kinetic energy is that object has because its moving because"
+9	"an object"	"has of"	"its position or shape the energy and kinetic energy is that object has because its moving"
+9	"an object"	"has of"	"the energy and kinetic energy is that object has because its moving"
+9	"its"	"has"	"position or shape"
+9	"kinetic energy"	"is"	"that object has because its moving"
+9	"object"	"has because"	"its moving"
+9	"its"	"has"	"moving"

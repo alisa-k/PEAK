@@ -1,0 +1,101 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the stuff that all objects and substances in the universe are made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[objects/NNS
+#                                    det:all/DT
+#                                    cc:and/CC
+#                                    conj:substances/NNS
+#                                    prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                         auxpass:are/VBP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@14)
+#   - SVA (V: made@14, S: objects@7, A!: of@15)
+1	"Matter"	"is"	"the stuff that all objects and substances in the universe are made of"
+1	"all objects and substances in the universe"	"are made"	"of"
+# Line 2: Matter can be detected and measured because of it's volume and mass.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  prep:[of/IN
+#                        advmod:because/RB
+#                        pobj:[volume/NN poss:[it/PRP possessive:'s/POS] cc:and/CC conj:mass/NN]]]
+#   Detected 3 clause(s).
+#   - SVA (V: detected@4, S: Matter@1, A!: of@8)
+#   - SVA (V: measured@6, S: Matter@1, A!: of@8)
+#   - SVO (S: it@9, V: "has", O: volume@11)
+2	"Matter"	"can be detected"	"because of it 's volume and mass"
+2	"Matter"	"can be measured"	"because of it 's volume and mass"
+2	"it"	"has"	"volume and mass"
+# Line 3: Properties help classify matter.
+# Semantic graph: [help/VBP nsubj:Properties/NNP xcomp:[classify/VB dobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: help@2, S: Properties@1, XCOMP: classify@3)
+3	"Properties"	"help"	"classify matter"
+# Line 4: All matter contains energy.
+# Semantic graph: [contains/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: contains@3, S: matter@2, O: energy@4)
+4	"All matter"	"contains"	"energy"
+# Line 5: The law of conservation of energy is energy cannot be created or destroyed.
+# Semantic graph: [energy/NN
+#                  nsubj:[law/NN
+#                         det:The/DT
+#                         prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#                  cop:is/VBZ
+#                  rcmod:[created/VBN
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         cc:or/CC
+#                         conj:destroyed/VBN]]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@8, V: is@7, S: law@2)
+5	"The law of conservation of energy"	"is"	"energy"
+# Line 6: Mechanical energy is the energy an object has has because of it's motion.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[has/VBZ nsubj:[object/NN det:an/DT] aux:has/VBZ]
+#                  prep:[of/IN
+#                        advmod:because/RB
+#                        pobj:[motion/NN poss:[it/PRP possessive:'s/POS]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2, A?: of@11)
+#   - SVO (V: has@9, S: object@7, O: energy@5)
+#   - SVO (S: it@12, V: "has", O: motion@14)
+6	"Mechanical energy"	"is"	"the energy because of it 's motion"
+6	"Mechanical energy"	"is"	"the energy"
+6	"an object"	"has has"	"the energy because of it 's motion"
+6	"it"	"has"	"motion"

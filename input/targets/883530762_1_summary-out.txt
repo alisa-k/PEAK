@@ -1,0 +1,156 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is anyting that takes up space.
+# Semantic graph: [anyting/VBG
+#                  nsubj:Matter/NNP
+#                  aux:is/VBZ
+#                  ccomp:[takes/VBZ complm:that/IN prt:up/RP dobj:space/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: anyting@3, S: Matter@1, CCOMP: takes@5)
+1	"Matter"	"is anyting"	"that takes up space"
+# Line 2: You can identify by using your senses.
+# Semantic graph: [identify/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  prep:[by/IN pcomp:[using/VBG dobj:[senses/NNS poss:your/PRP$]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: identify@3, S: You@1, A!: by@4)
+#   - SVO (S: your@6, V: "has", O: senses@7)
+2	"You"	"can identify"	"by using your senses"
+2	"your"	"has"	"senses"
+# Line 3: If you can see, feel, or smell it, than it is matter.
+# Semantic graph: [feel/VBP
+#                  csubj:[see/VB mark:If/IN nsubj:you/PRP aux:can/MD]
+#                  dep:[smell/VBP dep:or/CC dobj:it/PRP]
+#                  advcl:[matter/NN mark:than/IN nsubj:it/PRP cop:is/VBZ]]
+#   Detected 3 clause(s).
+#   - SV (V: see@4, S: you@2)
+#   - SVA (V: feel@6, S: see@4, A!: matter@15)
+#   - SVC (C: matter@15, V: is@14, S: it@13)
+3	"you"	"can see"
+3	"If you can see"	"feel"	"than it is matter"
+3	"it"	"is"	"matter"
+# Line 4: A physical property is something that does not change its identity, and a chemical property can change into many different substances.
+# Semantic graph: [something/NN
+#                  nsubj:[property/NN det:A/DT amod:physical/JJ]
+#                  cop:is/VBZ
+#                  rcmod:[change/VB
+#                         nsubj:that/WDT
+#                         aux:does/VBZ
+#                         neg:not/RB
+#                         dobj:[identity/NN poss:its/PRP$]]
+#                  cc:and/CC
+#                  conj:[change/VB
+#                        nsubj:[property/NN det:a/DT nn:chemical/NN]
+#                        aux:can/MD
+#                        prep:[into/IN pobj:[substances/NNS amod:many/JJ amod:different/JJ]]]]
+#   Detected 4 clause(s).
+#   - SVC (C: something@5, V: is@4, S: property@3)
+#   - SVO (V: change@9, S: something@5, O: identity@11)
+#   - SVO (S: its@10, V: "has", O: identity@11)
+#   - SVA (V: change@18, S: property@16, A!: into@19)
+4	"A physical property"	"is"	"something"
+4	"something and a chemical property can change into many different substances"	"does not change"	"its identity"
+4	"its"	"has"	"identity"
+4	"a chemical property"	"can change"	"into many different substances"
+# Line 5: Energy is related to matter because energy is one of its properties.
+# Semantic graph: [related/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  xcomp:[matter/VB
+#                         aux:to/TO
+#                         advcl:[one/CD
+#                                mark:because/IN
+#                                nsubj:energy/NN
+#                                cop:is/VBZ
+#                                prep:[of/IN pobj:[properties/NNS poss:its/PRP$]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: related@3, S: Energy@1, XCOMP: matter@5)
+#   - SVC (C: one@9, V: is@8, S: energy@7, A?: of@10)
+#   - SVO (S: its@11, V: "has", O: properties@12)
+5	"Energy"	"is related"	"to matter because energy is one of its properties"
+5	"energy"	"is"	"one of its properties"
+5	"energy"	"is"	"one"
+5	"its"	"has"	"properties"
+# Line 6: Energy is not man made and it cant be destroyed.
+# Semantic graph: [man/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  neg:not/RB
+#                  partmod:made/VBN
+#                  cc:and/CC
+#                  conj:[cant/MD nsubj:it/PRP dep:[destroyed/VBN auxpass:be/VB]]]
+#   Detected 3 clause(s).
+#   - SVC (C: man@4, V: is@2, S: Energy@1, A?: made@5)
+#   - SVA (V: "be made", S: man@4)
+#   - SV (V: cant@8, S: it@7)
+6	"Energy"	"is not"	"man made"
+6	"Energy"	"is not"	"man"
+6	"not man and it cant be destroyed"	"be made"
+6	"it"	"cant"
+# Line 7: Mechanical energy is energy an object has because of its position or motion.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  rcmod:[of/IN
+#                         nsubj:[object/NN det:an/DT]
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[position/NN poss:its/PRP$ cc:or/CC conj:motion/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@4, V: is@3, S: energy@2)
+#   - SVO (V: of@9, S: object@6, A?: because@8, A?: position@11, O: energy@4)
+#   - SVO (S: its@10, V: "has", O: position@11)
+7	"Mechanical energy"	"is"	"energy"
+7	"an object"	"has of"	"energy because"
+7	"an object"	"has of"	"its position or motion energy"
+7	"an object"	"has of"	"energy"
+7	"its"	"has"	"position or motion"
+# Line 8: When an object moves, it forms kinetic energy.
+# Semantic graph: [forms/VBZ
+#                  advcl:[moves/VBZ advmod:When/WRB nsubj:[object/NN det:an/DT]]
+#                  nsubj:it/PRP
+#                  dobj:[energy/NN amod:kinetic/JJ]]
+#   Detected 2 clause(s).
+#   - SV (V: moves@4, S: object@3, A?: When@1)
+#   - SVO (V: forms@7, S: it@6, A?: moves@4, O: energy@9)
+8	"an object"	"moves"	"When"
+8	"an object"	"moves"
+8	"it"	"forms"	"kinetic energy When an object moves"
+8	"it"	"forms"	"kinetic energy"
+# Line 9: When you stretch a rubberband it forms potential energy.
+# Semantic graph: [forms/VBZ
+#                  advcl:[stretch/VBP
+#                         advmod:When/WRB
+#                         nsubj:you/PRP
+#                         dobj:[rubberband/NN det:a/DT]]
+#                  nsubj:it/PRP
+#                  dobj:[energy/NN amod:potential/JJ]]
+#   Detected 2 clause(s).
+#   - SVO (V: stretch@3, S: you@2, A?: When@1, O: rubberband@5)
+#   - SVO (V: forms@7, S: it@6, A?: stretch@3, O: energy@9)
+9	"you"	"stretch"	"a rubberband When"
+9	"you"	"stretch"	"a rubberband"
+9	"it"	"forms"	"potential energy When you stretch a rubberband"
+9	"it"	"forms"	"potential energy"

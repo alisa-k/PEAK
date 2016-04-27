@@ -1,0 +1,152 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: The matter is the objects that have a mass and take up space like, the desk, a chair, oxygen, etc.
+# Semantic graph: [objects/NNS
+#                  nsubj:[matter/NN det:The/DT]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[have/VBP
+#                         nsubj:that/WDT
+#                         dobj:[mass/NN det:a/DT]
+#                         cc:and/CC
+#                         conj:[take/VBP
+#                               prt:up/RP
+#                               dobj:[space/NN
+#                                     prep:[like/IN
+#                                           dep:[desk/NN det:the/DT]
+#                                           pobj:[oxygen/NN det:a/DT nn:chair/NN dep:etc./FW]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: objects@5, V: is@3, S: matter@2)
+#   - SVO (V: have@7, S: objects@5, O: mass@9)
+#   - SVO (V: take@11, S: objects@5, O: space@13)
+1	"The matter"	"is"	"the objects"
+1	"the objects"	"have"	"a mass"
+1	"the objects"	"take up"	"space like the desk a chair oxygen etc."
+# Line 2: All matter can be detected because they are a mass, a substance we can clarify the types of matter by seeing or feeling.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:[matter/NN det:All/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  advcl:[mass/NN
+#                         mark:because/IN
+#                         nsubj:they/PRP
+#                         cop:are/VBP
+#                         det:a/DT
+#                         appos:[substance/NN
+#                                det:a/DT
+#                                rcmod:[clarify/VB
+#                                       nsubj:we/PRP
+#                                       aux:can/MD
+#                                       dobj:[types/NNS det:the/DT prep:[of/IN pobj:matter/NN]]
+#                                       prep:[by/IN pcomp:[seeing/VBG cc:or/CC conj:feeling/VBG]]]]]]
+#   Detected 4 clause(s).
+#   - SVA (V: detected@5, S: matter@2, A!: mass@10)
+#   - SVC (C: mass@10, V: are@8, S: they@7)
+#   - SVC (S: mass@10, V: "is", C: substance@13)
+#   - SVOO (V: clarify@16, S: we@14, O: types@18, A?: by@21, IO: substance@13)
+2	"All matter"	"can be detected"	"because they are a mass"
+2	"they"	"are"	"a mass"
+2	"because they are a mass"	"is"	"a substance"
+2	"we"	"can clarify"	"the types of matter by seeing or feeling a substance"
+2	"we"	"can clarify"	"the types of matter a substance"
+# Line 3: The matter has both physical and chemical properties.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:The/DT]
+#                  dobj:[properties/NNS
+#                        det:both/DT
+#                        amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: properties@8)
+3	"The matter"	"has"	"both physical and chemical properties"
+# Line 4: The physical can be changed only in shape but the chemical can be changed into new kind of matter.
+# Semantic graph: [changed/VBN
+#                  nsubjpass:[physical/JJ det:The/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  advmod:only/RB
+#                  prep:[in/IN pobj:shape/NN]
+#                  cc:but/CC
+#                  conj:[changed/VBN
+#                        nsubjpass:[chemical/NN det:the/DT]
+#                        aux:can/MD
+#                        auxpass:be/VB
+#                        prep:[into/IN pobj:[kind/NN amod:new/JJ prep:[of/IN pobj:matter/NN]]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: changed@5, S: physical@2, A!: only@6, A?: in@7)
+#   - SVA (V: changed@14, S: chemical@11, A!: into@15)
+4	"The physical"	"can be changed"	"only in shape"
+4	"The physical"	"can be changed"	"only"
+4	"the chemical"	"can be changed"	"into new kind of matter"
+# Line 5: All matter has energy.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+5	"All matter"	"has"	"energy"
+# Line 6: We can see only what energy does not what energy is.
+# Semantic graph: [see/VB
+#                  nsubj:We/PRP
+#                  aux:can/MD
+#                  advmod:only/RB
+#                  ccomp:[does/VBZ
+#                         dep:what/WP
+#                         nsubj:energy/NN
+#                         ccomp:[is/VBZ dep:not/RB nsubj:[energy/NN dep:what/WP]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: see@3, S: We@1, A?: only@4, CCOMP: does@7)
+#   - SVO (V: does@7, S: energy@6, CCOMP: is@11)
+#   - SV (V: is@11, S: energy@10)
+6	"We"	"can see"	"only what energy does not what energy is"
+6	"We"	"can see"	"what energy does not what energy is"
+6	"energy"	"does"	"not what energy is"
+6	"what energy"	"is"
+# Line 7: Energy can not be destroyed or created when a matter is in no form, it cause energy we call it mechanical energy.
+# Semantic graph: [cause/VBP
+#                  ccomp:[destroyed/VBN
+#                         nsubjpass:Energy/NNP
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         cc:or/CC
+#                         conj:created/VBN
+#                         advcl:[is/VBZ
+#                                advmod:when/WRB
+#                                nsubj:[matter/NN det:a/DT]
+#                                prep:[in/IN pobj:[form/NN det:no/DT]]]]
+#                  nsubj:it/PRP
+#                  dobj:[energy/NN
+#                        rcmod:[call/VBP
+#                               nsubj:we/PRP
+#                               dobj:[energy/NN dep:it/PRP amod:mechanical/JJ]]]]
+#   Detected 5 clause(s).
+#   - SVA (V: destroyed@5, S: Energy@1, A!: is@11)
+#   - SVA (V: created@7, S: Energy@1, A!: is@11)
+#   - SVA (V: is@11, S: matter@10, A?: when@8, A!: in@12)
+#   - SVOC (V: cause@17, S: it@16, CCOMP: destroyed@5, O: energy@18)
+#   - SVOO (V: call@20, S: we@19, O: energy@23, IO: energy@18)
+7	"Energy"	"can not be destroyed"	"when a matter is in no form"
+7	"Energy"	"can not be created"	"when a matter is in no form"
+7	"a matter"	"is"	"in no form when"
+7	"a matter"	"is"	"in no form"
+7	"it"	"cause"	"Energy can not be destroyed or created when a matter is in no form energy"
+7	"we"	"call"	"it mechanical energy energy"

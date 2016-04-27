@@ -1,0 +1,180 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Matter are all objects and substances in the universe that are made of.
+# Semantic graph: [objects/NNS
+#                  nsubj:Matter/NNP
+#                  cop:are/VBP
+#                  det:all/DT
+#                  cc:and/CC
+#                  conj:substances/NNS
+#                  prep:[in/IN
+#                        pobj:[universe/NN
+#                              det:the/DT
+#                              rcmod:[made/VBN nsubjpass:that/WDT auxpass:are/VBP prep:of/IN]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: objects@4, V: are@2, S: Matter@1, A?: in@7)
+#   - SVA (V: made@12, S: universe@9, A!: of@13)
+1	"Matter"	"are"	"all objects and substances in the universe"
+1	"Matter"	"are"	"all objects and substances"
+1	"the universe"	"are made"	"of"
+# Line 2 (id 2): Because it takes up more space that has volume and also contains certain amount of material has mass.
+# Semantic graph: [has/VBZ
+#                  csubj:[takes/VBZ
+#                         mark:Because/IN
+#                         nsubj:it/PRP
+#                         prt:up/RP
+#                         dobj:[space/NN
+#                               amod:more/JJR
+#                               rcmod:[has/VBZ nsubj:that/WDT dobj:volume/NN]]
+#                         cc:and/CC
+#                         conj:[contains/VBZ
+#                               advmod:also/RB
+#                               dobj:[amount/NN amod:certain/JJ prep:[of/IN pobj:material/NN]]]]
+#                  dobj:mass/NN]
+#   Detected 4 clause(s).
+#   - SVO (V: takes@3, S: it@2, O: space@6)
+#   - SVO (V: contains@12, S: it@2, A?: also@11, O: amount@14)
+#   - SVO (V: has@8, S: space@6, O: volume@9)
+#   - SVO (V: has@17, S: takes@3, O: mass@18)
+2	"it"	"takes up"	"more space"
+2	"it"	"contains"	"certain amount of material also"
+2	"it"	"contains"	"certain amount of material"
+2	"more space"	"has"	"volume"
+2	"Because it takes up more space and also contains certain amount of material"	"has"	"mass"
+# Line 3 (id 3): Other things that can help us to identity or classify is the properties.
+# Semantic graph: [properties/NNS
+#                  nsubj:[things/NNS
+#                         amod:Other/JJ
+#                         rcmod:[help/VB
+#                                nsubj:that/WDT
+#                                aux:can/MD
+#                                dobj:us/PRP
+#                                prep:[to/TO pobj:identity/NN]
+#                                cc:or/CC
+#                                conj:classify/VB]]
+#                  cop:is/VBZ
+#                  det:the/DT]
+#   Detected 3 clause(s).
+#   - SVO (V: help@5, S: things@2, O: us@6, A?: to@7)
+#   - SV (V: classify@10, S: things@2)
+#   - SVC (C: properties@13, V: is@11, S: things@2)
+3	"Other things"	"can help"	"us to identity"
+3	"Other things"	"can help"	"us"
+3	"Other things"	"can classify"
+3	"Other things"	"is"	"the properties"
+# Line 4 (id 4): Also the difference between physical and chemical change is that physical because it's size and shape, and chemical produces new substances.
+# Semantic graph: [physical/JJ
+#                  advmod:Also/RB
+#                  nsubj:[difference/NN
+#                         det:the/DT
+#                         prep:[between/IN
+#                               pobj:[change/NN amod:[physical/NN cc:and/CC conj:chemical/NN]]]]
+#                  cop:is/VBZ
+#                  advmod:that/RB
+#                  advcl:[size/NN
+#                         mark:because/IN
+#                         nsubj:it/PRP
+#                         cop:'s/VBZ
+#                         cc:and/CC
+#                         conj:shape/NN]
+#                  cc:and/CC
+#                  conj:[produces/VBZ nsubj:chemical/NN dobj:[substances/NNS amod:new/JJ]]]
+#   Detected 3 clause(s).
+#   - SVC (C: physical@11, V: is@9, S: difference@3, A?: Also@1, A?: that@10, A?: size@15)
+#   - SVC (C: size@15, V: 's@14, S: it@13)
+#   - SVO (V: produces@21, S: chemical@20, O: substances@23)
+4	"the difference between physical and chemical change"	"is"	"physical Also"
+4	"the difference between physical and chemical change"	"is"	"physical that"
+4	"the difference between physical and chemical change"	"is"	"physical because it 's size and shape"
+4	"the difference between physical and chemical change"	"is"	"physical"
+4	"it"	"'s"	"size and shape"
+4	"chemical"	"produces"	"new substances"
+# Line 5 (id 5): Energy is related to matter because it is a property of matter.
+# Semantic graph: [related/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  xcomp:[matter/VB
+#                         aux:to/TO
+#                         advcl:[property/NN
+#                                mark:because/IN
+#                                nsubj:it/PRP
+#                                cop:is/VBZ
+#                                det:a/DT
+#                                prep:[of/IN pobj:matter/NN]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: related@3, S: Energy@1, XCOMP: matter@5)
+#   - SVC (C: property@10, V: is@8, S: it@7, A?: of@11)
+5	"Energy"	"is related"	"to matter because it is a property of matter"
+5	"it"	"is"	"a property of matter"
+5	"it"	"is"	"a property"
+# Line 6 (id 6): The law of conservation of energy is when energy can be transferred from one object or system to another and energy cannot be created and destroyed.
+# Semantic graph: [is/VBZ
+#                  nsubj:[law/NN
+#                         det:The/DT
+#                         prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#                  advcl:[transferred/VBN
+#                         advmod:when/WRB
+#                         nsubjpass:energy/NN
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[from/IN pobj:[object/NN num:one/CD cc:or/CC conj:system/NN]]
+#                         prep:[to/TO pobj:another/DT]
+#                         cc:and/CC
+#                         conj:[created/VBN
+#                               nsubjpass:energy/NN
+#                               aux:can/MD
+#                               neg:not/RB
+#                               auxpass:be/VB
+#                               cc:and/CC
+#                               conj:destroyed/VBN]]]
+#   Detected 4 clause(s).
+#   - SVA (V: is@7, S: law@2, A!: transferred@12)
+#   - SVA (V: transferred@12, S: energy@9, A?: when@8, A!: from@13, A?: to@18)
+#   - SV (V: created@25, S: energy@21)
+#   - SV (V: destroyed@27, S: energy@21)
+6	"The law of conservation of energy"	"is"	"when energy can be transferred from one object or system to another and energy can not be created and destroyed"
+6	"energy"	"can be transferred"	"from one object or system when"
+6	"energy"	"can be transferred"	"from one object or system to another"
+6	"energy"	"can be transferred"	"from one object or system"
+6	"energy"	"can not be created"
+6	"energy"	"can not be destroyed"
+# Line 7 (id 7): And the mechanical energy is an object that has because of its motion and position.
+# Semantic graph: [object/NN
+#                  cc:And/CC
+#                  nsubj:[energy/NN det:the/DT amod:mechanical/JJ]
+#                  cop:is/VBZ
+#                  det:an/DT
+#                  rcmod:[of/IN
+#                         nsubj:that/WDT
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[motion/NN poss:its/PRP$ cc:and/CC conj:position/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: object@7, V: is@5, S: energy@4)
+#   - SVA (V: of@11, S: object@7, A?: because@10, A!: motion@13)
+#   - SVO (S: its@12, V: "has", O: motion@13)
+7	"the mechanical energy"	"is"	"And an object"
+7	"And an object"	"has of"	"its motion and position because"
+7	"And an object"	"has of"	"its motion and position"
+7	"its"	"has"	"motion and position"

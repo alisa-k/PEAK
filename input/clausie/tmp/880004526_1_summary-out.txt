@@ -1,0 +1,223 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is everything that is in our universe.
+# Semantic graph: [everything/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  rcmod:[is/VBZ nsubj:that/WDT prep:[in/IN pobj:[universe/NN poss:our/PRP$]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: everything@3, V: is@2, S: Matter@1)
+#   - SVA (V: is@5, S: everything@3, A!: in@6)
+#   - SVO (S: our@7, V: "has", O: universe@8)
+1	"Matter"	"is"	"everything"
+1	"everything"	"is"	"in our universe"
+1	"our"	"has"	"universe"
+# Line 2: It contains both volume and mass.
+# Semantic graph: [contains/VBZ
+#                  nsubj:It/PRP
+#                  dobj:[volume/NN preconj:both/DT cc:and/CC conj:mass/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: contains@2, S: It@1, O: volume@4)
+2	"It"	"contains"	"both volume and mass"
+# Line 3: You can see some matter around you, but some you cannot.
+# Semantic graph: [see/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dobj:[matter/NN det:some/DT]
+#                  prep:[around/IN pobj:you/PRP]
+#                  cc:but/CC
+#                  conj:[can/MD nsubj:[you/PRP det:some/DT] neg:not/RB]]
+#   Detected 2 clause(s).
+#   - SVO (V: see@3, S: You@1, O: matter@5, A?: around@6)
+#   - SV (V: can@12, S: you@11)
+3	"You"	"can see"	"some matter around you"
+3	"You"	"can see"	"some matter"
+3	"some you"	"can not"
+# Line 4: Since they can be very very small, you can use microscopes.
+# Semantic graph: [use/VB
+#                  advcl:[small/JJ
+#                         mark:Since/IN
+#                         nsubj:they/PRP
+#                         aux:can/MD
+#                         cop:be/VB
+#                         advmod:very/RB
+#                         advmod:very/RB]
+#                  nsubj:you/PRP
+#                  aux:can/MD
+#                  dobj:microscopes/NNS]
+#   Detected 2 clause(s).
+#   - SVC (C: small@7, V: be@4, S: they@2, A?: very@5, A?: very@6)
+#   - SVO (V: use@11, S: you@9, A?: small@7, O: microscopes@12)
+4	"they"	"can be"	"small very"
+4	"they"	"can be"	"small very"
+4	"they"	"can be"	"small"
+4	"you"	"can use"	"microscopes Since they can be very very small"
+4	"you"	"can use"	"microscopes"
+# Line 5: We can classify matter by putting things into four properties: physical or chemical change.
+# Semantic graph: [classify/VB
+#                  nsubj:We/PRP
+#                  aux:can/MD
+#                  dobj:matter/NN
+#                  prep:[by/IN
+#                        pcomp:[putting/VBG
+#                               dobj:things/NNS
+#                               prep:[into/IN
+#                                     pobj:[properties/NNS
+#                                           num:four/CD
+#                                           dep:[change/NN
+#                                                amod:[physical/NN cc:or/CC conj:chemical/NN]]]]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: classify@3, S: We@1, O: matter@4, A?: by@5)
+5	"We"	"can classify"	"matter by putting things into four properties physical or chemical change"
+5	"We"	"can classify"	"matter"
+# Line 6: Now physical change and chemical are different because physical is the outside appearance of an object.
+# Semantic graph: [different/JJ
+#                  advmod:Now/RB
+#                  nsubj:[change/NN amod:physical/JJ cc:and/CC conj:chemical/NN]
+#                  cop:are/VBP
+#                  ccomp:[appearance/NN
+#                         mark:because/IN
+#                         nsubj:physical/JJ
+#                         cop:is/VBZ
+#                         det:the/DT
+#                         amod:outside/JJ
+#                         prep:[of/IN pobj:[object/NN det:an/DT]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: different@7, V: are@6, S: change@3, A?: Now@1, CCOMP: appearance@13)
+#   - SVC (C: appearance@13, V: is@10, S: physical@9, A?: of@14)
+6	"physical change and chemical"	"are"	"different because physical is the outside appearance of an object Now"
+6	"physical change and chemical"	"are"	"different because physical is the outside appearance of an object"
+6	"physical"	"is"	"the outside appearance of an object"
+6	"physical"	"is"	"the outside appearance"
+# Line 7: Chemical is a substance change inside of something.
+# Semantic graph: [inside/NN
+#                  nsubj:Chemical/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  nn:substance/NN
+#                  nn:change/NN
+#                  prep:[of/IN pobj:something/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: inside@6, V: is@2, S: Chemical@1, A?: of@7)
+7	"Chemical"	"is"	"a substance change inside of something"
+7	"Chemical"	"is"	"a substance change inside"
+# Line 8: Energy is made up of all matter, but you cannot see it with only eyes.
+# Semantic graph: [made/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  prt:up/RP
+#                  prep:[of/IN pobj:[matter/NN det:all/DT]]
+#                  cc:but/CC
+#                  conj:[see/VB
+#                        nsubj:you/PRP
+#                        aux:can/MD
+#                        neg:not/RB
+#                        dobj:it/PRP
+#                        prep:[with/IN pobj:[eyes/NNS amod:only/JJ]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: made@3, S: Energy@1, A!: of@5)
+#   - SVO (V: see@13, S: you@10, O: it@14, A?: with@15)
+8	"Energy"	"is made up"	"of all matter"
+8	"you"	"can not see"	"it with only eyes"
+8	"you"	"can not see"	"it"
+# Line 9: But energy can never be created or destroyed.
+# Semantic graph: [created/VBN
+#                  cc:But/CC
+#                  nsubjpass:energy/NN
+#                  aux:can/MD
+#                  neg:never/RB
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:destroyed/VBN]
+#   Detected 2 clause(s).
+#   - SV (V: created@6, S: energy@2)
+#   - SV (V: destroyed@8, S: energy@2)
+9	"energy"	"can never be created"
+9	"energy"	"can never be destroyed"
+# Line 10: Mechanical energy is different because this is the motion and position.
+# Semantic graph: [different/JJ
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  advcl:[motion/NN
+#                         mark:because/IN
+#                         nsubj:this/DT
+#                         cop:is/VBZ
+#                         det:the/DT
+#                         cc:and/CC
+#                         conj:position/NN]]
+#   Detected 2 clause(s).
+#   - SVC (C: different@4, V: is@3, S: energy@2, A?: motion@9)
+#   - SVC (C: motion@9, V: is@7, S: this@6)
+10	"Mechanical energy"	"is"	"different because this is the motion and position"
+10	"Mechanical energy"	"is"	"different"
+10	"this"	"is"	"the motion and position"
+# Line 11: Physical change become of shape and position.
+# Semantic graph: [become/VBP
+#                  nsubj:[change/NN amod:Physical/JJ]
+#                  prep:[of/IN pobj:[shape/NN cc:and/CC conj:position/NN]]]
+#   Detected 1 clause(s).
+#   - SVA (V: become@3, S: change@2, A!: of@4)
+11	"Physical change"	"become"	"of shape and position"
+# Line 12: Everything we see and do physically and eventually has energy in it although we cannot see them, we feel then in our everyday activties.
+# Semantic graph: [feel/VBP
+#                  nsubj:[Everything/NN
+#                         rcmod:[see/VBP
+#                                nsubj:we/PRP
+#                                cc:and/CC
+#                                conj:do/VBP
+#                                advmod:physically/RB
+#                                cc:and/CC
+#                                conj:[has/VBZ
+#                                      advmod:eventually/RB
+#                                      dobj:[energy/NN prep:[in/IN pobj:it/PRP]]
+#                                      advcl:[see/VB
+#                                             mark:although/IN
+#                                             nsubj:we/PRP
+#                                             aux:can/MD
+#                                             neg:not/RB
+#                                             dobj:them/PRP]]]]
+#                  nsubj:we/PRP
+#                  advmod:then/RB
+#                  prep:[in/IN pobj:[activties/NNS poss:our/PRP$ amod:everyday/JJ]]]
+#   Detected 7 clause(s).
+#   - SVO (V: see@3, S: we@2, A?: physically@6, O: Everything@1)
+#   - SVO (V: do@5, S: we@2, A?: physically@6, O: Everything@1)
+#   - SVOO (V: has@9, S: we@2, A?: eventually@8, O: energy@10, A?: see@17, IO: Everything@1)
+#   - SVO (V: see@17, S: we@14, O: them@18)
+#   - SVA (V: feel@21, S: Everything@1, A-: then@22, A?: in@23)
+#   - SVA (V: feel@21, S: we@20, A-: then@22, A?: in@23)
+#   - SVO (S: our@24, V: "has", O: activties@26)
+12	"we"	"see"	"physically Everything"
+12	"we"	"see"	"Everything"
+12	"we"	"do"	"physically Everything"
+12	"we"	"do"	"Everything"
+12	"we"	"has"	"energy in it Everything eventually"
+12	"we"	"has"	"energy in it although we can not see them Everything"
+12	"we"	"has"	"energy in it Everything"
+12	"we"	"can not see"	"them"
+12	"Everything"	"we feel"	"in our everyday activties"
+12	"Everything"	"we feel"
+12	"we"	"Everything feel"	"in our everyday activties"
+12	"we"	"Everything feel"
+12	"our"	"has"	"everyday activties"

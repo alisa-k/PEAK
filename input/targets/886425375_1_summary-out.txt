@@ -1,0 +1,152 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the stuff that all objects and substances in the universe are made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[objects/NNS
+#                                    det:all/DT
+#                                    cc:and/CC
+#                                    conj:substances/NNS
+#                                    prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                         auxpass:are/VBP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@14)
+#   - SVA (V: made@14, S: objects@7, A!: of@15)
+1	"Matter"	"is"	"the stuff that all objects and substances in the universe are made of"
+1	"all objects and substances in the universe"	"are made"	"of"
+# Line 2: Matter is very important on this planet because we used it a lot.
+# Semantic graph: [important/JJ
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  advmod:very/RB
+#                  prep:[on/IN pobj:[planet/NN det:this/DT]]
+#                  advcl:[used/VBD
+#                         mark:because/IN
+#                         nsubj:we/PRP
+#                         iobj:it/PRP
+#                         dobj:[lot/NN det:a/DT]]]
+#   Detected 2 clause(s).
+#   - SVC (C: important@4, V: is@2, S: Matter@1, A?: very@3, A?: on@5, A?: used@10)
+#   - SVOO (V: used@10, S: we@9, IO: it@11, O: lot@13)
+2	"Matter"	"is"	"important very"
+2	"Matter"	"is"	"important on this planet"
+2	"Matter"	"is"	"important because we used it a lot"
+2	"Matter"	"is"	"important"
+2	"we"	"used"	"it a lot"
+# Line 3: Some things we can see and some things are not able to see that is how we know that matter is there.
+# Semantic graph: [is/VBZ
+#                  nsubj:[things/NNS
+#                         det:Some/DT
+#                         rcmod:[see/VB
+#                                nsubj:we/PRP
+#                                aux:can/MD
+#                                cc:and/CC
+#                                conj:[able/JJ
+#                                      nsubj:[things/NNS det:some/DT]
+#                                      cop:are/VBP
+#                                      neg:not/RB
+#                                      xcomp:[see/VB aux:to/TO dobj:that/DT]]]]
+#                  ccomp:[know/VBP
+#                         advmod:how/WRB
+#                         nsubj:we/PRP
+#                         ccomp:[is/VBZ complm:that/IN nsubj:matter/NN advmod:there/RB]]]
+#   Detected 5 clause(s).
+#   - SVO (V: see@5, S: we@3, O: things@2)
+#   - SVC (C: able@11, V: are@9, S: things@8, XCOMP: see@13)
+#   - SVC (V: is@15, S: things@2, CCOMP: know@18)
+#   - SVO (V: know@18, S: we@17, A?: how@16, CCOMP: is@21)
+#   - SVA (V: is@21, S: matter@20, A!: there@22)
+3	"we"	"can see"	"Some things"
+3	"some things"	"are not"	"able to see that"
+3	"Some things"	"is"	"how we know that matter is there"
+3	"we"	"know"	"that matter is there how"
+3	"we"	"know"	"that matter is there"
+3	"matter"	"is"	"there"
+# Line 4: Some example that we can see are tree, rock, and animals.
+# Semantic graph: [tree/NN
+#                  nsubj:[example/NN
+#                         det:Some/DT
+#                         dep:[see/VB complm:that/IN nsubj:we/PRP aux:can/MD]]
+#                  cop:are/VBP
+#                  conj:rock/NN
+#                  cc:and/CC
+#                  conj:animals/NNS]
+#   Detected 2 clause(s).
+#   - SV (V: see@6, S: we@4)
+#   - SVC (C: tree@8, V: are@7, S: example@2)
+4	"we"	"can see"
+4	"Some example that we can see"	"are"	"tree rock and animals"
+# Line 5: Also physical proeprties is know as a observation without changing any make up or identify.
+# Semantic graph: [know/VB
+#                  advmod:Also/RB
+#                  nsubj:[proeprties/NNS amod:physical/JJ]
+#                  aux:is/VBZ
+#                  prep:[as/IN pobj:[observation/NN det:a/DT]]
+#                  prep:[without/IN pcomp:[changing/VBG ccomp:[make/VB nsubj:any/DT prt:up/RP]]]
+#                  cc:or/CC
+#                  conj:identify/VB]
+#   Detected 3 clause(s).
+#   - SVA (V: know@5, S: proeprties@3, A?: Also@1, A!: as@6, A?: without@9)
+#   - SV (V: identify@15, S: proeprties@3, A?: Also@1)
+#   - SV (V: make@12, S: any@11)
+5	"physical proeprties"	"is know"	"as a observation Also"
+5	"physical proeprties"	"is know"	"as a observation without changing any make up"
+5	"physical proeprties"	"is know"	"as a observation"
+5	"physical proeprties"	"is identify"	"Also"
+5	"physical proeprties"	"is identify"
+5	"any"	"make up"
+# Line 6: For example the tree is on observation on because is not moving at all it just standing still even though the leaf move.
+# Semantic graph: [is/VBZ
+#                  prep:[For/IN pobj:example/NN]
+#                  nsubj:[tree/NN det:the/DT]
+#                  prep:[on/IN
+#                        pobj:[observation/NN
+#                              prep:[on/IN
+#                                    pcomp:[moving/VBG
+#                                           mark:because/IN
+#                                           aux:is/VBZ
+#                                           neg:not/RB
+#                                           prep:[at/IN
+#                                                 pcomp:[standing/VBG
+#                                                        nsubj:[it/PRP det:all/DT]
+#                                                        advmod:just/RB
+#                                                        advmod:still/RB
+#                                                        ccomp:[move/VBP
+#                                                               advmod:even/RB
+#                                                               dep:though/IN
+#                                                               nsubj:[leaf/NN det:the/DT]]]]]]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: is@5, S: tree@4, A?: For@1, A!: on@6)
+#   - SVOA (V: standing@17, S: it@15, A?: just@16, A!: still@18, CCOMP: move@23)
+#   - SV (V: move@23, S: leaf@22, A-: even@19)
+6	"the tree"	"is"	"on observation on because is not moving at all it just standing still even though the leaf move For example"
+6	"the tree"	"is"	"on observation on because is not moving at all it just standing still even though the leaf move"
+6	"all it"	"standing"	"still even though the leaf move just"
+6	"all it"	"standing"	"still even though the leaf move"
+6	"the leaf"	"move"

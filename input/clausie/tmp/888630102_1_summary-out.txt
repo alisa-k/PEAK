@@ -1,0 +1,173 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the stuff that the universe is made up of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[universe/NN det:the/DT]
+#                         auxpass:is/VBZ
+#                         prt:up/RP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@9)
+#   - SVA (V: made@9, S: universe@7, A!: of@11)
+1	"Matter"	"is"	"the stuff that the universe is made up of"
+1	"the universe"	"is made up"	"of"
+# Line 2: Matter, everything is matter.
+# Semantic graph: [matter/NN advmod:Matter/RB nsubj:everything/NN cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: matter@5, V: is@4, S: everything@3, A?: Matter@1)
+2	"everything"	"is"	"matter Matter"
+2	"everything"	"is"	"matter"
+# Line 3: All matter has physical and chemical properties.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[properties/NNS amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: properties@7)
+3	"All matter"	"has"	"physical and chemical properties"
+# Line 4: There was also energy.
+# Semantic graph: [was/VBD expl:There/EX advmod:also/RB nsubj:energy/NN]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: was@2, S: energy@4, A?: also@3)
+4	"energy"	"There was"	"also"
+4	"energy"	"There was"
+# Line 5: Energy is a property of matter.
+# Semantic graph: [property/NN nsubj:Energy/NNP cop:is/VBZ det:a/DT prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+5	"Energy"	"is"	"a property of matter"
+5	"Energy"	"is"	"a property"
+# Line 6: Properties help identify or classify matter.
+# Semantic graph: [help/VBP
+#                  nsubj:Properties/NNP
+#                  xcomp:[identify/VB cc:or/CC conj:classify/VB dobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: help@2, S: Properties@1, XCOMP: identify@3)
+6	"Properties"	"help"	"identify matter"
+6	"Properties"	"help"	"classify matter"
+# Line 7: There are 7 physical properties of matter: density, ductility, malleability, boiling point, melting point, electrical conductivity, and solubility.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[properties/NNS
+#                         num:7/CD
+#                         amod:physical/JJ
+#                         prep:[of/IN pobj:matter/NN]
+#                         dep:[density/NN
+#                              conj:ductility/NN
+#                              conj:malleability/NN
+#                              conj:[point/NN amod:boiling/JJ]
+#                              conj:[point/NN amod:melting/JJ]
+#                              conj:[conductivity/NN amod:electrical/JJ]
+#                              cc:and/CC
+#                              conj:solubility/NN]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: properties@5)
+7	"7 physical properties of matter density ductility malleability boiling point melting point electrical conductivity and solubility"	"There are"
+# Line 8: You can change the physical properties will still be the same.
+# Semantic graph: [change/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  ccomp:[same/JJ
+#                         nsubj:[properties/NNS det:the/DT amod:physical/JJ]
+#                         aux:will/MD
+#                         advmod:still/RB
+#                         cop:be/VB
+#                         det:the/DT]]
+#   Detected 2 clause(s).
+#   - SVO (V: change@3, S: You@1, CCOMP: same@11)
+#   - SVC (C: same@11, V: be@9, S: properties@6, A?: still@8)
+8	"You"	"can change"	"the physical properties will still be the same"
+8	"the physical properties"	"will be"	"the same still"
+8	"the physical properties"	"will be"	"the same"
+# Line 9: All matter can be detected also, you can classify matter because you can see or feel it.
+# Semantic graph: [classify/VB
+#                  ccomp:[detected/VBN
+#                         nsubjpass:[matter/NN det:All/DT]
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         advmod:also/RB]
+#                  nsubj:you/PRP
+#                  aux:can/MD
+#                  dobj:matter/NN
+#                  advcl:[see/VB
+#                         mark:because/IN
+#                         nsubj:you/PRP
+#                         aux:can/MD
+#                         cc:or/CC
+#                         conj:feel/VB
+#                         dobj:it/PRP]]
+#   Detected 4 clause(s).
+#   - SVA (V: detected@5, S: matter@2, A!: also@6)
+#   - SVOC (V: classify@10, S: you@8, CCOMP: detected@5, O: matter@11, A?: see@15)
+#   - SVO (V: see@15, S: you@13, O: it@18)
+#   - SVO (V: feel@17, S: you@13, O: it@18)
+9	"All matter"	"can be detected"	"also"
+9	"you"	"can classify"	"All matter can be detected also matter because you can see or feel it"
+9	"you"	"can classify"	"All matter can be detected also matter"
+9	"you"	"can see"	"it"
+9	"you"	"can feel"	"it"
+# Line 10: Energy is related to matter because they both work together.
+# Semantic graph: [related/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  xcomp:[matter/VB
+#                         aux:to/TO
+#                         advcl:[work/VBP
+#                                mark:because/IN
+#                                nsubj:they/PRP
+#                                dep:both/DT
+#                                advmod:together/RB]]]
+#   Detected 2 clause(s).
+#   - SVO (V: related@3, S: Energy@1, XCOMP: matter@5)
+#   - SVA (V: work@9, S: they@7, A!: together@10)
+10	"Energy"	"is related"	"to matter because they both work together"
+10	"they"	"work"	"together"
+# Line 11: Energy can not be destroyed.
+# Semantic graph: [destroyed/VBN nsubjpass:Energy/NNP aux:can/MD neg:not/RB auxpass:be/VB]
+#   Detected 1 clause(s).
+#   - SV (V: destroyed@5, S: Energy@1)
+11	"Energy"	"can not be destroyed"
+# Line 12: Mechanical energy is the energy an object has because of its motion or position.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[of/IN
+#                         nsubj:[object/NN det:an/DT]
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[motion/NN poss:its/PRP$ cc:or/CC conj:position/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2)
+#   - SVO (V: of@10, S: object@7, A?: because@9, A?: motion@12, O: energy@5)
+#   - SVO (S: its@11, V: "has", O: motion@12)
+12	"Mechanical energy"	"is"	"the energy"
+12	"an object"	"has of"	"the energy because"
+12	"an object"	"has of"	"its motion or position the energy"
+12	"an object"	"has of"	"the energy"
+12	"its"	"has"	"motion or position"

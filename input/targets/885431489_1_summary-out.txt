@@ -1,0 +1,116 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is important to society because not only does it build the building blocks of life.
+# Semantic graph: [important/JJ
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  prep:[to/TO pobj:society/NN]
+#                  advcl:[build/VB
+#                         dep:because/IN
+#                         dep:[only/JJ neg:not/RB]
+#                         aux:does/VBZ
+#                         nsubj:it/PRP
+#                         dobj:[blocks/NNS det:the/DT nn:building/NN prep:[of/IN pobj:life/NN]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: important@3, V: is@2, S: Matter@1, A?: to@4, A?: build@11)
+#   - SVO (V: build@11, S: it@10, O: blocks@14)
+1	"Matter"	"is"	"important to society"
+1	"Matter"	"is"	"important because not only does it build the building blocks of life"
+1	"Matter"	"is"	"important"
+1	"it"	"does build"	"the building blocks of life"
+# Line 2: It is all around us.
+# Semantic graph: [us/PRP nsubj:It/PRP cop:is/VBZ advmod:[around/RP dep:all/DT]]
+#   Detected 1 clause(s).
+#   - SVC (C: us@5, V: is@2, S: It@1, A?: around@4)
+2	"It"	"is"	"us all around"
+2	"It"	"is"	"us"
+# Line 3: Whether it's an animal, or a bee that we can feel, it's also in the air.
+# Semantic graph: ['s/VBZ
+#                  ccomp:[animal/NN
+#                         complm:Whether/IN
+#                         nsubj:it/PRP
+#                         cop:'s/VBZ
+#                         det:an/DT
+#                         cc:or/CC
+#                         conj:[bee/NN det:a/DT]
+#                         ccomp:[feel/VB complm:that/IN nsubj:we/PRP aux:can/MD]]
+#                  nsubj:it/PRP
+#                  advmod:also/RB
+#                  prep:[in/IN pobj:[air/NN det:the/DT]]]
+#   Detected 3 clause(s).
+#   - SVC (C: animal@5, V: 's@3, S: it@2, CCOMP: feel@13)
+#   - SV (V: feel@13, S: we@11)
+#   - SVC (V: 's@16, S: it@15, CCOMP: animal@5, A?: also@17, A?: in@18)
+3	"it"	"'s"	"an animal or a bee that we can feel"
+3	"we"	"can feel"
+3	"it"	"'s"	"Whether it 's an animal or a bee that we can feel also"
+3	"it"	"'s"	"Whether it 's an animal or a bee that we can feel in the air"
+3	"it"	"'s"	"Whether it 's an animal or a bee that we can feel"
+# Line 4: There are tiny little gas particles that we cannot see, but they're there.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[particles/NNS amod:tiny/JJ amod:little/JJ nn:gas/NN]
+#                  ccomp:[see/VB complm:that/IN nsubj:we/PRP aux:can/MD neg:not/RB]
+#                  cc:but/CC
+#                  conj:['re/VBP nsubj:they/PRP advmod:there/RB]]
+#   Detected 3 clause(s).
+#   - EXISTENTIAL (V: are@2, S: particles@6, CCOMP: see@11)
+#   - SV (V: see@11, S: we@8)
+#   - SVA (V: 're@15, S: they@14, A!: there@16)
+4	"tiny little gas particles"	"There are"	"that we can not see"
+4	"we"	"can not see"
+4	"they"	"'re"	"there"
+# Line 5: Energy can also be a property of matter because energy is not something you can see or touch, just like the gas particles.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  aux:can/MD
+#                  advmod:also/RB
+#                  cop:be/VB
+#                  det:a/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  advcl:[something/NN
+#                         mark:because/IN
+#                         nsubj:energy/NN
+#                         cop:is/VBZ
+#                         neg:not/RB
+#                         rcmod:[see/VB nsubj:you/PRP aux:can/MD cc:or/CC conj:touch/VB]
+#                         dep:[particles/VBZ
+#                              advmod:just/RB
+#                              dep:like/IN
+#                              nsubj:[gas/NN det:the/DT]]]]
+#   Detected 5 clause(s).
+#   - SVC (C: property@6, V: be@4, S: Energy@1, A?: also@3, A?: of@7, A?: something@13)
+#   - SVC (C: something@13, V: is@11, S: energy@10)
+#   - SVO (V: see@16, S: you@14, O: something@13)
+#   - SVO (V: touch@18, S: you@14, O: something@13)
+#   - SV (V: particles@24, S: gas@23, A?: just@20)
+5	"Energy"	"can be"	"a property also"
+5	"Energy"	"can be"	"a property of matter"
+5	"Energy"	"can be"	"a property because energy is not something just like the gas particles"
+5	"Energy"	"can be"	"a property"
+5	"energy"	"is not"	"something just like the gas particles"
+5	"you"	"can see"	"because something just like the gas particles"
+5	"you"	"can touch"	"because something just like the gas particles"
+5	"the gas"	"particles"	"just"
+5	"the gas"	"particles"

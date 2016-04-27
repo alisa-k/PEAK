@@ -1,0 +1,141 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All matter can be detected and measured because all matter takes up space.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:[matter/NN det:All/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  advcl:[takes/VBZ
+#                         mark:because/IN
+#                         nsubj:[matter/NN det:all/DT]
+#                         prt:up/RP
+#                         dobj:space/NN]]
+#   Detected 3 clause(s).
+#   - SVA (V: detected@5, S: matter@2, A!: takes@11)
+#   - SVA (V: measured@7, S: matter@2, A!: takes@11)
+#   - SVO (V: takes@11, S: matter@10, O: space@13)
+1	"All matter"	"can be detected"	"because all matter takes up space"
+1	"All matter"	"can be measured"	"because all matter takes up space"
+1	"all matter"	"takes up"	"space"
+# Line 2: Has volume and contains a certain amount of material has mass.
+# Semantic graph: [has/VBZ
+#                  csubj:[Has/VB
+#                         dobj:volume/NN
+#                         cc:and/CC
+#                         conj:[contains/VBZ
+#                               dobj:[amount/NN
+#                                     det:a/DT
+#                                     amod:certain/JJ
+#                                     prep:[of/IN pobj:material/NN]]]]
+#                  dobj:mass/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@10, S: Has@1, O: mass@11)
+2	"Has volume and contains a certain amount of material"	"has"	"mass"
+# Line 3: To classify matter, drop both objects in the heater, you would see that the [illegible word] floats, but the clay sinks.
+# Semantic graph: [see/VB
+#                  purpcl:[classify/VB
+#                          aux:To/TO
+#                          dobj:[matter/NN conj:drop/NN dep:both/CC conj:objects/NNS]
+#                          prep:[in/IN pobj:[heater/NN det:the/DT]]]
+#                  nsubj:you/PRP
+#                  aux:would/MD
+#                  ccomp:[floats/VBZ
+#                         complm:that/IN
+#                         nsubj:[the/DT appos:[word/NN amod:illegible/JJ]]]
+#                  cc:but/CC
+#                  conj:[sinks/VBZ nsubj:[clay/NN det:the/DT]]]
+#   Detected 4 clause(s).
+#   - SVO (V: see@14, S: you@12, A?: classify@2, CCOMP: floats@21)
+#   - SVC (S: the@16, V: "is", C: word@19)
+#   - SV (V: floats@21, S: the@16)
+#   - SV (V: sinks@26, S: clay@25)
+3	"you"	"would see"	"that the floats To classify matter drop both objects in the heater"
+3	"you"	"would see"	"that the floats"
+3	"the"	"is"	"illegible word"
+3	"the"	"floats"
+3	"the clay"	"sinks"
+# Line 4: The difference  between a physical and chemical change is two physical properties of the paper.
+# Semantic graph: [properties/NNS
+#                  nsubj:[difference/NN
+#                         det:The/DT
+#                         prep:[between/IN
+#                               pobj:[change/NN
+#                                     det:a/DT
+#                                     amod:[physical/NN cc:and/CC conj:chemical/NN]]]]
+#                  cop:is/VBZ
+#                  num:two/CD
+#                  amod:physical/JJ
+#                  prep:[of/IN pobj:[paper/NN det:the/DT]]]
+#   Detected 1 clause(s).
+#   - SVC (C: properties@12, V: is@9, S: difference@2, A?: of@13)
+4	"The difference between a physical and chemical change"	"is"	"two physical properties of the paper"
+4	"The difference between a physical and chemical change"	"is"	"two physical properties"
+# Line 5: Its size and shape have changed but not its chemical properties.
+# Semantic graph: [changed/VBN
+#                  nsubj:[size/NN poss:Its/PRP$ cc:and/CC conj:shape/NN]
+#                  aux:have/VBP
+#                  cc:but/CC
+#                  conj:[properties/NNS neg:not/RB poss:its/PRP$ nn:chemical/NN]]
+#   Detected 4 clause(s).
+#   - SVO (S: Its@1, V: "has", O: size@2)
+#   - SV (V: changed@6, S: size@2)
+#   - SV (V: properties@11, S: size@2)
+#   - SVO (S: its@9, V: "has", O: properties@11)
+5	"Its"	"has"	"size and shape"
+5	"Its size and shape"	"have changed"
+5	"Its size and shape"	"not its chemical properties"
+5	"its"	"has"	"not chemical properties"
+# Line 6: Such a change is called a physical change.
+# Semantic graph: [called/VBN
+#                  nsubjpass:[change/NN predet:Such/PDT det:a/DT]
+#                  auxpass:is/VBZ
+#                  dobj:[change/NN det:a/DT amod:physical/JJ]]
+#   Detected 1 clause(s).
+#   - SVO (V: called@5, S: change@3, O: change@8)
+6	"Such a change"	"is called"	"a physical change"
+# Line 7: The chemical properties of the paper have changed produdicing new substance this kind of changed is called a chemical changed.
+# Semantic graph: [changed/VBN
+#                  nsubj:[properties/NNS
+#                         det:The/DT
+#                         amod:chemical/JJ
+#                         prep:[of/IN pobj:[paper/NN det:the/DT]]]
+#                  aux:have/VBP
+#                  xcomp:[produdicing/VBG
+#                         dobj:[substance/NN
+#                               amod:new/JJ
+#                               rcmod:[called/VBN
+#                                      nsubjpass:[kind/NN
+#                                                 det:this/DT
+#                                                 prep:[of/IN pobj:changed/JJ]]
+#                                      auxpass:is/VBZ
+#                                      dobj:[chemical/NN det:a/DT partmod:changed/VBN]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: changed@8, S: properties@3, XCOMP: produdicing@9)
+#   - SVOO (V: called@17, S: kind@13, O: chemical@19, IO: substance@11)
+#   - SVA (V: "be changed", S: chemical@19)
+7	"The chemical properties of the paper"	"have changed"	"produdicing new substance"
+7	"this kind of changed"	"is called"	"a chemical changed new substance"
+7	"a chemical"	"be changed"

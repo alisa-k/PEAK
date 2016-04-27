@@ -1,0 +1,182 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the objects and substances the universe is made of; it is made of volume and mass.
+# Semantic graph: [objects/NNS
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  cc:and/CC
+#                  conj:substances/NNS
+#                  rcmod:[made/VBN nsubjpass:[universe/NN det:the/DT] auxpass:is/VBZ prep:of/IN]
+#                  parataxis:[made/VBN
+#                             nsubjpass:it/PRP
+#                             auxpass:is/VBZ
+#                             prep:[of/IN pobj:[volume/NN cc:and/CC conj:mass/NN]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: objects@4, V: is@2, S: Matter@1)
+#   - SVA (V: made@10, S: universe@8, A!: of@11)
+#   - SVA (V: made@15, S: it@13, A!: of@16)
+1	"Matter"	"is"	"the objects and substances"
+1	"the universe"	"is made"	"of the objects and substances"
+1	"it"	"is made"	"of volume and mass"
+# Line 2: You can see matter any where in your daily life.
+# Semantic graph: [see/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  advmod:[any/RB advmod:matter/RB]
+#                  advcl:[in/IN advmod:where/WRB pobj:[life/NN poss:your/PRP$ amod:daily/JJ]]]
+#   Detected 2 clause(s).
+#   - SVA (V: see@3, S: You@1, A!: any@5, A?: in@7)
+#   - SVO (S: your@8, V: "has", O: life@10)
+2	"You"	"can see"	"matter any where in your daily life"
+2	"You"	"can see"	"matter any"
+2	"your"	"has"	"daily life"
+# Line 3: For example; cars, lamps, beds, and balloons.
+# Semantic graph: [cars/NNS
+#                  dep:[For/IN pobj:example/NN]
+#                  conj:lamps/NNS
+#                  conj:beds/NNS
+#                  cc:and/CC
+#                  conj:balloons/NNS]
+#   Detected 0 clause(s).
+# Line 4: Other types of matter is microscopic.
+# Semantic graph: [microscopic/JJ
+#                  nsubj:[types/NNS amod:Other/JJ prep:[of/IN pobj:matter/NN]]
+#                  cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: microscopic@6, V: is@5, S: types@2)
+4	"Other types of matter"	"is"	"microscopic"
+# Line 5: Meaning you can't see with the naked eye; like dust mites.
+# Semantic graph: [see/VB
+#                  csubj:[Meaning/VBG dobj:you/PRP]
+#                  aux:ca/MD
+#                  neg:n't/RB
+#                  prep:[with/IN pobj:[eye/NN det:the/DT amod:naked/JJ]]
+#                  prep:[like/IN pobj:[mites/NNS nn:dust/NN]]]
+#   Detected 1 clause(s).
+#   - SVA (V: see@5, S: Meaning@1, A!: with@6, A?: like@11)
+5	"Meaning you"	"ca n't see"	"with the naked eye like dust mites"
+5	"Meaning you"	"ca n't see"	"with the naked eye"
+# Line 6: To help identify and classify matter is called properties.
+# Semantic graph: [called/VBN
+#                  csubjpass:[help/VB
+#                             aux:To/TO
+#                             xcomp:[identify/VB cc:and/CC conj:classify/VB dobj:matter/NN]]
+#                  auxpass:is/VBZ
+#                  dobj:properties/NNS]
+#   Detected 1 clause(s).
+#   - SVO (V: called@8, S: help@2, O: properties@9)
+6	"To help identify and classify matter"	"is called"	"properties"
+# Line 7: Recent studies have shown different types of matter.
+# Semantic graph: [shown/VBN
+#                  nsubj:[studies/NNS amod:Recent/JJ]
+#                  aux:have/VBP
+#                  dobj:[types/NNS amod:different/JJ prep:[of/IN pobj:matter/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: shown@4, S: studies@2, O: types@6)
+7	"Recent studies"	"have shown"	"different types of matter"
+# Line 8: For instance a egg and wood.
+# Semantic graph: [For/IN pobj:[instance/NN dep:[egg/NN det:a/DT cc:and/CC conj:wood/NN]]]
+#   Detected 0 clause(s).
+# Line 9: The wood weighs more than the egg, but put to the water test the egg sinks but the wood floats.
+# Semantic graph: [sinks/VBZ
+#                  dep:[weighs/VBZ
+#                       nsubj:[wood/NN det:The/DT]
+#                       dobj:more/JJR
+#                       prep:[than/IN pobj:[egg/NN det:the/DT]]
+#                       cc:but/CC
+#                       conj:[put/VBD prep:[to/TO pobj:[test/NN det:the/DT nn:water/NN]]]]
+#                  nsubj:[egg/NN det:the/DT]
+#                  ccomp:[floats/VBZ cc:but/CC nsubj:[wood/NN det:the/DT]]]
+#   Detected 4 clause(s).
+#   - SVO (V: weighs@3, S: wood@2, O: more@4, A?: than@5)
+#   - SVA (V: put@10, S: wood@2, A!: to@11)
+#   - SVO (V: sinks@17, S: egg@16, CCOMP: floats@21)
+#   - SV (V: floats@21, S: wood@20)
+9	"The wood"	"weighs"	"more than the egg"
+9	"The wood"	"weighs"	"more"
+9	"The wood"	"put"	"to the water test"
+9	"the egg"	"sinks"	"but the wood floats"
+9	"the wood"	"floats"
+# Line 10: Chemical properties is matter based on its ability to change into a new kind of matter with different properties into a new kind of matter with different properties.
+# Semantic graph: [based/VBN
+#                  nsubjpass:[properties/NNS nn:Chemical/NNP]
+#                  auxpass:is/VBZ
+#                  advmod:matter/NN
+#                  prep:[on/IN
+#                        pobj:[ability/NN
+#                              poss:its/PRP$
+#                              infmod:[change/VB
+#                                      aux:to/TO
+#                                      prep:[into/IN
+#                                            pobj:[kind/NN
+#                                                  det:a/DT
+#                                                  amod:new/JJ
+#                                                  prep:[of/IN pobj:matter/NN]]]
+#                                      prep:[with/IN pobj:[properties/NNS amod:different/JJ]]
+#                                      prep:[into/IN
+#                                            pobj:[kind/NN
+#                                                  det:a/DT
+#                                                  amod:new/JJ
+#                                                  prep:[of/IN
+#                                                        pobj:[matter/NN
+#                                                              prep:[with/IN
+#                                                                    pobj:[properties/NNS
+#                                                                          amod:different/JJ]]]]]]]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: based@5, S: properties@2, A?: matter@4, A!: on@6)
+#   - SVO (S: its@7, V: "has", O: ability@8)
+10	"Chemical properties"	"is based"	"on its ability to change into a new kind of matter with different properties into a new kind of matter with different properties matter"
+10	"Chemical properties"	"is based"	"on its ability to change into a new kind of matter with different properties into a new kind of matter with different properties"
+10	"its"	"has"	"ability to change into a new kind of matter with different properties into a new kind of matter with different properties"
+# Line 11: Basically saving chemical properties changes matters appearance.
+# Semantic graph: [matters/VBZ
+#                  advmod:Basically/RB
+#                  nsubj:[changes/NNS nn:saving/NN nn:chemical/NN nn:properties/NNS]
+#                  dobj:appearance/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: matters@6, S: changes@5, A?: Basically@1, O: appearance@7)
+11	"saving chemical properties changes"	"matters"	"appearance Basically"
+11	"saving chemical properties changes"	"matters"	"appearance"
+# Line 12: Matter also has energy in its properties.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  advmod:also/RB
+#                  dobj:[energy/NN prep:[in/IN pobj:[properties/NNS poss:its/PRP$]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@3, S: Matter@1, A?: also@2, O: energy@4)
+#   - SVO (S: its@6, V: "has", O: properties@7)
+12	"Matter"	"has"	"energy in its properties also"
+12	"Matter"	"has"	"energy in its properties"
+12	"its"	"has"	"properties"
+# Line 13: Like a drum; stereo, radios, light bulbs.
+# Semantic graph: [stereo/NN
+#                  dep:[Like/IN pobj:[drum/NN det:a/DT]]
+#                  appos:radios/NNS
+#                  appos:[bulbs/NNS amod:light/JJ]]
+#   Detected 2 clause(s).
+#   - SVC (S: stereo@5, V: "is", C: radios@7)
+#   - SVC (S: stereo@5, V: "is", C: bulbs@10)
+13	"Like a drum stereo"	"is"	"radios"
+13	"Like a drum stereo"	"is"	"light bulbs"

@@ -1,0 +1,120 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what everything in our every day lives are made up of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN
+#                         dep:what/WP
+#                         nsubjpass:[everything/NN
+#                                    prep:[in/IN
+#                                          pobj:[day/NN poss:our/PRP$ det:every/DT dep:lives/NNS]]]
+#                         auxpass:are/VBP
+#                         prt:up/RP
+#                         prep:of/IN]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@11)
+#   - SVO (S: our@6, V: "has", O: day@8)
+#   - SVA (V: made@11, S: everything@4, A!: of@13)
+1	"Matter"	"is"	"what everything in our every day lives are made up of"
+1	"our"	"has"	"every day lives"
+1	"everything in our every day lives"	"are made up"	"of"
+# Line 2: All matter has some sort of mass and volume.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[sort/NN
+#                        det:some/DT
+#                        prep:[of/IN pobj:[mass/NN cc:and/CC conj:volume/NN]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: sort@5)
+2	"All matter"	"has"	"some sort of mass and volume"
+# Line 3: Some things that help classify matter are: malleaility, weight, shape, if it floats or not.
+# Semantic graph: [malleaility/NN
+#                  nsubj:[things/NNS
+#                         det:Some/DT
+#                         rcmod:[help/VBP nsubj:that/WDT xcomp:[classify/VB dobj:matter/NN]]]
+#                  cop:are/VBP
+#                  appos:weight/NN
+#                  appos:shape/NN
+#                  dep:[floats/VBZ mark:if/IN nsubj:it/PRP dobj:[not/RB cc:or/CC]]]
+#   Detected 5 clause(s).
+#   - SVO (V: help@4, S: things@2, XCOMP: classify@5)
+#   - SVC (C: malleaility@9, V: are@7, S: things@2)
+#   - SVC (S: malleaility@9, V: "is", C: weight@11)
+#   - SVC (S: malleaility@9, V: "is", C: shape@13)
+#   - SVO (V: floats@17, S: it@16, O: not@19)
+3	"Some things"	"help"	"classify matter"
+3	"Some things"	"are"	"malleaility if it floats or not"
+3	"Some things are malleaility if it floats or not"	"is"	"weight"
+3	"Some things are malleaility if it floats or not"	"is"	"shape"
+3	"it"	"floats"	"or not"
+# Line 4: The difference in physical and chemical changes are that in a physical changes an object changes its chemical properties but changes its chemical properties.
+# Semantic graph: [are/VBP
+#                  nsubj:[difference/NN
+#                         det:The/DT
+#                         prep:[in/IN
+#                               pobj:[changes/NNS amod:[physical/NN cc:and/CC conj:chemical/NN]]]]
+#                  ccomp:[changes/VBZ
+#                         complm:that/IN
+#                         prep:[in/IN pobj:[changes/NNS det:a/DT amod:physical/JJ]]
+#                         nsubj:[object/NN det:an/DT]
+#                         dobj:[properties/NNS poss:its/PRP$ nn:chemical/NN]
+#                         cc:but/CC
+#                         conj:[changes/VBZ dobj:[properties/NNS poss:its/PRP$ nn:chemical/NN]]]]
+#   Detected 5 clause(s).
+#   - SVC (V: are@8, S: difference@2, CCOMP: changes@16)
+#   - SVO (V: changes@16, S: object@15, A?: in@10, O: properties@19)
+#   - SVO (V: changes@21, S: object@15, A?: in@10, O: properties@24)
+#   - SVO (S: its@17, V: "has", O: properties@19)
+#   - SVO (S: its@22, V: "has", O: properties@24)
+4	"The difference in physical and chemical changes"	"are"	"that in a physical changes an object changes its chemical properties but changes its chemical properties"
+4	"an object"	"changes"	"its chemical properties in a physical changes"
+4	"an object"	"changes"	"its chemical properties"
+4	"an object"	"changes"	"its chemical properties in a physical changes"
+4	"an object"	"changes"	"its chemical properties"
+4	"its"	"has"	"chemical properties"
+4	"its"	"has"	"chemical properties"
+# Line 5: In physical changes it turns into a whole new substance.
+# Semantic graph: [turns/VBZ
+#                  prep:[In/IN pobj:[changes/NNS amod:physical/JJ]]
+#                  nsubj:it/PRP
+#                  prep:[into/IN pobj:[substance/NN det:a/DT amod:whole/JJ amod:new/JJ]]]
+#   Detected 1 clause(s).
+#   - SVA (V: turns@5, S: it@4, A?: In@1, A!: into@6)
+5	"it"	"turns"	"into a whole new substance In physical changes"
+5	"it"	"turns"	"into a whole new substance"
+# Line 6: Energy is related to matter because all matter has some sort of energy.
+# Semantic graph: [related/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  xcomp:[matter/VB
+#                         aux:to/TO
+#                         advcl:[has/VBZ
+#                                mark:because/IN
+#                                nsubj:[matter/NN det:all/DT]
+#                                dobj:[sort/NN det:some/DT prep:[of/IN pobj:energy/NN]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: related@3, S: Energy@1, XCOMP: matter@5)
+#   - SVO (V: has@9, S: matter@8, O: sort@11)
+6	"Energy"	"is related"	"to matter because all matter has some sort of energy"
+6	"all matter"	"has"	"some sort of energy"

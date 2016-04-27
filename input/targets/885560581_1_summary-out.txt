@@ -1,0 +1,138 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is a form of objects that we live with.
+# Semantic graph: [form/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[of/IN pobj:objects/NNS]
+#                  ccomp:[live/VBP complm:that/IN nsubj:we/PRP prep:with/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: form@4, V: is@2, S: Matter@1, A?: of@5, CCOMP: live@9)
+#   - SVA (V: live@9, S: we@8, A!: with@10)
+1	"Matter"	"is"	"a form of objects that we live with"
+1	"Matter"	"is"	"a form that we live with"
+1	"we"	"live"	"with"
+# Line 2: Matter could be thing that you see and not see, but most all you can't smell matter.
+# Semantic graph: [thing/NN
+#                  nsubj:Matter/NNP
+#                  aux:could/MD
+#                  cop:be/VB
+#                  ccomp:[see/VBP complm:that/IN nsubj:you/PRP]
+#                  cc:and/CC
+#                  conj:not/RB
+#                  dep:see/VB
+#                  cc:but/CC
+#                  conj:[smell/VB
+#                        advmod:[all/RB advmod:most/RBS]
+#                        nsubj:you/PRP
+#                        aux:ca/MD
+#                        neg:n't/RB
+#                        dobj:matter/NN]]
+#   Detected 3 clause(s).
+#   - SVC (C: thing@4, V: be@3, S: Matter@1, CCOMP: see@7)
+#   - SV (V: see@7, S: you@6)
+#   - SVO (V: smell@18, S: you@15, A?: all@14, O: matter@19)
+2	"Matter"	"could be"	"thing and not see that you see"
+2	"you"	"see"
+2	"you"	"ca n't smell"	"matter most all"
+2	"you"	"ca n't smell"	"matter"
+# Line 3: Chemical properties and physical properties are a different form of matter.
+# Semantic graph: [form/NN
+#                  nsubj:[properties/NNS
+#                         nn:Chemical/NNP
+#                         cc:and/CC
+#                         conj:[properties/NNS amod:physical/JJ]]
+#                  cop:are/VBP
+#                  det:a/DT
+#                  amod:different/JJ
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: form@9, V: are@6, S: properties@2, A?: of@10)
+3	"Chemical properties and physical properties"	"are"	"a different form of matter"
+3	"Chemical properties and physical properties"	"are"	"a different form"
+# Line 4: Chemical properties are acid and water mixed together.
+# Semantic graph: [acid/NN
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  cop:are/VBP
+#                  cc:and/CC
+#                  conj:water/NN
+#                  amod:[mixed/VBN dep:together/RP]]
+#   Detected 1 clause(s).
+#   - SVC (C: acid@4, V: are@3, S: properties@2)
+4	"Chemical properties"	"are"	"acid and water mixed together"
+# Line 5: Physical properties changes is a new substances producing.
+# Semantic graph: [substances/NNS
+#                  nsubj:[changes/NNS amod:Physical/JJ nn:properties/NNS]
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  amod:new/JJ
+#                  partmod:producing/VBG]
+#   Detected 2 clause(s).
+#   - SVC (C: substances@7, V: is@4, S: changes@3, A?: producing@8)
+#   - SVA (V: "be producing", S: substances@7)
+5	"Physical properties changes"	"is"	"a new substances producing"
+5	"Physical properties changes"	"is"	"a new substances"
+5	"a new substances"	"be producing"
+# Line 6: Energy is something we al need to save this is why we have a law called conservation of energy.
+# Semantic graph: [something/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  rcmod:[need/VBP
+#                         nsubj:we/PRP
+#                         advmod:al/RB
+#                         xcomp:[save/VB
+#                                aux:to/TO
+#                                ccomp:[is/VBZ
+#                                       nsubj:this/DT
+#                                       advcl:[have/VBP
+#                                              advmod:why/WRB
+#                                              nsubj:we/PRP
+#                                              dobj:[law/NN
+#                                                    det:a/DT
+#                                                    partmod:[called/VBN
+#                                                             dobj:[conservation/NN
+#                                                                   prep:[of/IN pobj:energy/NN]]]]]]]]]
+#   Detected 5 clause(s).
+#   - SVC (C: something@3, V: is@2, S: Energy@1)
+#   - SVOC (V: need@6, S: we@4, A?: al@5, XCOMP: save@8, O: something@3)
+#   - SVA (V: is@10, S: this@9, A!: have@13)
+#   - SVO (V: have@13, S: we@12, A-: why@11, O: law@15)
+#   - SVA (V: "be called", S: law@15, O: conservation@17)
+6	"Energy"	"is"	"something"
+6	"we"	"need"	"to save this is why we have a law called conservation of energy something al"
+6	"we"	"need"	"to save this is why we have a law called conservation of energy something"
+6	"this"	"is"	"why we have a law called conservation of energy"
+6	"we"	"have"	"a law called conservation of energy"
+6	"a law"	"be called"	"conservation of energy"
+# Line 7: Let not for the potential enregy position of shape.
+# Semantic graph: [Let/VB
+#                  prep:[for/IN
+#                        neg:not/RB
+#                        pobj:[position/NN
+#                              det:the/DT
+#                              amod:potential/JJ
+#                              nn:enregy/NN
+#                              prep:[of/IN pobj:shape/NN]]]]
+#   Detected 0 clause(s).

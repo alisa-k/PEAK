@@ -1,0 +1,132 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter includes all solids, liquid, and gases.
+# Semantic graph: [includes/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[solids/NNS det:all/DT conj:liquid/NN cc:and/CC conj:gases/NNS]]
+#   Detected 1 clause(s).
+#   - SVO (V: includes@2, S: Matter@1, O: solids@4)
+1	"Matter"	"includes"	"all solids liquid and gases"
+# Line 2: The amount of matter in a object is the object's mass.
+# Semantic graph: [mass/NN
+#                  nsubj:[amount/NN
+#                         det:The/DT
+#                         prep:[of/IN pobj:[matter/NN prep:[in/IN pobj:[object/NN det:a/DT]]]]]
+#                  cop:is/VBZ
+#                  poss:[object/NN det:the/DT possessive:'s/POS]]
+#   Detected 2 clause(s).
+#   - SVC (C: mass@12, V: is@8, S: amount@2)
+#   - SVO (S: object@10, V: "has", O: mass@12)
+2	"The amount of matter in a object"	"is"	"the object 's mass"
+2	"the object"	"has"	"mass"
+# Line 3: Mass can be measured.
+# Semantic graph: [measured/VBN nsubjpass:Mass/NNP aux:can/MD auxpass:be/VB]
+#   Detected 1 clause(s).
+#   - SV (V: measured@4, S: Mass@1)
+3	"Mass"	"can be measured"
+# Line 4: Objects with more mass have more weight.
+# Semantic graph: [have/VBP
+#                  nsubj:[Objects/NNS prep:[with/IN pobj:[mass/NN amod:more/JJR]]]
+#                  dobj:[weight/NN amod:more/JJR]]
+#   Detected 1 clause(s).
+#   - SVO (V: have@5, S: Objects@1, O: weight@7)
+4	"Objects with more mass"	"have"	"more weight"
+# Line 5: Volume is the amount of space taken up by an object.
+# Semantic graph: [amount/NN
+#                  nsubj:Volume/NN
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN
+#                        pobj:[space/NN
+#                              partmod:[taken/VBN
+#                                       prt:up/RP
+#                                       prep:[by/IN pobj:[object/NN det:an/DT]]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: amount@4, V: is@2, S: Volume@1, A?: of@5)
+#   - SVA (V: "be taken", S: space@6, A!: by@9)
+5	"Volume"	"is"	"the amount of space taken up by an object"
+5	"Volume"	"is"	"the amount"
+5	"space"	"be taken"	"by an object"
+# Line 6: It can also be measured.
+# Semantic graph: [measured/VBN nsubjpass:It/PRP aux:can/MD advmod:also/RB auxpass:be/VB]
+#   Detected 1 clause(s).
+#   - SV (V: measured@5, S: It@1, A?: also@3)
+6	"It"	"can be measured"	"also"
+6	"It"	"can be measured"
+# Line 7: The amount of mass in a given volume is an object's density.
+# Semantic graph: [density/NN
+#                  nsubj:[amount/NN
+#                         det:The/DT
+#                         prep:[of/IN
+#                               pobj:[mass/NN
+#                                     prep:[in/IN pobj:[volume/NN det:a/DT amod:given/VBN]]]]]
+#                  cop:is/VBZ
+#                  poss:[object/NN det:an/DT possessive:'s/POS]]
+#   Detected 2 clause(s).
+#   - SVC (C: density@13, V: is@9, S: amount@2)
+#   - SVO (S: object@11, V: "has", O: density@13)
+7	"The amount of mass in a given volume"	"is"	"an object 's density"
+7	"an object"	"has"	"density"
+# Line 8: Physical properties of matter can be observed without changing the substance.
+# Semantic graph: [observed/VBN
+#                  nsubjpass:[properties/NNS amod:Physical/JJ prep:[of/IN pobj:matter/NN]]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[without/IN pcomp:[changing/VBG dobj:[substance/NN det:the/DT]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: observed@7, S: properties@2, A!: without@8)
+8	"Physical properties of matter"	"can be observed"	"without changing the substance"
+# Line 9: Another physical property of matter is state.
+# Semantic graph: [state/NN
+#                  nsubj:[property/NN
+#                         det:Another/DT
+#                         amod:physical/JJ
+#                         prep:[of/IN pobj:matter/NN]]
+#                  cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: state@7, V: is@6, S: property@3)
+9	"Another physical property of matter"	"is"	"state"
+# Line 10: Matter can be a solid, liquid, or a gas.
+# Semantic graph: [solid/JJ
+#                  nsubj:Matter/NNP
+#                  aux:can/MD
+#                  cop:be/VB
+#                  det:a/DT
+#                  conj:liquid/NN
+#                  cc:or/CC
+#                  conj:[gas/NN det:a/DT]]
+#   Detected 1 clause(s).
+#   - SVC (C: solid@5, V: be@3, S: Matter@1)
+10	"Matter"	"can be"	"a solid liquid or a gas"
+# Line 11: Physical changes to matter changes its size, shape, or state without forming a new substance.
+# Semantic graph: [changes/VBZ
+#                  nsubj:[changes/NNS amod:Physical/JJ prep:[to/TO pobj:matter/NN]]
+#                  dobj:[size/NN poss:its/PRP$ conj:shape/NN cc:or/CC conj:state/NN]
+#                  prep:[without/IN pcomp:[forming/VBG dobj:[substance/NN det:a/DT amod:new/JJ]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: changes@5, S: changes@2, O: size@7, A?: without@13)
+#   - SVO (S: its@6, V: "has", O: size@7)
+11	"Physical changes to matter"	"changes"	"its size shape or state without forming a new substance"
+11	"Physical changes to matter"	"changes"	"its size shape or state"
+11	"its"	"has"	"size shape or state"

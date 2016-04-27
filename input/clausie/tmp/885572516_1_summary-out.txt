@@ -1,0 +1,74 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter; all objects and substances in the universe are made of.
+# Semantic graph: [Matter/NNP
+#                  dep:[made/VBN
+#                       nsubjpass:[objects/NNS
+#                                  det:all/DT
+#                                  cc:and/CC
+#                                  conj:substances/NNS
+#                                  prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                       auxpass:are/VBP
+#                       prep:of/IN]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@11, S: objects@4, A!: of@12)
+1	"all objects and substances in the universe"	"are made"	"of"
+# Line 2: Matter can be detected and measured because has volume and mass.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  advcl:[has/VBZ mark:because/IN dobj:[volume/NN cc:and/CC conj:mass/NN]]]
+#   Detected 2 clause(s).
+#   - SVA (V: detected@4, S: Matter@1, A!: has@8)
+#   - SVA (V: measured@6, S: Matter@1, A!: has@8)
+2	"Matter"	"can be detected"	"because has volume and mass"
+2	"Matter"	"can be measured"	"because has volume and mass"
+# Line 3: Matter has two properties, physical is something we can see, and chemical is something we can very see it.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[properties/NNS num:two/CD]
+#                  dep:[something/NN
+#                       nsubj:physical/JJ
+#                       cop:is/VBZ
+#                       rcmod:[see/VB nsubj:we/PRP aux:can/MD]]
+#                  cc:and/CC
+#                  conj:[something/NN
+#                        nsubj:chemical/NN
+#                        cop:is/VBZ
+#                        rcmod:[see/VB nsubj:we/PRP aux:can/MD advmod:very/JJ dobj:it/PRP]]]
+#   Detected 5 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: properties@4)
+#   - SVC (C: something@8, V: is@7, S: physical@6)
+#   - SVO (V: see@11, S: we@9, O: something@8)
+#   - SVC (C: something@16, V: is@15, S: chemical@14)
+#   - SVOO (V: see@20, S: we@17, A?: very@19, O: it@21, IO: something@16)
+3	"Matter"	"has"	"two properties"
+3	"physical"	"is"	"something"
+3	"we"	"can see"	"something"
+3	"chemical"	"is"	"something"
+3	"we"	"can see"	"it something very"
+3	"we"	"can see"	"it something"

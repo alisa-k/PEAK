@@ -1,0 +1,186 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the stuff that substance and objects in the universe is made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[substance/NN
+#                                    cc:and/CC
+#                                    conj:objects/NNS
+#                                    prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                         auxpass:is/VBZ
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@13)
+#   - SVA (V: made@13, S: substance@6, A!: of@14)
+1	"Matter"	"is"	"the stuff that substance and objects in the universe is made of"
+1	"substance and objects in the universe"	"is made"	"of"
+# Line 2: All matter can be detected and measured, because matter takes up space and contains certain amount of material.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:[matter/NN det:All/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  advcl:[takes/VBZ
+#                         mark:because/IN
+#                         nsubj:matter/NN
+#                         prt:up/RP
+#                         dobj:space/NN
+#                         cc:and/CC
+#                         conj:[contains/VBZ
+#                               dobj:[amount/NN amod:certain/JJ prep:[of/IN pobj:material/NN]]]]]
+#   Detected 4 clause(s).
+#   - SVA (V: detected@5, S: matter@2, A!: takes@11)
+#   - SVA (V: measured@7, S: matter@2, A!: takes@11)
+#   - SVO (V: takes@11, S: matter@10, O: space@13)
+#   - SVO (V: contains@15, S: matter@10, O: amount@17)
+2	"All matter"	"can be detected"	"because matter takes up space and contains certain amount of material"
+2	"All matter"	"can be measured"	"because matter takes up space and contains certain amount of material"
+2	"matter"	"takes up"	"space"
+2	"matter"	"contains"	"certain amount of material"
+# Line 3: To classify matter you can easily observe it with your senses.
+# Semantic graph: [observe/VB
+#                  dep:[classify/VB aux:To/TO dobj:matter/NN]
+#                  nsubj:you/PRP
+#                  aux:can/MD
+#                  advmod:easily/RB
+#                  dobj:it/PRP
+#                  prep:[with/IN pobj:[senses/NNS poss:your/PRP$]]]
+#   Detected 2 clause(s).
+#   - SVO (V: observe@7, S: you@4, A?: easily@6, O: it@8, A?: with@9)
+#   - SVO (S: your@10, V: "has", O: senses@11)
+3	"you"	"can observe"	"it easily"
+3	"you"	"can observe"	"it with your senses"
+3	"you"	"can observe"	"it"
+3	"your"	"has"	"senses"
+# Line 4: To classify other type of matter you may need a microscope to observe them.
+# Semantic graph: [need/VB
+#                  dep:[classify/VB
+#                       aux:To/TO
+#                       dobj:[type/NN amod:other/JJ prep:[of/IN pobj:matter/NN]]]
+#                  nsubj:you/PRP
+#                  aux:may/MD
+#                  dobj:[microscope/NN det:a/DT infmod:[observe/VB aux:to/TO dobj:them/PRP]]]
+#   Detected 1 clause(s).
+#   - SVO (V: need@9, S: you@7, O: microscope@11)
+4	"you"	"may need"	"a microscope to observe them"
+# Line 5: The changes that matter has are physical change and chemical changes.
+# Semantic graph: [change/NN
+#                  nsubj:[changes/NNS det:The/DT]
+#                  advmod:[matter/NN det:that/DT]
+#                  aux:has/VBZ
+#                  cop:are/VBP
+#                  amod:physical/JJ
+#                  cc:and/CC
+#                  conj:[changes/NNS nn:chemical/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: change@8, V: are@6, S: changes@2, A?: matter@4)
+5	"The changes"	"has are"	"physical change and chemical changes that matter"
+5	"The changes"	"has are"	"physical change and chemical changes"
+# Line 6: Physical change has size and shape.
+# Semantic graph: [has/VBZ
+#                  nsubj:[change/NN amod:Physical/JJ]
+#                  dobj:[size/NN cc:and/CC conj:shape/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: change@2, O: size@4)
+6	"Physical change"	"has"	"size and shape"
+# Line 7: Chemical change produces new substance.
+# Semantic graph: [produces/VBZ
+#                  nsubj:[change/NN nn:Chemical/NNP]
+#                  dobj:[substance/NN amod:new/JJ]]
+#   Detected 1 clause(s).
+#   - SVO (V: produces@3, S: change@2, O: substance@5)
+7	"Chemical change"	"produces"	"new substance"
+# Line 8: Matter also has energy, which energy is the property of matter and all matter has it.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  advmod:also/RB
+#                  dobj:[energy/NN
+#                        rcmod:[property/NN
+#                               nsubj:[energy/NN det:which/WDT]
+#                               cop:is/VBZ
+#                               det:the/DT
+#                               prep:[of/IN pobj:matter/NN]]]
+#                  cc:and/CC
+#                  conj:[has/VBZ advmod:[matter/NN det:all/DT] dobj:it/PRP]]
+#   Detected 3 clause(s).
+#   - SVO (V: has@3, S: Matter@1, A?: also@2, O: energy@4)
+#   - SVO (V: has@16, S: Matter@1, A?: matter@15, O: it@17)
+#   - SVOC (C: property@10, V: is@8, S: energy@7, A?: of@11, O: energy@4)
+8	"Matter"	"has"	"energy also"
+8	"Matter"	"has"	"energy"
+8	"Matter"	"has"	"it all matter"
+8	"Matter"	"has"	"it"
+8	"which energy"	"is"	"the property of matter energy"
+8	"which energy"	"is"	"the property energy"
+# Line 9: Energy has a law of conservation, which is diff.
+# Semantic graph: [has/VBZ
+#                  nsubj:Energy/NNP
+#                  dobj:[law/NN
+#                        det:a/DT
+#                        prep:[of/IN
+#                              pobj:[conservation/NN rcmod:[diff/NN nsubj:which/WDT cop:is/VBZ]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@2, S: Energy@1, O: law@4)
+#   - SVC (C: diff@10, V: is@9, S: conservation@6)
+9	"Energy"	"has"	"a law of conservation"
+9	"conservation"	"is"	"diff"
+# Line 10: forms transfer from one object or system.
+# Semantic graph: [transfer/VB
+#                  nsubj:forms/NNS
+#                  prep:[from/IN pobj:[object/NN num:one/CD cc:or/CC conj:system/NN]]]
+#   Detected 1 clause(s).
+#   - SVA (V: transfer@2, S: forms@1, A!: from@3)
+10	"forms"	"transfer"	"from one object or system"
+# Line 11: There is a mechanical energy which is the energy of an object because of its motion or position.
+# Semantic graph: [is/VBZ
+#                  expl:There/EX
+#                  nsubj:[energy/NN
+#                         det:a/DT
+#                         amod:mechanical/JJ
+#                         rcmod:[energy/NN
+#                                nsubj:which/WDT
+#                                cop:is/VBZ
+#                                det:the/DT
+#                                prep:[of/IN
+#                                      pobj:[object/NN
+#                                            det:an/DT
+#                                            prep:[of/IN
+#                                                  advmod:because/RB
+#                                                  pobj:[motion/NN
+#                                                        poss:its/PRP$
+#                                                        cc:or/CC
+#                                                        conj:position/NN]]]]]]]
+#   Detected 3 clause(s).
+#   - EXISTENTIAL (V: is@2, S: energy@5)
+#   - SVC (C: energy@9, V: is@7, S: energy@5, A?: of@10)
+#   - SVO (S: its@15, V: "has", O: motion@16)
+11	"a mechanical energy"	"There is"
+11	"a mechanical energy"	"is"	"the energy of an object because of its motion or position"
+11	"a mechanical energy"	"is"	"the energy"
+11	"its"	"has"	"motion or position"

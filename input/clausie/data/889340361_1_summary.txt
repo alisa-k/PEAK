@@ -1,0 +1,9 @@
+Matter is the substance in which physical objects are composed of.
+The classification of matter is identified by the chemical and physical properties of the object.
+A physical property of a substances is the alteration of shape, mass and, etc.
+The chemical property of matter is the complete change of a substances identity.
+Energy is a scalar physical quantity that a property of objects and system of objects.
+The law of conservation of energy state energy is neither created or destroyed, but constantly transferring.
+Mechanical energy is the energy of an objects by it's position and motion.
+The potential energy is a function of the position of an object.
+The kinetic energy is a function of the objects movement.

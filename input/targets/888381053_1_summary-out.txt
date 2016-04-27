@@ -1,0 +1,127 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Did you know that matter is a part of our lifes?
+# Semantic graph: [know/VB
+#                  aux:Did/VBD
+#                  nsubj:you/PRP
+#                  ccomp:[part/NN
+#                         complm:that/IN
+#                         nsubj:matter/NN
+#                         cop:is/VBZ
+#                         det:a/DT
+#                         prep:[of/IN pobj:[lifes/NNS poss:our/PRP$]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: know@3, S: you@2, CCOMP: part@8)
+#   - SVC (C: part@8, V: is@6, S: matter@5, A?: of@9)
+#   - SVO (S: our@10, V: "has", O: lifes@11)
+1	"you"	"Did know"	"that matter is a part of our lifes"
+1	"matter"	"is"	"a part of our lifes"
+1	"matter"	"is"	"a part"
+1	"our"	"has"	"lifes"
+# Line 2: Well it is.
+# Semantic graph: [is/VBZ advmod:Well/RB nsubj:it/PRP]
+#   Detected 1 clause(s).
+#   - SV (V: is@3, S: it@2, A?: Well@1)
+2	"it"	"is"	"Well"
+2	"it"	"is"
+# Line 3: Matter is the objects and substances that the universe is made of.
+# Semantic graph: [objects/NNS
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  cc:and/CC
+#                  conj:substances/NNS
+#                  dep:[made/VBN
+#                       complm:that/IN
+#                       nsubjpass:[universe/NN det:the/DT]
+#                       auxpass:is/VBZ
+#                       prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: objects@4, V: is@2, S: Matter@1)
+#   - SVA (V: made@11, S: universe@9, A!: of@12)
+3	"Matter"	"is"	"the objects and substances that the universe is made of"
+3	"the universe"	"is made"	"of"
+# Line 4: You can detect matter with you senses.
+# Semantic graph: [detect/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dobj:matter/NN
+#                  prep:[with/IN pobj:[senses/NNS dep:you/PRP]]]
+#   Detected 1 clause(s).
+#   - SVO (V: detect@3, S: You@1, O: matter@4, A?: with@5)
+4	"You"	"can detect"	"matter with you senses"
+4	"You"	"can detect"	"matter"
+# Line 5: You may see, feel or touch things.
+# Semantic graph: [see/VB
+#                  nsubj:You/PRP
+#                  aux:may/MD
+#                  conj:feel/VB
+#                  cc:or/CC
+#                  conj:touch/VB
+#                  dobj:things/NNS]
+#   Detected 3 clause(s).
+#   - SVO (V: see@3, S: You@1, O: things@8)
+#   - SVO (V: feel@5, S: You@1, O: things@8)
+#   - SVO (V: touch@7, S: You@1, O: things@8)
+5	"You"	"may see"	"things"
+5	"You"	"may feel"	"things"
+5	"You"	"may touch"	"things"
+# Line 6: It also part of energy.
+# Semantic graph: [part/VB nsubj:It/PRP advmod:also/RB prep:[of/IN pobj:energy/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: part@3, S: It@1, A?: also@2, A!: of@4)
+6	"It"	"part"	"of energy also"
+6	"It"	"part"	"of energy"
+# Line 7: Energy is related to matter.
+# Semantic graph: [related/VBN nsubjpass:Energy/NNP auxpass:is/VBZ prep:[to/TO pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: related@3, S: Energy@1, A!: to@4)
+7	"Energy"	"is related"	"to matter"
+# Line 8: Fixed sentences:
+# Semantic graph: [sentences/NNS amod:Fixed/JJ]
+#   Detected 0 clause(s).
+# Line 9: 1.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 10: Matter can be detected by your own senses.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[by/IN pobj:[senses/NNS poss:your/PRP$ amod:own/JJ]]]
+#   Detected 2 clause(s).
+#   - SVA (V: detected@4, S: Matter@1, A!: by@5)
+#   - SVO (S: your@6, V: "has", O: senses@8)
+10	"Matter"	"can be detected"	"by your own senses"
+10	"your"	"has"	"own senses"
+# Line 11: 2.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 12: It can be seen and felt.
+# Semantic graph: [seen/VBN nsubjpass:It/PRP aux:can/MD auxpass:be/VB cc:and/CC conj:felt/VBN]
+#   Detected 2 clause(s).
+#   - SV (V: seen@4, S: It@1)
+#   - SV (V: felt@6, S: It@1)
+12	"It"	"can be seen"
+12	"It"	"can be felt"

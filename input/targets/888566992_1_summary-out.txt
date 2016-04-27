@@ -1,0 +1,250 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is everything.
+# Semantic graph: [everything/NN nsubj:Matter/NNP cop:is/VBZ]
+#   Detected 1 clause(s).
+#   - SVC (C: everything@3, V: is@2, S: Matter@1)
+1	"Matter"	"is"	"everything"
+# Line 2: There are different kinds of matter, like trees that you can touch and see.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[kinds/NNS amod:different/JJ prep:[of/IN pobj:matter/NN]]
+#                  prep:[like/IN
+#                        pobj:[trees/NNS
+#                              dep:[touch/VB
+#                                   complm:that/IN
+#                                   nsubj:you/PRP
+#                                   aux:can/MD
+#                                   cc:and/CC
+#                                   conj:see/VB]]]]
+#   Detected 3 clause(s).
+#   - EXISTENTIAL (V: are@2, S: kinds@4, A?: like@8)
+#   - SV (V: touch@13, S: you@11)
+#   - SV (V: see@15, S: you@11)
+2	"different kinds of matter"	"There are"	"like trees that you can touch and see"
+2	"different kinds of matter"	"There are"
+2	"you"	"can touch"
+2	"you"	"can see"
+# Line 3: Others you can't, like atoms and gas.
+# Semantic graph: [like/VB
+#                  nsubj:Others/NNS
+#                  nsubj:you/PRP
+#                  aux:ca/MD
+#                  neg:n't/RB
+#                  dobj:[atoms/NNS cc:and/CC conj:gas/NN]]
+#   Detected 2 clause(s).
+#   - SVO (V: like@6, S: Others@1, O: atoms@7)
+#   - SVO (V: like@6, S: you@2, O: atoms@7)
+3	"Others"	"you ca n't like"	"atoms and gas"
+3	"you"	"Others ca n't like"	"atoms and gas"
+# Line 4: Some matter is made of molecules in the wood.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[matter/NN det:Some/DT]
+#                  auxpass:is/VBZ
+#                  prep:[of/IN pobj:[molecules/NNS prep:[in/IN pobj:[wood/NN det:the/DT]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@4, S: matter@2, A!: of@5)
+4	"Some matter"	"is made"	"of molecules in the wood"
+# Line 5: Whether or not it can be shaped to another piece, or if it crumbles, is an example of properties.
+# Semantic graph: [shaped/VBN
+#                  advmod:[Whether/RB cc:or/CC conj:not/RB]
+#                  nsubjpass:it/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[to/TO pobj:[piece/NN det:another/DT]]
+#                  cc:or/CC
+#                  conj:[example/NN
+#                        csubj:[crumbles/VBZ mark:if/IN nsubj:it/PRP]
+#                        cop:is/VBZ
+#                        det:an/DT
+#                        prep:[of/IN pobj:properties/NNS]]]
+#   Detected 3 clause(s).
+#   - SVA (V: shaped@7, S: it@4, A?: Whether@1, A!: to@8)
+#   - SV (V: crumbles@15, S: it@14)
+#   - SVC (C: example@19, V: is@17, S: crumbles@15, A?: of@20)
+5	"it"	"can be shaped"	"to another piece Whether or not"
+5	"it"	"can be shaped"	"to another piece"
+5	"it"	"crumbles"
+5	"if it crumbles"	"is"	"an example of properties"
+5	"if it crumbles"	"is"	"an example"
+# Line 6: A physical change is like a cube of ice being crushed to smaller pieces.
+# Semantic graph: [is/VBZ
+#                  nsubj:[change/NN det:A/DT amod:physical/JJ]
+#                  prep:[like/IN
+#                        pobj:[cube/NN
+#                              det:a/DT
+#                              prep:[of/IN
+#                                    pobj:[ice/NN
+#                                          partmod:[crushed/VBN
+#                                                   auxpass:being/VBG
+#                                                   prep:[to/TO
+#                                                         pobj:[pieces/NNS amod:smaller/JJR]]]]]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: is@4, S: change@3, A!: like@5)
+#   - SVA (V: "be crushed", S: ice@9, A!: to@12)
+6	"A physical change"	"is"	"like a cube of ice being crushed to smaller pieces"
+6	"ice"	"be crushed"	"to smaller pieces"
+# Line 7: It's still a solid piece of frozen water.
+# Semantic graph: [piece/NN
+#                  nsubj:It/PRP
+#                  cop:'s/VBZ
+#                  advmod:still/RB
+#                  det:a/DT
+#                  amod:solid/JJ
+#                  prep:[of/IN pobj:[water/NN amod:frozen/JJ]]]
+#   Detected 1 clause(s).
+#   - SVC (C: piece@6, V: 's@2, S: It@1, A?: still@3, A?: of@7)
+7	"It"	"'s"	"a solid piece still"
+7	"It"	"'s"	"a solid piece of frozen water"
+7	"It"	"'s"	"a solid piece"
+# Line 8: A chemical change is like when grapes ferment and turn into alcoholic wine.
+# Semantic graph: [is/VBZ
+#                  nsubj:[change/NN det:A/DT nn:chemical/NN]
+#                  prep:[like/IN
+#                        pcomp:[ferment/VBP
+#                               advmod:when/WRB
+#                               nsubj:grapes/NNS
+#                               cc:and/CC
+#                               conj:turn/VBP
+#                               prep:[into/IN pobj:[wine/NN amod:alcoholic/JJ]]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: is@4, S: change@3, A!: like@5)
+#   - SVA (V: ferment@8, S: grapes@7, A?: when@6, A!: into@11)
+#   - SVA (V: turn@10, S: grapes@7, A?: when@6, A!: into@11)
+8	"A chemical change"	"is"	"like when grapes ferment and turn into alcoholic wine"
+8	"grapes"	"ferment"	"into alcoholic wine when"
+8	"grapes"	"ferment"	"into alcoholic wine"
+8	"grapes"	"turn"	"into alcoholic wine when"
+8	"grapes"	"turn"	"into alcoholic wine"
+# Line 9: It's properties are no different.
+# Semantic graph: [different/JJ
+#                  nsubj:[properties/NNS poss:[It/PRP possessive:'s/POS]]
+#                  cop:are/VBP
+#                  advmod:no/RB]
+#   Detected 2 clause(s).
+#   - SVO (S: It@1, V: "has", O: properties@3)
+#   - SVC (C: different@6, V: are@4, S: properties@3, A?: no@5)
+9	"It"	"has"	"properties"
+9	"It 's properties"	"are"	"different no"
+9	"It 's properties"	"are"	"different"
+# Line 10: All matter has energy.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+10	"All matter"	"has"	"energy"
+# Line 11: It can be transferred from one thing to another but it can't be destroyed.
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:It/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[from/IN pobj:[thing/NN num:one/CD]]
+#                  prep:[to/TO pobj:another/DT]
+#                  cc:but/CC
+#                  conj:[destroyed/VBN nsubjpass:it/PRP aux:ca/MD neg:n't/RB auxpass:be/VB]]
+#   Detected 2 clause(s).
+#   - SVA (V: transferred@4, S: It@1, A!: from@5, A?: to@8)
+#   - SV (V: destroyed@15, S: it@11)
+11	"It"	"can be transferred"	"from one thing to another"
+11	"It"	"can be transferred"	"from one thing"
+11	"it"	"ca n't be destroyed"
+# Line 12: This is the law of conservation of energy.
+# Semantic graph: [law/NN
+#                  nsubj:This/DT
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: law@4, V: is@2, S: This@1, A?: of@5)
+12	"This"	"is"	"the law of conservation of energy"
+12	"This"	"is"	"the law"
+# Line 13: Kinetic energy is energy matter has because it's moving.
+# Semantic graph: [matter/NN
+#                  nsubj:[energy/NN amod:Kinetic/JJ]
+#                  cop:is/VBZ
+#                  nn:energy/NN
+#                  rcmod:[has/VBZ advcl:[moving/VBG mark:because/IN nsubj:it/PRP aux:'s/VBZ]]]
+#   Detected 2 clause(s).
+#   - SVC (C: matter@5, V: is@3, S: energy@2)
+#   - SV (V: moving@10, S: it@8)
+13	"Kinetic energy"	"is"	"energy matter"
+13	"it"	"'s moving"
+# Line 14: The harder you throw an object the fast it'll move.
+# Semantic graph: [move/VB
+#                  dep:[throw/VBP
+#                       dep:[harder/RBR det:The/DT]
+#                       nsubj:you/PRP
+#                       dobj:[object/NN det:an/DT]
+#                       advmod:[fast/RB dep:the/DT]]
+#                  nsubj:it/PRP
+#                  aux:'ll/MD]
+#   Detected 2 clause(s).
+#   - SVO (V: throw@4, S: you@3, O: object@6, A?: fast@8)
+#   - SV (V: move@11, S: it@9)
+14	"you"	"throw"	"an object the fast"
+14	"you"	"throw"	"an object"
+14	"it"	"'ll move"
+# Line 15: Potential energy is energy due to shape and position.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Potential/JJ]
+#                  cop:is/VBZ
+#                  amod:[due/JJ prep:[to/TO pobj:[shape/NN cc:and/CC conj:position/NN]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@4, V: is@3, S: energy@2)
+15	"Potential energy"	"is"	"energy due to shape and position"
+# Line 16: A pointed end might move faster through the air.
+# Semantic graph: [move/VB
+#                  nsubj:[end/NN det:A/DT amod:pointed/JJ]
+#                  aux:might/MD
+#                  advmod:faster/RBR
+#                  prep:[through/IN pobj:[air/NN det:the/DT]]]
+#   Detected 1 clause(s).
+#   - SVA (V: move@5, S: end@3, A!: faster@6, A?: through@7)
+16	"A pointed end"	"might move"	"faster through the air"
+16	"A pointed end"	"might move"	"faster"
+# Line 17: 1.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 18: It can be transferred from one thing to another, but...
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:It/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[from/IN pobj:[thing/NN num:one/CD prep:[to/TO pobj:another/DT]]]
+#                  advmod:but/CC]
+#   Detected 1 clause(s).
+#   - SVA (V: transferred@4, S: It@1, A!: from@5, A?: but@11)
+18	"It"	"can be transferred"	"from one thing to another but"
+18	"It"	"can be transferred"	"from one thing to another"
+# Line 19: 2.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 20: The harder you throw an object, the faster..
+# Semantic graph: [throw/VBP
+#                  dep:[harder/RBR det:The/DT]
+#                  nsubj:you/PRP
+#                  dobj:[object/NN det:an/DT]
+#                  dep:[the/DT dep:faster/RBR]]
+#   Detected 1 clause(s).
+#   - SVO (V: throw@4, S: you@3, O: object@6)
+20	"you"	"throw"	"an object"

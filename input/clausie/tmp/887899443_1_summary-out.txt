@@ -1,0 +1,157 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter contains volume and mass with all the object in the universe.
+# Semantic graph: [contains/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[volume/NN cc:and/CC conj:mass/NN]
+#                  prep:[with/IN
+#                        pobj:[object/NN
+#                              predet:all/PDT
+#                              det:the/DT
+#                              prep:[in/IN pobj:[universe/NN det:the/DT]]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: contains@2, S: Matter@1, O: volume@3, A?: with@6)
+1	"Matter"	"contains"	"volume and mass with all the object in the universe"
+1	"Matter"	"contains"	"volume and mass"
+# Line 2: Every object that has movement involved or some kind of action moving matter will definitely be involved in one way or another.
+# Semantic graph: [involved/VBN
+#                  nsubjpass:[object/NN
+#                             det:Every/DT
+#                             rcmod:[has/VBZ
+#                                    nsubj:that/WDT
+#                                    dobj:[movement/NN
+#                                          partmod:involved/VBN
+#                                          cc:or/CC
+#                                          conj:[kind/NN
+#                                                det:some/DT
+#                                                prep:[of/IN
+#                                                      pobj:[matter/NN
+#                                                            nn:action/NN
+#                                                            amod:moving/VBG]]]]]]
+#                  aux:will/MD
+#                  advmod:definitely/RB
+#                  auxpass:be/VB
+#                  prep:[in/IN pobj:[way/NN num:one/CD cc:or/CC conj:another/DT]]]
+#   Detected 3 clause(s).
+#   - SVO (V: has@4, S: object@2, O: movement@5)
+#   - SVA (V: "be involved", S: movement@5)
+#   - SVA (V: involved@17, S: object@2, A?: definitely@15, A!: in@18)
+2	"Every object"	"has"	"movement involved or some kind of action moving matter"
+2	"movement or some kind of action moving matter"	"be involved"
+2	"Every object"	"will be involved"	"in one way or another definitely"
+2	"Every object"	"will be involved"	"in one way or another"
+# Line 3: Special instruments can be involved to identify certain matter that is more difficult to distinguished.
+# Semantic graph: [involved/VBN
+#                  nsubjpass:[instruments/NNS amod:Special/JJ]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  xcomp:[identify/VB
+#                         aux:to/TO
+#                         dobj:[matter/NN
+#                               amod:certain/JJ
+#                               rcmod:[difficult/JJ
+#                                      nsubj:that/WDT
+#                                      cop:is/VBZ
+#                                      advmod:more/RBR
+#                                      prep:[to/TO pobj:distinguished/JJ]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: involved@5, S: instruments@2, XCOMP: identify@7)
+#   - SVC (C: difficult@13, V: is@11, S: matter@9, A?: more@12, A?: to@14)
+3	"Special instruments"	"can be involved"	"to identify certain matter"
+3	"certain matter"	"is"	"difficult more"
+3	"certain matter"	"is"	"difficult to distinguished"
+3	"certain matter"	"is"	"difficult"
+# Line 4: The physical and chemical change have certain ways to obtain information on the specific matter taking action.
+# Semantic graph: [have/VBP
+#                  nsubj:[change/NN det:The/DT amod:[physical/NN cc:and/CC conj:chemical/NN]]
+#                  dobj:[ways/NNS
+#                        amod:certain/JJ
+#                        infmod:[obtain/VB
+#                                aux:to/TO
+#                                dobj:information/NN
+#                                prep:[on/IN
+#                                      pobj:[matter/NN
+#                                            det:the/DT
+#                                            amod:specific/JJ
+#                                            partmod:[taking/VBG dobj:action/NN]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: have@6, S: change@5, O: ways@8)
+#   - SVA (V: "be taking", S: matter@15, O: action@17)
+4	"The physical and chemical change"	"have"	"certain ways to obtain information on the specific matter taking action"
+4	"the specific matter"	"be taking"	"action"
+# Line 5: There are two difference in each other can determine by shape or just plain looks.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[difference/NN
+#                         num:two/CD
+#                         prep:[in/IN pobj:[other/JJ det:each/DT]]
+#                         rcmod:[determine/VB
+#                                aux:can/MD
+#                                prep:[by/IN
+#                                      pobj:[shape/NN
+#                                            cc:or/CC
+#                                            conj:[looks/NNS advmod:just/RB amod:plain/JJ]]]]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: difference@4)
+5	"two difference in each other"	"There are"
+# Line 6: Energy is one property of matter the only difference is you cant see it one can only detect by action/physical being.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  num:one/CD
+#                  prep:[of/IN pobj:matter/NN]
+#                  rcmod:[is/VBZ
+#                         nsubj:[difference/NN det:the/DT amod:only/JJ]
+#                         xcomp:[see/VB
+#                                nsubj:you/PRP
+#                                dep:cant/JJ
+#                                dobj:it/PRP
+#                                dep:[detect/VB
+#                                     nsubj:one/PRP
+#                                     aux:can/MD
+#                                     advmod:only/RB
+#                                     prep:[by/IN pobj:[being/NN amod:action\/physical/JJ]]]]]]
+#   Detected 4 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+#   - SVOC (V: is@10, S: difference@9, XCOMP: see@13, O: property@4)
+#   - SVO (V: see@13, S: you@11, O: it@14)
+#   - SVA (V: detect@18, S: one@15, A?: only@17, A!: by@19)
+6	"Energy"	"is"	"one property of matter"
+6	"Energy"	"is"	"one property"
+6	"the only difference"	"is"	"you see it one property of matter"
+6	"you"	"see"	"it"
+6	"one"	"can detect"	"by action\/physical being only"
+6	"one"	"can detect"	"by action\/physical being"
+# Line 7: Energy the funny thing about it it's not to be created nor destroyed.
+# Semantic graph: ['s/VBZ
+#                  dep:[Energy/VBG
+#                       dobj:[thing/NN det:the/DT amod:funny/JJ]
+#                       prep:[about/IN pobj:it/PRP]]
+#                  nsubj:it/PRP
+#                  neg:not/RB
+#                  xcomp:[created/VBN aux:to/TO auxpass:be/VB cc:nor/CC conj:destroyed/VBN]]
+#   Detected 1 clause(s).
+#   - SVC (V: 's@8, S: it@7, XCOMP: created@12)
+7	"it"	"'s not"	"to be created"
+7	"it"	"'s not"	"to be destroyed"

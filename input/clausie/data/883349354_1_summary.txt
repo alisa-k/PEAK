@@ -1,0 +1,11 @@
+Matter includes all solids, liquid, and gases.
+The amount of matter in a object is the object's mass.
+Mass can be measured.
+Objects with more mass have more weight.
+Volume is the amount of space taken up by an object.
+It can also be measured.
+The amount of mass in a given volume is an object's density.
+Physical properties of matter can be observed without changing the substance.
+Another physical property of matter is state.
+Matter can be a solid, liquid, or a gas.
+Physical changes to matter changes its size, shape, or state without forming a new substance.

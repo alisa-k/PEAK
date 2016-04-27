@@ -1,0 +1,156 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Everything in the universe is made of matter.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[Everything/NN prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                  auxpass:is/VBZ
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@6, S: Everything@1, A!: of@7)
+1	"Everything in the universe"	"is made"	"of matter"
+# Line 2: Matter can be detected and measured by its volume and mass.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  prep:[by/IN pobj:[volume/NN poss:its/PRP$ cc:and/CC conj:mass/NN]]]
+#   Detected 3 clause(s).
+#   - SVA (V: detected@4, S: Matter@1, A!: by@7)
+#   - SVA (V: measured@6, S: Matter@1, A!: by@7)
+#   - SVO (S: its@8, V: "has", O: volume@9)
+2	"Matter"	"can be detected"	"by its volume and mass"
+2	"Matter"	"can be measured"	"by its volume and mass"
+2	"its"	"has"	"volume and mass"
+# Line 3: Depends on the shape of matter some matter types can bee seen easy.
+# Semantic graph: [bee/VB
+#                  nsubj:[Depends/NNS
+#                         prep:[on/IN
+#                               pobj:[shape/NN
+#                                     det:the/DT
+#                                     prep:[of/IN
+#                                           pcomp:[matter/NN
+#                                                  dobj:[types/NNS det:some/DT nn:matter/NN]]]]]]
+#                  aux:can/MD
+#                  dep:[seen/VBN acomp:easy/JJ]]
+#   Detected 1 clause(s).
+#   - SV (V: bee@11, S: Depends@1)
+3	"Depends on the shape of matter some matter types"	"can bee"
+# Line 4: The other may be a little difficult to observe with a naked eye.
+# Semantic graph: [difficult/JJ
+#                  nsubj:[other/JJ det:The/DT]
+#                  aux:may/MD
+#                  cop:be/VB
+#                  npadvmod:[little/RB det:a/DT]
+#                  xcomp:[observe/VB
+#                         aux:to/TO
+#                         prep:[with/IN pobj:[eye/NN det:a/DT amod:naked/JJ]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: difficult@7, V: be@4, S: other@2, A?: little@6, XCOMP: observe@9)
+4	"The other"	"may be"	"difficult a little to observe with a naked eye"
+4	"The other"	"may be"	"difficult to observe with a naked eye"
+# Line 5: All matter has physical and chemical properties.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[properties/NNS amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: properties@7)
+5	"All matter"	"has"	"physical and chemical properties"
+# Line 6: Physical properties do not have an ability to change matter to new kind of matter.
+# Semantic graph: [have/VB
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  aux:do/VBP
+#                  neg:not/RB
+#                  dobj:[ability/NN
+#                        det:an/DT
+#                        infmod:[change/VB
+#                                aux:to/TO
+#                                dobj:matter/NN
+#                                prep:[to/TO
+#                                      pobj:[kind/NN amod:new/JJ prep:[of/IN pobj:matter/NN]]]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: have@5, S: properties@2, O: ability@7)
+6	"Physical properties"	"do not have"	"an ability to change matter to new kind of matter"
+# Line 7: Most common physical properties of matter are density, malleability, boiling point, solubility.
+# Semantic graph: [point/NN
+#                  nsubj:[properties/NNS
+#                         amod:[common/JJ advmod:Most/RBS]
+#                         amod:physical/JJ
+#                         prep:[of/IN pobj:matter/NN]]
+#                  cop:are/VBP
+#                  nn:density/NN
+#                  amod:malleability/JJ
+#                  amod:boiling/JJ
+#                  advmod:solubility/RB]
+#   Detected 1 clause(s).
+#   - SVC (C: point@13, V: are@7, S: properties@4, A?: solubility@15)
+7	"Most common physical properties of matter"	"are"	"density malleability boiling point solubility"
+7	"Most common physical properties of matter"	"are"	"density malleability boiling point"
+# Line 8: Chemical properties of matter able to change matter to completely new form or kind of matter with different properties.
+# Semantic graph: [properties/NNS
+#                  nn:Chemical/NNP
+#                  prep:[of/IN
+#                        pobj:[matter/NN
+#                              amod:[able/JJ
+#                                    xcomp:[change/VB
+#                                           aux:to/TO
+#                                           dobj:matter/NN
+#                                           prep:[to/TO
+#                                                 pobj:[form/NN
+#                                                       amod:[new/JJ advmod:completely/RB]
+#                                                       cc:or/CC
+#                                                       conj:kind/NN]]]]]]
+#                  prep:[of/IN pobj:matter/NN]
+#                  prep:[with/IN pobj:[properties/NNS amod:different/JJ]]]
+#   Detected 0 clause(s).
+# Line 9: As a physical object matter has kinetic and potential energy.
+# Semantic graph: [has/VBZ
+#                  prep:[As/IN pobj:[object/NN det:a/DT amod:physical/JJ]]
+#                  nsubj:matter/NN
+#                  dobj:[energy/NN amod:[kinetic/JJ cc:and/CC conj:potential/JJ]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@6, S: matter@5, A?: As@1, O: energy@10)
+9	"matter"	"has"	"kinetic and potential energy As a physical object"
+9	"matter"	"has"	"kinetic and potential energy"
+# Line 10: Energy is a property of matter and can not be destroyed or created.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[destroyed/VBN
+#                        aux:can/MD
+#                        neg:not/RB
+#                        auxpass:be/VB
+#                        cc:or/CC
+#                        conj:created/VBN]]
+#   Detected 2 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+#   - SV (V: destroyed@11, S: Energy@1)
+10	"Energy"	"is"	"a property of matter"
+10	"Energy"	"is"	"a property"
+10	"Energy"	"can not be destroyed"
+10	"Energy"	"can not be created"

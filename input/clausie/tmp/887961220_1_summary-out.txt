@@ -1,0 +1,100 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is something an object is made up.
+# Semantic graph: [something/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  rcmod:[made/VBN nsubjpass:[object/NN det:an/DT] auxpass:is/VBZ prt:up/RP]]
+#   Detected 2 clause(s).
+#   - SVC (C: something@3, V: is@2, S: Matter@1)
+#   - SVO (V: made@7, S: object@5, O: something@3)
+1	"Matter"	"is"	"something"
+1	"an object"	"is made up"	"something"
+# Line 2: All matter has energy.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+2	"All matter"	"has"	"energy"
+# Line 3: Matter in an object can be changed when it happens by a chemical change.
+# Semantic graph: [changed/VBN
+#                  nsubjpass:[Matter/NNP prep:[in/IN pobj:[object/NN det:an/DT]]]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  advcl:[happens/VBZ
+#                         advmod:when/WRB
+#                         nsubj:it/PRP
+#                         prep:[by/IN pobj:[change/NN det:a/DT nn:chemical/NN]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: changed@7, S: Matter@1, A!: happens@10)
+#   - SVA (V: happens@10, S: it@9, A?: when@8, A!: by@11)
+3	"Matter in an object"	"can be changed"	"when it happens by a chemical change"
+3	"it"	"happens"	"by a chemical change when"
+3	"it"	"happens"	"by a chemical change"
+# Line 4: A physical change only makes and object look a different way.
+# Semantic graph: [makes/VBZ
+#                  nsubj:[change/NN det:A/DT amod:physical/JJ]
+#                  advmod:only/RB
+#                  cc:and/CC
+#                  conj:[object/VBP xcomp:[look/VB dobj:[way/NN det:a/DT amod:different/JJ]]]]
+#   Detected 2 clause(s).
+#   - SV (V: makes@5, S: change@3, A?: only@4)
+#   - SVO (V: object@7, S: change@3, A?: only@4, XCOMP: look@8)
+4	"A physical change"	"makes"	"only"
+4	"A physical change"	"makes"
+4	"A physical change"	"object"	"look a different way only"
+4	"A physical change"	"object"	"look a different way"
+# Line 5: All objects have mechanical energy because of the motion it has or the position its in.
+# Semantic graph: [have/VBP
+#                  nsubj:[objects/NNS det:All/DT]
+#                  dobj:[energy/NN
+#                        amod:mechanical/JJ
+#                        prep:[of/IN advmod:because/RB pobj:[motion/NN det:the/DT]]
+#                        rcmod:[has/VBZ
+#                               nsubj:it/PRP
+#                               cc:or/CC
+#                               conj:[its/PRP$ dep:[position/NN det:the/DT]]]]
+#                  prep:in/IN]
+#   Detected 3 clause(s).
+#   - SVO (V: have@3, S: objects@2, O: energy@5, A?: in@16)
+#   - SVO (V: has@11, S: it@10, O: energy@5)
+#   - SVO (V: its@15, S: it@10, O: energy@5)
+5	"All objects"	"have"	"mechanical energy because of the motion in"
+5	"All objects"	"have"	"mechanical energy because of the motion"
+5	"it"	"has"	"mechanical energy because of the motion"
+5	"it"	"its"	"mechanical energy because of the motion"
+# Line 6: Kinetic energy is energy that is passed from one object to another.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Kinetic/JJ]
+#                  cop:is/VBZ
+#                  rcmod:[passed/VBN
+#                         nsubjpass:that/WDT
+#                         auxpass:is/VBZ
+#                         prep:[from/IN pobj:[object/NN num:one/CD]]
+#                         prep:[to/TO pobj:another/DT]]]
+#   Detected 2 clause(s).
+#   - SVC (C: energy@4, V: is@3, S: energy@2)
+#   - SVA (V: passed@7, S: energy@4, A!: from@8, A?: to@11)
+6	"Kinetic energy"	"is"	"energy"
+6	"energy"	"is passed"	"from one object to another"
+6	"energy"	"is passed"	"from one object"

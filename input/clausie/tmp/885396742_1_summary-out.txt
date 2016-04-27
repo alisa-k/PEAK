@@ -1,0 +1,86 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter and energy are the key components of giving life in the universe.
+# Semantic graph: [components/NNS
+#                  nsubj:[Matter/NN cc:and/CC conj:energy/NN]
+#                  cop:are/VBP
+#                  det:the/DT
+#                  amod:key/JJ
+#                  prep:[of/IN
+#                        pcomp:[giving/VBG
+#                               dobj:life/NN
+#                               prep:[in/IN pobj:[universe/NN det:the/DT]]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: components@7, V: are@4, S: Matter@1, A?: of@8)
+1	"Matter and energy"	"are"	"the key components of giving life in the universe"
+1	"Matter and energy"	"are"	"the key components"
+# Line 2: Matter helps create nearly every item in the universe, as well as our planet.
+# Semantic graph: [helps/VBZ
+#                  nsubj:Matter/NNP
+#                  xcomp:[create/VB
+#                         dobj:[item/NN advmod:nearly/RB det:every/DT]
+#                         prep:[in/IN
+#                               pobj:[universe/NN
+#                                     det:the/DT
+#                                     cc:[well/RB advmod:as/RB mwe:as/IN]
+#                                     conj:[planet/NN poss:our/PRP$]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: helps@2, S: Matter@1, XCOMP: create@3)
+#   - SVO (S: our@14, V: "has", O: planet@15)
+2	"Matter"	"helps"	"create nearly every item in the universe as well as our planet"
+2	"Matter"	"helps"	"create nearly every item"
+2	"our"	"has"	"planet"
+# Line 3: Energy is fuel that humans and machinery use to be mobile.
+# Semantic graph: [fuel/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  ccomp:[use/VBP
+#                         complm:that/IN
+#                         nsubj:[humans/NNS cc:and/CC conj:machinery/NN]
+#                         xcomp:[mobile/JJ aux:to/TO cop:be/VB]]]
+#   Detected 2 clause(s).
+#   - SVC (C: fuel@3, V: is@2, S: Energy@1, CCOMP: use@8)
+#   - SVO (V: use@8, S: humans@5, XCOMP: mobile@11)
+3	"Energy"	"is"	"fuel that humans and machinery use to be mobile"
+3	"humans and machinery"	"use"	"to be mobile"
+# Line 4: These are the two most important in the universe because without them life would seize to exist.
+# Semantic graph: [two/CD
+#                  nsubj:These/DT
+#                  cop:are/VBP
+#                  det:the/DT
+#                  amod:[important/JJ advmod:most/RBS]
+#                  prep:[in/IN pobj:[universe/NN det:the/DT]]
+#                  ccomp:[seize/VB
+#                         mark:because/IN
+#                         prep:[without/IN pobj:them/PRP]
+#                         nsubj:life/NN
+#                         aux:would/MD
+#                         xcomp:[exist/VB aux:to/TO]]]
+#   Detected 2 clause(s).
+#   - SVC (C: two@4, V: are@2, S: These@1, A?: in@7, CCOMP: seize@15)
+#   - SVO (V: seize@15, S: life@13, A?: without@11, XCOMP: exist@17)
+4	"These"	"are"	"the two most important in the universe because without them life would seize to exist"
+4	"These"	"are"	"the two most important because without them life would seize to exist"
+4	"life"	"would seize"	"to exist without them"
+4	"life"	"would seize"	"to exist"

@@ -1,0 +1,133 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what the universe is made of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN
+#                         dep:what/WP
+#                         nsubjpass:[universe/NN det:the/DT]
+#                         auxpass:is/VBZ
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@7)
+#   - SVA (V: made@7, S: universe@5, A!: of@8)
+1	"Matter"	"is"	"what the universe is made of"
+1	"the universe"	"is made"	"of"
+# Line 2: It contains many substances, one includes energy.
+# Semantic graph: [includes/VBZ
+#                  ccomp:[contains/VBZ nsubj:It/PRP dobj:[substances/NNS amod:many/JJ]]
+#                  nsubj:one/PRP
+#                  dobj:energy/NN]
+#   Detected 2 clause(s).
+#   - SVO (V: contains@2, S: It@1, O: substances@4)
+#   - SVOC (V: includes@7, S: one@6, CCOMP: contains@2, O: energy@8)
+2	"It"	"contains"	"many substances"
+2	"one"	"includes"	"It contains many substances energy"
+# Line 3: Matter is detected by the space it takes up and the volume it contains.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:Matter/NNP
+#                  auxpass:is/VBZ
+#                  prep:[by/IN
+#                        pobj:[space/NN
+#                              det:the/DT
+#                              rcmod:[takes/VBZ nsubj:it/PRP prt:up/RP]
+#                              cc:and/CC
+#                              conj:[volume/NN det:the/DT rcmod:[contains/VBZ nsubj:it/PRP]]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: detected@3, S: Matter@1, A!: by@4)
+#   - SVO (V: takes@8, S: it@7, O: space@6)
+#   - SVO (V: contains@14, S: it@13, O: volume@12)
+3	"Matter"	"is detected"	"by the space and the volume"
+3	"it"	"takes up"	"the space and the volume"
+3	"it"	"contains"	"the volume"
+# Line 4: The reason why we can be sure what is matter is because we can see it or feel it.
+# Semantic graph: [is/VBZ
+#                  nsubj:[reason/NN
+#                         det:The/DT
+#                         rcmod:[sure/JJ
+#                                advmod:why/WRB
+#                                nsubj:we/PRP
+#                                aux:can/MD
+#                                cop:be/VB
+#                                ccomp:[matter/NN nsubj:what/WP cop:is/VBZ]]]
+#                  advcl:[see/VB
+#                         mark:because/IN
+#                         nsubj:we/PRP
+#                         aux:can/MD
+#                         dobj:it/PRP
+#                         cc:or/CC
+#                         conj:[feel/VB dobj:it/PRP]]]
+#   Detected 5 clause(s).
+#   - SVOC (C: sure@7, V: be@6, S: we@4, A-: why@3, CCOMP: matter@10, O: reason@2)
+#   - SVC (C: matter@10, V: is@9, S: what@8)
+#   - SVA (V: is@11, S: reason@2, A!: see@15)
+#   - SVO (V: see@15, S: we@13, O: it@16)
+#   - SVO (V: feel@18, S: we@13, O: it@19)
+4	"we"	"can be"	"sure what is matter The reason"
+4	"what"	"is"	"matter"
+4	"The reason"	"is"	"because we can see it or feel it"
+4	"we"	"can see"	"it"
+4	"we"	"can feel"	"it"
+# Line 5: The difference between physical and chemical is that physical can be observed without being changed and chemical must be changed around.
+# Semantic graph: [is/VBZ
+#                  nsubj:[difference/NN
+#                         det:The/DT
+#                         prep:[between/IN pobj:[physical/JJ cc:and/CC conj:chemical/JJ]]]
+#                  ccomp:[observed/VBN
+#                         complm:that/IN
+#                         nsubjpass:physical/JJ
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[without/IN pcomp:[changed/VBN auxpass:being/VBG]]
+#                         cc:and/CC
+#                         conj:[changed/VBN
+#                               nsubjpass:chemical/NN
+#                               aux:must/MD
+#                               auxpass:be/VB
+#                               prt:around/RP]]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@7, S: difference@2, CCOMP: observed@12)
+#   - SVA (V: observed@12, S: physical@9, A!: without@13)
+#   - SV (V: changed@20, S: chemical@17)
+5	"The difference between physical and chemical"	"is"	"that physical can be observed without being changed and chemical must be changed around"
+5	"physical"	"can be observed"	"without being changed"
+5	"chemical"	"must be changed around"
+# Line 6: A substance that is contained in matter and must be contained is energy.
+# Semantic graph: [energy/NN
+#                  nsubj:[substance/NN
+#                         det:A/DT
+#                         rcmod:[contained/VBN
+#                                nsubjpass:that/WDT
+#                                auxpass:is/VBZ
+#                                prep:[in/IN pobj:matter/NN]
+#                                cc:and/CC
+#                                conj:[contained/VBN aux:must/MD auxpass:be/VB]]]
+#                  cop:is/VBZ]
+#   Detected 3 clause(s).
+#   - SVA (V: contained@5, S: substance@2, A!: in@6)
+#   - SV (V: contained@11, S: substance@2)
+#   - SVC (C: energy@13, V: is@12, S: substance@2)
+6	"A substance"	"is contained"	"in matter"
+6	"A substance"	"must be contained"
+6	"A substance"	"is"	"energy"

@@ -1,0 +1,106 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: What is the difference between physical and chemical change?
+# Semantic graph: [is/VBZ
+#                  attr:What/WP
+#                  nsubj:[difference/NN
+#                         det:the/DT
+#                         prep:[between/IN
+#                               pobj:[change/NN amod:[physical/NN cc:and/CC conj:chemical/NN]]]]]
+#   Detected 1 clause(s).
+#   - SV (V: is@2, S: difference@4)
+1	"the difference between physical and chemical change"	"What is"
+# Line 2: Physical change is a change where the subject and shape changes, but the chemical is still there.
+# Semantic graph: [change/NN
+#                  nsubj:[change/NN amod:Physical/JJ]
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  rcmod:[changes/VBZ
+#                         advmod:where/WRB
+#                         nsubj:[subject/NN det:the/DT cc:and/CC conj:shape/NN]]
+#                  cc:but/CC
+#                  conj:[is/VBZ nsubj:[chemical/NN det:the/DT] advmod:still/RB advmod:there/RB]]
+#   Detected 3 clause(s).
+#   - SVC (C: change@5, V: is@3, S: change@2)
+#   - SVO (V: changes@11, S: subject@8, A?: where@6, O: change@5)
+#   - SVA (V: is@16, S: chemical@15, A!: still@17, A?: there@18)
+2	"Physical change"	"is"	"a change"
+2	"the subject and shape"	"changes"	"a change but the chemical is still there where"
+2	"the subject and shape"	"changes"	"a change but the chemical is still there"
+2	"the chemical"	"is"	"still there"
+2	"the chemical"	"is"	"still"
+# Line 3: For example if you fold a piece of paper into thirds, your left with a piece of paper one third the size of the original.
+# Semantic graph: [left/VBD
+#                  prep:[For/IN
+#                        pobj:[example/NN
+#                              dep:[fold/VBP
+#                                   mark:if/IN
+#                                   nsubj:you/PRP
+#                                   dobj:[piece/NN det:a/DT prep:[of/IN pobj:paper/NN]]
+#                                   prep:[into/IN pobj:thirds/NNS]]]]
+#                  nsubj:your/PRP$
+#                  prep:[with/IN
+#                        pobj:[piece/NN det:a/DT prep:[of/IN pobj:[paper/NN num:one/CD]]]]
+#                  dobj:[size/NN
+#                        amod:third/JJ
+#                        det:the/DT
+#                        prep:[of/IN pobj:[original/JJ det:the/DT]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: fold@5, S: you@4, O: piece@7, A?: into@10)
+#   - SVO (V: left@14, S: your@13, A?: For@1, A?: with@15, O: size@23)
+3	"you"	"fold"	"a piece of paper into thirds"
+3	"you"	"fold"	"a piece of paper"
+3	"your"	"left"	"third the size of the original For example if you fold a piece of paper into thirds"
+3	"your"	"left"	"with a piece of paper one third the size of the original"
+3	"your"	"left"	"third the size of the original"
+# Line 4: The paper looks different but it still a physical change.
+# Semantic graph: [looks/VBZ
+#                  nsubj:[paper/NN det:The/DT]
+#                  dobj:[different/JJ
+#                        prep:[but/CC dep:it/PRP]
+#                        advmod:still/RB
+#                        dep:[change/NN det:a/DT amod:physical/JJ]]]
+#   Detected 1 clause(s).
+#   - SVO (V: looks@3, S: paper@2, O: different@4)
+4	"The paper"	"looks"	"different but it still a physical change"
+# Line 5: A chemical change is when the chemical properties of the paper have changes, producing a new substance.
+# Semantic graph: [is/VBZ
+#                  nsubj:[change/NN det:A/DT nn:chemical/NN]
+#                  advcl:[have/VBP
+#                         advmod:when/WRB
+#                         nsubj:[properties/NNS
+#                                det:the/DT
+#                                amod:chemical/JJ
+#                                prep:[of/IN pobj:[paper/NN det:the/DT]]]
+#                         dobj:changes/NNS
+#                         partmod:[producing/VBG dobj:[substance/NN det:a/DT amod:new/JJ]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: is@4, S: change@3, A!: have@12)
+#   - SVO (V: have@12, S: properties@8, A?: when@5, O: changes@13, A?: producing@15)
+#   - SVA (V: "be producing", S: properties@8, O: substance@18)
+5	"A chemical change"	"is"	"when the chemical properties of the paper have changes producing a new substance"
+5	"the chemical properties of the paper"	"have"	"changes when"
+5	"the chemical properties of the paper"	"have"	"changes producing a new substance"
+5	"the chemical properties of the paper"	"have"	"changes"
+5	"the chemical properties of the paper"	"be producing"	"a new substance"

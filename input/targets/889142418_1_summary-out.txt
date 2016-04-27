@@ -1,0 +1,126 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what all substances and objects are made out of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN
+#                         dep:what/WP
+#                         nsubjpass:[substances/NNS det:all/DT cc:and/CC conj:objects/NNS]
+#                         auxpass:are/VBP
+#                         prt:out/RP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@9)
+#   - SVA (V: made@9, S: substances@5, A!: of@11)
+1	"Matter"	"is"	"what all substances and objects are made out of"
+1	"all substances and objects"	"are made out"	"of"
+# Line 2: Anything that take up space and volume is matter.
+# Semantic graph: [matter/NN
+#                  nsubj:[Anything/NN
+#                         rcmod:[take/VB
+#                                nsubj:that/WDT
+#                                prt:up/RP
+#                                dobj:[space/NN cc:and/CC conj:volume/NN]]]
+#                  cop:is/VBZ]
+#   Detected 2 clause(s).
+#   - SVO (V: take@3, S: Anything@1, O: space@5)
+#   - SVC (C: matter@9, V: is@8, S: Anything@1)
+2	"Anything"	"take up"	"space and volume"
+2	"Anything"	"is"	"matter"
+# Line 3: There are physical properties and chemical properties.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[properties/NNS
+#                         amod:physical/JJ
+#                         cc:and/CC
+#                         conj:[properties/NNS nn:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: properties@4)
+3	"physical properties and chemical properties"	"There are"
+# Line 4: Physical properties are objects changing the make-up.
+# Semantic graph: [objects/NNS
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  cop:are/VBP
+#                  partmod:[changing/VBG dobj:[make-up/NN det:the/DT]]]
+#   Detected 2 clause(s).
+#   - SVC (C: objects@4, V: are@3, S: properties@2, A?: changing@5)
+#   - SVA (V: "be changing", S: objects@4, O: make-up@7)
+4	"Physical properties"	"are"	"objects changing the make-up"
+4	"Physical properties"	"are"	"objects"
+4	"objects"	"be changing"	"the make-up"
+# Line 5: Chemical properties are element that can change into new properties there are three forms of energy mechanical kinetic and potential
+# Semantic graph: [element/NN
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  cop:are/VBP
+#                  rcmod:[change/VB
+#                         nsubj:that/WDT
+#                         aux:can/MD
+#                         prep:[into/IN
+#                               pobj:[properties/NNS
+#                                     amod:new/JJ
+#                                     rcmod:[are/VBP
+#                                            expl:there/EX
+#                                            nsubj:[forms/NNS
+#                                                   num:three/CD
+#                                                   prep:[of/IN
+#                                                         pobj:[kinetic/NN
+#                                                               nn:energy/NN
+#                                                               amod:mechanical/JJ
+#                                                               cc:and/CC
+#                                                               conj:potential/NN]]]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: element@4, V: are@3, S: properties@2)
+#   - SVA (V: change@7, S: element@4, A!: into@8)
+#   - EXISTENTIAL (V: are@12, S: forms@14, O: properties@10)
+5	"Chemical properties"	"are"	"element"
+5	"element"	"can change"	"into new properties"
+5	"three forms of energy mechanical kinetic and potential"	"there are"	"new properties"
+# Line 7: Correction 1
+# Semantic graph: [Correction/NN num:1/CD]
+#   Detected 0 clause(s).
+# Line 8: There are three forms of energy mechanical, kinetic, and potential.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  iobj:[forms/NNS
+#                        num:three/CD
+#                        prep:[of/IN pobj:energy/NN]
+#                        dep:[mechanical/JJ amod:kinetic/JJ cc:and/CC conj:potential/JJ]]]
+#   Detected 0 clause(s).
+# Line 9: Anything that takes up space and has volume is matter.
+# Semantic graph: [matter/NN
+#                  nsubj:[Anything/NN
+#                         rcmod:[takes/VBZ
+#                                nsubj:that/WDT
+#                                prt:up/RP
+#                                dobj:space/NN
+#                                cc:and/CC
+#                                conj:[has/VBZ dobj:volume/NN]]]
+#                  cop:is/VBZ]
+#   Detected 3 clause(s).
+#   - SVO (V: takes@3, S: Anything@1, O: space@5)
+#   - SVO (V: has@7, S: Anything@1, O: volume@8)
+#   - SVC (C: matter@10, V: is@9, S: Anything@1)
+9	"Anything"	"takes up"	"space"
+9	"Anything"	"has"	"volume"
+9	"Anything"	"is"	"matter"

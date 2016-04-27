@@ -1,0 +1,163 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the "stuff" that all objects and substances in the universe are made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  dep:[made/VBN
+#                       complm:that/IN
+#                       nsubjpass:[objects/NNS
+#                                  det:all/DT
+#                                  cc:and/CC
+#                                  conj:substances/NNS
+#                                  prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                       auxpass:are/VBP
+#                       prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@5, V: is@2, S: Matter@1)
+#   - SVA (V: made@16, S: objects@9, A!: of@17)
+1	"Matter"	"is"	"the stuff that all objects and substances in the universe are made of"
+1	"all objects and substances in the universe"	"are made"	"of"
+# Line 2: Somet ypes of matter can be easily observed with your senses.
+# Semantic graph: [observed/VBN
+#                  nsubjpass:[ypes/NNS amod:Somet/JJ prep:[of/IN pobj:matter/NN]]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  advmod:easily/RB
+#                  prep:[with/IN pobj:[senses/NNS poss:your/PRP$]]]
+#   Detected 2 clause(s).
+#   - SVA (V: observed@8, S: ypes@2, A?: easily@7, A!: with@9)
+#   - SVO (S: your@10, V: "has", O: senses@11)
+2	"Somet ypes of matter"	"can be observed"	"with your senses easily"
+2	"Somet ypes of matter"	"can be observed"	"with your senses"
+2	"your"	"has"	"senses"
+# Line 3: Matter has two types of properties, physical and chemical.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[types/NNS
+#                        num:two/CD
+#                        prep:[of/IN pobj:properties/NNS]
+#                        amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: types@4)
+3	"Matter"	"has"	"two types of properties physical and chemical"
+# Line 4: Physical properties can be observed or measured without changing the composition of matter.
+# Semantic graph: [observed/VBN
+#                  nsubjpass:[properties/NNS amod:Physical/JJ]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:measured/VBN
+#                  prep:[without/IN
+#                        pcomp:[changing/VBG
+#                               dobj:[composition/NN det:the/DT prep:[of/IN pobj:matter/NN]]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: observed@5, S: properties@2, A!: without@8)
+#   - SVA (V: measured@7, S: properties@2, A!: without@8)
+4	"Physical properties"	"can be observed"	"without changing the composition of matter"
+4	"Physical properties"	"can be measured"	"without changing the composition of matter"
+# Line 5: Chemical properties of matter describes its "potential" to  undergo some chemical change or reaction by virtue of its composition.
+# Semantic graph: [describes/VBZ
+#                  nsubj:[properties/NNS nn:Chemical/NNP prep:[of/IN pobj:matter/NN]]
+#                  xcomp:[undergo/VB
+#                         nsubj:[potential/NN poss:its/PRP$]
+#                         aux:to/TO
+#                         dobj:[change/NN det:some/DT amod:chemical/JJ cc:or/CC conj:reaction/NN]
+#                         prep:[by/IN
+#                               pobj:[virtue/NN prep:[of/IN pobj:[composition/NN poss:its/PRP$]]]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: describes@5, S: properties@2, XCOMP: undergo@11)
+#   - SVO (S: its@6, V: "has", O: potential@8)
+#   - SVO (V: undergo@11, S: potential@8, O: change@14, A?: by@17)
+#   - SVO (S: its@20, V: "has", O: composition@21)
+5	"Chemical properties of matter"	"describes"	"its potential to undergo some chemical change or reaction by virtue of its composition"
+5	"Chemical properties of matter"	"describes"	"its potential to undergo some chemical change or reaction"
+5	"its"	"has"	"potential"
+5	"its potential"	"to undergo"	"some chemical change or reaction by virtue of its composition"
+5	"its potential"	"to undergo"	"some chemical change or reaction"
+5	"its"	"has"	"composition"
+# Line 6: Color, shape, density, viscosity are useful in classifying types of matter.
+# Semantic graph: [useful/JJ
+#                  nsubj:[Color/NNP appos:[shape/NN appos:density/NN]]
+#                  advmod:viscosity/RB
+#                  cop:are/VBP
+#                  prep:[in/IN
+#                        pcomp:[classifying/VBG dobj:[types/NNS prep:[of/IN pobj:matter/NN]]]]]
+#   Detected 3 clause(s).
+#   - SVC (S: Color@1, V: "is", C: shape@3)
+#   - SVC (S: shape@3, V: "is", C: density@5)
+#   - SVC (C: useful@9, V: are@8, S: Color@1, A?: viscosity@7, A?: in@10)
+6	"Color"	"is"	"shape"
+6	"shape"	"is"	"density"
+6	"Color"	"are"	"useful viscosity"
+6	"Color"	"are"	"useful in classifying types of matter"
+6	"Color"	"are"	"useful"
+# Line 7: Physical and chemical change are totally different from each other.
+# Semantic graph: [different/JJ
+#                  nsubj:[Physical/NNP cc:and/CC conj:[change/NN nn:chemical/NN]]
+#                  cop:are/VBP
+#                  advmod:totally/RB
+#                  prep:[from/IN pobj:[other/JJ det:each/DT]]]
+#   Detected 1 clause(s).
+#   - SVC (C: different@7, V: are@5, S: Physical@1, A?: totally@6, A?: from@8)
+7	"Physical and chemical change"	"are"	"different totally"
+7	"Physical and chemical change"	"are"	"different from each other"
+7	"Physical and chemical change"	"are"	"different"
+# Line 8: A physical change involves the change in a substance whereas a chemical change involve the change in a substance through a chemical reaction.
+# Semantic graph: [involves/VBZ
+#                  nsubj:[change/NN det:A/DT amod:physical/JJ]
+#                  dobj:[change/NN det:the/DT]
+#                  prep:[in/IN pobj:[substance/NN det:a/DT]]
+#                  advcl:[involve/VBP
+#                         mark:whereas/IN
+#                         nsubj:[change/NN det:a/DT nn:chemical/NN]
+#                         dobj:[change/NN det:the/DT prep:[in/IN pobj:[substance/NN det:a/DT]]]
+#                         prep:[through/IN pobj:[reaction/NN det:a/DT nn:chemical/NN]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: involves@4, S: change@3, O: change@6, A?: in@7, A?: involve@14)
+#   - SVO (V: involve@14, S: change@13, O: change@16, A?: through@20)
+8	"A physical change"	"involves"	"the change in a substance"
+8	"A physical change"	"involves"	"the change whereas a chemical change involve the change in a substance through a chemical reaction"
+8	"A physical change"	"involves"	"the change"
+8	"a chemical change"	"involve"	"the change in a substance through a chemical reaction"
+8	"a chemical change"	"involve"	"the change in a substance"
+# Line 9: There are three different forms of energy.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[forms/NNS num:three/CD amod:different/JJ prep:[of/IN pobj:energy/NN]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: forms@5)
+9	"three different forms of energy"	"There are"
+# Line 10: Those are mechanical energy, potential energy and kinetic energy.
+# Semantic graph: [energy/NN
+#                  nsubj:Those/DT
+#                  cop:are/VBP
+#                  amod:mechanical/JJ
+#                  conj:[energy/NN amod:potential/JJ]
+#                  cc:and/CC
+#                  conj:[energy/NN amod:kinetic/JJ]]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@4, V: are@2, S: Those@1)
+10	"Those"	"are"	"mechanical energy potential energy and kinetic energy"

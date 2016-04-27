@@ -1,0 +1,154 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is everywhere, everyone sees it wears it smells it tastes it and feels it, but no one realizes how or what it is.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  advmod:everywhere/RB
+#                  dep:[sees/VBZ
+#                       nsubj:everyone/NN
+#                       ccomp:[wears/VBZ
+#                              nsubj:it/PRP
+#                              ccomp:[smells/VBZ
+#                                     nsubj:it/PRP
+#                                     ccomp:[tastes/VBZ
+#                                            nsubj:it/PRP
+#                                            dobj:it/PRP
+#                                            cc:and/CC
+#                                            conj:[feels/VBZ dobj:it/PRP]]]]]
+#                  cc:but/CC
+#                  conj:[realizes/VBZ
+#                        nsubj:[one/NN det:no/DT]
+#                        dep:[how/WRB cc:or/CC conj:[is/VBZ dobj:what/WP nsubj:it/PRP]]]]
+#   Detected 8 clause(s).
+#   - SVA (V: is@2, S: Matter@1, A!: everywhere@3)
+#   - SVO (V: sees@6, S: everyone@5, CCOMP: wears@8)
+#   - SVO (V: wears@8, S: it@7, CCOMP: smells@10)
+#   - SVC (V: smells@10, S: it@9, CCOMP: tastes@12)
+#   - SVO (V: tastes@12, S: it@11, O: it@13)
+#   - SVO (V: feels@15, S: it@11, O: it@16)
+#   - SV (V: realizes@21, S: one@20)
+#   - SVO (V: is@26, S: it@25, O: what@24)
+1	"Matter"	"is"	"everywhere"
+1	"everyone"	"sees"	"it wears it smells it tastes it and feels it"
+1	"it"	"wears"	"it smells it tastes it and feels it"
+1	"it"	"smells"	"it tastes it and feels it"
+1	"it"	"tastes"	"it"
+1	"it"	"feels"	"it"
+1	"no one"	"realizes"
+1	"it"	"is"	"what"
+# Line 2: Matter is the building block to of all the substances that take up space for example, everything smelled air [illegible words] matter.
+# Semantic graph: [smelled/VBD
+#                  ccomp:[block/NN
+#                         nsubj:Matter/NNP
+#                         cop:is/VBZ
+#                         det:the/DT
+#                         nn:building/NN
+#                         prep:to/TO
+#                         prep:[of/IN
+#                               pobj:[substances/NNS
+#                                     predet:all/PDT
+#                                     det:the/DT
+#                                     ccomp:[take/VBP
+#                                            nsubj:that/WDT
+#                                            prt:up/RP
+#                                            dobj:[space/NN prep:[for/IN pobj:example/NN]]]]]]
+#                  nsubj:everything/NN
+#                  dobj:[air/NN appos:[words/NNS amod:illegible/JJ]]
+#                  advmod:matter/NN]
+#   Detected 4 clause(s).
+#   - SVC (C: block@5, V: is@2, S: Matter@1, A?: to@6, A?: of@7)
+#   - SVO (V: take@12, S: that@11, O: space@14)
+#   - SVOC (V: smelled@19, S: everything@18, CCOMP: block@5, O: air@20, A?: matter@25)
+#   - SVC (S: air@20, V: "is", C: words@23)
+2	"Matter"	"is"	"the building block to"
+2	"Matter"	"is"	"the building block of all the substances that take up space for example"
+2	"Matter"	"is"	"the building block"
+2	"that"	"take up"	"space for example"
+2	"everything"	"smelled"	"Matter is the building block to of all the substances that take up space for example air matter"
+2	"everything"	"smelled"	"Matter is the building block to of all the substances that take up space for example air"
+2	"air"	"is"	"illegible words"
+# Line 3: Although there are 3 different types of matter, they are liquid, solid and gas.
+# Semantic graph: [are/VBP
+#                  advcl:[are/VBP
+#                         mark:Although/IN
+#                         expl:there/EX
+#                         nsubj:[types/NNS
+#                                num:3/CD
+#                                amod:different/JJ
+#                                prep:[of/IN pobj:matter/NN]]]
+#                  nsubj:they/PRP
+#                  acomp:[solid/JJ amod:liquid/JJ cc:and/CC conj:gas/NN]]
+#   Detected 2 clause(s).
+#   - EXISTENTIAL (V: are@3, S: types@6)
+#   - SVC (V: are@11, S: they@10, A?: are@3, ACOMP: solid@14)
+3	"3 different types of matter"	"there are"
+3	"they"	"are"	"liquid solid and gas Although there are 3 different types of matter"
+3	"they"	"are"	"liquid solid and gas"
+# Line 4: Matter can go through 2 types of changes.
+# Semantic graph: [go/VB
+#                  nsubj:Matter/NNP
+#                  aux:can/MD
+#                  prep:[through/IN pobj:[types/NNS num:2/CD prep:[of/IN pobj:changes/NNS]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: go@3, S: Matter@1, A!: through@4)
+4	"Matter"	"can go"	"through 2 types of changes"
+# Line 5: Physical and chemical.
+# Semantic graph: [Physical/NNS cc:and/CC conj:chemical/NN]
+#   Detected 0 clause(s).
+# Line 6: Physical change is when something has a change is shape, but still remains the same.
+# Semantic graph: [is/VBZ
+#                  nsubj:[change/NN amod:Physical/JJ]
+#                  advcl:[has/VBZ
+#                         advmod:when/WRB
+#                         nsubj:something/NN
+#                         dobj:[change/NN det:a/DT rcmod:[shape/NN cop:is/VBZ]]
+#                         cc:but/CC
+#                         conj:[same/JJ advmod:still/RB cop:remains/VBZ det:the/DT]]]
+#   Detected 3 clause(s).
+#   - SVA (V: is@3, S: change@2, A!: has@6)
+#   - SVO (V: has@6, S: something@5, A?: when@4, O: change@8)
+#   - SVC (C: same@16, V: remains@14, S: something@5, A?: when@4, A?: still@13)
+6	"Physical change"	"is"	"when something has a change but still remains the same"
+6	"something"	"has"	"a change when"
+6	"something"	"has"	"a change"
+6	"something"	"remains"	"the same when"
+6	"something"	"remains"	"the same still"
+6	"something"	"remains"	"the same"
+# Line 7: A chemical change is when the chemicals inside change like water heating up and evaporating.
+# Semantic graph: [is/VBZ
+#                  nsubj:[change/NN det:A/DT nn:chemical/NN]
+#                  advcl:[change/VBP
+#                         advmod:when/WRB
+#                         nsubj:[chemicals/NNS det:the/DT]
+#                         advmod:inside/RB
+#                         prep:[like/IN pobj:water/NN]
+#                         ccomp:[heating/VBG prt:up/RP cc:and/CC conj:evaporating/VBG]]]
+#   Detected 2 clause(s).
+#   - SVA (V: is@4, S: change@3, A!: change@9)
+#   - SVO (V: change@9, S: chemicals@7, A?: when@5, A?: inside@8, A?: like@10, CCOMP: heating@12)
+7	"A chemical change"	"is"	"when the chemicals inside change like water heating up and evaporating"
+7	"the chemicals"	"change"	"heating up and evaporating when"
+7	"the chemicals"	"change"	"heating up and evaporating inside"
+7	"the chemicals"	"change"	"like water heating up and evaporating"
+7	"the chemicals"	"change"	"heating up and evaporating"

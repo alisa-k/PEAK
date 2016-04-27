@@ -1,0 +1,122 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is anything that has mass and occupies space.
+# Semantic graph: [anything/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  rcmod:[has/VBZ
+#                         nsubj:that/WDT
+#                         dobj:mass/NN
+#                         cc:and/CC
+#                         conj:[occupies/VBZ dobj:space/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: anything@3, V: is@2, S: Matter@1)
+#   - SVO (V: has@5, S: anything@3, O: mass@6)
+#   - SVO (V: occupies@8, S: anything@3, O: space@9)
+1	"Matter"	"is"	"anything"
+1	"anything"	"has"	"mass"
+1	"anything"	"occupies"	"space"
+# Line 2: All matter can be mostly detected by its mass, matter is mostly classified in three groups solid, liquid, and gas.
+# Semantic graph: [classified/JJ
+#                  ccomp:[detected/VBN
+#                         nsubjpass:[matter/NN det:All/DT]
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         advmod:mostly/RB
+#                         prep:[by/IN pobj:[mass/NN poss:its/PRP$]]]
+#                  nsubj:matter/NN
+#                  cop:is/VBZ
+#                  advmod:mostly/RB
+#                  prep:[in/IN pobj:[groups/NNS num:three/CD]]
+#                  acomp:[solid/JJ conj:liquid/JJ cc:and/CC conj:gas/NN]]
+#   Detected 3 clause(s).
+#   - SVA (V: detected@6, S: matter@2, A?: mostly@5, A!: by@7)
+#   - SVO (S: its@8, V: "has", O: mass@9)
+#   - SVC (C: classified@14, V: is@12, S: matter@11, CCOMP: detected@6, A?: mostly@13, A?: in@15, ACOMP: solid@18)
+2	"All matter"	"can be detected"	"by its mass mostly"
+2	"All matter"	"can be detected"	"by its mass"
+2	"its"	"has"	"mass"
+2	"matter"	"is"	"classified All matter can be mostly detected by its mass mostly solid liquid and gas"
+2	"matter"	"is"	"classified All matter can be mostly detected by its mass in three groups solid liquid and gas"
+2	"matter"	"is"	"classified All matter can be mostly detected by its mass solid liquid and gas"
+# Line 3: Matter is everywhere.
+# Semantic graph: [is/VBZ nsubj:Matter/NNP advmod:everywhere/RB]
+#   Detected 1 clause(s).
+#   - SVA (V: is@2, S: Matter@1, A!: everywhere@3)
+3	"Matter"	"is"	"everywhere"
+# Line 4: There is is physical and chemical energy to.
+# Semantic graph: [is/VBZ
+#                  expl:There/EX
+#                  dep:[is/VBZ
+#                       nsubj:[energy/NN
+#                              amod:[physical/NN cc:and/CC conj:chemical/NN]
+#                              prep:to/TO]]]
+#   Detected 1 clause(s).
+#   - SV (V: is@3, S: energy@7)
+4	"physical and chemical energy to"	"is"
+# Line 5: Physical is when a change that effects the size, shape color of a substance.
+# Semantic graph: [is/VBZ
+#                  nsubj:Physical/NNP
+#                  advcl:[shape/VBP
+#                         advmod:when/WRB
+#                         nsubj:[change/NN
+#                                det:a/DT
+#                                rcmod:[effects/VBZ nsubj:that/WDT dobj:[size/NN det:the/DT]]]
+#                         dobj:[color/NN prep:[of/IN pobj:[substance/NN det:a/DT]]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: is@2, S: Physical@1, A!: shape@11)
+#   - SVO (V: effects@7, S: change@5, O: size@9)
+#   - SVO (V: shape@11, S: change@5, A?: when@3, O: color@12)
+5	"Physical"	"is"	"when a change shape color of a substance"
+5	"a change"	"effects"	"the size"
+5	"a change"	"shape"	"color of a substance when"
+5	"a change"	"shape"	"color of a substance"
+# Line 6: Chemical energy is when something new forms.
+# Semantic graph: [is/VBZ
+#                  nsubj:[energy/NN nn:Chemical/NNP]
+#                  advcl:[forms/VBZ advmod:when/WRB nsubj:[something/NN amod:new/JJ]]]
+#   Detected 2 clause(s).
+#   - SVA (V: is@3, S: energy@2, A!: forms@7)
+#   - SV (V: forms@7, S: something@5, A?: when@4)
+6	"Chemical energy"	"is"	"when something new forms"
+6	"something new"	"forms"	"when"
+6	"something new"	"forms"
+# Line 7: Energy is a property of matter.
+# Semantic graph: [property/NN nsubj:Energy/NNP cop:is/VBZ det:a/DT prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+7	"Energy"	"is"	"a property of matter"
+7	"Energy"	"is"	"a property"
+# Line 8: It can transfer but not be destroyed.
+# Semantic graph: [transfer/VB
+#                  nsubj:It/PRP
+#                  aux:can/MD
+#                  cc:but/CC
+#                  conj:not/RB
+#                  dep:[destroyed/VBN auxpass:be/VB]]
+#   Detected 2 clause(s).
+#   - SV (V: transfer@3, S: It@1)
+#   - SV (V: not@5, S: It@1)
+8	"It"	"can transfer"
+8	"It"	"can not"

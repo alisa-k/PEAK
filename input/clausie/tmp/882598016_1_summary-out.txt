@@ -1,0 +1,91 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: One of many things that this essay focus on is matter.
+# Semantic graph: [matter/NN
+#                  nsubj:[One/CD
+#                         prep:[of/IN
+#                               pobj:[things/NNS
+#                                     amod:many/JJ
+#                                     dep:[focus/VB
+#                                          complm:that/IN
+#                                          nsubj:[essay/NN det:this/DT]
+#                                          prt:on/RP]]]]
+#                  cop:is/VBZ]
+#   Detected 2 clause(s).
+#   - SV (V: focus@8, S: essay@7)
+#   - SVC (C: matter@11, V: is@10, S: One@1)
+1	"this essay"	"focus on"
+1	"One of many things that this essay focus on"	"is"	"matter"
+# Line 2: Matter is a stuff that take up space.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  rcmod:[take/VB nsubj:that/WDT prt:up/RP dobj:space/NN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1)
+#   - SVO (V: take@6, S: stuff@4, O: space@8)
+2	"Matter"	"is"	"a stuff"
+2	"a stuff"	"take up"	"space"
+# Line 3: Matter has other types also there are matter that are a little more difficult to observe.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[types/NNS
+#                        amod:other/JJ
+#                        advmod:also/RB
+#                        rcmod:[are/VBP
+#                               expl:there/EX
+#                               nsubj:[matter/NN
+#                                      rcmod:[difficult/JJ
+#                                             nsubj:that/WDT
+#                                             cop:are/VBP
+#                                             advmod:[more/RBR npadvmod:[little/RB det:a/DT]]
+#                                             xcomp:[observe/VB aux:to/TO]]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: types@4)
+#   - EXISTENTIAL (V: are@7, S: matter@8, O: types@4)
+#   - SVC (C: difficult@14, V: are@10, S: matter@8, A?: more@13, XCOMP: observe@16)
+3	"Matter"	"has"	"other types also"
+3	"matter"	"there are"	"other types also"
+3	"matter"	"are"	"difficult a little more to observe"
+3	"matter"	"are"	"difficult to observe"
+# Line 4: This is also about physical change and energy.
+# Semantic graph: [is/VBZ
+#                  nsubj:This/DT
+#                  advmod:also/RB
+#                  prep:[about/IN pobj:[change/NN amod:physical/JJ cc:and/CC conj:energy/NN]]]
+#   Detected 1 clause(s).
+#   - SVA (V: is@2, S: This@1, A!: also@3, A?: about@4)
+4	"This"	"is"	"also about physical change and energy"
+4	"This"	"is"	"also"
+# Line 5: Energy is the property of matter.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+5	"Energy"	"is"	"the property of matter"
+5	"Energy"	"is"	"the property"

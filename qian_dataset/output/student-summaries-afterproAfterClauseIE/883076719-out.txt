@@ -1,0 +1,182 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): What are we made of?
+# Semantic graph: [made/VBN dep:What/WP auxpass:are/VBP nsubjpass:we/PRP prep:of/IN]
+#   Detected 1 clause(s).
+#   - SVA (V: made@4, S: we@3, A!: of@5)
+1	"we"	"are made"	"of"
+# Line 2 (id 2): Matter, is what characteristics us humans all all of our surroundings.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[characteristics/VBZ
+#                         nsubj:what/WP
+#                         iobj:us/PRP
+#                         dobj:[humans/NNS
+#                               advmod:[all/RB dep:all/DT]
+#                               prep:[of/IN pobj:[surroundings/NNS poss:our/PRP$]]]]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@3, S: Matter@1, CCOMP: characteristics@5)
+#   - SVOO (V: characteristics@5, S: what@4, IO: us@6, O: humans@7)
+#   - SVO (S: our@11, V: "has", O: surroundings@12)
+2	"Matter"	"is"	"what characteristics us humans all all of our surroundings"
+2	"what"	"characteristics"	"us humans all all of our surroundings"
+2	"our"	"has"	"surroundings"
+# Line 3 (id 3): Matter describes what objects out made of.
+# Semantic graph: [describes/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBD dep:what/WP nsubj:objects/NNS advmod:out/RB prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVO (V: describes@2, S: Matter@1, CCOMP: made@6)
+#   - SVA (V: made@6, S: objects@4, A?: out@5, A!: of@7)
+3	"Matter"	"describes"	"what objects out made of"
+3	"objects"	"made"	"of out"
+3	"objects"	"made"	"of"
+# Line 4 (id 4): Matter is composed by volume and mass which can be detected and measured.
+# Semantic graph: [composed/VBN
+#                  nsubjpass:Matter/NNP
+#                  auxpass:is/VBZ
+#                  prep:[by/IN
+#                        pobj:[volume/NN
+#                              cc:and/CC
+#                              conj:mass/NN
+#                              rcmod:[detected/VBN
+#                                     nsubjpass:which/WDT
+#                                     aux:can/MD
+#                                     auxpass:be/VB
+#                                     cc:and/CC
+#                                     conj:measured/VBN]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: composed@3, S: Matter@1, A!: by@4)
+#   - SV (V: detected@11, S: volume@5)
+#   - SV (V: measured@13, S: volume@5)
+4	"Matter"	"is composed"	"by volume and mass"
+4	"volume and mass"	"can be detected"
+4	"volume and mass"	"can be measured"
+# Line 5 (id 5): All matter has a physical and chemical property, which defines its shape and the reactions it has towards dramatic change.
+# Semantic graph: [towards/IN
+#                  dep:[has/VBZ
+#                       nsubj:[matter/NN det:All/DT]
+#                       dobj:[property/NN
+#                             det:a/DT
+#                             amod:[physical/NN cc:and/CC conj:chemical/NN]
+#                             rcmod:[defines/VBZ
+#                                    nsubj:which/WDT
+#                                    dobj:[shape/NN
+#                                          poss:its/PRP$
+#                                          cc:and/CC
+#                                          conj:[reactions/NNS det:the/DT]]]]]
+#                  nsubj:it/PRP
+#                  aux:has/VBZ
+#                  pobj:[change/NN amod:dramatic/JJ]]
+#   Detected 4 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: property@8)
+#   - SVO (V: defines@11, S: property@8, O: shape@13)
+#   - SVO (S: its@12, V: "has", O: shape@13)
+#   - SVA (V: towards@19, S: it@17, A!: change@21)
+5	"All matter"	"has"	"a physical and chemical property"
+5	"a physical and chemical property"	"defines"	"its shape and the reactions"
+5	"its"	"has"	"shape and the reactions"
+5	"it"	"has towards"	"dramatic change"
+# Line 6 (id 6): Although physical and chemical properties are part of matter, physical properties are the ones that can be observed while chemical properties determines the behavior to [illegible word] conditions.
+# Semantic graph: [ones/NNS
+#                  advcl:[part/NN
+#                         mark:Although/IN
+#                         nsubj:[properties/NNS amod:[physical/NN cc:and/CC conj:chemical/NN]]
+#                         cop:are/VBP
+#                         prep:[of/IN pobj:matter/NN]]
+#                  nsubj:[properties/NNS amod:physical/JJ]
+#                  cop:are/VBP
+#                  det:the/DT
+#                  rcmod:[observed/VBN
+#                         nsubjpass:that/WDT
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         advcl:[determines/VBZ
+#                                mark:while/IN
+#                                nsubj:[properties/NNS nn:chemical/NN]
+#                                dobj:[behavior/NN det:the/DT]
+#                                prep:[to/TO
+#                                      pobj:[conditions/NNS appos:[word/NN amod:illegible/JJ]]]]]]
+#   Detected 5 clause(s).
+#   - SVC (C: part@7, V: are@6, S: properties@5, A?: of@8)
+#   - SVC (C: ones@15, V: are@13, S: properties@12, A?: part@7)
+#   - SVA (V: observed@19, S: ones@15, A!: determines@23)
+#   - SVO (V: determines@23, S: properties@22, O: behavior@25, A?: to@26)
+#   - SVC (S: conditions@31, V: "is", C: word@29)
+6	"physical and chemical properties"	"are"	"part of matter"
+6	"physical and chemical properties"	"are"	"part"
+6	"physical properties"	"are"	"the ones Although physical and chemical properties are part of matter"
+6	"physical properties"	"are"	"the ones"
+6	"Although physical and chemical properties are part of matter the ones"	"can be observed"	"while chemical properties determines the behavior to conditions"
+6	"chemical properties"	"determines"	"the behavior to conditions"
+6	"chemical properties"	"determines"	"the behavior"
+6	"conditions"	"is"	"illegible word"
+# Line 7 (id 7): Matter is also made out of energy kinetic or potential energy.
+# Semantic graph: [made/VBN
+#                  nsubjpass:Matter/NNP
+#                  auxpass:is/VBZ
+#                  advmod:also/RB
+#                  prt:out/RP
+#                  prep:[of/IN
+#                        pobj:[kinetic/NN
+#                              nn:energy/NN
+#                              cc:or/CC
+#                              conj:[energy/NN amod:potential/JJ]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@4, S: Matter@1, A?: also@3, A!: of@6)
+7	"Matter"	"is made out"	"of energy kinetic or potential energy also"
+7	"Matter"	"is made out"	"of energy kinetic or potential energy"
+# Line 8 (id 8): One is described by its speed and the other by volume or shape.
+# Semantic graph: [described/VBN
+#                  nsubjpass:One/PRP
+#                  auxpass:is/VBZ
+#                  prep:[by/IN
+#                        pobj:[speed/NN poss:its/PRP$ cc:and/CC conj:[other/JJ det:the/DT]]]
+#                  prep:[by/IN pobj:[volume/NN cc:or/CC conj:shape/NN]]]
+#   Detected 2 clause(s).
+#   - SVA (V: described@3, S: One@1, A!: by@4, A?: by@10)
+#   - SVO (S: its@5, V: "has", O: speed@6)
+8	"One"	"is described"	"by its speed and the other by volume or shape"
+8	"One"	"is described"	"by its speed and the other"
+8	"its"	"has"	"speed and the other"
+# Line 9 (id 9): All of the above defines matter, the stuff that all objects in the universe are made of.
+# Semantic graph: [defines/VBZ
+#                  nsubj:[All/DT prep:[of/IN pobj:[above/JJ det:the/DT]]]
+#                  dobj:[matter/NN
+#                        appos:[stuff/NN
+#                               det:the/DT
+#                               dep:[made/VBN
+#                                    complm:that/IN
+#                                    nsubjpass:[objects/NNS
+#                                               det:all/DT
+#                                               prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                                    auxpass:are/VBP
+#                                    prep:of/IN]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: defines@5, S: All@1, O: matter@6)
+#   - SVC (S: matter@6, V: "is", C: stuff@9)
+#   - SVA (V: made@17, S: objects@12, A!: of@18)
+9	"All of the above"	"defines"	"matter"
+9	"matter"	"is"	"the stuff that all objects in the universe are made of"
+9	"all objects in the universe"	"are made"	"of"

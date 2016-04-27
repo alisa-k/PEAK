@@ -1,0 +1,201 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is in all objects and it contains volume.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  prep:[in/IN pobj:[objects/NNS det:all/DT]]
+#                  cc:and/CC
+#                  conj:[contains/VBZ nsubj:it/PRP dobj:volume/NN]]
+#   Detected 2 clause(s).
+#   - SVA (V: is@2, S: Matter@1, A!: in@3)
+#   - SVO (V: contains@8, S: it@7, O: volume@9)
+1	"Matter"	"is"	"in all objects"
+1	"it"	"contains"	"volume"
+# Line 2: Matter can be detected and measured, because of its physical properties.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  conj:[of/IN
+#                        advmod:because/RB
+#                        pobj:[properties/NNS poss:its/PRP$ amod:physical/JJ]]]
+#   Detected 4 clause(s).
+#   - SV (V: detected@4, S: Matter@1)
+#   - SV (V: measured@6, S: Matter@1)
+#   - SVA (V: of@9, S: Matter@1, A?: because@8, A!: properties@12)
+#   - SVO (S: its@10, V: "has", O: properties@12)
+2	"Matter"	"can be detected"
+2	"Matter"	"can be measured"
+2	"Matter"	"can be of"	"its physical properties because"
+2	"Matter"	"can be of"	"its physical properties"
+2	"its"	"has"	"physical properties"
+# Line 3: Matter can also be classified because you can see it smell it.
+# Semantic graph: [classified/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  advmod:also/RB
+#                  auxpass:be/VB
+#                  advcl:[see/VB
+#                         mark:because/IN
+#                         nsubj:you/PRP
+#                         aux:can/MD
+#                         ccomp:[smell/VBP nsubj:it/PRP dobj:it/PRP]]]
+#   Detected 3 clause(s).
+#   - SVA (V: classified@5, S: Matter@1, A?: also@3, A!: see@9)
+#   - SVO (V: see@9, S: you@7, CCOMP: smell@11)
+#   - SVO (V: smell@11, S: it@10, O: it@12)
+3	"Matter"	"can be classified"	"because you can see it smell it also"
+3	"Matter"	"can be classified"	"because you can see it smell it"
+3	"you"	"can see"	"it smell it"
+3	"it"	"smell"	"it"
+# Line 4: Sometimes it is hard to see because of dustmites.
+# Semantic graph: [hard/JJ
+#                  advmod:Sometimes/RB
+#                  nsubj:it/PRP
+#                  cop:is/VBZ
+#                  xcomp:[see/VB aux:to/TO prep:[of/IN advmod:because/RB pobj:dustmites/NNS]]]
+#   Detected 1 clause(s).
+#   - SVC (C: hard@4, V: is@3, S: it@2, A?: Sometimes@1, XCOMP: see@6)
+4	"it"	"is"	"hard to see because of dustmites Sometimes"
+4	"it"	"is"	"hard to see because of dustmites"
+# Line 5: Energy is also related to matter because energy transfers from object to object and matter is in all objects.
+# Semantic graph: [related/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  advmod:also/RB
+#                  xcomp:[matter/VB
+#                         aux:to/TO
+#                         advcl:[is/VBZ
+#                                mark:because/IN
+#                                nsubj:[transfers/NNS
+#                                       nn:energy/NN
+#                                       prep:[from/IN
+#                                             pobj:[object/NN
+#                                                   prep:[to/TO
+#                                                         pobj:[object/NN
+#                                                               cc:and/CC
+#                                                               conj:matter/NN]]]]]
+#                                prep:[in/IN pobj:[objects/NNS det:all/DT]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: related@4, S: Energy@1, A?: also@3, XCOMP: matter@6)
+#   - SVA (V: is@16, S: transfers@9, A!: in@17)
+5	"Energy"	"is related"	"to matter because energy transfers from object to object and matter is in all objects also"
+5	"Energy"	"is related"	"to matter because energy transfers from object to object and matter is in all objects"
+5	"energy transfers from object to object and matter"	"is"	"in all objects"
+# Line 6: It is also known that energy cannot be created or destroyed.
+# Semantic graph: [known/VBN
+#                  nsubjpass:It/PRP
+#                  auxpass:is/VBZ
+#                  advmod:also/RB
+#                  ccomp:[created/VBN
+#                         complm:that/IN
+#                         nsubjpass:energy/NN
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         cc:or/CC
+#                         conj:destroyed/VBN]]
+#   Detected 3 clause(s).
+#   - SVO (V: known@4, S: It@1, A?: also@3, CCOMP: created@10)
+#   - SV (V: created@10, S: energy@6)
+#   - SV (V: destroyed@12, S: energy@6)
+6	"It"	"is known"	"that energy can not be created or destroyed also"
+6	"It"	"is known"	"that energy can not be created or destroyed"
+6	"energy"	"can not be created"
+6	"energy"	"can not be destroyed"
+# Line 7: This law is called the law of conservation of energy.
+# Semantic graph: [called/VBN
+#                  nsubjpass:[law/NN det:This/DT]
+#                  auxpass:is/VBZ
+#                  dobj:[law/NN
+#                        det:the/DT
+#                        prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: called@4, S: law@2, O: law@6)
+7	"This law"	"is called"	"the law of conservation of energy"
+# Line 8: There is difference between a physical and chemical change.
+# Semantic graph: [is/VBZ
+#                  expl:There/EX
+#                  nsubj:[difference/NN
+#                         prep:[between/IN
+#                               pobj:[change/NN
+#                                     det:a/DT
+#                                     amod:[physical/NN cc:and/CC conj:chemical/NN]]]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: is@2, S: difference@3)
+8	"difference between a physical and chemical change"	"There is"
+# Line 9: Phyiscal are those that can be observed without changing its substances.
+# Semantic graph: [those/DT
+#                  nsubj:Phyiscal/NNP
+#                  cop:are/VBP
+#                  rcmod:[observed/VBN
+#                         nsubjpass:that/WDT
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[without/IN
+#                               pcomp:[changing/VBG dobj:[substances/NNS poss:its/PRP$]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: those@3, V: are@2, S: Phyiscal@1)
+#   - SVA (V: observed@7, S: those@3, A!: without@8)
+#   - SVO (S: its@10, V: "has", O: substances@11)
+9	"Phyiscal"	"are"	"those"
+9	"those"	"can be observed"	"without changing its substances"
+9	"its"	"has"	"substances"
+# Line 10: Chemical is the ability to change into a different matter.
+# Semantic graph: [ability/NN
+#                  nsubj:Chemical/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  infmod:[change/VB
+#                          aux:to/TO
+#                          prep:[into/IN pobj:[matter/NN det:a/DT amod:different/JJ]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: ability@4, V: is@2, S: Chemical@1)
+10	"Chemical"	"is"	"the ability to change into a different matter"
+# Line 11: There is also mechanical energy.
+# Semantic graph: [is/VBZ expl:There/EX advmod:also/RB nsubj:[energy/NN amod:mechanical/JJ]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: is@2, S: energy@5, A?: also@3)
+11	"mechanical energy"	"There is"	"also"
+11	"mechanical energy"	"There is"
+# Line 12: Mechanical energy is what an object has because of its motion or position.
+# Semantic graph: [is/VBZ
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  ccomp:[of/IN
+#                         dobj:what/WP
+#                         nsubj:[object/NN det:an/DT]
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[motion/NN poss:its/PRP$ cc:or/CC conj:position/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@3, S: energy@2, CCOMP: of@9)
+#   - SVO (V: of@9, S: object@6, O: what@4, A?: because@8, A?: motion@11)
+#   - SVO (S: its@10, V: "has", O: motion@11)
+12	"Mechanical energy"	"is"	"what an object has because of its motion or position"
+12	"an object"	"has of"	"what because"
+12	"an object"	"has of"	"what its motion or position"
+12	"an object"	"has of"	"what"
+12	"its"	"has"	"motion or position"

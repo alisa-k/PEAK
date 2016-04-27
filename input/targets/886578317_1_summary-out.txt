@@ -1,0 +1,132 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the stuff that all objects and substances in the universe are made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[objects/NNS
+#                                    det:all/DT
+#                                    cc:and/CC
+#                                    conj:substances/NNS
+#                                    prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                         auxpass:are/VBP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@14)
+#   - SVA (V: made@14, S: objects@7, A!: of@15)
+1	"Matter"	"is"	"the stuff that all objects and substances in the universe are made of"
+1	"all objects and substances in the universe"	"are made"	"of"
+# Line 2: Because all matter has space and mass it can be detected and measured.
+# Semantic graph: [detected/VBN
+#                  advcl:[has/VBZ
+#                         mark:Because/IN
+#                         nsubj:[matter/NN det:all/DT]
+#                         dobj:[space/NN cc:and/CC conj:mass/NN]]
+#                  nsubjpass:it/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN]
+#   Detected 3 clause(s).
+#   - SVO (V: has@4, S: matter@3, O: space@5)
+#   - SV (V: detected@11, S: it@8, A?: has@4)
+#   - SV (V: measured@13, S: it@8, A?: has@4)
+2	"all matter"	"has"	"space and mass"
+2	"it"	"can be detected"	"Because all matter has space and mass"
+2	"it"	"can be detected"
+2	"it"	"can be measured"	"Because all matter has space and mass"
+2	"it"	"can be measured"
+# Line 3: You can observe some types of matter easily because of your senses.
+# Semantic graph: [observe/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dobj:[types/NNS det:some/DT prep:[of/IN pobj:matter/NN]]
+#                  prep:[of/IN advmod:easily/RB mwe:because/IN pobj:[senses/NNS poss:your/PRP$]]]
+#   Detected 2 clause(s).
+#   - SVO (V: observe@3, S: You@1, O: types@5, A?: of@10)
+#   - SVO (S: your@11, V: "has", O: senses@12)
+3	"You"	"can observe"	"some types of matter easily because of your senses"
+3	"You"	"can observe"	"some types of matter"
+3	"your"	"has"	"senses"
+# Line 4: The difference between a physical and chemical change is that a physical change is where an object can change without change what it is or what you started with.
+# Semantic graph: [is/VBZ
+#                  nsubj:[difference/NN
+#                         det:The/DT
+#                         prep:[between/IN
+#                               pobj:[change/NN
+#                                     det:a/DT
+#                                     amod:[physical/NN cc:and/CC conj:chemical/NN]]]]
+#                  ccomp:[is/VBZ
+#                         complm:that/IN
+#                         nsubj:[change/NN det:a/DT amod:physical/JJ]
+#                         advcl:[change/VB
+#                                advmod:where/WRB
+#                                nsubj:[object/NN det:an/DT]
+#                                aux:can/MD
+#                                prep:[without/IN pobj:change/NN]
+#                                dep:[is/VBZ
+#                                     dobj:what/WP
+#                                     nsubj:it/PRP
+#                                     cc:or/CC
+#                                     conj:[started/VBD dep:what/WP nsubj:you/PRP prep:with/IN]]]]]
+#   Detected 5 clause(s).
+#   - SVC (V: is@9, S: difference@2, CCOMP: is@14)
+#   - SVA (V: is@14, S: change@13, A!: change@19)
+#   - SVA (V: change@19, S: object@17, A?: where@15, A!: without@20)
+#   - SVO (V: is@24, S: it@23, O: what@22)
+#   - SVA (V: started@28, S: you@27, A!: with@29)
+4	"The difference between a physical and chemical change"	"is"	"that a physical change is where an object can change without change what it is or what you started with"
+4	"a physical change"	"is"	"where an object can change without change what it is or what you started with"
+4	"an object"	"can change"	"without change where"
+4	"an object"	"can change"	"without change"
+4	"it"	"is"	"what"
+4	"you"	"started"	"with"
+# Line 5: And a chemical change changes the object to another making it different from what you started with.
+# Semantic graph: [changes/VBZ
+#                  cc:And/CC
+#                  nsubj:[change/NN det:a/DT nn:chemical/NN]
+#                  dobj:[object/NN det:the/DT]
+#                  prep:[to/TO
+#                        pobj:[another/DT
+#                              partmod:[making/VBG
+#                                       xcomp:[different/JJ
+#                                              nsubj:it/PRP
+#                                              prep:[from/IN
+#                                                    pcomp:[started/VBD
+#                                                           dep:what/WP
+#                                                           nsubj:you/PRP
+#                                                           prep:with/IN]]]]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: changes@5, S: change@4, O: object@7, A?: to@8)
+#   - SVA (V: "be making", S: another@9, XCOMP: different@12)
+#   - SVA (V: different@12, S: it@11, A!: from@13)
+#   - SVA (V: started@16, S: you@15, A!: with@17)
+5	"a chemical change"	"changes"	"the object to another making it different from what you started with"
+5	"a chemical change"	"changes"	"the object"
+5	"another"	"be making"	"it different from what you started with"
+5	"it"	"different"	"from what you started with"
+5	"you"	"started"	"with"

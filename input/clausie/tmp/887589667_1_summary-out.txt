@@ -1,0 +1,94 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the substance that the universe is made of.
+# Semantic graph: [substance/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[universe/NN det:the/DT]
+#                         auxpass:is/VBZ
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: substance@4, V: is@2, S: Matter@1, CCOMP: made@9)
+#   - SVA (V: made@9, S: universe@7, A!: of@10)
+1	"Matter"	"is"	"the substance that the universe is made of"
+1	"the universe"	"is made"	"of"
+# Line 2: You can see matter and sometimes you can't.
+# Semantic graph: [see/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dobj:matter/NN
+#                  cc:and/CC
+#                  conj:[ca/MD advmod:sometimes/RB nsubj:you/PRP neg:n't/RB]]
+#   Detected 2 clause(s).
+#   - SVO (V: see@3, S: You@1, O: matter@4)
+#   - SV (V: ca@8, S: you@7, A?: sometimes@6)
+2	"You"	"can see"	"matter"
+2	"you"	"ca n't"	"sometimes"
+2	"you"	"ca n't"
+# Line 3: But you could always detect or measure matter because it take up space; it has volume and some material.
+# Semantic graph: [detect/VB
+#                  cc:But/CC
+#                  nsubj:you/PRP
+#                  aux:could/MD
+#                  advmod:always/RB
+#                  cc:or/CC
+#                  conj:measure/VB
+#                  dobj:matter/NN
+#                  advcl:[take/VB mark:because/IN nsubj:it/PRP prt:up/RP dobj:space/NN]
+#                  parataxis:[has/VBZ
+#                             nsubj:it/PRP
+#                             dobj:[volume/NN cc:and/CC conj:[material/NN det:some/DT]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: detect@5, S: you@2, A?: always@4, O: matter@8, A?: take@11)
+#   - SVO (V: measure@7, S: you@2, A?: always@4, O: matter@8, A?: take@11)
+#   - SVO (V: take@11, S: it@10, O: space@13)
+#   - SVO (V: has@16, S: it@15, O: volume@17)
+3	"you"	"could detect"	"matter always"
+3	"you"	"could detect"	"matter because it take up space"
+3	"you"	"could detect"	"matter"
+3	"you"	"could measure"	"matter always"
+3	"you"	"could measure"	"matter because it take up space"
+3	"you"	"could measure"	"matter"
+3	"it"	"take up"	"space"
+3	"it"	"has"	"volume and some material"
+# Line 4: It has two properties, chemical and physical.
+# Semantic graph: [has/VBZ
+#                  nsubj:It/PRP
+#                  dobj:[properties/NNS num:two/CD amod:[chemical/NN cc:and/CC conj:physical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: It@1, O: properties@4)
+4	"It"	"has"	"two properties chemical and physical"
+# Line 5: Chemical changes the object and physical stays the same.
+# Semantic graph: [changes/VBZ
+#                  nsubj:Chemical/NNP
+#                  dobj:[object/NN
+#                        det:the/DT
+#                        cc:and/CC
+#                        conj:[stays/NNS amod:physical/JJ dep:[same/JJ det:the/DT]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: changes@2, S: Chemical@1, O: object@4)
+5	"Chemical"	"changes"	"the object and physical stays the same"

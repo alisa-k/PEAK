@@ -1,0 +1,167 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what everything in the universe is made all of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN
+#                         dep:what/WP
+#                         nsubjpass:[everything/NN prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                         auxpass:is/VBZ
+#                         prep:[of/IN dep:all/DT]]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@9)
+#   - SVA (V: made@9, S: everything@4, A!: of@11)
+1	"Matter"	"is"	"what everything in the universe is made all of"
+1	"everything in the universe"	"is made"	"all of"
+# Line 2: Not all matter can be seen or felt.
+# Semantic graph: [seen/VBN
+#                  neg:Not/RB
+#                  nsubjpass:[matter/NN det:all/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:felt/VBN]
+#   Detected 2 clause(s).
+#   - SV (V: seen@6, S: matter@3)
+#   - SV (V: felt@8, S: matter@3)
+2	"all matter"	"Not can be seen"
+2	"all matter"	"Not can be felt"
+# Line 3: Sometimes it might be too small or transparent.
+# Semantic graph: [small/JJ
+#                  advmod:Sometimes/RB
+#                  nsubj:it/PRP
+#                  aux:might/MD
+#                  cop:be/VB
+#                  advmod:too/RB
+#                  cc:or/CC
+#                  conj:transparent/JJ]
+#   Detected 1 clause(s).
+#   - SVC (C: small@6, V: be@4, S: it@2, A?: Sometimes@1, A?: too@5)
+3	"it"	"might be"	"small or transparent Sometimes"
+3	"it"	"might be"	"small or transparent too"
+3	"it"	"might be"	"small or transparent"
+# Line 4: To help classify matter, matter has characteristics called properties.
+# Semantic graph: [has/VBZ
+#                  purpcl:[help/VB aux:To/TO dobj:[matter/NN amod:classify/JJ]]
+#                  nsubj:matter/NN
+#                  dobj:[characteristics/NNS partmod:[called/VBN dobj:properties/NNS]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@7, S: matter@6, A?: help@2, O: characteristics@8)
+#   - SVA (V: "be called", S: characteristics@8, O: properties@10)
+4	"matter"	"has"	"characteristics called properties To help classify matter"
+4	"matter"	"has"	"characteristics called properties"
+4	"characteristics"	"be called"	"properties"
+# Line 5: For example: density, ductility, malleability, boiling point, melting point, electrical conductivity and solubility.
+# Semantic graph: [point/NN
+#                  dep:[For/IN pobj:example/NN]
+#                  nn:density/NN
+#                  dep:ductility/NN
+#                  dep:malleability/NN
+#                  amod:boiling/JJ
+#                  conj:[point/NN amod:melting/JJ]
+#                  conj:[conductivity/NN amod:electrical/JJ]
+#                  cc:and/CC
+#                  conj:solubility/NN]
+#   Detected 0 clause(s).
+# Line 6: Matter has physical and chemical changes.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[changes/NNS amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: changes@6)
+6	"Matter"	"has"	"physical and chemical changes"
+# Line 7: Physical change could be that you could shape it and put it back how it was.
+# Semantic graph: [be/VB
+#                  nsubj:[change/NN amod:Physical/JJ]
+#                  aux:could/MD
+#                  ccomp:[shape/VB
+#                         complm:that/IN
+#                         nsubj:you/PRP
+#                         aux:could/MD
+#                         dobj:it/PRP
+#                         cc:and/CC
+#                         conj:[put/VB
+#                               dobj:it/PRP
+#                               advmod:back/RB
+#                               dep:[was/VBD advmod:how/WRB nsubj:it/PRP]]]]
+#   Detected 4 clause(s).
+#   - SVC (V: be@4, S: change@2, CCOMP: shape@8)
+#   - SVO (V: shape@8, S: you@6, O: it@9)
+#   - SVOA (V: put@11, S: you@6, O: it@12, A!: back@13)
+#   - SV (V: was@16, S: it@15, A?: how@14)
+7	"Physical change"	"could be"	"that you could shape it and put it back how it was"
+7	"you"	"could shape"	"it"
+7	"you"	"could put"	"it back"
+7	"it"	"was"	"how"
+7	"it"	"was"
+# Line 8: Chemical, it changes but it doesn't go back to its original.
+# Semantic graph: [changes/VBZ
+#                  nsubj:Chemical/NNP
+#                  nsubj:it/PRP
+#                  ccomp:[go/VB
+#                         cc:but/CC
+#                         nsubj:it/PRP
+#                         aux:does/VBZ
+#                         neg:n't/RB
+#                         prt:back/RP
+#                         prep:[to/TO pobj:[original/JJ poss:its/PRP$]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: changes@4, S: Chemical@1, CCOMP: go@9)
+#   - SVO (V: changes@4, S: it@3, CCOMP: go@9)
+#   - SVA (V: go@9, S: it@6, A!: to@11)
+#   - SVO (S: its@12, V: "has", O: original@13)
+8	"Chemical"	"it changes"	"but it does n't go back to its original"
+8	"it"	"Chemical changes"	"but it does n't go back to its original"
+8	"it"	"does n't go back"	"to its original"
+8	"its"	"has"	"original"
+# Line 9: Matter can have energy because of how its positioned or at its motion.
+# Semantic graph: [have/VB
+#                  nsubj:Matter/NNP
+#                  aux:can/MD
+#                  dobj:[energy/NN
+#                        prep:[because/IN
+#                              pcomp:[of/IN pcomp:[positioned/VBD advmod:how/WRB nsubj:its/PRP$]]
+#                              cc:or/CC
+#                              conj:[at/IN pobj:[motion/NN poss:its/PRP$]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: have@3, S: Matter@1, O: energy@4)
+#   - SV (V: positioned@9, S: its@8, A?: how@7)
+#   - SVO (S: its@12, V: "has", O: motion@13)
+9	"Matter"	"can have"	"energy because of how its positioned or at its motion"
+9	"its"	"positioned"	"how"
+9	"its"	"positioned"
+9	"its"	"has"	"motion"
+# Line 10: Energy cannot be created or destroyed.
+# Semantic graph: [created/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  neg:not/RB
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:destroyed/VBN]
+#   Detected 2 clause(s).
+#   - SV (V: created@5, S: Energy@1)
+#   - SV (V: destroyed@7, S: Energy@1)
+10	"Energy"	"can not be created"
+10	"Energy"	"can not be destroyed"

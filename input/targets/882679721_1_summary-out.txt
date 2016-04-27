@@ -1,0 +1,157 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: This whole package basically speaks of matter and the foundations of science.
+# Semantic graph: [speaks/VBZ
+#                  nsubj:[package/NN det:This/DT amod:whole/JJ]
+#                  advmod:basically/RB
+#                  prep:[of/IN
+#                        pobj:[matter/NN
+#                              cc:and/CC
+#                              conj:[foundations/NNS det:the/DT prep:[of/IN pobj:science/NN]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: speaks@5, S: package@3, A?: basically@4, A!: of@6)
+1	"This whole package"	"speaks"	"of matter and the foundations of science basically"
+1	"This whole package"	"speaks"	"of matter and the foundations of science"
+# Line 2: Matter is stuff that all objects and substances that this world is made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  prep:[that/IN pobj:[objects/NNS det:all/DT cc:and/CC conj:substances/NNS]]
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[world/NN det:this/DT]
+#                         auxpass:is/VBZ
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@3, V: is@2, S: Matter@1, A?: that@4, CCOMP: made@13)
+#   - SVA (V: made@13, S: world@11, A!: of@14)
+2	"Matter"	"is"	"stuff that all objects and substances that this world is made of"
+2	"Matter"	"is"	"stuff that this world is made of"
+2	"this world"	"is made"	"of"
+# Line 3: 1.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 4: Matter has many properties such as others such as properties of matter, physical and chemical changes, energy and forms of energy.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[properties/NNS
+#                        amod:many/JJ
+#                        prep:[as/IN
+#                              mwe:such/JJ
+#                              pobj:[others/NNS
+#                                    prep:[as/IN
+#                                          mwe:such/JJ
+#                                          pobj:[properties/NNS
+#                                                prep:[of/IN pobj:matter/NN]
+#                                                conj:[changes/NNS
+#                                                      amod:[physical/NN
+#                                                            cc:and/CC
+#                                                            conj:chemical/NN]
+#                                                      appos:energy/NN]
+#                                                cc:and/CC
+#                                                conj:[forms/NNS prep:[of/IN pobj:energy/NN]]]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: properties@4)
+#   - SVC (S: changes@17, V: "is", C: energy@19)
+4	"Matter"	"has"	"many properties such as others such as properties of matter physical and chemical changes and forms of energy"
+4	"physical and chemical changes"	"is"	"energy"
+# Line 5: 2.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 6: They all have matter relationships to matter.
+# Semantic graph: [have/VBP
+#                  nsubj:They/PRP
+#                  advmod:all/DT
+#                  dobj:[relationships/NNS nn:matter/NN]
+#                  prep:[to/TO pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: have@3, S: They@1, A?: all@2, O: relationships@5, A?: to@6)
+6	"They"	"have"	"matter relationships all"
+6	"They"	"have"	"matter relationships to matter"
+6	"They"	"have"	"matter relationships"
+# Line 7: Throughout the passage they explained a lot of how each property relates and non-relates to the topic matter.
+# Semantic graph: [explained/VBD
+#                  prep:[Throughout/IN pobj:[passage/NN det:the/DT]]
+#                  nsubj:they/PRP
+#                  dobj:[lot/NN
+#                        det:a/DT
+#                        prep:[of/IN
+#                              pcomp:[relates/VBZ
+#                                     advmod:how/WRB
+#                                     nsubj:[property/NN det:each/DT]
+#                                     cc:and/CC
+#                                     conj:non-relates/VBZ
+#                                     prep:[to/TO pobj:[matter/NN det:the/DT nn:topic/NN]]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: explained@5, S: they@4, A?: Throughout@1, O: lot@7)
+#   - SVA (V: relates@12, S: property@11, A?: how@9, A!: to@15)
+#   - SVA (V: non-relates@14, S: property@11, A?: how@9, A!: to@15)
+7	"they"	"explained"	"a lot of how each property relates and non-relates to the topic matter Throughout the passage"
+7	"they"	"explained"	"a lot of how each property relates and non-relates to the topic matter"
+7	"each property"	"relates"	"to the topic matter how"
+7	"each property"	"relates"	"to the topic matter"
+7	"each property"	"non-relates"	"to the topic matter how"
+7	"each property"	"non-relates"	"to the topic matter"
+# Line 8: By them explaining as much as they do gives me interest and understanding.
+# Semantic graph: [gives/VBZ
+#                  prep:[By/IN pobj:them/PRP]
+#                  csubj:[explaining/VBG
+#                         advmod:[much/RB advmod:as/RB]
+#                         advcl:[do/VBP mark:as/IN nsubj:they/PRP]]
+#                  iobj:me/PRP
+#                  dobj:[interest/NN cc:and/CC conj:understanding/NN]]
+#   Detected 2 clause(s).
+#   - SV (V: do@8, S: they@7)
+#   - SVOO (V: gives@9, S: explaining@3, A?: By@1, IO: me@10, O: interest@11)
+8	"they"	"do"
+8	"explaining as much as they do"	"gives"	"me interest and understanding By them"
+8	"explaining as much as they do"	"gives"	"me interest and understanding"
+# Line 9: Sentences correction: 1.
+# Semantic graph: [correction/NN amod:Sentences/JJ dep:1/CD]
+#   Detected 0 clause(s).
+# Line 10: Matter has many other properties such as....etc.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[properties/NNS
+#                        amod:many/JJ
+#                        amod:other/JJ
+#                        prep:[such/JJ prep:as/IN]
+#                        dep:etc./FW]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: properties@5)
+10	"Matter"	"has"	"many other properties such as etc."
+# Line 11: 3.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 12: They all have relationship to matter.
+# Semantic graph: [have/VBP
+#                  nsubj:They/PRP
+#                  advmod:all/DT
+#                  dobj:relationship/NN
+#                  prep:[to/TO pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: have@3, S: They@1, A?: all@2, O: relationship@4, A?: to@5)
+12	"They"	"have"	"relationship all"
+12	"They"	"have"	"relationship to matter"
+12	"They"	"have"	"relationship"

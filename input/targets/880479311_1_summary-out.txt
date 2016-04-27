@@ -1,0 +1,222 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is all the stuff, objects and substances that surround us.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  predet:all/PDT
+#                  det:the/DT
+#                  appos:[objects/NNS
+#                         cc:and/CC
+#                         conj:substances/NNS
+#                         rcmod:[surround/VBP nsubj:that/WDT dobj:us/PRP]]]
+#   Detected 3 clause(s).
+#   - SVC (C: stuff@5, V: is@2, S: Matter@1)
+#   - SVC (S: stuff@5, V: "is", C: objects@7)
+#   - SVO (V: surround@11, S: objects@7, O: us@12)
+1	"Matter"	"is"	"all the stuff"
+1	"Matter is all the stuff"	"is"	"objects and substances"
+1	"objects and substances"	"surround"	"us"
+# Line 2: It has volume and mass therefore it can be detected or measured.
+# Semantic graph: [has/VBZ
+#                  nsubj:It/PRP
+#                  dobj:[volume/NN
+#                        cc:and/CC
+#                        conj:mass/NN
+#                        advmod:therefore/RB
+#                        rcmod:[detected/VBN
+#                               nsubjpass:it/PRP
+#                               aux:can/MD
+#                               auxpass:be/VB
+#                               cc:or/CC
+#                               conj:measured/VBN]]]
+#   Detected 3 clause(s).
+#   - SVO (V: has@2, S: It@1, O: volume@3)
+#   - SVO (V: detected@10, S: it@7, O: volume@3)
+#   - SVO (V: measured@12, S: it@7, O: volume@3)
+2	"It"	"has"	"volume and mass therefore"
+2	"it"	"can be detected"	"volume and mass therefore"
+2	"it"	"can be measured"	"volume and mass therefore"
+# Line 3: You can see, feel, smell or see it with a microscope if it is like an invisible gas or dust mites.
+# Semantic graph: [see/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  dep:feel/VB
+#                  dobj:smell/NN
+#                  cc:or/CC
+#                  conj:[see/VB
+#                        dobj:it/PRP
+#                        prep:[with/IN pobj:[microscope/NN det:a/DT]]
+#                        advcl:[is/VBZ
+#                               mark:if/IN
+#                               nsubj:it/PRP
+#                               prep:[like/IN
+#                                     pobj:[gas/NN
+#                                           det:an/DT
+#                                           amod:invisible/JJ
+#                                           cc:or/CC
+#                                           conj:[mites/NNS nn:dust/NN]]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: see@3, S: You@1, O: smell@7)
+#   - SVO (V: see@9, S: You@1, O: it@10, A?: with@11, A?: is@16)
+#   - SVA (V: is@16, S: it@15, A!: like@17)
+3	"You"	"can see"	"smell"
+3	"You"	"can see"	"it with a microscope"
+3	"You"	"can see"	"it if it is like an invisible gas or dust mites"
+3	"You"	"can see"	"it"
+3	"it"	"is"	"like an invisible gas or dust mites"
+# Line 4: We can identify or classify matter by its properties, both
+# Semantic graph: [identify/VB
+#                  nsubj:We/PRP
+#                  aux:can/MD
+#                  cc:or/CC
+#                  conj:classify/VB
+#                  dobj:matter/NN
+#                  prep:[by/IN pobj:[properties/NNS poss:its/PRP$ appos:both/DT]]]
+#   Detected 4 clause(s).
+#   - SVO (V: identify@3, S: We@1, O: matter@6, A?: by@7)
+#   - SVO (V: classify@5, S: We@1, O: matter@6, A?: by@7)
+#   - SVO (S: its@8, V: "has", O: properties@9)
+#   - SVC (S: properties@9, V: "is", C: both@11)
+4	"We"	"can identify"	"matter by its properties"
+4	"We"	"can identify"	"matter"
+4	"We"	"can classify"	"matter by its properties"
+4	"We"	"can classify"	"matter"
+4	"its"	"has"	"properties"
+4	"its properties"	"is"	"both"
+# Line 5: 1.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 6: Physical properties: you can see it but it does not change the identity of the matter like density, ductibility, malleability, solubility..etc.
+# Semantic graph: [properties/NNS
+#                  amod:Physical/JJ
+#                  dep:[see/VB
+#                       nsubj:you/PRP
+#                       aux:can/MD
+#                       dobj:it/PRP
+#                       parataxis:[change/VB
+#                                  dep:but/CC
+#                                  nsubj:it/PRP
+#                                  aux:does/VBZ
+#                                  neg:not/RB
+#                                  dobj:[identity/NN
+#                                        det:the/DT
+#                                        prep:[of/IN
+#                                              pobj:[matter/NN
+#                                                    det:the/DT
+#                                                    prep:[like/IN pobj:density/NN]]]]
+#                                  dep:[ductibility/VB dep:[malleability/RB dep:solubility/RB]]]
+#                       dobj:etc./FW]]
+#   Detected 2 clause(s).
+#   - SVOC (V: see@6, S: you@4, O: it@7, O: etc.@28)
+#   - SVO (V: change@12, S: it@9, O: identity@14)
+6	"you"	"can see"	"it etc."
+6	"it"	"does not change"	"the identity of the matter like density"
+# Line 7: 2.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 8: Chemical properties: that can change the matter into a new kind of matter
+# Semantic graph: [properties/NNS
+#                  nn:Chemical/NN
+#                  dep:[change/VB
+#                       nsubj:that/DT
+#                       aux:can/MD
+#                       dobj:[matter/NN det:the/DT]
+#                       prep:[into/IN
+#                             pobj:[kind/NN det:a/DT amod:new/JJ prep:[of/IN pobj:matter/NN]]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: change@6, S: that@4, O: matter@8, A?: into@9)
+8	"that"	"can change"	"the matter into a new kind of matter"
+8	"that"	"can change"	"the matter"
+# Line 9: Energy is a property of matter, and all matter has it.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[has/VBZ nsubj:[matter/NN det:all/DT] dobj:it/PRP]]
+#   Detected 2 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+#   - SVO (V: has@11, S: matter@10, O: it@12)
+9	"Energy"	"is"	"a property of matter"
+9	"Energy"	"is"	"a property"
+9	"all matter"	"has"	"it"
+# Line 10: It can be transferred from one object or system to another but it cannot be created or destroyed.
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:It/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[from/IN pobj:[object/NN num:one/CD cc:or/CC conj:system/NN]]
+#                  prep:[to/TO pobj:another/DT]
+#                  cc:but/CC
+#                  conj:[created/VBN
+#                        nsubjpass:it/PRP
+#                        aux:can/MD
+#                        neg:not/RB
+#                        auxpass:be/VB
+#                        cc:or/CC
+#                        conj:destroyed/VBN]]
+#   Detected 3 clause(s).
+#   - SVA (V: transferred@4, S: It@1, A!: from@5, A?: to@10)
+#   - SV (V: created@17, S: it@13)
+#   - SV (V: destroyed@19, S: it@13)
+10	"It"	"can be transferred"	"from one object or system to another"
+10	"It"	"can be transferred"	"from one object or system"
+10	"it"	"can not be created"
+10	"it"	"can not be destroyed"
+# Line 11: There are three kinds of energy:
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[kinds/NNS num:three/CD prep:[of/IN pobj:energy/NN]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: kinds@4)
+11	"three kinds of energy"	"There are"
+# Line 12: 1.mechanical energy=because of the objects motion or position
+# Semantic graph: [=/NNS
+#                  dep:1/LS
+#                  amod:mechanical/JJ
+#                  nn:energy/NN
+#                  prep:[of/IN advmod:because/RB pobj:[objects/NNS det:the/DT]]
+#                  dep:[motion/NN cc:or/CC conj:position/NN]]
+#   Detected 0 clause(s).
+# Line 13: 2. kinetic energy=because the object it moving
+# Semantic graph: [=/NNS
+#                  dep:2/LS
+#                  amod:kinetic/JJ
+#                  nn:energy/NN
+#                  prep:[because/IN pobj:[object/NN det:the/DT]]
+#                  dep:[it/PRP amod:moving/JJ]]
+#   Detected 0 clause(s).
+# Line 14: 3. potential energy=because of its position or shape
+# Semantic graph: [3/NNP
+#                  dep:[=/NNS
+#                       amod:potential/JJ
+#                       nn:energy/NN
+#                       prep:[of/IN
+#                             advmod:because/RB
+#                             pobj:[position/NN poss:its/PRP$ cc:or/CC conj:shape/NN]]]]
+#   Detected 1 clause(s).
+#   - SVO (S: its@8, V: "has", O: position@9)
+14	"its"	"has"	"position or shape"

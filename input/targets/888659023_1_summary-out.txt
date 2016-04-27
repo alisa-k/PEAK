@@ -1,0 +1,149 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is anything that has weight and occupies space.
+# Semantic graph: [anything/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  rcmod:[has/VBZ
+#                         nsubj:that/WDT
+#                         dobj:weight/NN
+#                         cc:and/CC
+#                         conj:[occupies/VBZ dobj:space/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: anything@3, V: is@2, S: Matter@1)
+#   - SVO (V: has@5, S: anything@3, O: weight@6)
+#   - SVO (V: occupies@8, S: anything@3, O: space@9)
+1	"Matter"	"is"	"anything"
+1	"anything"	"has"	"weight"
+1	"anything"	"occupies"	"space"
+# Line 2: It is classified by it's properties.
+# Semantic graph: [classified/VBN
+#                  nsubjpass:It/PRP
+#                  auxpass:is/VBZ
+#                  prep:[by/IN pobj:[properties/NNS poss:[it/PRP possessive:'s/POS]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: classified@3, S: It@1, A!: by@4)
+#   - SVO (S: it@5, V: "has", O: properties@7)
+2	"It"	"is classified"	"by it 's properties"
+2	"it"	"has"	"properties"
+# Line 3: Physical properties are those that are observable and chemical ones are the reaction that take place between two matters.
+# Semantic graph: [those/DT
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  cop:are/VBP
+#                  rcmod:[observable/JJ nsubj:that/WDT cop:are/VBP]
+#                  cc:and/CC
+#                  conj:[reaction/NN
+#                        nsubj:[ones/NNS nn:chemical/NN]
+#                        cop:are/VBP
+#                        det:the/DT
+#                        rcmod:[take/VBP
+#                               nsubj:that/WDT
+#                               dobj:[place/NN prep:[between/IN pobj:[matters/NNS num:two/CD]]]]]]
+#   Detected 4 clause(s).
+#   - SVC (C: those@4, V: are@3, S: properties@2)
+#   - SVC (C: observable@7, V: are@6, S: those@4)
+#   - SVC (C: reaction@13, V: are@11, S: ones@10)
+#   - SVO (V: take@15, S: reaction@13, O: place@16)
+3	"Physical properties"	"are"	"those"
+3	"those and chemical ones are the reaction"	"are"	"observable"
+3	"chemical ones"	"are"	"the reaction"
+3	"the reaction"	"take"	"place between two matters"
+# Line 4: Energy is a property of matter and has two types.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[has/VBZ dobj:[types/NNS num:two/CD]]]
+#   Detected 2 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+#   - SVO (V: has@8, S: Energy@1, O: types@10)
+4	"Energy"	"is"	"a property of matter"
+4	"Energy"	"is"	"a property"
+4	"Energy"	"has"	"two types"
+# Line 5: The law of conservation says it cannot be created or destroyed.
+# Semantic graph: [says/VBZ
+#                  nsubj:[law/NN det:The/DT prep:[of/IN pobj:conservation/NN]]
+#                  ccomp:[created/VBN
+#                         nsubjpass:it/PRP
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         cc:or/CC
+#                         conj:destroyed/VBN]]
+#   Detected 3 clause(s).
+#   - SVO (V: says@5, S: law@2, CCOMP: created@10)
+#   - SV (V: created@10, S: it@6)
+#   - SV (V: destroyed@12, S: it@6)
+5	"The law of conservation"	"says"	"it can not be created or destroyed"
+5	"it"	"can not be created"
+5	"it"	"can not be destroyed"
+# Line 6: One type of energy is mechanical and it occurs according to motion or position of matter.
+# Semantic graph: [mechanical/JJ
+#                  nsubj:[type/NN num:One/CD prep:[of/IN pobj:energy/NN]]
+#                  cop:is/VBZ
+#                  cc:and/CC
+#                  conj:[occurs/VBZ
+#                        nsubj:it/PRP
+#                        prep:[according/VBG
+#                              pcomp:[to/TO
+#                                     pobj:[motion/NN
+#                                           cc:or/CC
+#                                           conj:position/NN
+#                                           prep:[of/IN pobj:matter/NN]]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: mechanical@6, V: is@5, S: type@2)
+#   - SVA (V: occurs@9, S: it@8, A!: according@10)
+6	"One type of energy"	"is"	"mechanical"
+6	"it"	"occurs"	"according to motion or position of matter"
+# Line 7: It comes in two types kinetic energy which is according to the movement and potential energy which is according to the body position of the matter.
+# Semantic graph: [comes/VBZ
+#                  nsubj:It/PRP
+#                  prep:[in/IN
+#                        pobj:[energy/NN
+#                              amod:[kinetic/JJ npadvmod:[types/NNS num:two/CD]]
+#                              ccomp:[is/VBZ
+#                                     nsubj:which/WDT
+#                                     prep:[according/VBG
+#                                           pcomp:[to/TO pobj:[movement/NN det:the/DT]]]]
+#                              cc:and/CC
+#                              conj:[energy/NN
+#                                    amod:potential/JJ
+#                                    rcmod:[is/VBZ
+#                                           nsubj:which/WDT
+#                                           prep:[according/VBG
+#                                                 pcomp:[to/TO
+#                                                        pobj:[position/NN
+#                                                              det:the/DT
+#                                                              nn:body/NN
+#                                                              prep:[of/IN
+#                                                                    pobj:[matter/NN det:the/DT]]]]]]]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: comes@2, S: It@1, A!: in@3)
+#   - SVA (V: is@9, S: which@8, A!: according@10)
+#   - SVA (V: is@18, S: energy@16, A!: according@19)
+7	"It"	"comes"	"in two types kinetic energy which is according to the movement and potential energy"
+7	"which"	"is"	"according to the movement"
+7	"potential energy"	"is"	"according to the body position of the matter"

@@ -1,0 +1,209 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the most important component in the universe, due to every object is made up of matter, containing energy, physical change and chemical change.
+# Semantic graph: [component/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  amod:[important/JJ advmod:most/RBS]
+#                  prep:[in/IN pobj:[universe/NN det:the/DT]]
+#                  amod:[due/JJ
+#                        prep:[to/TO
+#                              pobj:[object/NN
+#                                    det:every/DT
+#                                    rcmod:[made/VBN
+#                                           auxpass:is/VBZ
+#                                           prt:up/RP
+#                                           prep:[of/IN pobj:matter/NN]
+#                                           xcomp:[containing/VBG
+#                                                  dobj:[change/NN
+#                                                        nn:energy/NN
+#                                                        amod:physical/JJ
+#                                                        cc:and/CC
+#                                                        conj:[change/NN nn:chemical/NN]]]]]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: component@6, V: is@2, S: Matter@1, A?: in@7)
+1	"Matter"	"is"	"the most important component due to every object in the universe"
+1	"Matter"	"is"	"the most important component due to every object"
+# Line 2: Volume and mass is what matter is made up of, in having these, matter can easily be detected and measured.
+# Semantic graph: [detected/VBN
+#                  ccomp:[is/VBZ
+#                         nsubj:[Volume/NN cc:and/CC conj:mass/NN]
+#                         ccomp:[made/VBN
+#                                dep:what/WP
+#                                nsubjpass:matter/NN
+#                                auxpass:is/VBZ
+#                                prt:up/RP
+#                                prep:of/IN
+#                                prep:[in/IN pcomp:[having/VBG dobj:these/DT]]]]
+#                  nsubjpass:matter/NN
+#                  aux:can/MD
+#                  advmod:easily/RB
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN]
+#   Detected 4 clause(s).
+#   - SVC (V: is@4, S: Volume@1, CCOMP: made@8)
+#   - SVA (V: made@8, S: matter@6, A!: of@10, A?: in@12)
+#   - SVO (V: detected@20, S: matter@16, CCOMP: is@4, A?: easily@18)
+#   - SVO (V: measured@22, S: matter@16, CCOMP: is@4, A?: easily@18)
+2	"Volume and mass"	"is"	"what matter is made up of in having these"
+2	"matter"	"is made up"	"of in having these"
+2	"matter"	"is made up"	"of"
+2	"matter"	"can be detected"	"Volume and mass is what matter is made up of in having these easily"
+2	"matter"	"can be detected"	"Volume and mass is what matter is made up of in having these"
+2	"matter"	"can be measured"	"Volume and mass is what matter is made up of in having these easily"
+2	"matter"	"can be measured"	"Volume and mass is what matter is made up of in having these"
+# Line 3: Not, in all cases of come different objects in matter make it harder to be seen, felt, or touched.
+# Semantic graph: [felt/VBD
+#                  neg:Not/RB
+#                  dep:[make/VBP
+#                       mark:in/IN
+#                       nsubj:[cases/NNS
+#                              det:all/DT
+#                              prep:[of/IN
+#                                    pcomp:[come/VB
+#                                           dobj:[objects/NNS amod:different/JJ]
+#                                           prep:[in/IN pobj:matter/NN]]]]
+#                       xcomp:[harder/JJR nsubj:it/PRP xcomp:[seen/VBN aux:to/TO auxpass:be/VB]]]
+#                  cc:or/CC
+#                  conj:touched/VBD]
+#   Detected 2 clause(s).
+#   - SVO (V: make@12, S: cases@5, XCOMP: harder@14)
+#   - SVO (V: harder@14, S: it@13, XCOMP: seen@17)
+3	"all cases of come different objects in matter"	"make"	"it harder to be seen"
+3	"it"	"harder"	"to be seen"
+# Line 4: Energy-all matter contains it.
+# Semantic graph: [contains/VBZ nsubj:[matter/NN nn:Energy-all/NNP] dobj:it/PRP]
+#   Detected 1 clause(s).
+#   - SVO (V: contains@3, S: matter@2, O: it@4)
+4	"Energy-all matter"	"contains"	"it"
+# Line 5: Without energy things don't move, or fly.
+# Semantic graph: [move/VB
+#                  prep:[Without/IN pobj:energy/NN]
+#                  nsubj:things/NNS
+#                  aux:do/VBP
+#                  neg:n't/RB
+#                  cc:or/CC
+#                  conj:fly/VB]
+#   Detected 2 clause(s).
+#   - SV (V: move@6, S: things@3, A?: Without@1)
+#   - SV (V: fly@9, S: things@3, A?: Without@1)
+5	"things"	"do n't move"	"Without energy"
+5	"things"	"do n't move"
+5	"things"	"do n't fly"	"Without energy"
+5	"things"	"do n't fly"
+# Line 6: Energy builds and makes like matter possible.
+# Semantic graph: [builds/VBZ
+#                  nsubj:Energy/NNP
+#                  cc:and/CC
+#                  conj:makes/VBZ
+#                  prep:[like/IN pobj:[matter/NN amod:possible/JJ]]]
+#   Detected 2 clause(s).
+#   - SVA (V: builds@2, S: Energy@1, A!: like@5)
+#   - SVA (V: makes@4, S: Energy@1, A!: like@5)
+6	"Energy"	"builds"	"like matter possible"
+6	"Energy"	"makes"	"like matter possible"
+# Line 7: Un-like matter energy can't be seen.
+# Semantic graph: [seen/VBN
+#                  nsubjpass:[energy/NN amod:Un-like/JJ nn:matter/NN]
+#                  aux:ca/MD
+#                  neg:n't/RB
+#                  auxpass:be/VB]
+#   Detected 1 clause(s).
+#   - SV (V: seen@7, S: energy@3)
+7	"Un-like matter energy"	"ca n't be seen"
+# Line 8: Energy can be moved from one object to another, but of course energy can never be destroyed or created.
+# Semantic graph: [moved/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[from/IN pobj:[object/NN num:one/CD]]
+#                  prep:[to/TO pobj:another/DT]
+#                  cc:but/CC
+#                  conj:[destroyed/VBN
+#                        prep:[of/IN pobj:course/NN]
+#                        nsubjpass:energy/NN
+#                        aux:can/MD
+#                        neg:never/RB
+#                        auxpass:be/VB
+#                        cc:or/CC
+#                        conj:created/VBN]]
+#   Detected 3 clause(s).
+#   - SVA (V: moved@4, S: Energy@1, A!: from@5, A?: to@8)
+#   - SV (V: destroyed@18, S: energy@14, A?: of@12)
+#   - SV (V: created@20, S: energy@14, A?: of@12)
+8	"Energy"	"can be moved"	"from one object to another"
+8	"Energy"	"can be moved"	"from one object"
+8	"energy"	"can never be destroyed"	"of course"
+8	"energy"	"can never be destroyed"
+8	"energy"	"can never be created"	"of course"
+8	"energy"	"can never be created"
+# Line 9: The mechanical energy is the energy the objects holds due to its position or the way its moved.
+# Semantic graph: [moved/VBD
+#                  dep:[energy/NN
+#                       nsubj:[energy/NN det:The/DT amod:mechanical/JJ]
+#                       cop:is/VBZ
+#                       det:the/DT
+#                       rcmod:[holds/VBZ
+#                              nsubj:[objects/NNS det:the/DT]
+#                              acomp:[due/JJ
+#                                     prep:[to/TO
+#                                           pobj:[position/NN
+#                                                 poss:its/PRP$
+#                                                 cc:or/CC
+#                                                 conj:[way/NN det:the/DT]]]]]]
+#                  nsubj:its/PRP$]
+#   Detected 4 clause(s).
+#   - SVC (C: energy@6, V: is@4, S: energy@3)
+#   - SVO (V: holds@9, S: objects@8, ACOMP: due@10, O: energy@6)
+#   - SVO (S: its@12, V: "has", O: position@13)
+#   - SV (V: moved@18, S: its@17)
+9	"The mechanical energy"	"is"	"the energy"
+9	"the objects"	"holds"	"due to its position or the way the energy"
+9	"its"	"has"	"position or the way"
+9	"its"	"moved"
+# Line 10: 1.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 11: All matter contains energy.
+# Semantic graph: [contains/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: contains@3, S: matter@2, O: energy@4)
+11	"All matter"	"contains"	"energy"
+# Line 12: 2.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 13: Energy builds and makes matter possible.
+# Semantic graph: [builds/VBZ
+#                  nsubj:Energy/NNP
+#                  cc:and/CC
+#                  conj:[makes/VBZ xcomp:[possible/JJ nsubj:matter/NN]]]
+#   Detected 3 clause(s).
+#   - SV (V: builds@2, S: Energy@1)
+#   - SVO (V: makes@4, S: Energy@1, XCOMP: possible@6)
+#   - SV (V: possible@6, S: matter@5)
+13	"Energy"	"builds"
+13	"Energy"	"makes"	"matter possible"
+13	"matter"	"possible"

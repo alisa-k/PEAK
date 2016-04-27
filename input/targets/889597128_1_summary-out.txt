@@ -1,0 +1,181 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 2: Matter are items that objects and substances in our environment and our surroundings contain.
+# Semantic graph: [items/NNS
+#                  nsubj:Matter/NNP
+#                  cop:are/VBP
+#                  dep:[contain/VBP
+#                       complm:that/IN
+#                       nsubj:[objects/NNS
+#                              cc:and/CC
+#                              conj:substances/NNS
+#                              prep:[in/IN
+#                                    pobj:[environment/NN
+#                                          poss:our/PRP$
+#                                          cc:and/CC
+#                                          conj:[surroundings/NNS poss:our/PRP$]]]]]]
+#   Detected 4 clause(s).
+#   - SVC (C: items@3, V: are@2, S: Matter@1)
+#   - SVO (S: our@9, V: "has", O: environment@10)
+#   - SVO (S: our@12, V: "has", O: surroundings@13)
+#   - SV (V: contain@14, S: objects@5)
+2	"Matter"	"are"	"items that objects and substances in our environment and our surroundings contain"
+2	"our"	"has"	"environment and our surroundings"
+2	"our"	"has"	"surroundings"
+2	"objects and substances in our environment and our surroundings"	"contain"
+# Line 3: We are able to detect and measure all matter because it takes up space and contains a certain amount of material.
+# Semantic graph: [able/JJ
+#                  nsubj:We/PRP
+#                  cop:are/VBP
+#                  xcomp:[detect/VB
+#                         aux:to/TO
+#                         cc:and/CC
+#                         conj:[measure/VB
+#                               advmod:[matter/NN
+#                                       det:all/DT
+#                                       dep:[takes/VBZ
+#                                            mark:because/IN
+#                                            nsubj:it/PRP
+#                                            prt:up/RP
+#                                            dobj:space/NN
+#                                            cc:and/CC
+#                                            conj:[contains/VBZ
+#                                                  dobj:[amount/NN
+#                                                        det:a/DT
+#                                                        amod:certain/JJ
+#                                                        prep:[of/IN pobj:material/NN]]]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: able@3, V: are@2, S: We@1, XCOMP: detect@5)
+#   - SVO (V: takes@12, S: it@11, O: space@14)
+#   - SVO (V: contains@16, S: it@11, O: amount@19)
+3	"We"	"are"	"able to detect"
+3	"We"	"are"	"able to measure all matter because it takes up space and contains a certain amount of material"
+3	"it"	"takes up"	"space"
+3	"it"	"contains"	"a certain amount of material"
+# Line 4: Some types of matter are observed under a microscope.
+# Semantic graph: [observed/VBN
+#                  nsubjpass:[types/NNS det:Some/DT prep:[of/IN pobj:matter/NN]]
+#                  auxpass:are/VBP
+#                  prep:[under/IN pobj:[microscope/NN det:a/DT]]]
+#   Detected 1 clause(s).
+#   - SVA (V: observed@6, S: types@2, A!: under@7)
+4	"Some types of matter"	"are observed"	"under a microscope"
+# Line 5: The properties and characteristics help us classify matter.
+# Semantic graph: [help/VBP
+#                  nsubj:[properties/NNS det:The/DT cc:and/CC conj:characteristics/NNS]
+#                  ccomp:[classify/VB nsubj:us/PRP dobj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVO (V: help@5, S: properties@2, CCOMP: classify@7)
+#   - SVO (V: classify@7, S: us@6, O: matter@8)
+5	"The properties and characteristics"	"help"	"us classify matter"
+5	"us"	"classify"	"matter"
+# Line 6: Their are two types of changes in matter; physical, which refers to size and shape and chemical which refers to a new substance.
+# Semantic graph: [types/NNS
+#                  nsubj:Their/PRP$
+#                  cop:are/VBP
+#                  num:two/CD
+#                  prep:[of/IN pobj:[changes/NNS prep:[in/IN pobj:matter/NN]]]
+#                  conj:[physical/JJ
+#                        rcmod:[refers/VBZ
+#                               nsubj:which/WDT
+#                               prep:[to/TO pobj:[size/NN cc:and/CC conj:shape/NN]]]]
+#                  cc:and/CC
+#                  conj:[chemical/NN
+#                        rcmod:[refers/VBZ
+#                               nsubj:which/WDT
+#                               prep:[to/TO pobj:[substance/NN det:a/DT amod:new/JJ]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: types@4, V: are@2, S: Their@1, A?: of@5)
+#   - SVA (V: refers@13, S: physical@10, A!: to@14)
+#   - SVA (V: refers@21, S: chemical@19, A!: to@22)
+6	"Their"	"are"	"two types physical and chemical of changes in matter"
+6	"Their"	"are"	"two types physical and chemical"
+6	"physical"	"refers"	"to size and shape"
+6	"chemical"	"refers"	"to a new substance"
+# Line 7: In the universe, all matter contains energy.
+# Semantic graph: [contains/VBZ
+#                  prep:[In/IN pobj:[universe/NN det:the/DT]]
+#                  nsubj:[matter/NN det:all/DT]
+#                  dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: contains@7, S: matter@6, A?: In@1, O: energy@8)
+7	"all matter"	"contains"	"energy In the universe"
+7	"all matter"	"contains"	"energy"
+# Line 8: Others forms of energy are mechanical, kinetic, and potential energy.
+# Semantic graph: [mechanical/JJ
+#                  nsubj:[forms/NNS nn:Others/NNS prep:[of/IN pobj:energy/NN]]
+#                  cop:are/VBP
+#                  amod:kinetic/JJ
+#                  cc:and/CC
+#                  conj:[energy/NN amod:potential/JJ]]
+#   Detected 1 clause(s).
+#   - SVC (C: mechanical@6, V: are@5, S: forms@2)
+8	"Others forms of energy"	"are"	"mechanical kinetic and potential energy"
+# Line 9: The law that is followed is known as "Law of Conversation of Energy," which states while it can be transferred from one object or system to another, energy cannot be created or destroyed.
+# Semantic graph: [created/VBN
+#                  ccomp:[known/VBN
+#                         nsubjpass:[law/NN
+#                                    det:The/DT
+#                                    rcmod:[followed/VBN nsubjpass:that/WDT auxpass:is/VBZ]]
+#                         auxpass:is/VBZ
+#                         prep:[as/IN
+#                               pobj:[Law/NNP
+#                                     prep:[of/IN
+#                                           pobj:[Conversation/NNP prep:[of/IN pobj:Energy/NNP]]]
+#                                     rcmod:[states/VBZ
+#                                            nsubj:which/WDT
+#                                            advcl:[transferred/VBN
+#                                                   mark:while/IN
+#                                                   nsubjpass:it/PRP
+#                                                   aux:can/MD
+#                                                   auxpass:be/VB
+#                                                   prep:[from/IN
+#                                                         pobj:[object/NN
+#                                                               num:one/CD
+#                                                               cc:or/CC
+#                                                               conj:system/NN]]
+#                                                   prep:[to/TO pobj:another/DT]]]]]]
+#                  nsubjpass:energy/NN
+#                  aux:can/MD
+#                  neg:not/RB
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:destroyed/VBN]
+#   Detected 6 clause(s).
+#   - SV (V: followed@5, S: law@2)
+#   - SVA (V: known@7, S: law@2, A!: as@8)
+#   - SVA (V: states@18, S: Law@10, A!: transferred@23)
+#   - SVA (V: transferred@23, S: it@20, A!: from@24, A?: to@29)
+#   - SVO (V: created@36, S: energy@32, CCOMP: known@7)
+#   - SVO (V: destroyed@38, S: energy@32, CCOMP: known@7)
+9	"The law"	"is followed"
+9	"The law"	"is known"	"as Law of Conversation of Energy"
+9	"Law of Conversation of Energy"	"states"	"while it can be transferred from one object or system to another"
+9	"it"	"can be transferred"	"from one object or system to another"
+9	"it"	"can be transferred"	"from one object or system"
+9	"energy"	"can not be created"	"The law is known as Law of Conversation of Energy"
+9	"energy"	"can not be destroyed"	"The law is known as Law of Conversation of Energy"

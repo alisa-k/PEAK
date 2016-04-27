@@ -1,0 +1,194 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: These few paragraphs talk about matter and what it is throughout everything, which is everything that takes up space, having volume, and mass.
+# Semantic graph: [talk/VBP
+#                  nsubj:[paragraphs/NNS det:These/DT amod:few/JJ]
+#                  dep:[about/IN
+#                       pobj:matter/NN
+#                       cc:and/CC
+#                       conj:[is/VBZ
+#                             dobj:what/WP
+#                             nsubj:it/PRP
+#                             prep:[throughout/IN
+#                                   pobj:[everything/NN
+#                                         rcmod:[everything/NN
+#                                                nsubj:which/WDT
+#                                                cop:is/VBZ
+#                                                rcmod:[takes/VBZ
+#                                                       nsubj:that/WDT
+#                                                       prt:up/RP
+#                                                       dobj:[space/NN
+#                                                             conj:[having/VBG dobj:volume/NN]
+#                                                             cc:and/CC
+#                                                             conj:mass/NN]]]]]]]]
+#   Detected 4 clause(s).
+#   - SV (V: talk@4, S: paragraphs@3)
+#   - SVO (V: is@10, S: it@9, O: what@8, A?: throughout@11)
+#   - SVC (C: everything@16, V: is@15, S: everything@12)
+#   - SVO (V: takes@18, S: everything@16, O: space@20)
+1	"These few paragraphs"	"talk"
+1	"it"	"is"	"what throughout everything"
+1	"it"	"is"	"what"
+1	"everything"	"is"	"everything"
+1	"everything"	"takes up"	"space having volume and mass"
+# Line 2: We can detect it using our five senses and our technology, such as the microscope.
+# Semantic graph: [detect/VB
+#                  nsubj:We/PRP
+#                  aux:can/MD
+#                  dep:[using/VBG
+#                       nsubj:it/PRP
+#                       dobj:[senses/NNS
+#                             poss:our/PRP$
+#                             num:five/CD
+#                             cc:and/CC
+#                             conj:[technology/NN poss:our/PRP$]
+#                             prep:[as/IN mwe:such/JJ pobj:[microscope/NN det:the/DT]]]]]
+#   Detected 4 clause(s).
+#   - SV (V: detect@3, S: We@1)
+#   - SVO (V: using@5, S: it@4, O: senses@8)
+#   - SVO (S: our@6, V: "has", O: senses@8)
+#   - SVO (S: our@10, V: "has", O: technology@11)
+2	"We"	"can detect"
+2	"it"	"using"	"our five senses and our technology such as the microscope"
+2	"our"	"has"	"five senses and our technology such as the microscope"
+2	"our"	"has"	"technology"
+# Line 3: Matter is divided into two properties, which are physical and chemical.
+# Semantic graph: [divided/VBN
+#                  nsubjpass:Matter/NNP
+#                  auxpass:is/VBZ
+#                  prep:[into/IN
+#                        pobj:[properties/NNS
+#                              num:two/CD
+#                              rcmod:[physical/JJ
+#                                     nsubj:which/WDT
+#                                     cop:are/VBP
+#                                     cc:and/CC
+#                                     conj:chemical/JJ]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: divided@3, S: Matter@1, A!: into@4)
+#   - SVC (C: physical@10, V: are@9, S: properties@6)
+3	"Matter"	"is divided"	"into two properties"
+3	"two properties"	"are"	"physical and chemical"
+# Line 4: The physical property does not change in substance, but physically changes, leaving what it is as it is; while the chemical property is the change in matter completely from its original substance.
+# Semantic graph: [change/VB
+#                  nsubj:[property/NN det:The/DT amod:physical/JJ]
+#                  aux:does/VBZ
+#                  neg:not/RB
+#                  prt:in/RP
+#                  dobj:[substance/NN
+#                        cc:but/CC
+#                        advmod:physically/RB
+#                        dep:changes/NNS
+#                        conj:[leaving/VBG
+#                              dep:[is/VBZ
+#                                   dep:what/WP
+#                                   nsubj:it/PRP
+#                                   advcl:[is/VBZ mark:as/IN nsubj:it/PRP]
+#                                   dep:[change/NN
+#                                        mark:while/IN
+#                                        nsubj:[property/NN det:the/DT nn:chemical/NN]
+#                                        cop:is/VBZ
+#                                        det:the/DT
+#                                        prep:[in/IN pobj:matter/NN]
+#                                        advmod:completely/RB
+#                                        prep:[from/IN
+#                                              pobj:[substance/NN poss:its/PRP$ amod:original/JJ]]]]]]]
+#   Detected 5 clause(s).
+#   - SVO (V: change@6, S: property@3, O: substance@8)
+#   - SVA (V: is@17, S: it@16, A!: is@20)
+#   - SV (V: is@20, S: it@19)
+#   - SVC (C: change@28, V: is@26, S: property@25, A?: in@29, A?: completely@31, A?: from@32)
+#   - SVO (S: its@33, V: "has", O: substance@35)
+4	"The physical property"	"does not change in"	"substance but physically changes leaving what it is as it is while the chemical property is the change in matter completely from its original substance"
+4	"it"	"is"	"as it is"
+4	"it"	"is"
+4	"the chemical property"	"is"	"the change in matter"
+4	"the chemical property"	"is"	"the change completely"
+4	"the chemical property"	"is"	"the change from its original substance"
+4	"the chemical property"	"is"	"the change"
+4	"its"	"has"	"original substance"
+# Line 5: Then there is energy, which all matter carries, has with them.
+# Semantic graph: [is/VBZ
+#                  advmod:Then/RB
+#                  expl:there/EX
+#                  ccomp:[with/IN
+#                         nsubj:[energy/NN
+#                                rcmod:[carries/VBZ
+#                                       nsubj:which/WDT
+#                                       advmod:[matter/NN det:all/DT]]]
+#                         aux:has/VBZ
+#                         pobj:them/PRP]]
+#   Detected 2 clause(s).
+#   - SV (V: carries@9, S: energy@4, A?: matter@8)
+#   - SVA (V: with@12, S: energy@4, A!: them@13)
+5	"energy"	"carries"	"all matter"
+5	"energy"	"carries"
+5	"energy"	"has with"	"them"
+# Line 6: One example is the mechanical energy which is of an object in its position or in motion.
+# Semantic graph: [energy/NN
+#                  nsubj:[example/NN num:One/CD]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  amod:mechanical/JJ
+#                  rcmod:[is/VBZ
+#                         nsubj:which/WDT
+#                         prep:[of/IN
+#                               pobj:[object/NN
+#                                     det:an/DT
+#                                     prep:[in/IN pobj:[position/NN poss:its/PRP$]]]
+#                               cc:or/CC
+#                               conj:[in/IN pobj:motion/NN]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@6, V: is@3, S: example@2)
+#   - SVA (V: is@8, S: energy@6, A!: of@9)
+#   - SVO (S: its@13, V: "has", O: position@14)
+6	"One example"	"is"	"the mechanical energy"
+6	"the mechanical energy"	"is"	"of an object in its position or in motion"
+6	"its"	"has"	"position"
+# Line 7: One known rule about energy is the law of conservation of energy, which states that, energy is neither cheated nor destroyed.
+# Semantic graph: [law/NN
+#                  nsubj:[rule/NN num:One/CD amod:known/VBN prep:[about/IN pobj:energy/NN]]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN
+#                        pobj:[conservation/NN
+#                              prep:[of/IN
+#                                    pobj:[energy/NN
+#                                          rcmod:[states/VBZ
+#                                                 nsubj:which/WDT
+#                                                 ccomp:[cheated/JJ
+#                                                        complm:that/IN
+#                                                        nsubj:energy/NN
+#                                                        cop:is/VBZ
+#                                                        preconj:neither/DT
+#                                                        cc:nor/CC
+#                                                        conj:destroyed/JJ]]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: law@8, V: is@6, S: rule@3, A?: of@9)
+#   - SVO (V: states@15, S: energy@12, CCOMP: cheated@21)
+#   - SVC (C: cheated@21, V: is@19, S: energy@18)
+7	"One known rule about energy"	"is"	"the law of conservation of energy"
+7	"One known rule about energy"	"is"	"the law"
+7	"energy"	"states"	"that energy is neither cheated nor destroyed"
+7	"energy"	"is"	"neither cheated nor destroyed"

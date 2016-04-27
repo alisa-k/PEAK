@@ -1,0 +1,100 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is in everything.
+# Semantic graph: [is/VBZ nsubj:Matter/NNP prep:[in/IN pobj:everything/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: is@2, S: Matter@1, A!: in@3)
+1	"Matter"	"is"	"in everything"
+# Line 2: If you see it and know it exist it has matter in it.
+# Semantic graph: [exist/VBP
+#                  advcl:[see/VBP mark:If/IN nsubj:you/PRP dobj:it/PRP cc:and/CC conj:know/VBP]
+#                  nsubj:it/PRP
+#                  ccomp:[has/VBZ nsubj:it/PRP dobj:[matter/NN prep:[in/IN pobj:it/PRP]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: see@3, S: you@2, O: it@4)
+#   - SV (V: know@6, S: you@2)
+#   - SVO (V: exist@8, S: it@7, A?: see@3, CCOMP: has@10)
+#   - SVO (V: has@10, S: it@9, O: matter@11)
+2	"you"	"see"	"it"
+2	"you"	"know"
+2	"it"	"exist"	"it has matter in it If you see it and know"
+2	"it"	"exist"	"it has matter in it"
+2	"it"	"has"	"matter in it"
+# Line 3: For example an apple.
+# Semantic graph: [apple/NN dep:[For/IN pobj:example/NN] det:an/DT]
+#   Detected 0 clause(s).
+# Line 4: You see an apple and know it exist so it has matter in it.
+# Semantic graph: [see/VBP
+#                  nsubj:You/PRP
+#                  dobj:[apple/NN det:an/DT]
+#                  cc:and/CC
+#                  conj:[know/VBP
+#                        ccomp:[exist/VBP
+#                               nsubj:it/PRP
+#                               advcl:[has/VBZ
+#                                      mark:so/IN
+#                                      nsubj:it/PRP
+#                                      dobj:[matter/NN prep:[in/IN pobj:it/PRP]]]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: see@2, S: You@1, O: apple@4)
+#   - SVO (V: know@6, S: You@1, CCOMP: exist@8)
+#   - SVA (V: exist@8, S: it@7, A!: has@11)
+#   - SVO (V: has@11, S: it@10, O: matter@12)
+4	"You"	"see"	"an apple"
+4	"You"	"know"	"it exist so it has matter in it"
+4	"it"	"exist"	"so it has matter in it"
+4	"it"	"has"	"matter in it"
+# Line 5: Physical has to do with the [illegible word] of something.
+# Semantic graph: [has/VBZ
+#                  nsubj:Physical/NNP
+#                  xcomp:[do/VB
+#                         aux:to/TO
+#                         prep:[with/IN pobj:[word/NN det:the/DT amod:illegible/JJ]]
+#                         prep:[of/IN pobj:something/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Physical@1, XCOMP: do@4)
+5	"Physical"	"has"	"to do with the illegible word of something"
+5	"Physical"	"has"	"to do with the illegible word"
+# Line 6: For example a car is many one they that [illegible words] is so hard and one [illegible word].
+# Semantic graph: [one/NN
+#                  prep:[For/IN pobj:example/NN]
+#                  nsubj:[car/NN det:a/DT]
+#                  cop:is/VBZ
+#                  amod:many/JJ
+#                  dep:[hard/JJ
+#                       dep:they/PRP
+#                       dep:that/IN
+#                       nsubj:[words/NNS amod:illegible/JJ]
+#                       cop:is/VBZ
+#                       advmod:so/RB]
+#                  cc:and/CC
+#                  conj:[one/CD appos:[word/NN amod:illegible/JJ]]]
+#   Detected 3 clause(s).
+#   - SVC (C: one@7, V: is@5, S: car@4, A?: For@1)
+#   - SVC (C: hard@16, V: is@14, S: words@12, A-: so@15)
+#   - SVC (S: one@18, V: "is", C: word@21)
+6	"a car"	"is"	"many one they that illegible words is so hard and one For example"
+6	"a car"	"is"	"many one they that illegible words is so hard and one"
+6	"illegible words"	"is"	"they that hard"
+6	"one"	"is"	"illegible word"

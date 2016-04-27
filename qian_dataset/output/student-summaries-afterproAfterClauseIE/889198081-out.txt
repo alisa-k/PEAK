@@ -1,0 +1,140 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Matter is what every thing is made of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN
+#                         dep:what/WP
+#                         nsubjpass:[thing/NN det:every/DT]
+#                         auxpass:is/VBZ
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@7)
+#   - SVA (V: made@7, S: thing@5, A!: of@8)
+1	"Matter"	"is"	"what every thing is made of"
+1	"every thing"	"is made"	"of"
+# Line 2 (id 2): All matter can be detected and measured because it takes up space (volume).
+# Semantic graph: [detected/VBN
+#                  nsubjpass:[matter/NN det:All/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  advcl:[takes/VBZ
+#                         mark:because/IN
+#                         nsubj:it/PRP
+#                         prt:up/RP
+#                         dobj:[space/NN dep:volume/NN]]]
+#   Detected 3 clause(s).
+#   - SVA (V: detected@5, S: matter@2, A!: takes@10)
+#   - SVA (V: measured@7, S: matter@2, A!: takes@10)
+#   - SVO (V: takes@10, S: it@9, O: space@12)
+2	"All matter"	"can be detected"	"because it takes up space volume"
+2	"All matter"	"can be measured"	"because it takes up space volume"
+2	"it"	"takes up"	"space volume"
+# Line 3 (id 3): Matter can be classified by there physical properties.
+# Semantic graph: [classified/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[by/IN pobj:[properties/NNS advmod:there/RB amod:physical/JJ]]]
+#   Detected 1 clause(s).
+#   - SVA (V: classified@4, S: Matter@1, A!: by@5)
+3	"Matter"	"can be classified"	"by there physical properties"
+# Line 4 (id 4): The difference between physical properties and chemical properties is physical changes make it look different but it is still the same thing.
+# Semantic graph: [changes/NNS
+#                  nsubj:[difference/NN
+#                         det:The/DT
+#                         prep:[between/IN
+#                               pobj:[properties/NNS
+#                                     amod:physical/JJ
+#                                     cc:and/CC
+#                                     conj:[properties/NNS nn:chemical/NN]]]]
+#                  cop:is/VBZ
+#                  amod:physical/JJ
+#                  rcmod:[make/VBP ccomp:[look/VBP nsubj:it/PRP acomp:different/JJ]]
+#                  cc:but/CC
+#                  conj:[thing/NN
+#                        nsubj:it/PRP
+#                        cop:is/VBZ
+#                        advmod:still/RB
+#                        det:the/DT
+#                        amod:same/JJ]]
+#   Detected 3 clause(s).
+#   - SVC (C: changes@11, V: is@9, S: difference@2)
+#   - SVC (V: look@14, S: it@13, ACOMP: different@15)
+#   - SVC (C: thing@22, V: is@18, S: it@17, A?: still@19)
+4	"The difference between physical properties and chemical properties"	"is"	"physical changes"
+4	"it"	"look"	"different"
+4	"it"	"is"	"the same thing still"
+4	"it"	"is"	"the same thing"
+# Line 5 (id 5): Chemical changes the object in to something totally different.
+# Semantic graph: [changes/VBZ
+#                  nsubj:Chemical/NNP
+#                  dobj:[object/NN det:the/DT]
+#                  prep:[in/IN
+#                        pcomp:[to/TO pobj:[something/NN amod:[different/JJ advmod:totally/RB]]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: changes@2, S: Chemical@1, O: object@4, A?: in@5)
+5	"Chemical"	"changes"	"the object in to something totally different"
+5	"Chemical"	"changes"	"the object"
+# Line 6 (id 6): All matter has energy.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+6	"All matter"	"has"	"energy"
+# Line 7 (id 7): Energy can be neither created nor destroyed.
+# Semantic graph: [created/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  advmod:neither/RB
+#                  cc:nor/CC
+#                  conj:destroyed/VBN]
+#   Detected 2 clause(s).
+#   - SV (V: created@5, S: Energy@1, A?: neither@4)
+#   - SV (V: destroyed@7, S: Energy@1, A?: neither@4)
+7	"Energy"	"can be created"	"neither"
+7	"Energy"	"can be created"
+7	"Energy"	"can be destroyed"	"neither"
+7	"Energy"	"can be destroyed"
+# Line 8 (id 8): Mechanical energy is the energy an object has because of its shape or position.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[of/IN
+#                         nsubj:[object/NN det:an/DT]
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[shape/NN poss:its/PRP$ cc:or/CC conj:position/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2)
+#   - SVO (V: of@10, S: object@7, A?: because@9, A?: shape@12, O: energy@5)
+#   - SVO (S: its@11, V: "has", O: shape@12)
+8	"Mechanical energy"	"is"	"the energy"
+8	"an object"	"has of"	"the energy because"
+8	"an object"	"has of"	"its shape or position the energy"
+8	"an object"	"has of"	"the energy"
+8	"its"	"has"	"shape or position"

@@ -1,0 +1,89 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter contains the volume that all object and substance are made up of.
+# Semantic graph: [contains/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[volume/NN det:the/DT]
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[object/NN det:all/DT cc:and/CC conj:substance/NN]
+#                         auxpass:are/VBP
+#                         prt:up/RP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVOC (V: contains@2, S: Matter@1, O: volume@4, CCOMP: made@11)
+#   - SVA (V: made@11, S: object@7, A!: of@13)
+1	"Matter"	"contains"	"the volume that all object and substance are made up of"
+1	"all object and substance"	"are made up"	"of"
+# Line 2: You can tell matter exist with senses.
+# Semantic graph: [tell/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  ccomp:[exist/VB nsubj:matter/NN prep:[with/IN pobj:senses/NNS]]]
+#   Detected 2 clause(s).
+#   - SVO (V: tell@3, S: You@1, CCOMP: exist@5)
+#   - SVA (V: exist@5, S: matter@4, A!: with@6)
+2	"You"	"can tell"	"matter exist with senses"
+2	"matter"	"exist"	"with senses"
+# Line 3: You can see it, smell it, touch it, etc.
+# Semantic graph: [smell/VBP
+#                  ccomp:[see/VB nsubj:You/PRP aux:can/MD dobj:it/PRP]
+#                  nsubj:[it/PRP appos:[touch/NN nn:it/PRP dep:etc./FW]]]
+#   Detected 3 clause(s).
+#   - SVO (V: see@3, S: You@1, O: it@4)
+#   - SVC (V: smell@6, S: it@7, CCOMP: see@3)
+#   - SVC (S: it@7, V: "is", C: touch@9)
+3	"You"	"can see"	"it"
+3	"it"	"smell"	"You can see it"
+3	"it"	"is"	"touch it etc."
+# Line 4: In matter, there are also physical and chemical properties, physical and chemical change, and energy.
+# Semantic graph: [are/VBP
+#                  prep:[In/IN pobj:matter/NN]
+#                  expl:there/EX
+#                  advmod:also/RB
+#                  nsubj:[properties/NNS
+#                         amod:[physical/JJ cc:and/CC conj:chemical/JJ]
+#                         conj:[change/NN amod:[physical/NN cc:and/CC conj:chemical/NN]]
+#                         cc:and/CC
+#                         conj:energy/NN]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@5, S: properties@10, A?: In@1, A?: also@6)
+4	"physical and chemical properties physical and chemical change and energy"	"there are"	"In matter"
+4	"physical and chemical properties physical and chemical change and energy"	"there are"	"also"
+4	"physical and chemical properties physical and chemical change and energy"	"there are"
+# Line 5: Matter contains the volume that all objects and substances are made up of.
+# Semantic graph: [contains/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[volume/NN det:the/DT]
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[objects/NNS det:all/DT cc:and/CC conj:substances/NNS]
+#                         auxpass:are/VBP
+#                         prt:up/RP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVOC (V: contains@2, S: Matter@1, O: volume@4, CCOMP: made@11)
+#   - SVA (V: made@11, S: objects@7, A!: of@13)
+5	"Matter"	"contains"	"the volume that all objects and substances are made up of"
+5	"all objects and substances"	"are made up"	"of"

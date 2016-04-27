@@ -1,0 +1,167 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All objects and substance are made up of matter.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[objects/NNS det:All/DT cc:and/CC conj:substance/NN]
+#                  auxpass:are/VBP
+#                  prt:up/RP
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@6, S: objects@2, A!: of@8)
+1	"All objects and substance"	"are made up"	"of matter"
+# Line 2: We can see matter in some object with our naked eye because of it's volume, and mass.
+# Semantic graph: [see/VB
+#                  nsubj:We/PRP
+#                  aux:can/MD
+#                  dobj:matter/NN
+#                  prep:[in/IN
+#                        pobj:[object/NN
+#                              det:some/DT
+#                              prep:[with/IN
+#                                    pobj:[eye/NN
+#                                          poss:our/PRP$
+#                                          amod:naked/JJ
+#                                          prep:[of/IN
+#                                                advmod:because/RB
+#                                                pobj:[volume/NN
+#                                                      poss:[it/PRP possessive:'s/POS]
+#                                                      cc:and/CC
+#                                                      conj:mass/NN]]]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: see@3, S: We@1, O: matter@4, A?: in@5)
+#   - SVO (S: our@9, V: "has", O: eye@11)
+#   - SVO (S: it@14, V: "has", O: volume@16)
+2	"We"	"can see"	"matter in some object with our naked eye because of it 's volume and mass"
+2	"We"	"can see"	"matter"
+2	"our"	"has"	"naked eye because of it 's volume and mass"
+2	"it"	"has"	"volume and mass"
+# Line 3: Properties of matter are the different types of object like their shapes or forms.
+# Semantic graph: [types/NNS
+#                  nsubj:[Properties/NNP prep:[of/IN pobj:matter/NN]]
+#                  cop:are/VBP
+#                  det:the/DT
+#                  amod:different/JJ
+#                  prep:[of/IN
+#                        pobj:[object/NN
+#                              prep:[like/IN
+#                                    pobj:[shapes/NNS poss:their/PRP$ cc:or/CC conj:forms/NNS]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: types@7, V: are@4, S: Properties@1, A?: of@8)
+#   - SVO (S: their@11, V: "has", O: shapes@12)
+3	"Properties of matter"	"are"	"the different types of object like their shapes or forms"
+3	"Properties of matter"	"are"	"the different types"
+3	"their"	"has"	"shapes or forms"
+# Line 4: Theres also chemical properties which its ability is to change into a new kind of matter with different properties.
+# Semantic graph: [Theres/VB
+#                  advmod:also/RB
+#                  dobj:[properties/NNS
+#                        nn:chemical/NN
+#                        rcmod:[is/VBZ
+#                               rel:which/WDT
+#                               nsubj:[ability/NN poss:its/PRP$]
+#                               xcomp:[change/VB
+#                                      aux:to/TO
+#                                      prep:[into/IN
+#                                            pobj:[kind/NN
+#                                                  det:a/DT
+#                                                  amod:new/JJ
+#                                                  prep:[of/IN pobj:matter/NN]]]
+#                                      prep:[with/IN pobj:[properties/NNS amod:different/JJ]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (S: its@6, V: "has", O: ability@7)
+#   - SVC (V: is@8, S: ability@7, XCOMP: change@10)
+4	"its"	"has"	"ability"
+4	"its ability"	"which is"	"to change into a new kind of matter with different properties"
+4	"its ability"	"which is"	"to change into a new kind of matter"
+# Line 5: We also have physical and chemical changes.
+# Semantic graph: [have/VBP
+#                  nsubj:We/PRP
+#                  advmod:also/RB
+#                  dobj:[changes/NNS amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: have@3, S: We@1, A?: also@2, O: changes@7)
+5	"We"	"have"	"physical and chemical changes also"
+5	"We"	"have"	"physical and chemical changes"
+# Line 6: Physical changes is like folding a piece of paper in half all you did was change the physical of the paper.
+# Semantic graph: [did/VBD
+#                  dep:[piece/NN
+#                       nsubj:[changes/NNS amod:Physical/JJ]
+#                       cop:is/VBZ
+#                       prep:[like/IN pobj:folding/NN]
+#                       det:a/DT
+#                       prep:[of/IN pobj:[paper/NN prep:[in/IN pobj:[all/DT predet:half/PDT]]]]]
+#                  nsubj:you/PRP
+#                  ccomp:[was/VBD
+#                         ccomp:[change/VB
+#                                dobj:[physical/JJ
+#                                      det:the/DT
+#                                      prep:[of/IN pobj:[paper/NN det:the/DT]]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: piece@7, V: is@3, S: changes@2, A?: like@4, A?: of@8)
+#   - SVO (V: did@14, S: you@13, CCOMP: was@15)
+6	"Physical changes"	"is"	"a piece like folding"
+6	"Physical changes"	"is"	"a piece of paper in half all"
+6	"Physical changes"	"is"	"a piece"
+6	"you"	"did"	"was change the physical of the paper"
+# Line 7: Chemical changes are if you would burn the piece of paper you would change it into ashes and smoke and gas.
+# Semantic graph: [change/VB
+#                  dep:[are/VBP
+#                       nsubj:[changes/NNS nn:Chemical/NNP]
+#                       advcl:[burn/VB
+#                              mark:if/IN
+#                              nsubj:you/PRP
+#                              aux:would/MD
+#                              dobj:[piece/NN det:the/DT prep:[of/IN pobj:paper/NN]]]]
+#                  nsubj:you/PRP
+#                  aux:would/MD
+#                  dobj:it/PRP
+#                  prep:[into/IN
+#                        pobj:[ashes/NNS cc:and/CC conj:[smoke/NN cc:and/CC conj:gas/NN]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: are@3, S: changes@2, A!: burn@7)
+#   - SVO (V: burn@7, S: you@5, O: piece@9)
+#   - SVO (V: change@14, S: you@12, O: it@15, A?: into@16)
+7	"Chemical changes"	"are"	"if you would burn the piece of paper"
+7	"you"	"would burn"	"the piece of paper"
+7	"you"	"would change"	"it into ashes and smoke and gas"
+7	"you"	"would change"	"it"
+# Line 8: You change it's chemicals.
+# Semantic graph: [change/VBP nsubj:You/PRP ccomp:[chemicals/NNS nsubj:it/PRP cop:'s/VBZ]]
+#   Detected 2 clause(s).
+#   - SVO (V: change@2, S: You@1, CCOMP: chemicals@5)
+#   - SVC (C: chemicals@5, V: 's@4, S: it@3)
+8	"You"	"change"	"it 's chemicals"
+8	"it"	"'s"	"chemicals"
+# Line 9: Energy is the property of matter as well.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  advmod:[well/RB advmod:as/RB]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5, A?: well@8)
+9	"Energy"	"is"	"the property of matter"
+9	"Energy"	"is"	"the property as well"
+9	"Energy"	"is"	"the property"

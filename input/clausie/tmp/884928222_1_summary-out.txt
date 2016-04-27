@@ -1,0 +1,96 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: This passage was about matter.
+# Semantic graph: [was/VBD nsubj:[passage/NN det:This/DT] prep:[about/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: was@3, S: passage@2, A!: about@4)
+1	"This passage"	"was"	"about matter"
+# Line 2: Matter is volume and mass.
+# Semantic graph: [volume/NN nsubj:Matter/NNP cop:is/VBZ cc:and/CC conj:mass/NN]
+#   Detected 1 clause(s).
+#   - SVC (C: volume@3, V: is@2, S: Matter@1)
+2	"Matter"	"is"	"volume and mass"
+# Line 3: Matter also has properties like physical and chemical properties.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  advmod:also/RB
+#                  dobj:[properties/NNS
+#                        prep:[like/IN
+#                              pobj:[properties/NNS
+#                                    amod:[physical/NN cc:and/CC conj:chemical/NN]]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: Matter@1, A?: also@2, O: properties@4)
+3	"Matter"	"has"	"properties like physical and chemical properties also"
+3	"Matter"	"has"	"properties like physical and chemical properties"
+# Line 4: It also has changes within the properties which is called physical and chemical changes.
+# Semantic graph: [has/VBZ
+#                  nsubj:It/PRP
+#                  advmod:also/RB
+#                  dobj:[changes/NNS
+#                        prep:[within/IN
+#                              pobj:[properties/NNS
+#                                    det:the/DT
+#                                    rcmod:[called/VBN
+#                                           nsubjpass:which/WDT
+#                                           auxpass:is/VBZ
+#                                           dobj:[changes/NNS
+#                                                 amod:[physical/NN cc:and/CC conj:chemical/NN]]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@3, S: It@1, A?: also@2, O: changes@4)
+#   - SVO (V: called@10, S: properties@7, O: changes@14)
+4	"It"	"has"	"changes within the properties also"
+4	"It"	"has"	"changes within the properties"
+4	"the properties"	"is called"	"physical and chemical changes"
+# Line 5: The passage also talks about energy and the law of conservation of energy.
+# Semantic graph: [talks/VBZ
+#                  nsubj:[passage/NN det:The/DT]
+#                  advmod:also/RB
+#                  prep:[about/IN
+#                        pobj:[energy/NN
+#                              cc:and/CC
+#                              conj:[law/NN
+#                                    det:the/DT
+#                                    prep:[of/IN
+#                                          pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: talks@4, S: passage@2, A?: also@3, A!: about@5)
+5	"The passage"	"talks"	"about energy and the law of conservation of energy also"
+5	"The passage"	"talks"	"about energy and the law of conservation of energy"
+# Line 6: And the three forms of energy, which is mechanical energy, kinetic energy and potential energy.
+# Semantic graph: [forms/NNS
+#                  dep:And/CC
+#                  det:the/DT
+#                  num:three/CD
+#                  prep:[of/IN
+#                        pobj:[energy/NN
+#                              rcmod:[energy/NN
+#                                     nsubj:which/WDT
+#                                     cop:is/VBZ
+#                                     amod:mechanical/JJ
+#                                     conj:[energy/NN amod:kinetic/JJ]
+#                                     cc:and/CC
+#                                     conj:[energy/NN amod:potential/JJ]]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@11, V: is@9, S: energy@6)
+6	"energy"	"is"	"mechanical energy kinetic energy and potential energy"

@@ -1,0 +1,76 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All object's have matter.
+# Semantic graph: [have/VBP nsubj:[object/NN det:All/DT possessive:'s/POS] dobj:matter/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: have@4, S: object@2, O: matter@5)
+1	"All object 's"	"have"	"matter"
+# Line 2: Matter can be felt.
+# Semantic graph: [felt/VBN nsubjpass:Matter/NNP aux:can/MD auxpass:be/VB]
+#   Detected 1 clause(s).
+#   - SV (V: felt@4, S: Matter@1)
+2	"Matter"	"can be felt"
+# Line 3: Properties help us define what kind of matter there is.
+# Semantic graph: [help/VBP
+#                  nsubj:Properties/NNP
+#                  ccomp:[define/VB
+#                         nsubj:us/PRP
+#                         ccomp:[is/VBZ
+#                                dobj:[kind/NN det:what/WP prep:[of/IN pobj:matter/NN]]
+#                                expl:there/EX]]]
+#   Detected 2 clause(s).
+#   - SVO (V: help@2, S: Properties@1, CCOMP: define@4)
+#   - SVO (V: define@4, S: us@3, CCOMP: is@10)
+3	"Properties"	"help"	"us define what kind of matter there is"
+3	"us"	"define"	"what kind of matter there is"
+# Line 4: Matter has physical and chemical matter.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[matter/NN amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: matter@6)
+4	"Matter"	"has"	"physical and chemical matter"
+# Line 5: Physical matter can be observed.
+# Semantic graph: [observed/JJ nsubj:[matter/NN amod:Physical/JJ] aux:can/MD cop:be/VB]
+#   Detected 1 clause(s).
+#   - SVC (C: observed@5, V: be@4, S: matter@2)
+5	"Physical matter"	"can be"	"observed"
+# Line 6: Chemical matter describe matter on how it can change into new kind of matter.
+# Semantic graph: [describe/VBP
+#                  nsubj:[matter/NN nn:Chemical/NNP]
+#                  dobj:matter/NN
+#                  prep:[on/IN
+#                        pcomp:[change/VB
+#                               advmod:how/WRB
+#                               nsubj:it/PRP
+#                               aux:can/MD
+#                               prep:[into/IN
+#                                     pobj:[kind/NN amod:new/JJ prep:[of/IN pobj:matter/NN]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: describe@3, S: matter@2, O: matter@4, A?: on@5)
+#   - SVA (V: change@9, S: it@7, A?: how@6, A!: into@10)
+6	"Chemical matter"	"describe"	"matter on how it can change into new kind of matter"
+6	"Chemical matter"	"describe"	"matter"
+6	"it"	"can change"	"into new kind of matter how"
+6	"it"	"can change"	"into new kind of matter"

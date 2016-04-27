@@ -1,0 +1,236 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: This passage talks about matter and the properties it contains.
+# Semantic graph: [contains/VBZ
+#                  dep:[talks/VBZ
+#                       nsubj:[passage/NN det:This/DT]
+#                       prep:[about/IN
+#                             pobj:[matter/NN cc:and/CC conj:[properties/NNS det:the/DT]]]]
+#                  nsubj:it/PRP]
+#   Detected 2 clause(s).
+#   - SVA (V: talks@3, S: passage@2, A!: about@4)
+#   - SV (V: contains@10, S: it@9)
+1	"This passage"	"talks"	"about matter and the properties"
+1	"it"	"contains"
+# Line 2: Matter is what everything in this universe is composed of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[composed/VBN
+#                         dep:what/WP
+#                         nsubjpass:[everything/NN prep:[in/IN pobj:[universe/NN det:this/DT]]]
+#                         auxpass:is/VBZ
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: composed@9)
+#   - SVA (V: composed@9, S: everything@4, A!: of@10)
+2	"Matter"	"is"	"what everything in this universe is composed of"
+2	"everything in this universe"	"is composed"	"of"
+# Line 3: Since matter has both volume and mass it can be disected and measured.
+# Semantic graph: [disected/VBN
+#                  advcl:[has/VBZ
+#                         mark:Since/IN
+#                         nsubj:matter/NN
+#                         dobj:[volume/NN preconj:both/DT cc:and/CC conj:mass/NN]]
+#                  nsubjpass:it/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN]
+#   Detected 3 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: volume@5)
+#   - SV (V: disected@11, S: it@8, A?: has@3)
+#   - SV (V: measured@13, S: it@8, A?: has@3)
+3	"matter"	"has"	"both volume and mass"
+3	"it"	"can be disected"	"Since matter has both volume and mass"
+3	"it"	"can be disected"
+3	"it"	"can be measured"	"Since matter has both volume and mass"
+3	"it"	"can be measured"
+# Line 4: Some matter can be easily observed with our senses while others cannot.
+# Semantic graph: [observed/JJ
+#                  nsubj:[matter/NN det:Some/DT]
+#                  aux:can/MD
+#                  cop:be/VB
+#                  advmod:easily/RB
+#                  prep:[with/IN pobj:[senses/NNS poss:our/PRP$]]
+#                  advcl:[can/MD mark:while/IN nsubj:others/NNS neg:not/RB]]
+#   Detected 3 clause(s).
+#   - SVC (C: observed@6, V: be@4, S: matter@2, A?: easily@5, A?: with@7, A?: can@12)
+#   - SVO (S: our@8, V: "has", O: senses@9)
+#   - SV (V: can@12, S: others@11)
+4	"Some matter"	"can be"	"observed easily"
+4	"Some matter"	"can be"	"observed with our senses"
+4	"Some matter"	"can be"	"observed while others can not"
+4	"Some matter"	"can be"	"observed"
+4	"our"	"has"	"senses"
+4	"others"	"can not"
+# Line 5: Properties such as physical and chemical properties can help us classify matter.
+# Semantic graph: [help/VB
+#                  nsubj:[Properties/NNP
+#                         prep:[as/IN
+#                               mwe:such/JJ
+#                               pobj:[properties/NNS
+#                                     amod:[physical/NN cc:and/CC conj:chemical/NN]]]]
+#                  aux:can/MD
+#                  ccomp:[classify/VB nsubj:us/PRP dobj:matter/NN]]
+#   Detected 2 clause(s).
+#   - SVO (V: help@9, S: Properties@1, CCOMP: classify@11)
+#   - SVO (V: classify@11, S: us@10, O: matter@12)
+5	"Properties such as physical and chemical properties"	"can help"	"us classify matter"
+5	"us"	"classify"	"matter"
+# Line 6: Physical properties can be observed without changing the identity of matter.
+# Semantic graph: [observed/VBN
+#                  nsubjpass:[properties/NNS amod:Physical/JJ]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[without/IN
+#                        pcomp:[changing/VBG
+#                               dobj:[identity/NN det:the/DT prep:[of/IN pobj:matter/NN]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: observed@5, S: properties@2, A!: without@6)
+6	"Physical properties"	"can be observed"	"without changing the identity of matter"
+# Line 7: Chemical properties describe matter based on its ability to change with different properties.
+# Semantic graph: [describe/VBP
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  dobj:matter/NN
+#                  prep:[based/VBN
+#                        pcomp:[on/IN
+#                               pobj:[ability/NN
+#                                     poss:its/PRP$
+#                                     infmod:[change/VB
+#                                             aux:to/TO
+#                                             prep:[with/IN
+#                                                   pobj:[properties/NNS amod:different/JJ]]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: describe@3, S: properties@2, O: matter@4, A?: based@5)
+#   - SVO (S: its@7, V: "has", O: ability@8)
+7	"Chemical properties"	"describe"	"matter based on its ability to change with different properties"
+7	"Chemical properties"	"describe"	"matter"
+7	"its"	"has"	"ability to change with different properties"
+# Line 8: When the physical properties of an object change a physical change has occurred.
+# Semantic graph: [occurred/VBN
+#                  advcl:[change/VBP
+#                         advmod:When/WRB
+#                         nsubj:[properties/NNS
+#                                det:the/DT
+#                                amod:physical/JJ
+#                                prep:[of/IN pobj:[object/NN det:an/DT]]]
+#                         dobj:[change/NN det:a/DT amod:physical/JJ]]
+#                  aux:has/VBZ]
+#   Detected 1 clause(s).
+#   - SVO (V: change@8, S: properties@4, A?: When@1, O: change@11)
+8	"the physical properties of an object"	"change"	"a physical change When"
+8	"the physical properties of an object"	"change"	"a physical change"
+# Line 9: Although this change has occurred, its chemical properties are the same.
+# Semantic graph: [same/JJ
+#                  advcl:[occurred/VBN
+#                         mark:Although/IN
+#                         nsubj:[change/NN det:this/DT]
+#                         aux:has/VBZ]
+#                  nsubj:[properties/NNS poss:its/PRP$ nn:chemical/NN]
+#                  cop:are/VBP
+#                  det:the/DT]
+#   Detected 3 clause(s).
+#   - SV (V: occurred@5, S: change@3)
+#   - SVO (S: its@7, V: "has", O: properties@9)
+#   - SVC (C: same@12, V: are@10, S: properties@9, A?: occurred@5)
+9	"this change"	"has occurred"
+9	"its"	"has"	"chemical properties"
+9	"its chemical properties"	"are"	"the same Although this change has occurred"
+9	"its chemical properties"	"are"	"the same"
+# Line 10: When the chemical properties change a chemical change has occurred.
+# Semantic graph: [occurred/VBN
+#                  advcl:[change/VBP
+#                         advmod:When/WRB
+#                         nsubj:[properties/NNS det:the/DT nn:chemical/NN]
+#                         dobj:[change/NN det:a/DT amod:chemical/JJ]]
+#                  aux:has/VBZ]
+#   Detected 1 clause(s).
+#   - SVO (V: change@5, S: properties@4, A?: When@1, O: change@8)
+10	"the chemical properties"	"change"	"a chemical change When"
+10	"the chemical properties"	"change"	"a chemical change"
+# Line 11: Energy is a property of matter, therefore all matter has it.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  advmod:therefore/RB
+#                  ccomp:[has/VBZ nsubj:[matter/NN det:all/DT] dobj:it/PRP]]
+#   Detected 2 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5, A?: therefore@8, CCOMP: has@11)
+#   - SVO (V: has@11, S: matter@10, O: it@12)
+11	"Energy"	"is"	"a property of matter all matter has it"
+11	"Energy"	"is"	"a property therefore all matter has it"
+11	"Energy"	"is"	"a property all matter has it"
+11	"all matter"	"has"	"it"
+# Line 12: Even though energy can be transferred from one object to another, it can't be destroyed or created.
+# Semantic graph: [destroyed/VBN
+#                  advcl:[transferred/VBN
+#                         advmod:Even/RB
+#                         dep:though/IN
+#                         nsubjpass:energy/NN
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[from/IN pobj:[object/NN num:one/CD]]
+#                         prep:[to/TO pobj:another/DT]]
+#                  nsubjpass:it/PRP
+#                  aux:ca/MD
+#                  neg:n't/RB
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:created/VBN]
+#   Detected 3 clause(s).
+#   - SVA (V: transferred@6, S: energy@3, A-: Even@1, A!: from@7, A?: to@10)
+#   - SV (V: destroyed@17, S: it@13, A?: transferred@6)
+#   - SV (V: created@19, S: it@13, A?: transferred@6)
+12	"energy"	"can be transferred"	"from one object to another"
+12	"energy"	"can be transferred"	"from one object"
+12	"it"	"ca n't be destroyed"	"Even though energy can be transferred from one object to another"
+12	"it"	"ca n't be destroyed"
+12	"it"	"ca n't be created"	"Even though energy can be transferred from one object to another"
+12	"it"	"ca n't be created"
+# Line 13: This is known as the law of conservation of energy.
+# Semantic graph: [known/VBN
+#                  nsubjpass:This/DT
+#                  auxpass:is/VBZ
+#                  prep:[as/IN
+#                        pobj:[law/NN
+#                              det:the/DT
+#                              prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: known@3, S: This@1, A!: as@4)
+13	"This"	"is known"	"as the law of conservation of energy"
+# Line 14: Energy has many different forms.
+# Semantic graph: [has/VBZ nsubj:Energy/NNP dobj:[forms/NNS amod:many/JJ amod:different/JJ]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Energy@1, O: forms@5)
+14	"Energy"	"has"	"many different forms"
+# Line 15: Mechanical energy is made of kinetic and potential energy.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[energy/NN amod:Mechanical/JJ]
+#                  auxpass:is/VBZ
+#                  prep:[of/IN pobj:[energy/NN amod:[kinetic/JJ cc:and/CC conj:potential/JJ]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@4, S: energy@2, A!: of@5)
+15	"Mechanical energy"	"is made"	"of kinetic and potential energy"

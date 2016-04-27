@@ -1,0 +1,101 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is everything and anything because it contains all objects and substance that this universe is made out of.
+# Semantic graph: [everything/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  cc:and/CC
+#                  conj:anything/NN
+#                  advcl:[contains/VBZ
+#                         mark:because/IN
+#                         nsubj:it/PRP
+#                         dobj:[objects/NNS dep:all/PDT cc:and/CC conj:substance/NN]
+#                         ccomp:[made/VBN
+#                                complm:that/IN
+#                                nsubjpass:[universe/NN det:this/DT]
+#                                auxpass:is/VBZ
+#                                prt:out/RP
+#                                prep:of/IN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: everything@3, V: is@2, S: Matter@1, A?: contains@8)
+#   - SVOC (V: contains@8, S: it@7, O: objects@10, CCOMP: made@17)
+#   - SVA (V: made@17, S: universe@15, A!: of@19)
+1	"Matter"	"is"	"everything and anything because it contains all objects and substance that this universe is made out of"
+1	"Matter"	"is"	"everything and anything"
+1	"it"	"contains"	"all objects and substance that this universe is made out of"
+1	"this universe"	"is made out"	"of"
+# Line 2: The matter has volume and mass that could be measured.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:The/DT]
+#                  dobj:[volume/NN
+#                        cc:and/CC
+#                        conj:mass/NN
+#                        rcmod:[measured/VBN nsubjpass:that/WDT aux:could/MD auxpass:be/VB]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: volume@4)
+#   - SV (V: measured@10, S: volume@4)
+2	"The matter"	"has"	"volume and mass"
+2	"volume and mass"	"could be measured"
+# Line 3: Matter could be for exxample cars, house, metal, boxes,, cans, and a lot more things.
+# Semantic graph: [be/VB
+#                  nsubj:Matter/NNP
+#                  aux:could/MD
+#                  prep:[for/IN
+#                        pobj:[cars/NNS
+#                              amod:exxample/JJ
+#                              appos:[house/NN appos:metal/NN appos:boxes/NNS]
+#                              conj:cans/NNS
+#                              cc:and/CC
+#                              conj:[things/NNS amod:[more/JJR npadvmod:[lot/RB det:a/DT]]]]]]
+#   Detected 4 clause(s).
+#   - SVA (V: be@3, S: Matter@1, A!: for@4)
+#   - SVC (S: cars@6, V: "is", C: house@8)
+#   - SVC (S: house@8, V: "is", C: metal@10)
+#   - SVC (S: house@8, V: "is", C: boxes@12)
+3	"Matter"	"could be"	"for exxample cars cans and a lot more things"
+3	"exxample cars cans and a lot more things"	"is"	"house"
+3	"house"	"is"	"metal"
+3	"house"	"is"	"boxes"
+# Line 4: Matter is a chemical.
+# Semantic graph: [chemical/NN nsubj:Matter/NNP cop:is/VBZ det:a/DT]
+#   Detected 1 clause(s).
+#   - SVC (C: chemical@4, V: is@2, S: Matter@1)
+4	"Matter"	"is"	"a chemical"
+# Line 5: Properties by depending on its ability to change into a new kind of matter.
+# Semantic graph: [Properties/NNP
+#                  prep:[by/IN
+#                        pcomp:[depending/VBG
+#                               prep:[on/IN
+#                                     pobj:[ability/NN
+#                                           poss:its/PRP$
+#                                           infmod:[change/VB
+#                                                   aux:to/TO
+#                                                   prep:[into/IN
+#                                                         pobj:[kind/NN
+#                                                               det:a/DT
+#                                                               amod:new/JJ
+#                                                               prep:[of/IN pobj:matter/NN]]]]]]]]]
+#   Detected 1 clause(s).
+#   - SVO (S: its@5, V: "has", O: ability@6)
+5	"its"	"has"	"ability to change into a new kind of matter"

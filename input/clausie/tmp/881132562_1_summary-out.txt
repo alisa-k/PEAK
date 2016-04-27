@@ -1,0 +1,122 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what makes up the universe and for themost part is anything tangible.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  dep:[makes/VBZ
+#                       nsubj:what/WP
+#                       prt:up/RP
+#                       dobj:[universe/NN det:the/DT]
+#                       cc:and/CC
+#                       conj:[anything/NN
+#                             mark:for/IN
+#                             nsubj:[part/NN nn:themost/NN]
+#                             cop:is/VBZ
+#                             amod:tangible/JJ]]]
+#   Detected 3 clause(s).
+#   - SV (V: is@2, S: Matter@1)
+#   - SVO (V: makes@4, S: what@3, O: universe@7)
+#   - SVC (C: anything@13, V: is@12, S: part@11)
+1	"Matter"	"is"
+1	"what"	"makes up"	"the universe"
+1	"themost part"	"is"	"anything tangible"
+# Line 2: Energy is related to matter and these two go hand in hand.
+# Semantic graph: [related/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  prep:[to/TO pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[go/VBP
+#                        nsubj:[two/CD det:these/DT]
+#                        dobj:[hand/NN prep:[in/IN pobj:hand/NN]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: related@3, S: Energy@1, A!: to@4)
+#   - SVO (V: go@9, S: two@8, O: hand@10)
+2	"Energy"	"is related"	"to matter"
+2	"these two"	"go"	"hand in hand"
+# Line 3: For example, a ball knocking over a bottle, the ball and bottle would be matter and the ball causing the bottle to fall over would be the energy.
+# Semantic graph: [matter/NN
+#                  prep:[For/IN pobj:example/NN]
+#                  nsubj:[ball/NN
+#                         det:a/DT
+#                         partmod:[knocking/VBG
+#                                  prep:[over/IN
+#                                        pobj:[bottle/NN
+#                                              det:a/DT
+#                                              conj:[ball/NN det:the/DT]
+#                                              cc:and/CC
+#                                              conj:bottle/NN]]]]
+#                  aux:would/MD
+#                  cop:be/VB
+#                  cc:and/CC
+#                  conj:[energy/NN
+#                        nsubj:[ball/NN
+#                               det:the/DT
+#                               partmod:[causing/VBG
+#                                        dobj:[bottle/NN
+#                                              det:the/DT
+#                                              infmod:[fall/VB aux:to/TO prt:over/RP]]]]
+#                        aux:would/MD
+#                        cop:be/VB
+#                        det:the/DT]]
+#   Detected 4 clause(s).
+#   - SVA (V: "be knocking", S: ball@5, A!: over@7)
+#   - SVC (C: matter@17, V: be@16, S: ball@5, A?: For@1)
+#   - SVA (V: "be causing", S: ball@20, O: bottle@23)
+#   - SVC (C: energy@30, V: be@28, S: ball@20)
+3	"a ball"	"be knocking"	"over a bottle the ball and bottle"
+3	"a ball knocking over a bottle the ball and bottle"	"would be"	"matter For example"
+3	"a ball knocking over a bottle the ball and bottle"	"would be"	"matter"
+3	"the ball"	"be causing"	"the bottle to fall over"
+3	"the ball causing the bottle to fall over"	"would be"	"the energy"
+# Line 4: Even though  energy cannot be created nor destroyed it can however be transferred, and there are different types of energy.
+# Semantic graph: [transferred/VBN
+#                  advcl:[created/VBN
+#                         advmod:Even/RB
+#                         dep:though/IN
+#                         nsubjpass:energy/NN
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         cc:nor/CC
+#                         conj:destroyed/VBD]
+#                  nsubjpass:it/PRP
+#                  aux:can/MD
+#                  advmod:however/RB
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:[are/VBP
+#                        expl:there/EX
+#                        nsubj:[types/NNS amod:different/JJ prep:[of/IN pobj:energy/NN]]]]
+#   Detected 4 clause(s).
+#   - SV (V: created@7, S: energy@3, A-: Even@1)
+#   - SV (V: destroyed@9, S: energy@3, A-: Even@1)
+#   - SV (V: transferred@14, S: it@10, A?: created@7, A?: however@12)
+#   - EXISTENTIAL (V: are@18, S: types@20)
+4	"energy"	"can not be created"
+4	"energy"	"destroyed"
+4	"it"	"can be transferred"	"Even though energy can not be created nor destroyed"
+4	"it"	"can be transferred"	"however"
+4	"it"	"can be transferred"
+4	"different types of energy"	"there are"

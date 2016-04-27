@@ -1,0 +1,107 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: The passage was about what matter was matter is anything that takes up space and senses a physical substance as a whole matter is everywhere even air has matter we just can't see it this passage also talks about how matter is also used to make mechanical energy and the law of conservation of energy is to store energy
+# Semantic graph: [was/VBD
+#                  nsubj:[passage/NN det:The/DT]
+#                  prep:[about/IN
+#                        pcomp:[matter/NN
+#                               dobj:what/WP
+#                               nsubj:matter/NN
+#                               cop:was/VBD
+#                               rcmod:[anything/NN
+#                                      cop:is/VBZ
+#                                      rcmod:[takes/VBZ
+#                                             nsubj:that/WDT
+#                                             prt:up/RP
+#                                             dobj:[space/NN
+#                                                   cc:and/CC
+#                                                   conj:senses/NNS
+#                                                   rcmod:[is/VBZ
+#                                                          nsubj:[substance/NN
+#                                                                 det:a/DT
+#                                                                 amod:physical/JJ
+#                                                                 prep:[as/IN
+#                                                                       pobj:[matter/NN
+#                                                                             det:a/DT
+#                                                                             amod:whole/JJ]]]
+#                                                          advmod:everywhere/RB
+#                                                          ccomp:[has/VBZ
+#                                                                 advmod:even/RB
+#                                                                 nsubj:air/NN
+#                                                                 dobj:[matter/NN
+#                                                                       rcmod:[see/VB
+#                                                                              nsubj:we/PRP
+#                                                                              advmod:just/RB
+#                                                                              aux:ca/MD
+#                                                                              neg:n't/RB
+#                                                                              dobj:it/PRP
+#                                                                              dep:[talks/VBZ
+#                                                                                   nsubj:[passage/NN
+#                                                                                          det:this/DT]
+#                                                                                   advmod:also/RB
+#                                                                                   prep:[about/IN
+#                                                                                         pcomp:[used/VBN
+#                                                                                                advmod:how/WRB
+#                                                                                                nsubjpass:matter/NN
+#                                                                                                auxpass:is/VBZ
+#                                                                                                advmod:also/RB
+#                                                                                                xcomp:[make/VB
+#                                                                                                       aux:to/TO
+#                                                                                                       dobj:[energy/NN
+#                                                                                                             amod:mechanical/JJ]]]]
+#                                                                                   cc:and/CC
+#                                                                                   conj:[is/VBZ
+#                                                                                         nsubj:[law/NN
+#                                                                                                det:the/DT
+#                                                                                                prep:[of/IN
+#                                                                                                      pobj:[conservation/NN
+#                                                                                                            prep:[of/IN
+#                                                                                                                  pobj:energy/NN]]]]
+#                                                                                         xcomp:[store/VB
+#                                                                                                aux:to/TO
+#                                                                                                dobj:energy/NN]]]]]]]]]]]]]
+#   Detected 9 clause(s).
+#   - SVA (V: was@3, S: passage@2, A!: about@4)
+#   - SVOC (C: matter@8, V: was@7, S: matter@6, O: what@5)
+#   - SVO (V: takes@12, S: anything@10, O: space@14)
+#   - SVOC (V: is@24, S: substance@19, A?: everywhere@25, CCOMP: has@28, O: space@14)
+#   - SVO (V: has@28, S: air@27, A-: even@26, O: matter@29)
+#   - SVOO (V: see@34, S: we@30, A?: just@31, O: it@35, IO: matter@29)
+#   - SVA (V: talks@39, S: passage@37, A?: also@38, A!: about@40)
+#   - SVO (V: used@45, S: matter@42, A?: how@41, A?: also@44, XCOMP: make@47)
+#   - SVC (V: is@57, S: law@52, XCOMP: store@59)
+1	"The passage"	"was"	"about what matter was matter"
+1	"matter"	"was"	"matter what"
+1	"anything"	"takes up"	"space and senses"
+1	"a physical substance as a whole matter"	"is"	"everywhere even air has matter space and senses"
+1	"a physical substance as a whole matter"	"is"	"even air has matter space and senses"
+1	"air"	"has"	"matter"
+1	"we"	"ca n't see"	"it matter just"
+1	"we"	"ca n't see"	"it matter"
+1	"this passage"	"talks"	"about how matter is also used to make mechanical energy also"
+1	"this passage"	"talks"	"about how matter is also used to make mechanical energy"
+1	"matter"	"is used"	"to make mechanical energy how"
+1	"matter"	"is used"	"to make mechanical energy also"
+1	"matter"	"is used"	"to make mechanical energy"
+1	"the law of conservation of energy"	"is"	"to store energy"

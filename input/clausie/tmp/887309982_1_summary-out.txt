@@ -1,0 +1,147 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All objects in the universe are made of matter.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[objects/NNS det:All/DT prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                  auxpass:are/VBP
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@7, S: objects@2, A!: of@8)
+1	"All objects in the universe"	"are made"	"of matter"
+# Line 2: Matter can be detected and measured because it takes up space and it contains certain amount of material.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  advcl:[takes/VBZ mark:because/IN nsubj:it/PRP prt:up/RP dobj:space/NN]
+#                  cc:and/CC
+#                  conj:[contains/VBZ
+#                        nsubj:it/PRP
+#                        dobj:[amount/NN amod:certain/JJ prep:[of/IN pobj:material/NN]]]]
+#   Detected 4 clause(s).
+#   - SVA (V: detected@4, S: Matter@1, A!: takes@9)
+#   - SVA (V: measured@6, S: Matter@1, A!: takes@9)
+#   - SVO (V: takes@9, S: it@8, O: space@11)
+#   - SVO (V: contains@14, S: it@13, O: amount@16)
+2	"Matter"	"can be detected"	"because it takes up space"
+2	"Matter"	"can be measured"	"because it takes up space"
+2	"it"	"takes up"	"space"
+2	"it"	"contains"	"certain amount of material"
+# Line 3: Matter can be identify or classify by characteristics called properties.
+# Semantic graph: [identify/VB
+#                  nsubj:Matter/NNP
+#                  aux:can/MD
+#                  aux:be/VB
+#                  cc:or/CC
+#                  conj:[classify/VB
+#                        prep:[by/IN
+#                              pobj:[characteristics/NNS
+#                                    partmod:[called/VBN dobj:properties/NNS]]]]]
+#   Detected 3 clause(s).
+#   - SV (V: identify@4, S: Matter@1)
+#   - SVA (V: classify@6, S: Matter@1, A!: by@7)
+#   - SVA (V: "be called", S: characteristics@8, O: properties@10)
+3	"Matter"	"can be identify"
+3	"Matter"	"can be classify"	"by characteristics called properties"
+3	"characteristics"	"be called"	"properties"
+# Line 4: There are two kinds of properties and they are physical or chemical.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[kinds/NNS num:two/CD prep:[of/IN pobj:properties/NNS]]
+#                  cc:and/CC
+#                  conj:[physical/JJ nsubj:they/PRP cop:are/VBP cc:or/CC conj:chemical/JJ]]
+#   Detected 2 clause(s).
+#   - EXISTENTIAL (V: are@2, S: kinds@4)
+#   - SVC (C: physical@10, V: are@9, S: they@8)
+4	"two kinds of properties"	"There are"
+4	"they"	"are"	"physical or chemical"
+# Line 5: Another property of matter is energy but it can't be seen or touch, but all matter has it.
+# Semantic graph: [energy/NN
+#                  nsubj:[property/NN det:Another/DT prep:[of/IN pobj:matter/NN]]
+#                  cop:is/VBZ
+#                  cc:but/CC
+#                  conj:[seen/VBN
+#                        nsubjpass:it/PRP
+#                        aux:ca/MD
+#                        neg:n't/RB
+#                        auxpass:be/VB
+#                        cc:or/CC
+#                        conj:touch/VB
+#                        cc:but/CC
+#                        conj:[has/VBZ advmod:[matter/NN det:all/DT] dobj:it/PRP]]]
+#   Detected 4 clause(s).
+#   - SVC (C: energy@6, V: is@5, S: property@2)
+#   - SV (V: seen@12, S: it@8)
+#   - SVO (V: has@19, S: it@8, A?: matter@18, O: it@20)
+#   - SV (V: touch@14, S: it@8)
+5	"Another property of matter"	"is"	"energy"
+5	"it"	"ca n't be seen"
+5	"it"	"has"	"it all matter"
+5	"it"	"has"	"it"
+5	"it"	"ca n't touch"
+# Line 6: Energy can be transferred from one object to another but energy cannot be created or destroyed.
+# Semantic graph: [transferred/VBN
+#                  nsubjpass:Energy/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[from/IN pobj:[object/NN num:one/CD]]
+#                  prep:[to/TO pobj:another/DT]
+#                  cc:but/CC
+#                  conj:[created/VBN
+#                        nsubjpass:energy/NN
+#                        aux:can/MD
+#                        neg:not/RB
+#                        auxpass:be/VB
+#                        cc:or/CC
+#                        conj:destroyed/VBN]]
+#   Detected 3 clause(s).
+#   - SVA (V: transferred@4, S: Energy@1, A!: from@5, A?: to@8)
+#   - SV (V: created@15, S: energy@11)
+#   - SV (V: destroyed@17, S: energy@11)
+6	"Energy"	"can be transferred"	"from one object to another"
+6	"Energy"	"can be transferred"	"from one object"
+6	"energy"	"can not be created"
+6	"energy"	"can not be destroyed"
+# Line 7: The most common energy is called mechanical energy.
+# Semantic graph: [called/VBN
+#                  nsubjpass:[energy/NN det:The/DT amod:[common/JJ advmod:most/RBS]]
+#                  auxpass:is/VBZ
+#                  dobj:[energy/NN amod:mechanical/JJ]]
+#   Detected 1 clause(s).
+#   - SVO (V: called@6, S: energy@4, O: energy@8)
+7	"The most common energy"	"is called"	"mechanical energy"
+# Line 8: There are two kinds of mechanical energy and they  kinetic and potential.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[kinds/NNS num:two/CD prep:[of/IN pobj:[energy/NN amod:mechanical/JJ]]]
+#                  cc:and/CC
+#                  conj:[kinetic/JJ dep:they/PRP cc:and/CC conj:potential/JJ]]
+#   Detected 2 clause(s).
+#   - EXISTENTIAL (V: are@2, S: kinds@4)
+#   - SV (V: kinetic@10, S: kinds@4)
+8	"two kinds of mechanical energy"	"There are"
+8	"two kinds of mechanical energy"	"kinetic"
+8	"two kinds of mechanical energy"	"potential"

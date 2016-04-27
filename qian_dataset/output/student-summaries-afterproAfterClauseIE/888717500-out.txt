@@ -1,0 +1,149 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Everything is made of matter.
+# Semantic graph: [made/VBN nsubjpass:Everything/NNP auxpass:is/VBZ prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@3, S: Everything@1, A!: of@4)
+1	"Everything"	"is made"	"of matter"
+# Line 2 (id 2): Matter has volume and has mass.
+# Semantic graph: [has/VBZ nsubj:Matter/NNP dobj:volume/NN cc:and/CC conj:[has/VBZ dobj:mass/NN]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: volume@3)
+#   - SVO (V: has@5, S: Matter@1, O: mass@6)
+2	"Matter"	"has"	"volume"
+2	"Matter"	"has"	"mass"
+# Line 3 (id 3): Some matter is visible and others are only visible with the use of a device such as the microscope.
+# Semantic graph: [visible/JJ
+#                  nsubj:[matter/NN det:Some/DT]
+#                  cop:is/VBZ
+#                  cc:and/CC
+#                  conj:[visible/JJ
+#                        nsubj:others/NNS
+#                        cop:are/VBP
+#                        advmod:only/RB
+#                        prep:[with/IN
+#                              pobj:[use/NN
+#                                    det:the/DT
+#                                    prep:[of/IN
+#                                          pobj:[device/NN
+#                                                det:a/DT
+#                                                prep:[as/IN
+#                                                      mwe:such/JJ
+#                                                      pobj:[microscope/NN det:the/DT]]]]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: visible@4, V: is@3, S: matter@2)
+#   - SVC (C: visible@9, V: are@7, S: others@6, A?: only@8, A?: with@10)
+3	"Some matter"	"is"	"visible"
+3	"others"	"are"	"visible only"
+3	"others"	"are"	"visible with the use of a device such as the microscope"
+3	"others"	"are"	"visible"
+# Line 4 (id 4): Matter is classified by properties.
+# Semantic graph: [classified/VBN
+#                  nsubjpass:Matter/NNP
+#                  auxpass:is/VBZ
+#                  prep:[by/IN pobj:properties/NNS]]
+#   Detected 1 clause(s).
+#   - SVA (V: classified@3, S: Matter@1, A!: by@4)
+4	"Matter"	"is classified"	"by properties"
+# Line 5 (id 5): Physical properties can be seen.
+# Semantic graph: [seen/VBN nsubjpass:[properties/NNS amod:Physical/JJ] aux:can/MD auxpass:be/VB]
+#   Detected 1 clause(s).
+#   - SV (V: seen@5, S: properties@2)
+5	"Physical properties"	"can be seen"
+# Line 6 (id 6): Chemical properties can be changed into a new kind with different properties.
+# Semantic graph: [changed/VBN
+#                  nsubjpass:[properties/NNS nn:Chemical/NNP]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[into/IN
+#                        pobj:[kind/NN
+#                              det:a/DT
+#                              amod:new/JJ
+#                              prep:[with/IN pobj:[properties/NNS amod:different/JJ]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: changed@5, S: properties@2, A!: into@6)
+6	"Chemical properties"	"can be changed"	"into a new kind with different properties"
+# Line 7 (id 7): Change can occur in both physical and chemical properties.
+# Semantic graph: [occur/VB
+#                  nsubj:Change/NNP
+#                  aux:can/MD
+#                  prep:[in/IN
+#                        pobj:[properties/NNS
+#                              det:both/DT
+#                              amod:[physical/NN cc:and/CC conj:chemical/NN]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: occur@3, S: Change@1, A!: in@4)
+7	"Change"	"can occur"	"in both physical and chemical properties"
+# Line 8 (id 8): Physical change can be restored.
+# Semantic graph: [restored/VBN nsubjpass:[change/NN amod:Physical/JJ] aux:can/MD auxpass:be/VB]
+#   Detected 1 clause(s).
+#   - SV (V: restored@5, S: change@2)
+8	"Physical change"	"can be restored"
+# Line 9 (id 9): Chemica change creates a new substance/property.
+# Semantic graph: [creates/VBZ
+#                  nsubj:[change/NN nn:Chemica/NNP]
+#                  dobj:[substance\/property/NN det:a/DT amod:new/JJ]]
+#   Detected 1 clause(s).
+#   - SVO (V: creates@3, S: change@2, O: substance\/property@6)
+9	"Chemica change"	"creates"	"a new substance\/property"
+# Line 10 (id 10): Energy is another property of matter.
+# Semantic graph: [property/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:another/DT
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: property@4, V: is@2, S: Energy@1, A?: of@5)
+10	"Energy"	"is"	"another property of matter"
+10	"Energy"	"is"	"another property"
+# Line 11 (id 11): The law of conservation of energy states that energy can not be created or destroyed.
+# Semantic graph: [states/VBZ
+#                  nsubj:[law/NN
+#                         det:The/DT
+#                         prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#                  ccomp:[created/VBN
+#                         complm:that/IN
+#                         nsubjpass:energy/NN
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         cc:or/CC
+#                         conj:destroyed/VBN]]
+#   Detected 3 clause(s).
+#   - SVO (V: states@7, S: law@2, CCOMP: created@13)
+#   - SV (V: created@13, S: energy@9)
+#   - SV (V: destroyed@15, S: energy@9)
+11	"The law of conservation of energy"	"states"	"that energy can not be created or destroyed"
+11	"energy"	"can not be created"
+11	"energy"	"can not be destroyed"
+# Line 12 (id 12): Kinetic energy and potential energy are two types of mechanical energy.
+# Semantic graph: [types/NNS
+#                  nsubj:[energy/NN amod:Kinetic/JJ cc:and/CC conj:[energy/NN amod:potential/JJ]]
+#                  cop:are/VBP
+#                  num:two/CD
+#                  prep:[of/IN pobj:[energy/NN amod:mechanical/JJ]]]
+#   Detected 1 clause(s).
+#   - SVC (C: types@8, V: are@6, S: energy@2, A?: of@9)
+12	"Kinetic energy and potential energy"	"are"	"two types of mechanical energy"
+12	"Kinetic energy and potential energy"	"are"	"two types"

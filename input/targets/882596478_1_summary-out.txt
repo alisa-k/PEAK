@@ -1,0 +1,286 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All things around us are matter.
+# Semantic graph: [matter/NN
+#                  nsubj:[things/NNS det:All/DT prep:[around/IN pobj:us/PRP]]
+#                  aux:are/VBP]
+#   Detected 1 clause(s).
+#   - SV (V: matter@6, S: things@2)
+1	"All things around us"	"are matter"
+# Line 2: They all have mass and volume.
+# Semantic graph: [have/VBP nsubj:They/PRP advmod:all/DT dobj:[mass/NN cc:and/CC conj:volume/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: have@3, S: They@1, A?: all@2, O: mass@4)
+2	"They"	"have"	"mass and volume all"
+2	"They"	"have"	"mass and volume"
+# Line 3: All matter has different kind of properties that helps us detect and classify them, these properties are categorized in chemical and physical.
+# Semantic graph: [are/VBP
+#                  ccomp:[has/VBZ
+#                         nsubj:[matter/NN det:All/DT]
+#                         dobj:[kind/NN
+#                               amod:different/JJ
+#                               prep:[of/IN
+#                                     pobj:[properties/NNS
+#                                           rcmod:[helps/VBZ
+#                                                  nsubj:that/WDT
+#                                                  ccomp:[detect/VB
+#                                                         nsubj:us/PRP
+#                                                         cc:and/CC
+#                                                         conj:classify/VB
+#                                                         dobj:them/PRP]]]]]]
+#                  nsubj:[properties/NNS det:these/DT]
+#                  dep:[categorized/VBN prep:[in/IN pobj:chemical/NN] cc:and/CC conj:physical/JJ]]
+#   Detected 5 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: kind@5)
+#   - SVO (V: helps@9, S: properties@7, CCOMP: detect@11)
+#   - SVO (V: detect@11, S: us@10, O: them@14)
+#   - SVO (V: classify@13, S: us@10, O: them@14)
+#   - SVC (V: are@18, S: properties@17, CCOMP: has@3)
+3	"All matter"	"has"	"different kind of properties"
+3	"properties"	"helps"	"us detect and classify them"
+3	"us"	"detect"	"them"
+3	"us"	"classify"	"them"
+3	"these properties"	"are"	"All matter has different kind of properties"
+# Line 4: Physical properties are the ones that are related to the appearance of matter and not to its composition.
+# Semantic graph: [ones/NNS
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  cop:are/VBP
+#                  det:the/DT
+#                  rcmod:[related/VBN
+#                         nsubjpass:that/WDT
+#                         auxpass:are/VBP
+#                         prep:[to/TO
+#                               pobj:[appearance/NN det:the/DT prep:[of/IN pobj:matter/NN]]
+#                               cc:and/CC
+#                               conj:not/RB
+#                               dep:[to/TO pobj:[composition/NN poss:its/PRP$]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: ones@5, V: are@3, S: properties@2)
+#   - SVA (V: related@8, S: ones@5, A!: to@9)
+#   - SVO (S: its@17, V: "has", O: composition@18)
+4	"Physical properties"	"are"	"the ones"
+4	"the ones"	"are related"	"to the appearance of matter and not to its composition"
+4	"its"	"has"	"composition"
+# Line 5: Chemical properties are those which can be observed when composition of matter alters and new form of substances form.
+# Semantic graph: [those/DT
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  cop:are/VBP
+#                  rcmod:[observed/VBN
+#                         nsubjpass:which/WDT
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         advcl:[form/VBP
+#                                advmod:when/WRB
+#                                nsubj:[composition/NN
+#                                       prep:[of/IN pobj:[alters/NNS nn:matter/NN]]
+#                                       cc:and/CC
+#                                       conj:[form/NN
+#                                             amod:new/JJ
+#                                             prep:[of/IN pobj:substances/NNS]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: those@4, V: are@3, S: properties@2)
+#   - SVA (V: observed@8, S: those@4, A!: form@19)
+#   - SV (V: form@19, S: composition@10, A?: when@9)
+5	"Chemical properties"	"are"	"those"
+5	"those"	"can be observed"	"when composition of matter alters and new form of substances form"
+5	"composition of matter alters and new form of substances"	"form"	"when"
+5	"composition of matter alters and new form of substances"	"form"
+# Line 6: Another property of matter is energy which cannot be seen or touched like matter.
+# Semantic graph: [energy/NN
+#                  nsubj:[property/NN det:Another/DT prep:[of/IN pobj:matter/NN]]
+#                  cop:is/VBZ
+#                  rcmod:[seen/VBN
+#                         nsubjpass:which/WDT
+#                         aux:can/MD
+#                         neg:not/RB
+#                         auxpass:be/VB
+#                         cc:or/CC
+#                         conj:touched/VBN
+#                         prep:[like/IN pobj:matter/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@6, V: is@5, S: property@2)
+#   - SVA (V: seen@11, S: energy@6, A!: like@14)
+#   - SVA (V: touched@13, S: energy@6, A!: like@14)
+6	"Another property of matter"	"is"	"energy"
+6	"energy"	"can not be seen"	"like matter"
+6	"energy"	"can not be touched"	"like matter"
+# Line 7: Energy has different types and forms and they can turn into each other.
+# Semantic graph: [has/VBZ
+#                  nsubj:Energy/NNP
+#                  dobj:[types/NNS amod:different/JJ cc:and/CC conj:forms/NNS]
+#                  cc:and/CC
+#                  conj:[turn/VB
+#                        nsubj:they/PRP
+#                        aux:can/MD
+#                        prep:[into/IN pobj:[other/JJ det:each/DT]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@2, S: Energy@1, O: types@4)
+#   - SVA (V: turn@10, S: they@8, A!: into@11)
+7	"Energy"	"has"	"different types and forms"
+7	"they"	"can turn"	"into each other"
+# Line 8: Mechanical energy is a kind of energy that matter has it because of its motion or position that has, mechanical energy is divided into 2 kinds 1st kinetic energy which is the kind that objects has because they have speed and the 2nd type is potential that is the type that object has it because the of the position they have.
+# Semantic graph: [divided/VBN
+#                  ccomp:[kind/NN
+#                         nsubj:[energy/NN amod:Mechanical/JJ]
+#                         cop:is/VBZ
+#                         det:a/DT
+#                         prep:[of/IN pobj:energy/NN]
+#                         ccomp:[has/VBZ
+#                                complm:that/IN
+#                                nsubj:matter/NN
+#                                dobj:[it/PRP
+#                                      prep:[of/IN
+#                                            advmod:because/RB
+#                                            pobj:[motion/NN
+#                                                  poss:its/PRP$
+#                                                  cc:or/CC
+#                                                  conj:position/NN]]
+#                                      rcmod:[has/VBZ nsubj:that/WDT]]]]
+#                  nsubjpass:[energy/NN amod:mechanical/JJ]
+#                  auxpass:is/VBZ
+#                  prep:[into/IN pobj:[kinds/NNS num:2/CD]]
+#                  dobj:[energy/NN
+#                        num:1st/CD
+#                        amod:kinetic/JJ
+#                        rcmod:[kind/NN
+#                               nsubj:which/WDT
+#                               cop:is/VBZ
+#                               det:the/DT
+#                               ccomp:[has/VBZ
+#                                      complm:that/IN
+#                                      nsubj:objects/NNS
+#                                      ccomp:[have/VBP
+#                                             advcl:[have/VBP
+#                                                    mark:because/IN
+#                                                    nsubj:they/PRP
+#                                                    dobj:speed/NN
+#                                                    cc:and/CC
+#                                                    conj:[potential/NN
+#                                                          nsubj:[type/NN det:the/DT amod:2nd/JJ]
+#                                                          cop:is/VBZ
+#                                                          rcmod:[type/NN
+#                                                                 nsubj:that/WDT
+#                                                                 cop:is/VBZ
+#                                                                 det:the/DT
+#                                                                 ccomp:[has/VBZ
+#                                                                        complm:that/IN
+#                                                                        nsubj:object/NN
+#                                                                        dobj:it/PRP
+#                                                                        prep:[because/IN
+#                                                                              pobj:[the/DT
+#                                                                                    prep:[of/IN
+#                                                                                          pobj:[position/NN
+#                                                                                                det:the/DT]]]]]]]]
+#                                             nsubj:they/PRP]]]]]
+#   Detected 12 clause(s).
+#   - SVC (C: kind@5, V: is@3, S: energy@2, A?: of@6, CCOMP: has@10)
+#   - SVO (V: has@10, S: matter@9, O: it@11)
+#   - SVO (S: its@14, V: "has", O: motion@15)
+#   - SV (V: has@19, S: it@11)
+#   - SVOC (V: divided@24, S: energy@22, CCOMP: kind@5, A?: into@25, O: energy@30)
+#   - SVC (C: kind@34, V: is@32, S: energy@30, CCOMP: has@37)
+#   - SVO (V: has@37, S: objects@36, CCOMP: have@62)
+#   - SVO (V: have@40, S: they@39, O: speed@41)
+#   - SVC (C: potential@47, V: is@46, S: type@45)
+#   - SVC (C: type@51, V: is@49, S: potential@47, CCOMP: has@54)
+#   - SVO (V: has@54, S: object@53, O: it@55, A?: because@56)
+#   - SV (V: have@62, S: they@61, A?: have@40)
+8	"Mechanical energy"	"is"	"a kind of energy that matter has it because of its motion or position"
+8	"Mechanical energy"	"is"	"a kind that matter has it because of its motion or position"
+8	"matter"	"has"	"it because of its motion or position"
+8	"its"	"has"	"motion or position"
+8	"it because of its motion or position"	"has"
+8	"mechanical energy"	"is divided"	"Mechanical energy is a kind of energy that matter has it because of its motion or position into 2 kinds 1st kinetic energy"
+8	"mechanical energy"	"is divided"	"Mechanical energy is a kind of energy that matter has it because of its motion or position 1st kinetic energy"
+8	"1st kinetic energy"	"is"	"the kind that objects has because they have speed and the 2nd type is potential they have"
+8	"objects"	"has"	"because they have speed and the 2nd type is potential they have"
+8	"they"	"have"	"speed"
+8	"the 2nd type"	"is"	"potential"
+8	"potential"	"is"	"the type that object has it because the of the position"
+8	"object"	"has"	"it because the of the position"
+8	"object"	"has"	"it"
+8	"they"	"have"	"because they have speed and the 2nd type is potential"
+8	"they"	"have"
+# Line 9: Corrected: All matter has different properties that helps us detect and classify them
+# Semantic graph: [Corrected/NNP
+#                  dep:[has/VBZ
+#                       nsubj:[matter/NN det:All/DT]
+#                       dobj:[properties/NNS
+#                             amod:different/JJ
+#                             rcmod:[helps/VBZ
+#                                    nsubj:that/WDT
+#                                    ccomp:[detect/VB
+#                                           nsubj:us/PRP
+#                                           cc:and/CC
+#                                           conj:classify/VB
+#                                           dobj:them/PRP]]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: has@5, S: matter@4, O: properties@7)
+#   - SVO (V: helps@9, S: properties@7, CCOMP: detect@11)
+#   - SVO (V: detect@11, S: us@10, O: them@14)
+#   - SVO (V: classify@13, S: us@10, O: them@14)
+9	"All matter"	"has"	"different properties"
+9	"different properties"	"helps"	"us detect and classify them"
+9	"us"	"detect"	"them"
+9	"us"	"classify"	"them"
+# Line 10: Corrected: energy has different types and it can change from one kind to other forms.
+# Semantic graph: [Corrected/NNP
+#                  dep:[has/VBZ
+#                       nsubj:energy/NN
+#                       dobj:[types/NNS amod:different/JJ]
+#                       cc:and/CC
+#                       conj:[change/VB
+#                             nsubj:it/PRP
+#                             aux:can/MD
+#                             prep:[from/IN pobj:[kind/NN num:one/CD]]
+#                             prep:[to/TO pobj:[forms/NNS amod:other/JJ]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: has@4, S: energy@3, O: types@6)
+#   - SVA (V: change@10, S: it@8, A!: from@11, A?: to@14)
+10	"energy"	"has"	"different types"
+10	"it"	"can change"	"from one kind to other forms"
+10	"it"	"can change"	"from one kind"
+# Line 11: Corrected: mechanical energy is a kind of energy that matter has because of it motion or position
+# Semantic graph: [Corrected/VBD
+#                  ccomp:[kind/NN
+#                         nsubj:[energy/NN amod:mechanical/JJ]
+#                         cop:is/VBZ
+#                         det:a/DT
+#                         prep:[of/IN pobj:energy/NN]
+#                         ccomp:[of/IN
+#                                complm:that/IN
+#                                nsubj:matter/NN
+#                                aux:has/VBZ
+#                                advmod:because/RB
+#                                pobj:it/PRP]]
+#                  nsubj:[motion/NN cc:or/CC conj:position/NN]]
+#   Detected 3 clause(s).
+#   - SVO (V: Corrected@1, S: motion@16, CCOMP: kind@7)
+#   - SVC (C: kind@7, V: is@5, S: energy@4, A?: of@8, CCOMP: of@14)
+#   - SVA (V: of@14, S: matter@11, A?: because@13, A!: it@15)
+11	"motion or position"	"Corrected"	"mechanical energy is a kind of energy that matter has because of it"
+11	"mechanical energy"	"is"	"a kind of energy that matter has because of it"
+11	"mechanical energy"	"is"	"a kind that matter has because of it"
+11	"matter"	"has of"	"it because"
+11	"matter"	"has of"	"it"

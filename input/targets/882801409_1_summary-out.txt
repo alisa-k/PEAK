@@ -1,0 +1,157 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All of the objects you see a touch, everyday of our lives contains matter.
+# Semantic graph: [contains/VBZ
+#                  dep:[see/VBP
+#                       dobj:[All/DT prep:[of/IN pobj:[objects/NNS det:the/DT]]]
+#                       nsubj:you/PRP
+#                       dobj:[touch/NN det:a/DT]]
+#                  nsubj:[everyday/JJ prep:[of/IN pobj:[lives/NNS poss:our/PRP$]]]
+#                  dobj:matter/NN]
+#   Detected 3 clause(s).
+#   - SVOC (V: see@6, S: you@5, O: All@1, O: touch@8)
+#   - SVO (S: our@12, V: "has", O: lives@13)
+#   - SVO (V: contains@14, S: everyday@10, O: matter@15)
+1	"you"	"see"	"All of the objects a touch"
+1	"our"	"has"	"lives"
+1	"everyday of our lives"	"contains"	"matter"
+# Line 2: Matter has volume a mass.
+# Semantic graph: [has/VBZ nsubj:Matter/NNP dobj:[volume/NN dep:[mass/NN det:a/DT]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: volume@3)
+2	"Matter"	"has"	"volume a mass"
+# Line 3: Which in doubt makes everything easy to spoy or observe only by using our senses.
+# Semantic graph: [makes/VBZ
+#                  nsubj:Which/WDT
+#                  advmod:[in/IN dep:doubt/NN]
+#                  dobj:everything/NN
+#                  advmod:easy/RB
+#                  prep:[to/TO pobj:spoy/NN]
+#                  cc:or/CC
+#                  conj:[observe/VBP
+#                        advmod:only/RB
+#                        prep:[by/IN pcomp:[using/VBG dobj:[senses/NNS poss:our/PRP$]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: makes@4, S: Which@1, A?: in@2, O: everything@5, A?: easy@6, A?: to@7)
+#   - SVA (V: observe@10, S: Which@1, A!: only@11, A?: by@12)
+#   - SVO (S: our@14, V: "has", O: senses@15)
+3	"Which"	"makes"	"everything in doubt"
+3	"Which"	"makes"	"everything easy"
+3	"Which"	"makes"	"everything to spoy"
+3	"Which"	"makes"	"everything"
+3	"Which"	"observe"	"only by using our senses"
+3	"Which"	"observe"	"only"
+3	"our"	"has"	"senses"
+# Line 4: Even though other types of matter are a little more difficult to observe: dust mites, dust, or any other matter to small to see with the naked eye.
+# Semantic graph: [see/VB
+#                  advcl:[difficult/JJ
+#                         advmod:Even/RB
+#                         dep:though/IN
+#                         nsubj:[types/NNS amod:other/JJ prep:[of/IN pobj:matter/NN]]
+#                         cop:are/VBP
+#                         advmod:[more/RBR npadvmod:[little/RB det:a/DT]]
+#                         xcomp:[observe/VB aux:to/TO]]
+#                  nsubj:[mites/NNS
+#                         nn:dust/NN
+#                         conj:dust/NN
+#                         cc:or/CC
+#                         conj:[matter/NN det:any/DT amod:other/JJ prep:[to/TO pobj:small/JJ]]]
+#                  aux:to/TO
+#                  prep:[with/IN pobj:[eye/NN det:the/DT amod:naked/JJ]]]
+#   Detected 2 clause(s).
+#   - SVC (C: difficult@11, V: are@7, S: types@4, A-: Even@1, A?: more@10, XCOMP: observe@13)
+#   - SVA (V: see@27, S: mites@16, A?: difficult@11, A!: with@28)
+4	"other types of matter"	"are"	"though difficult a little more to observe"
+4	"other types of matter"	"are"	"though difficult to observe"
+4	"dust mites dust or any other matter to small"	"to see"	"with the naked eye Even though other types of matter are a little more difficult to observe"
+4	"dust mites dust or any other matter to small"	"to see"	"with the naked eye"
+# Line 5: Can be observed with special instruments like a microscope.
+# Semantic graph: [observed/VBN
+#                  aux:Can/MD
+#                  auxpass:be/VB
+#                  prep:[with/IN
+#                        pobj:[instruments/NNS
+#                              amod:special/JJ
+#                              prep:[like/IN pobj:[microscope/NN det:a/DT]]]]]
+#   Detected 0 clause(s).
+# Line 6: Matter has different properties as well.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[properties/NNS amod:different/JJ]
+#                  advmod:[well/RB advmod:as/RB]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: properties@4, A?: well@6)
+6	"Matter"	"has"	"different properties as well"
+6	"Matter"	"has"	"different properties"
+# Line 7: Theres physical properties and chemical properties both are those that can be observed without changing the make up or identity of the matter.
+# Semantic graph: [those/DT
+#                  nsubj:[properties/NNS
+#                         amod:Theres/JJ
+#                         amod:physical/JJ
+#                         cc:and/CC
+#                         conj:[properties/NNS nn:chemical/NN]]
+#                  dep:both/DT
+#                  cop:are/VBP
+#                  rcmod:[observed/VBN
+#                         nsubjpass:that/WDT
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[without/IN
+#                               pcomp:[changing/VBG dobj:[make/NN det:the/DT] prt:up/RP]]]
+#                  cc:or/CC
+#                  conj:[identity/NN prep:[of/IN pobj:[matter/NN det:the/DT]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: those@9, V: are@8, S: properties@3)
+#   - SVA (V: observed@13, S: those@9, A!: without@14)
+7	"Theres physical properties and chemical properties"	"are"	"both those or identity of the matter"
+7	"both those or identity of the matter"	"can be observed"	"without changing the make up"
+# Line 8: Forms of energy is also a major subject because it comes in many different forms.
+# Semantic graph: [subject/NN
+#                  nsubj:[Forms/NNS prep:[of/IN pobj:energy/NN]]
+#                  cop:is/VBZ
+#                  advmod:also/RB
+#                  det:a/DT
+#                  amod:major/JJ
+#                  advcl:[comes/VBZ
+#                         mark:because/IN
+#                         nsubj:it/PRP
+#                         prep:[in/IN pobj:[forms/NNS amod:many/JJ amod:different/JJ]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: subject@8, V: is@4, S: Forms@1, A?: also@5, A?: comes@11)
+#   - SVA (V: comes@11, S: it@10, A!: in@12)
+8	"Forms of energy"	"is"	"a major subject also"
+8	"Forms of energy"	"is"	"a major subject because it comes in many different forms"
+8	"Forms of energy"	"is"	"a major subject"
+8	"it"	"comes"	"in many different forms"
+# Line 9: There's mechanical energy, potential energy and kinetic energy.
+# Semantic graph: ['s/VBZ
+#                  expl:There/EX
+#                  nsubj:[energy/NN
+#                         amod:mechanical/JJ
+#                         conj:[energy/NN amod:potential/JJ]
+#                         cc:and/CC
+#                         conj:[energy/NN amod:kinetic/JJ]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: 's@2, S: energy@4)
+9	"mechanical energy potential energy and kinetic energy"	"There 's"

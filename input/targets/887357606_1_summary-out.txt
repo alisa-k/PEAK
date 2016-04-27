@@ -1,0 +1,119 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is we can observe some types of matter easily with your senses.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[observe/VB
+#                         nsubj:we/PRP
+#                         aux:can/MD
+#                         dobj:[types/NNS det:some/DT prep:[of/IN pobj:matter/NN]]
+#                         prep:[with/IN advmod:easily/RB pobj:[senses/NNS poss:your/PRP$]]]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: observe@5)
+#   - SVO (V: observe@5, S: we@3, O: types@7, A?: with@11)
+#   - SVO (S: your@12, V: "has", O: senses@13)
+1	"Matter"	"is"	"we can observe some types of matter easily with your senses"
+1	"we"	"can observe"	"some types of matter easily with your senses"
+1	"we"	"can observe"	"some types of matter"
+1	"your"	"has"	"senses"
+# Line 2: Other types of matter are a little more difficult to observe.
+# Semantic graph: [difficult/JJ
+#                  nsubj:[types/NNS amod:Other/JJ prep:[of/IN pobj:matter/NN]]
+#                  cop:are/VBP
+#                  advmod:[more/RBR npadvmod:[little/RB det:a/DT]]
+#                  xcomp:[observe/VB aux:to/TO]]
+#   Detected 1 clause(s).
+#   - SVC (C: difficult@9, V: are@5, S: types@2, A?: more@8, XCOMP: observe@11)
+2	"Other types of matter"	"are"	"difficult a little more to observe"
+2	"Other types of matter"	"are"	"difficult to observe"
+# Line 3: Properties of matter is you know that piece of cork is different from a piece of clay.
+# Semantic graph: [is/VBZ
+#                  nsubj:[Properties/NNP prep:[of/IN pobj:matter/NN]]
+#                  ccomp:[know/VBP
+#                         nsubj:you/PRP
+#                         ccomp:[different/JJ
+#                                complm:that/IN
+#                                nsubj:[piece/NN prep:[of/IN pobj:cork/NNS]]
+#                                cop:is/VBZ
+#                                prep:[from/IN
+#                                      pobj:[piece/NN det:a/DT prep:[of/IN pobj:clay/NN]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@4, S: Properties@1, CCOMP: know@6)
+#   - SVO (V: know@6, S: you@5, CCOMP: different@12)
+#   - SVC (C: different@12, V: is@11, S: piece@8, A?: from@13)
+3	"Properties of matter"	"is"	"you know that piece of cork is different from a piece of clay"
+3	"you"	"know"	"that piece of cork is different from a piece of clay"
+3	"piece of cork"	"is"	"different from a piece of clay"
+3	"piece of cork"	"is"	"different"
+# Line 4: Characteristics like these that help us identify or classify matter.
+# Semantic graph: [like/VBP
+#                  nsubj:Characteristics/NNS
+#                  dobj:[these/DT
+#                        rcmod:[help/VBP
+#                               nsubj:that/WDT
+#                               ccomp:[identify/VB
+#                                      nsubj:us/PRP
+#                                      cc:or/CC
+#                                      conj:classify/VB
+#                                      dobj:matter/NN]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: like@2, S: Characteristics@1, O: these@3)
+#   - SVO (V: help@5, S: these@3, CCOMP: identify@7)
+#   - SVO (V: identify@7, S: us@6, O: matter@10)
+#   - SVO (V: classify@9, S: us@6, O: matter@10)
+4	"Characteristics"	"like"	"these"
+4	"these"	"help"	"us identify or classify matter"
+4	"us"	"identify"	"matter"
+4	"us"	"classify"	"matter"
+# Line 5: All matter has both physical properties and chemical properties.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:[properties/NNS
+#                        preconj:both/CC
+#                        amod:physical/JJ
+#                        cc:and/CC
+#                        conj:[properties/NNS nn:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: properties@6)
+5	"All matter"	"has"	"both physical properties and chemical properties"
+# Line 6: Physical properties are these that can be observed without changing the make-up, or identity, of the matter.
+# Semantic graph: [these/DT
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  cop:are/VBP
+#                  rcmod:[observed/VBN
+#                         nsubjpass:that/WDT
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         prep:[without/IN
+#                               pcomp:[changing/VBG
+#                                      dobj:[make-up/NN
+#                                            det:the/DT
+#                                            cc:or/CC
+#                                            conj:identity/NN
+#                                            prep:[of/IN pobj:[matter/NN det:the/DT]]]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: these@4, V: are@3, S: properties@2)
+#   - SVA (V: observed@8, S: these@4, A!: without@9)
+6	"Physical properties"	"are"	"these"
+6	"these"	"can be observed"	"without changing the make-up or identity of the matter"

@@ -1,0 +1,194 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: This classwork is mainly about 4 main topics which are clearly states what they stand for.
+# Semantic graph: [topics/NNS
+#                  nsubj:[classwork/NN det:This/DT]
+#                  cop:is/VBZ
+#                  advmod:mainly/RB
+#                  num:[4/CD quantmod:about/RB]
+#                  amod:main/JJ
+#                  rcmod:[states/NNS
+#                         nsubj:which/WDT
+#                         cop:are/VBP
+#                         advmod:clearly/RB
+#                         rcmod:[stand/VBP rel:what/WP nsubj:they/PRP prep:for/IN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: topics@8, V: is@3, S: classwork@2, A?: mainly@4)
+#   - SVC (C: states@12, V: are@10, S: topics@8, A?: clearly@11)
+#   - SVA (V: stand@15, S: they@14, A!: for@16)
+1	"This classwork"	"is"	"about 4 main topics mainly"
+1	"This classwork"	"is"	"about 4 main topics"
+1	"about 4 main topics"	"are"	"states clearly"
+1	"about 4 main topics"	"are"	"states"
+1	"they"	"what stand"	"for"
+# Line 2: The first be talked about was matter.
+# Semantic graph: [was/VBD
+#                  nsubj:[first/JJ det:The/DT rcmod:[talked/VBN auxpass:be/VB prep:about/IN]]
+#                  advmod:matter/NN]
+#   Detected 1 clause(s).
+#   - SVA (V: was@6, S: first@2, A!: matter@7)
+2	"The first"	"was"	"matter"
+# Line 3: Properties describe matter.
+# Semantic graph: [describe/VBP nsubj:Properties/NNP dobj:matter/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: describe@2, S: Properties@1, O: matter@3)
+3	"Properties"	"describe"	"matter"
+# Line 4: For example a block of wood and air all have properties.
+# Semantic graph: [have/VBP
+#                  prep:[For/IN pobj:example/NN]
+#                  dep:[block/NN det:a/DT prep:[of/IN pobj:[wood/NN cc:and/CC conj:air/NN]]]
+#                  nsubj:all/DT
+#                  dobj:properties/NNS]
+#   Detected 1 clause(s).
+#   - SVO (V: have@10, S: all@9, A?: For@1, O: properties@11)
+4	"all"	"have"	"properties For example"
+4	"all"	"have"	"properties"
+# Line 5: The state of the matter refers to the group of matter with the same properties.
+# Semantic graph: [refers/VBZ
+#                  nsubj:[state/NN det:The/DT prep:[of/IN pobj:[matter/NN det:the/DT]]]
+#                  prep:[to/TO pobj:[group/NN det:the/DT prep:[of/IN pobj:matter/NN]]]
+#                  prep:[with/IN pobj:[properties/NNS det:the/DT amod:same/JJ]]]
+#   Detected 1 clause(s).
+#   - SVA (V: refers@6, S: state@2, A!: to@7, A?: with@12)
+5	"The state of the matter"	"refers"	"to the group of matter with the same properties"
+5	"The state of the matter"	"refers"	"to the group of matter"
+# Line 6: Basically everything on earth has matter.
+# Semantic graph: [has/VBZ
+#                  advmod:Basically/RB
+#                  nsubj:[everything/NN prep:[on/IN pobj:earth/NN]]
+#                  dobj:matter/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@5, S: everything@2, A?: Basically@1, O: matter@6)
+6	"everything on earth"	"has"	"matter Basically"
+6	"everything on earth"	"has"	"matter"
+# Line 7: The second subject be discussed was properties of matter.
+# Semantic graph: [properties/NNS
+#                  nsubj:[subject/NN det:The/DT amod:second/JJ dep:[discussed/VBN auxpass:be/VB]]
+#                  cop:was/VBD
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVC (C: properties@7, V: was@6, S: subject@3, A?: of@8)
+7	"The second subject be discussed"	"was"	"properties of matter"
+7	"The second subject be discussed"	"was"	"properties"
+# Line 8: Examples of that are the characteristics between properties of matter, mixtures of solutions e.x.
+# Semantic graph: [characteristics/NNS
+#                  nsubj:[Examples/NNS prep:[of/IN pobj:that/DT]]
+#                  cop:are/VBP
+#                  det:the/DT
+#                  prep:[between/IN
+#                        pobj:[properties/NNS
+#                              prep:[of/IN
+#                                    pobj:[matter/NN
+#                                          appos:[mixtures/NNS
+#                                                 prep:[of/IN
+#                                                       pobj:[solutions/NNS partmod:e.x./VBN]]]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: characteristics@6, V: are@4, S: Examples@1, A?: between@7)
+#   - SVC (S: matter@10, V: "is", C: mixtures@12)
+#   - SVA (V: "be e.x.", S: solutions@14)
+8	"Examples of that"	"are"	"the characteristics between properties of matter"
+8	"Examples of that"	"are"	"the characteristics"
+8	"matter"	"is"	"mixtures of solutions e.x."
+8	"solutions"	"be e.x."
+# Line 9: vinegar and olive oil.
+# Semantic graph: [vinegar/VB cc:and/CC conj:olive/VB dobj:oil/NN]
+#   Detected 0 clause(s).
+# Line 10: Third there is the difference between physical and chemical change.
+# Semantic graph: [is/VBZ
+#                  dep:Third/JJ
+#                  expl:there/EX
+#                  nsubj:[difference/NN
+#                         det:the/DT
+#                         prep:[between/IN
+#                               pobj:[change/NN amod:[physical/NN cc:and/CC conj:chemical/NN]]]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: is@3, S: difference@5)
+10	"the difference between physical and chemical change"	"there is"
+# Line 11: Physical changes occur when objects undergo a change that does not change their chemical nature.
+# Semantic graph: [occur/VBP
+#                  nsubj:[changes/NNS amod:Physical/JJ]
+#                  advcl:[undergo/VBP
+#                         advmod:when/WRB
+#                         nsubj:objects/NNS
+#                         dobj:[change/NN
+#                               det:a/DT
+#                               rcmod:[change/VB
+#                                      nsubj:that/WDT
+#                                      aux:does/VBZ
+#                                      neg:not/RB
+#                                      dobj:[nature/NN poss:their/PRP$ nn:chemical/NN]]]]]
+#   Detected 4 clause(s).
+#   - SVA (V: occur@3, S: changes@2, A!: undergo@6)
+#   - SVO (V: undergo@6, S: objects@5, A?: when@4, O: change@8)
+#   - SVO (V: change@12, S: change@8, O: nature@15)
+#   - SVO (S: their@13, V: "has", O: nature@15)
+11	"Physical changes"	"occur"	"when objects undergo a change"
+11	"objects"	"undergo"	"a change when"
+11	"objects"	"undergo"	"a change"
+11	"a change"	"does not change"	"their chemical nature"
+11	"their"	"has"	"chemical nature"
+# Line 12: A chemical change is a exothermic reaction.
+# Semantic graph: [reaction/NN
+#                  nsubj:[change/NN det:A/DT nn:chemical/NN]
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  amod:exothermic/JJ]
+#   Detected 1 clause(s).
+#   - SVC (C: reaction@7, V: is@4, S: change@3)
+12	"A chemical change"	"is"	"a exothermic reaction"
+# Line 13: Any chemical change which releases energy such as heat, or gives off more energy than it absorbs.
+# Semantic graph: [absorbs/VBZ
+#                  nsubj:[change/NN
+#                         det:Any/DT
+#                         amod:chemical/JJ
+#                         rcmod:[releases/VBZ
+#                                nsubj:which/WDT
+#                                dobj:[energy/NN prep:[as/IN mwe:such/JJ pobj:heat/NN]]
+#                                cc:or/CC
+#                                conj:[gives/VBZ
+#                                      prt:off/RP
+#                                      dobj:[energy/NN amod:more/JJR prep:[than/IN pobj:it/PRP]]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: releases@5, S: change@3, O: energy@6)
+#   - SVO (V: gives@12, S: change@3, O: energy@15)
+#   - SV (V: absorbs@18, S: change@3)
+13	"Any chemical change"	"releases"	"energy such as heat"
+13	"Any chemical change"	"gives off"	"more energy than it"
+13	"Any chemical change"	"absorbs"
+# Line 14: Also, energy is a property of matter, and all matter has it.
+# Semantic graph: [property/NN
+#                  advmod:Also/RB
+#                  nsubj:energy/NN
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[of/IN pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[has/VBZ nsubj:[matter/NN det:all/DT] dobj:it/PRP]]
+#   Detected 2 clause(s).
+#   - SVC (C: property@6, V: is@4, S: energy@3, A?: Also@1, A?: of@7)
+#   - SVO (V: has@13, S: matter@12, O: it@14)
+14	"energy"	"is"	"a property Also"
+14	"energy"	"is"	"a property of matter"
+14	"energy"	"is"	"a property"
+14	"all matter"	"has"	"it"

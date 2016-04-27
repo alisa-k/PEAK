@@ -1,0 +1,100 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: The passage is mostly revolved around matter and what it possesses, matter is any object that occupies space.
+# Semantic graph: [revolved/VBN
+#                  nsubjpass:[passage/NN det:The/DT]
+#                  auxpass:is/VBZ
+#                  advmod:mostly/RB
+#                  prep:[around/IN pobj:matter/NN]
+#                  cc:and/CC
+#                  conj:[object/NN
+#                        dep:[possesses/VBZ dobj:what/WP nsubj:it/PRP]
+#                        nsubj:matter/NN
+#                        cop:is/VBZ
+#                        det:any/DT
+#                        rcmod:[occupies/VBZ nsubj:that/WDT dobj:space/NN]]]
+#   Detected 4 clause(s).
+#   - SVA (V: revolved@5, S: passage@2, A?: mostly@4, A!: around@6)
+#   - SVO (V: possesses@11, S: it@10, O: what@9)
+#   - SVC (C: object@16, V: is@14, S: matter@13)
+#   - SVO (V: occupies@18, S: object@16, O: space@19)
+1	"The passage"	"is revolved"	"around matter mostly"
+1	"The passage"	"is revolved"	"around matter"
+1	"it"	"possesses"	"what"
+1	"matter"	"is"	"what it possesses any object"
+1	"what it possesses any object"	"occupies"	"space"
+# Line 2: There are many things that it has such as energy one of the properties it has.
+# Semantic graph: [has/VBZ
+#                  dep:[are/VBP
+#                       expl:There/EX
+#                       nsubj:[things/NNS amod:many/JJ]
+#                       ccomp:[has/VBZ
+#                              complm:that/IN
+#                              nsubj:it/PRP
+#                              dep:[as/IN
+#                                   mwe:such/JJ
+#                                   pobj:[energy/NN
+#                                         num:one/CD
+#                                         prep:[of/IN pobj:[properties/NNS det:the/DT]]]]]]
+#                  nsubj:it/PRP]
+#   Detected 3 clause(s).
+#   - EXISTENTIAL (V: are@2, S: things@4, CCOMP: has@7)
+#   - SV (V: has@7, S: it@6)
+#   - SV (V: has@16, S: it@15)
+2	"many things"	"There are"	"that it has such as energy one of the properties"
+2	"it"	"has"
+2	"it"	"has"
+# Line 3: Matter can also go through many changes such as shape or position (physical change) and it was even [illegible word] with other properties (chemical change).
+# Semantic graph: [go/VB
+#                  nsubj:Matter/NNP
+#                  aux:can/MD
+#                  advmod:also/RB
+#                  prep:[through/IN
+#                        pobj:[changes/NNS
+#                              amod:many/JJ
+#                              prep:[as/IN
+#                                    mwe:such/JJ
+#                                    pobj:[shape/NN
+#                                          cc:or/CC
+#                                          conj:position/NN
+#                                          appos:[change/NN amod:physical/JJ]]]]]
+#                  cc:and/CC
+#                  conj:[was/VBD
+#                        nsubj:it/PRP
+#                        advmod:[even/RB dep:[word/NN amod:illegible/JJ]]
+#                        prep:[with/IN
+#                              pobj:[properties/NNS
+#                                    amod:other/JJ
+#                                    appos:[change/NN nn:chemical/NN]]]]]
+#   Detected 4 clause(s).
+#   - SVA (V: go@4, S: Matter@1, A?: also@3, A!: through@5)
+#   - SVC (S: shape@10, V: "is", C: change@15)
+#   - SVA (V: was@19, S: it@18, A!: even@20, A?: with@25)
+#   - SVC (S: properties@27, V: "is", C: change@30)
+3	"Matter"	"can go"	"through many changes such as shape or position also"
+3	"Matter"	"can go"	"through many changes such as shape or position"
+3	"shape or position"	"is"	"physical change"
+3	"it"	"was"	"even illegible word with other properties"
+3	"it"	"was"	"even illegible word"
+3	"other properties"	"is"	"chemical change"

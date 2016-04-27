@@ -1,0 +1,139 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is made up of everything.
+# Semantic graph: [made/VBN
+#                  nsubjpass:Matter/NNP
+#                  auxpass:is/VBZ
+#                  prt:up/RP
+#                  prep:[of/IN pobj:everything/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: made@3, S: Matter@1, A!: of@5)
+1	"Matter"	"is made up"	"of everything"
+# Line 2: Everything you have, feel, or see is made up of matter.
+# Semantic graph: [made/VBN
+#                  nsubjpass:[Everything/NN
+#                             rcmod:[have/VB nsubj:you/PRP conj:feel/VB cc:or/CC conj:see/VB]]
+#                  auxpass:is/VBZ
+#                  prt:up/RP
+#                  prep:[of/IN pobj:matter/NN]]
+#   Detected 4 clause(s).
+#   - SVO (V: have@3, S: you@2, O: Everything@1)
+#   - SVO (V: feel@5, S: you@2, O: Everything@1)
+#   - SVO (V: see@8, S: you@2, O: Everything@1)
+#   - SVA (V: made@10, S: Everything@1, A!: of@12)
+2	"you"	"have"	"Everything"
+2	"you"	"feel"	"Everything"
+2	"you"	"see"	"Everything"
+2	"Everything"	"is made up"	"of matter"
+# Line 3: Everything has energy to.
+# Semantic graph: [has/VBZ nsubj:Everything/NNP dobj:energy/NN prep:to/TO]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Everything@1, O: energy@3, A?: to@4)
+3	"Everything"	"has"	"energy to"
+3	"Everything"	"has"	"energy"
+# Line 4: There is a lot of things that has to do with matter.
+# Semantic graph: [is/VBZ
+#                  expl:There/EX
+#                  nsubj:[lot/NN
+#                         det:a/DT
+#                         prep:[of/IN
+#                               pobj:[things/NNS
+#                                     rcmod:[has/VBZ
+#                                            nsubj:that/WDT
+#                                            xcomp:[do/VB
+#                                                   aux:to/TO
+#                                                   prep:[with/IN pobj:matter/NN]]]]]]]
+#   Detected 2 clause(s).
+#   - EXISTENTIAL (V: is@2, S: lot@4)
+#   - SVO (V: has@8, S: things@6, XCOMP: do@10)
+4	"a lot of things"	"There is"
+4	"things"	"has"	"to do with matter"
+# Line 5: Physical and chemical changes.
+# Semantic graph: [changes/VBZ nsubj:[Physical/JJ cc:and/CC conj:chemical/NN]]
+#   Detected 1 clause(s).
+#   - SV (V: changes@4, S: Physical@1)
+5	"Physical and chemical"	"changes"
+# Line 6: The law of conservation of energy is when energy is transferred from object to another, energy cannot be created nor destroyed.
+# Semantic graph: [created/VBN
+#                  ccomp:[is/VBZ
+#                         nsubj:[law/NN
+#                                det:The/DT
+#                                prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]
+#                         advcl:[transferred/VBN
+#                                advmod:when/WRB
+#                                nsubjpass:energy/NN
+#                                auxpass:is/VBZ
+#                                prep:[from/IN pobj:object/NN]
+#                                prep:[to/TO pobj:another/DT]]]
+#                  nsubjpass:energy/NN
+#                  aux:can/MD
+#                  neg:not/RB
+#                  auxpass:be/VB
+#                  cc:nor/CC
+#                  conj:destroyed/VBD]
+#   Detected 4 clause(s).
+#   - SVA (V: is@7, S: law@2, A!: transferred@11)
+#   - SVA (V: transferred@11, S: energy@9, A?: when@8, A!: from@12, A?: to@14)
+#   - SVO (V: created@21, S: energy@17, CCOMP: is@7)
+#   - SVO (V: destroyed@23, S: energy@17, CCOMP: is@7)
+6	"The law of conservation of energy"	"is"	"when energy is transferred from object to another"
+6	"energy"	"is transferred"	"from object when"
+6	"energy"	"is transferred"	"from object to another"
+6	"energy"	"is transferred"	"from object"
+6	"energy"	"can not be created"	"The law of conservation of energy is when energy is transferred from object to another"
+6	"energy"	"destroyed"	"The law of conservation of energy is when energy is transferred from object to another"
+# Line 7: And kinetic energy is an energy an object has when it's moving.
+# Semantic graph: [energy/NN
+#                  cc:And/CC
+#                  nsubj:[energy/NN amod:kinetic/JJ]
+#                  cop:is/VBZ
+#                  det:an/DT
+#                  rcmod:[has/VBZ
+#                         nsubj:[object/NN det:an/DT]
+#                         advcl:[moving/VBG advmod:when/WRB nsubj:it/PRP aux:'s/VBZ]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@6, V: is@4, S: energy@3)
+#   - SVO (V: has@9, S: object@8, A?: moving@13, O: energy@6)
+#   - SV (V: moving@13, S: it@11, A?: when@10)
+7	"kinetic energy"	"is"	"And an energy"
+7	"an object"	"has"	"when it 's moving And an energy"
+7	"an object"	"has"	"And an energy"
+7	"it"	"'s moving"	"when"
+7	"it"	"'s moving"
+# Line 8: This is what I think is the most important things in this passage.
+# Semantic graph: [is/VBZ
+#                  nsubj:This/DT
+#                  ccomp:[think/VBP
+#                         dep:what/WP
+#                         nsubj:I/PRP
+#                         ccomp:[things/NNS
+#                                cop:is/VBZ
+#                                det:the/DT
+#                                amod:[important/JJ advmod:most/RBS]
+#                                prep:[in/IN pobj:[passage/NN det:this/DT]]]]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: This@1, CCOMP: think@5)
+#   - SVO (V: think@5, S: I@4, CCOMP: things@10)
+8	"This"	"is"	"what I think is the most important things in this passage"
+8	"I"	"think"	"is the most important things in this passage"

@@ -1,0 +1,82 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: The passages talks about the different types of sciences.
+# Semantic graph: [talks/VBZ
+#                  nsubj:[passages/NNS det:The/DT]
+#                  prep:[about/IN
+#                        pobj:[types/NNS
+#                              det:the/DT
+#                              amod:different/JJ
+#                              prep:[of/IN pobj:sciences/NNS]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: talks@3, S: passages@2, A!: about@4)
+1	"The passages"	"talks"	"about the different types of sciences"
+# Line 2: The passage talk about the different matters and energy.
+# Semantic graph: [talk/VBP
+#                  nsubj:[passage/NN det:The/DT]
+#                  prep:[about/IN
+#                        pobj:[matters/NNS det:the/DT amod:different/JJ cc:and/CC conj:energy/NN]]]
+#   Detected 1 clause(s).
+#   - SVA (V: talk@3, S: passage@2, A!: about@4)
+2	"The passage"	"talk"	"about the different matters and energy"
+# Line 3: It speaks about what matter is also want the different energys are.
+# Semantic graph: [speaks/VBZ
+#                  nsubj:It/PRP
+#                  prep:[about/IN
+#                        pcomp:[want/VBP
+#                               dobj:what/WP
+#                               nsubj:matter/NN
+#                               aux:is/VBZ
+#                               advmod:also/RB
+#                               ccomp:[are/VBP nsubj:[energys/NNS det:the/DT amod:different/JJ]]]]]
+#   Detected 3 clause(s).
+#   - SVA (V: speaks@2, S: It@1, A!: about@3)
+#   - SVOC (V: want@8, S: matter@5, O: what@4, A?: also@7, CCOMP: are@12)
+#   - SV (V: are@12, S: energys@11)
+3	"It"	"speaks"	"about what matter is also want the different energys are"
+3	"matter"	"is want"	"what the different energys are also"
+3	"matter"	"is want"	"what the different energys are"
+3	"the different energys"	"are"
+# Line 4: The passage is very interesting I learn some stuff I never learn in high school.
+# Semantic graph: [interesting/JJ
+#                  nsubj:[passage/NN det:The/DT]
+#                  cop:is/VBZ
+#                  advmod:very/RB
+#                  ccomp:[learn/VBP
+#                         nsubj:I/PRP
+#                         dobj:[stuff/NN
+#                               det:some/DT
+#                               rcmod:[learn/VBP
+#                                      nsubj:I/PRP
+#                                      neg:never/RB
+#                                      prep:[in/IN pobj:[school/NN amod:high/JJ]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: interesting@5, V: is@3, S: passage@2, A?: very@4, CCOMP: learn@7)
+#   - SVO (V: learn@7, S: I@6, O: stuff@9)
+#   - SVO (V: learn@12, S: I@10, A?: in@13, O: stuff@9)
+4	"The passage"	"is"	"interesting very I learn some stuff"
+4	"The passage"	"is"	"interesting I learn some stuff"
+4	"I"	"learn"	"some stuff"
+4	"I"	"never learn"	"in high school some stuff"
+4	"I"	"never learn"	"some stuff"

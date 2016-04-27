@@ -1,0 +1,137 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: What matter is matter is all objects and substances in the universe are made of.
+# Semantic graph: [made/VBN
+#                  csubjpass:[matter/NN
+#                             dobj:What/WP
+#                             nsubj:matter/NN
+#                             cop:is/VBZ
+#                             rcmod:[objects/NNS
+#                                    cop:is/VBZ
+#                                    det:all/DT
+#                                    cc:and/CC
+#                                    conj:substances/NNS
+#                                    prep:[in/IN pobj:[universe/NN det:the/DT]]]]
+#                  auxpass:are/VBP
+#                  prep:of/IN]
+#   Detected 2 clause(s).
+#   - SVOC (C: matter@4, V: is@3, S: matter@2, O: What@1)
+#   - SVA (V: made@14, S: matter@4, A!: of@15)
+1	"matter"	"is"	"matter What"
+1	"What matter is matter"	"are made"	"of"
+# Line 2: Because everything we use has matter which takes up space.
+# Semantic graph: [use/VBP
+#                  prep:[Because/IN pobj:everything/NN]
+#                  nsubj:we/PRP
+#                  ccomp:[has/VBZ
+#                         dobj:[matter/NN
+#                               rcmod:[takes/VBZ nsubj:which/WDT prt:up/RP dobj:space/NN]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: use@4, S: we@3, A?: Because@1, CCOMP: has@5)
+#   - SVO (V: takes@8, S: matter@6, O: space@10)
+2	"we"	"use"	"has matter Because everything"
+2	"we"	"use"	"has matter"
+2	"matter"	"takes up"	"space"
+# Line 3: Matter can also be detected and measured because of mass and volume.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  advmod:also/RB
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  prep:[of/IN advmod:because/RB pobj:[mass/NN cc:and/CC conj:volume/NN]]]
+#   Detected 2 clause(s).
+#   - SVA (V: detected@5, S: Matter@1, A?: also@3, A!: of@9)
+#   - SVA (V: measured@7, S: Matter@1, A?: also@3, A!: of@9)
+3	"Matter"	"can be detected"	"because of mass and volume also"
+3	"Matter"	"can be detected"	"because of mass and volume"
+3	"Matter"	"can be measured"	"because of mass and volume also"
+3	"Matter"	"can be measured"	"because of mass and volume"
+# Line 4: We can classify matter because we can see and smell it therefore we know it are you are.
+# Semantic graph: [know/VBP
+#                  dep:[classify/VB
+#                       nsubj:We/PRP
+#                       aux:can/MD
+#                       dobj:matter/NN
+#                       advcl:[see/VB
+#                              mark:because/IN
+#                              nsubj:we/PRP
+#                              aux:can/MD
+#                              cc:and/CC
+#                              conj:[smell/VBP dobj:it/PRP advmod:therefore/RB]]]
+#                  nsubj:we/PRP
+#                  ccomp:[are/VBP nsubj:it/PRP ccomp:[are/VBP nsubj:you/PRP]]]
+#   Detected 6 clause(s).
+#   - SVO (V: classify@3, S: We@1, O: matter@4, A?: see@8)
+#   - SV (V: see@8, S: we@6)
+#   - SVO (V: smell@10, S: we@6, O: it@11, A?: therefore@12)
+#   - SVO (V: know@14, S: we@13, CCOMP: are@16)
+#   - SVC (V: are@16, S: it@15, CCOMP: are@18)
+#   - SV (V: are@18, S: you@17)
+4	"We"	"can classify"	"matter because we can see and smell it therefore"
+4	"We"	"can classify"	"matter"
+4	"we"	"can see"
+4	"we"	"smell"	"it therefore"
+4	"we"	"smell"	"it"
+4	"we"	"know"	"it are you are"
+4	"it"	"are"	"you are"
+4	"you"	"are"
+# Line 5: Energy is something that we cant touch or see but matter we can see and touch.
+# Semantic graph: [something/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  ccomp:[cant/VBZ
+#                         complm:that/IN
+#                         nsubj:we/PRP
+#                         ccomp:[touch/VB cc:or/CC conj:see/VB]
+#                         cc:but/CC
+#                         conj:[matter/VBP
+#                               ccomp:[see/VB nsubj:we/PRP aux:can/MD cc:and/CC conj:touch/VB]]]]
+#   Detected 5 clause(s).
+#   - SVC (C: something@3, V: is@2, S: Energy@1, CCOMP: cant@6)
+#   - SVO (V: cant@6, S: we@5, CCOMP: touch@7)
+#   - SVO (V: matter@11, S: we@5, CCOMP: see@14)
+#   - SV (V: see@14, S: we@12)
+#   - SV (V: touch@16, S: we@12)
+5	"Energy"	"is"	"something that we cant touch or see but matter we can see and touch"
+5	"we"	"cant"	"touch or see"
+5	"we"	"matter"	"we can see and touch"
+5	"we"	"can see"
+5	"we"	"can touch"
+# Line 6: Conservation energy is something that can be created or [illegible word] by humans.
+# Semantic graph: [something/NN
+#                  nsubj:[energy/NN nn:Conservation/NNP]
+#                  cop:is/VBZ
+#                  rcmod:[created/VBN nsubjpass:that/WDT aux:can/MD auxpass:be/VB]
+#                  cc:or/CC
+#                  conj:[illegible/VB dobj:word/NN prep:[by/IN pobj:humans/NNS]]]
+#   Detected 3 clause(s).
+#   - SVC (C: something@4, V: is@3, S: energy@2)
+#   - SVOC (C: illegible@11, V: is@3, S: energy@2, O: word@12, A?: by@14)
+#   - SV (V: created@8, S: something@4)
+6	"Conservation energy"	"is"	"something"
+6	"Conservation energy"	"is"	"illegible word by humans"
+6	"Conservation energy"	"is"	"illegible word"
+6	"something or illegible word by humans"	"can be created"

@@ -1,0 +1,155 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1 (id 1): Matter is what all objects and substances are made up of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN
+#                         dep:what/WP
+#                         nsubjpass:[objects/NNS det:all/DT cc:and/CC conj:substances/NNS]
+#                         auxpass:are/VBP
+#                         prt:up/RP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@9)
+#   - SVA (V: made@9, S: objects@5, A!: of@11)
+1	"Matter"	"is"	"what all objects and substances are made up of"
+1	"all objects and substances"	"are made up"	"of"
+# Line 2 (id 2): It can be measured because all matter has mass and volume.
+# Semantic graph: [measured/VBN
+#                  nsubjpass:It/PRP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  advcl:[has/VBZ
+#                         mark:because/IN
+#                         nsubj:[matter/NN det:all/DT]
+#                         dobj:[mass/NN cc:and/CC conj:volume/NN]]]
+#   Detected 2 clause(s).
+#   - SVA (V: measured@4, S: It@1, A!: has@8)
+#   - SVO (V: has@8, S: matter@7, O: mass@9)
+2	"It"	"can be measured"	"because all matter has mass and volume"
+2	"all matter"	"has"	"mass and volume"
+# Line 3 (id 3): There are different properties and chemical properties.
+# Semantic graph: [are/VBP
+#                  expl:There/EX
+#                  nsubj:[properties/NNS
+#                         amod:different/JJ
+#                         cc:and/CC
+#                         conj:[properties/NNS nn:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - EXISTENTIAL (V: are@2, S: properties@4)
+3	"different properties and chemical properties"	"There are"
+# Line 4 (id 4): These occur when there are changes.
+# Semantic graph: [occur/VBP
+#                  nsubj:These/DT
+#                  advcl:[are/VBP advmod:when/WRB expl:there/EX nsubj:changes/NNS]]
+#   Detected 2 clause(s).
+#   - SVA (V: occur@2, S: These@1, A!: are@5)
+#   - EXISTENTIAL (V: are@5, S: changes@6, A?: when@3)
+4	"These"	"occur"	"when there are changes"
+4	"changes"	"there are"	"when"
+4	"changes"	"there are"
+# Line 5 (id 5): When there is a physical change, the object can change into a different form or shape and can change back, but a chemical change, the object can change but [illegible word] 17 was.
+# Semantic graph: [change/VB
+#                  advcl:[is/VBZ
+#                         advmod:When/WRB
+#                         expl:there/EX
+#                         nsubj:[change/NN det:a/DT amod:physical/JJ]]
+#                  nsubj:[object/NN det:the/DT]
+#                  aux:can/MD
+#                  prep:[into/IN
+#                        pobj:[form/NN det:a/DT amod:different/JJ cc:or/CC conj:shape/NN]]
+#                  cc:and/CC
+#                  conj:[change/VB aux:can/MD advmod:back/RB]
+#                  cc:but/CC
+#                  conj:[change/VB
+#                        nsubj:[change/NN det:a/DT amod:chemical/JJ appos:[object/NN det:the/DT]]
+#                        aux:can/MD
+#                        ccomp:[was/VBD cc:but/CC dep:[word/NN amod:illegible/JJ] nsubj:17/CD]]]
+#   Detected 6 clause(s).
+#   - EXISTENTIAL (V: is@3, S: change@6, A?: When@1)
+#   - SVA (V: change@11, S: object@9, A?: is@3, A!: into@12)
+#   - SVA (V: change@20, S: object@9, A?: is@3, A!: back@21)
+#   - SVC (S: change@26, V: "is", C: object@29)
+#   - SVO (V: change@31, S: change@26, CCOMP: was@38)
+#   - SV (V: was@38, S: 17@37)
+5	"a physical change"	"there is"	"When"
+5	"a physical change"	"there is"
+5	"the object"	"can change"	"into a different form or shape When there is a physical change"
+5	"the object"	"can change"	"into a different form or shape"
+5	"the object"	"can change"	"back When there is a physical change"
+5	"the object"	"can change"	"back"
+5	"a chemical change"	"is"	"the object"
+5	"a chemical change"	"can change"	"but illegible word 17 was"
+5	"17"	"was"
+# Line 6 (id 6): All matter has energy.
+# Semantic graph: [has/VBZ nsubj:[matter/NN det:All/DT] dobj:energy/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+6	"All matter"	"has"	"energy"
+# Line 7 (id 7): It has mechanical energy because the object has motion or of its position.
+# Semantic graph: [has/VBZ
+#                  nsubj:It/PRP
+#                  dobj:[energy/NN
+#                        amod:mechanical/JJ
+#                        dep:[has/VBZ
+#                             mark:because/IN
+#                             nsubj:[object/NN det:the/DT]
+#                             dobj:motion/NN
+#                             cc:or/CC
+#                             conj:[of/IN pobj:[position/NN poss:its/PRP$]]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: has@2, S: It@1, O: energy@4)
+#   - SVO (V: has@8, S: object@7, O: motion@9)
+#   - SVA (V: of@11, S: object@7, A!: position@13)
+#   - SVO (S: its@12, V: "has", O: position@13)
+7	"It"	"has"	"mechanical energy because the object has motion or of its position"
+7	"the object"	"has"	"motion"
+7	"the object"	"of"	"its position"
+7	"its"	"has"	"position"
+# Line 8 (id 8): The is the law of conservation of energy which states that energy can't be created or destroyed.
+# Semantic graph: [law/NN
+#                  nsubj:The/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]
+#                  rcmod:[states/VBZ
+#                         nsubj:which/WDT
+#                         ccomp:[created/VBN
+#                                complm:that/IN
+#                                nsubjpass:energy/NN
+#                                aux:ca/MD
+#                                neg:n't/RB
+#                                auxpass:be/VB
+#                                cc:or/CC
+#                                conj:destroyed/VBN]]]
+#   Detected 4 clause(s).
+#   - SVC (C: law@4, V: is@2, S: The@1, A?: of@5)
+#   - SVO (V: states@10, S: law@4, CCOMP: created@16)
+#   - SV (V: created@16, S: energy@12)
+#   - SV (V: destroyed@18, S: energy@12)
+8	"The"	"is"	"the law of conservation of energy"
+8	"The"	"is"	"the law"
+8	"the law of conservation of energy"	"states"	"that energy ca n't be created or destroyed"
+8	"energy"	"ca n't be created"
+8	"energy"	"ca n't be destroyed"

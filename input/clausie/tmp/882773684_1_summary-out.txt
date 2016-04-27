@@ -1,0 +1,157 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: The article on "What is Matter" just basically let us know that matter is in every substance or object and it contains volume and mass like birds, trees air and gas.
+# Semantic graph: [let/VBP
+#                  nsubj:[article/NN
+#                         det:The/DT
+#                         prep:[on/IN dep:[is/VBZ attr:What/WP nsubj:Matter/NNP]]]
+#                  advmod:just/RB
+#                  advmod:basically/RB
+#                  ccomp:[know/VBP
+#                         nsubj:us/PRP
+#                         ccomp:[is/VBZ
+#                                complm:that/IN
+#                                nsubj:matter/NN
+#                                prep:[in/IN
+#                                      pobj:[substance/NN det:every/DT cc:or/CC conj:object/NN]]
+#                                cc:and/CC
+#                                conj:[contains/VBZ
+#                                      nsubj:it/PRP
+#                                      dobj:[volume/NN
+#                                            cc:and/CC
+#                                            conj:mass/NN
+#                                            prep:[like/IN
+#                                                  pobj:[air/NN
+#                                                        nn:birds/NNS
+#                                                        conj:trees/NNS
+#                                                        cc:and/CC
+#                                                        conj:gas/NN]]]]]]]
+#   Detected 5 clause(s).
+#   - SV (V: is@6, S: Matter@7)
+#   - SVO (V: let@11, S: article@2, A?: just@9, A?: basically@10, CCOMP: know@13)
+#   - SVO (V: know@13, S: us@12, CCOMP: is@16)
+#   - SVA (V: is@16, S: matter@15, A!: in@17)
+#   - SVO (V: contains@24, S: it@23, O: volume@25)
+1	"Matter"	"What is"
+1	"The article on What is Matter"	"let"	"us know that matter is in every substance or object and it contains volume and mass like birds trees air and gas just"
+1	"The article on What is Matter"	"let"	"us know that matter is in every substance or object and it contains volume and mass like birds trees air and gas basically"
+1	"The article on What is Matter"	"let"	"us know that matter is in every substance or object and it contains volume and mass like birds trees air and gas"
+1	"us"	"know"	"that matter is in every substance or object and it contains volume and mass like birds trees air and gas"
+1	"matter"	"is"	"in every substance or object"
+1	"it"	"contains"	"volume and mass like birds trees air and gas"
+# Line 2: Properties are like how fast it falls to the bottom of the pool a marble or a Q-tip.
+# Semantic graph: [are/VBP
+#                  nsubj:Properties/NNP
+#                  prep:[like/IN
+#                        pcomp:[falls/VBZ
+#                               dep:[fast/JJ advmod:how/WRB]
+#                               nsubj:it/PRP
+#                               prep:[to/TO
+#                                     pobj:[bottom/NN
+#                                           det:the/DT
+#                                           prep:[of/IN pobj:[pool/NN det:the/DT]]]]
+#                               dobj:[marble/NN det:a/DT cc:or/CC conj:[Q-tip/NN det:a/DT]]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: are@2, S: Properties@1, A!: like@3)
+#   - SVO (V: falls@7, S: it@6, A?: to@8, O: marble@15)
+2	"Properties"	"are"	"like how fast it falls to the bottom of the pool a marble or a Q-tip"
+2	"it"	"falls"	"to the bottom of the pool a marble or a Q-tip"
+2	"it"	"falls"	"a marble or a Q-tip"
+# Line 3: Physical is the exterior, chemical is the heart or the things inside that we cant see.
+# Semantic graph: [heart/NN
+#                  ccomp:[exterior/NN nsubj:Physical/NNP cop:is/VBZ det:the/DT]
+#                  nsubj:chemical/NN
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  cc:or/CC
+#                  conj:[things/NNS det:the/DT]
+#                  advmod:inside/RB
+#                  ccomp:[see/VBP complm:that/IN nsubj:we/PRP advmod:cant/RB]]
+#   Detected 3 clause(s).
+#   - SVC (C: exterior@4, V: is@2, S: Physical@1)
+#   - SVC (C: heart@9, V: is@7, S: chemical@6, CCOMP: exterior@4, A?: inside@13, CCOMP: see@17)
+#   - SV (V: see@17, S: we@15, A?: cant@16)
+3	"Physical"	"is"	"the exterior"
+3	"chemical"	"is"	"the heart or the things Physical is the exterior inside that we cant see"
+3	"chemical"	"is"	"the heart or the things Physical is the exterior that we cant see"
+3	"we"	"see"	"cant"
+3	"we"	"see"
+# Line 4: Energy is something that moves a cause like by you throwing the ball you had energy.
+# Semantic graph: [something/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  rcmod:[moves/VBZ
+#                         nsubj:that/WDT
+#                         dobj:[cause/NN det:a/DT]
+#                         prep:[like/IN
+#                               pcomp:[by/IN
+#                                      pcomp:[throwing/VBG
+#                                             nsubj:you/PRP
+#                                             dobj:[ball/NN
+#                                                   det:the/DT
+#                                                   rcmod:[had/VBD nsubj:you/PRP dobj:energy/NN]]]]]]]
+#   Detected 4 clause(s).
+#   - SVC (C: something@3, V: is@2, S: Energy@1)
+#   - SVO (V: moves@5, S: something@3, O: cause@7, A?: like@8)
+#   - SVO (V: throwing@11, S: you@10, O: ball@13)
+#   - SVOO (V: had@15, S: you@14, O: energy@16, IO: ball@13)
+4	"Energy"	"is"	"something"
+4	"something"	"moves"	"a cause like by you throwing the ball"
+4	"something"	"moves"	"a cause"
+4	"you"	"throwing"	"the ball"
+4	"you"	"had"	"energy the ball"
+# Line 5: Kinetic and potential.
+# Semantic graph: [Kinetic/NNP cc:and/CC conj:potential/NN]
+#   Detected 0 clause(s).
+# Line 6: Potential is like putting a ball on top of the stairs and letting it fall.
+# Semantic graph: [is/VBZ
+#                  nsubj:Potential/JJ
+#                  prep:[like/IN
+#                        pcomp:[putting/VBG
+#                               dobj:[ball/NN det:a/DT]
+#                               prep:[on/IN
+#                                     pobj:[top/NN prep:[of/IN pobj:[stairs/NNS det:the/DT]]]]
+#                               cc:and/CC
+#                               conj:[letting/VBG dobj:it/PRP tmod:fall/NN]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: is@2, S: Potential@1, A!: like@3)
+6	"Potential"	"is"	"like putting a ball on top of the stairs and letting it fall"
+# Line 7: All the way down.
+# Semantic graph: [All/DT dep:[down/RB npadvmod:[way/NN det:the/DT]]]
+#   Detected 0 clause(s).
+# Line 8: Kinetic is just how it moves on its own.
+# Semantic graph: [is/VBZ
+#                  nsubj:Kinetic/NNP
+#                  ccomp:[moves/VBZ
+#                         advmod:[how/WRB advmod:just/RB]
+#                         nsubj:it/PRP
+#                         prep:[on/IN pobj:[own/JJ poss:its/PRP$]]]]
+#   Detected 3 clause(s).
+#   - SVC (V: is@2, S: Kinetic@1, CCOMP: moves@6)
+#   - SVA (V: moves@6, S: it@5, A?: how@4, A!: on@7)
+#   - SVO (S: its@8, V: "has", O: own@9)
+8	"Kinetic"	"is"	"just how it moves on its own"
+8	"it"	"moves"	"on its own just how"
+8	"it"	"moves"	"on its own"
+8	"its"	"has"	"own"

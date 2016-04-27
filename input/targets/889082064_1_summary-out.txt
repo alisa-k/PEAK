@@ -1,0 +1,136 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the stuff that all things are made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[things/NNS det:all/DT]
+#                         auxpass:are/VBP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@9)
+#   - SVA (V: made@9, S: things@7, A!: of@10)
+1	"Matter"	"is"	"the stuff that all things are made of"
+1	"all things"	"are made"	"of"
+# Line 2: Because matter has volume and a certain amount of mass and it can eb measured and can be detected.
+# Semantic graph: [measured/VBD
+#                  csubjpass:[has/VBZ
+#                             mark:Because/IN
+#                             nsubj:matter/NN
+#                             dobj:[volume/NN
+#                                   cc:and/CC
+#                                   conj:[amount/NN
+#                                         det:a/DT
+#                                         amod:certain/JJ
+#                                         prep:[of/IN pobj:mass/NN]]]
+#                             cc:and/CC
+#                             conj:[eb/VB nsubj:it/PRP aux:can/MD]]
+#                  cc:and/CC
+#                  conj:[detected/VBN aux:can/MD auxpass:be/VB]]
+#   Detected 4 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: volume@4)
+#   - SV (V: eb@14, S: it@12)
+#   - SV (V: measured@15, S: has@3)
+#   - SV (V: detected@19, S: has@3)
+2	"matter"	"has"	"volume and a certain amount of mass"
+2	"it"	"can eb"
+2	"Because matter has volume and a certain amount of mass and it can eb"	"measured"
+2	"Because matter has volume and a certain amount of mass and it can eb"	"can be detected"
+# Line 3: You can also detected matter with your sense.
+# Semantic graph: [detected/VBD
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  advmod:also/RB
+#                  dobj:matter/NN
+#                  prep:[with/IN pobj:[sense/NN poss:your/PRP$]]]
+#   Detected 2 clause(s).
+#   - SVO (V: detected@4, S: You@1, A?: also@3, O: matter@5, A?: with@6)
+#   - SVO (S: your@7, V: "has", O: sense@8)
+3	"You"	"can detected"	"matter also"
+3	"You"	"can detected"	"matter with your sense"
+3	"You"	"can detected"	"matter"
+3	"your"	"has"	"sense"
+# Line 4: Matter has to many change.
+# Semantic graph: [to/TO nsubj:Matter/NNP aux:has/VBZ pobj:[change/NN amod:many/JJ]]
+#   Detected 1 clause(s).
+#   - SVA (V: to@3, S: Matter@1, A!: change@5)
+4	"Matter"	"has to"	"many change"
+# Line 5: Those changes are call physical and chemical a physical change is if the matter didn't changes at all after a work done, a chemical changes is if the matter change to a new substances.
+# Semantic graph: [is/VBZ
+#                  ccomp:[call/NN
+#                         nsubj:[changes/NNS det:Those/DT]
+#                         cop:are/VBP
+#                         amod:[physical/NN cc:and/CC conj:chemical/NN]
+#                         rcmod:[is/VBZ
+#                                nsubj:[change/NN det:a/DT amod:physical/JJ]
+#                                advcl:[changes/NNS
+#                                       mark:if/IN
+#                                       nsubj:[matter/NN det:the/DT]
+#                                       aux:did/VBD
+#                                       neg:n't/RB
+#                                       prep:[at/IN
+#                                             pobj:[all/DT
+#                                                   prep:[after/IN
+#                                                         pobj:[work/NN
+#                                                               det:a/DT
+#                                                               partmod:done/VBN]]]]]]]
+#                  nsubj:[changes/NNS det:a/DT nn:chemical/NN]
+#                  advcl:[change/VBP
+#                         mark:if/IN
+#                         nsubj:[matter/NN det:the/DT]
+#                         prep:[to/TO pobj:[substances/NNS det:a/DT amod:new/JJ]]]]
+#   Detected 6 clause(s).
+#   - SVC (C: call@4, V: are@3, S: changes@2)
+#   - SVO (V: is@11, S: change@10, A?: changes@17, O: call@4)
+#   - SVA (V: changes@17, S: matter@14, A!: at@18)
+#   - SVA (V: "be done", S: work@22)
+#   - SVC (V: is@28, S: changes@27, CCOMP: call@4, A?: change@32)
+#   - SVA (V: change@32, S: matter@31, A!: to@33)
+5	"Those changes"	"are"	"call physical and chemical"
+5	"a physical change"	"is"	"if the matter did n't changes at all after a work done call physical and chemical"
+5	"a physical change"	"is"	"call physical and chemical"
+5	"the matter"	"did n't changes"	"at all after a work done"
+5	"a work"	"be done"
+5	"a chemical changes"	"is"	"Those changes are call physical and chemical if the matter change to a new substances"
+5	"a chemical changes"	"is"	"Those changes are call physical and chemical"
+5	"the matter"	"change"	"to a new substances"
+# Line 6: Energy is also part of a matter.
+# Semantic graph: [part/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  advmod:also/RB
+#                  prep:[of/IN pobj:[matter/NN det:a/DT]]]
+#   Detected 1 clause(s).
+#   - SVC (C: part@4, V: is@2, S: Energy@1, A?: also@3, A?: of@5)
+6	"Energy"	"is"	"part also"
+6	"Energy"	"is"	"part of a matter"
+6	"Energy"	"is"	"part"
+# Line 7: Energy can not be created.
+# Semantic graph: [created/VBN nsubjpass:Energy/NNP aux:can/MD neg:not/RB auxpass:be/VB]
+#   Detected 1 clause(s).
+#   - SV (V: created@5, S: Energy@1)
+7	"Energy"	"can not be created"

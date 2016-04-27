@@ -1,0 +1,57 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is essential part of life me it makes up all materials.
+# Semantic graph: [part/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  amod:essential/JJ
+#                  prep:[of/IN pobj:[life/NN dep:me/PRP]]
+#                  rcmod:[makes/VBZ nsubj:it/PRP prt:up/RP dobj:[materials/NNS det:all/DT]]]
+#   Detected 2 clause(s).
+#   - SVC (C: part@4, V: is@2, S: Matter@1, A?: of@5)
+#   - SVOO (V: makes@9, S: it@8, O: materials@12, IO: part@4)
+1	"Matter"	"is"	"essential part of life me"
+1	"Matter"	"is"	"essential part"
+1	"it"	"makes up"	"all materials essential part of life me"
+# Line 2: There consist of matter it has mass and volume.
+# Semantic graph: [consist/VBP
+#                  expl:There/EX
+#                  ccomp:[has/VBZ
+#                         prep:[of/IN pobj:matter/NN]
+#                         nsubj:it/PRP
+#                         dobj:[mass/NN cc:and/CC conj:volume/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@6, S: it@5, A?: of@3, O: mass@7)
+2	"it"	"has"	"mass and volume of matter"
+2	"it"	"has"	"mass and volume"
+# Line 3: The [illegible words] it to can in to a whole system
+# Semantic graph: [words/NNS
+#                  det:The/DT
+#                  amod:illegible/JJ
+#                  dep:[it/PRP
+#                       prep:[to/TO
+#                             pobj:[can/NN
+#                                   prep:[in/IN
+#                                         pcomp:[to/TO pobj:[system/NN det:a/DT amod:whole/JJ]]]]]]]
+#   Detected 0 clause(s).

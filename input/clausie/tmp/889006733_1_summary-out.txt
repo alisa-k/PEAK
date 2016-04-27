@@ -1,0 +1,129 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: The universe is large compared to earth, but the things we find on earth can be as big and greater.
+# Semantic graph: [large/JJ
+#                  nsubj:[universe/NN det:The/DT]
+#                  cop:is/VBZ
+#                  prep:[compared/VBN pcomp:[to/TO pobj:earth/NN]]
+#                  cc:but/CC
+#                  conj:[big/JJ
+#                        nsubj:[things/NNS
+#                               det:the/DT
+#                               rcmod:[find/VBP nsubj:we/PRP prep:[on/IN pobj:earth/NN]]]
+#                        aux:can/MD
+#                        cop:be/VB
+#                        advmod:as/RB
+#                        cc:and/CC
+#                        conj:greater/JJR]]
+#   Detected 3 clause(s).
+#   - SVC (C: large@4, V: is@3, S: universe@2, A?: compared@5)
+#   - SVO (V: find@13, S: we@12, A?: on@14, O: things@11)
+#   - SVC (C: big@19, V: be@17, S: things@11, A-: as@18)
+1	"The universe"	"is"	"large compared to earth"
+1	"The universe"	"is"	"large"
+1	"we"	"find"	"on earth the things"
+1	"we"	"find"	"the things"
+1	"the things"	"can be"	"big and greater"
+# Line 2: Matter is in all the things we see on earth.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  prep:[in/IN
+#                        pobj:[things/NNS
+#                              predet:all/PDT
+#                              det:the/DT
+#                              rcmod:[see/VBP nsubj:we/PRP prep:[on/IN pobj:earth/NN]]]]]
+#   Detected 2 clause(s).
+#   - SVA (V: is@2, S: Matter@1, A!: in@3)
+#   - SVO (V: see@8, S: we@7, A?: on@9, O: things@6)
+2	"Matter"	"is"	"in all the things"
+2	"we"	"see"	"on earth all the things"
+2	"we"	"see"	"all the things"
+# Line 3: Matter has to have a shape meaning mass and volume; even air that we breath has matter.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  xcomp:[have/VB
+#                         aux:to/TO
+#                         dobj:[shape/NN
+#                               det:a/DT
+#                               partmod:[meaning/VBG dobj:[mass/NN cc:and/CC conj:volume/NN]]
+#                               advmod:even/RB
+#                               dep:[air/NN
+#                                    dep:[has/VBZ
+#                                         complm:that/IN
+#                                         nsubj:[breath/NN dep:we/VBP]
+#                                         dobj:matter/NN]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: has@2, S: Matter@1, XCOMP: have@4)
+#   - SVA (V: "be meaning", S: shape@6, O: mass@8)
+#   - SVO (V: has@17, S: breath@16, O: matter@18)
+3	"Matter"	"has"	"to have a shape meaning mass and volume even air that we breath has matter"
+3	"a shape even air that we breath has matter"	"be meaning"	"mass and volume"
+3	"we breath"	"has"	"matter"
+# Line 4: We humans have played with matter and mixed elements to create new compounds; these compounds have chemical and physical changes.
+# Semantic graph: [played/VBN
+#                  nsubj:[humans/NNS dep:We/PRP]
+#                  aux:have/VBP
+#                  prep:[with/IN pobj:[elements/NNS nn:[matter/NN cc:and/CC conj:mixed/JJ]]]
+#                  xcomp:[create/VB aux:to/TO dobj:[compounds/NNS amod:new/JJ]]
+#                  parataxis:[have/VBP
+#                             nsubj:[compounds/NNS det:these/DT]
+#                             dobj:[changes/NNS amod:[chemical/NN cc:and/CC conj:physical/NN]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: played@4, S: humans@2, A?: with@5, XCOMP: create@11)
+#   - SVO (V: have@17, S: compounds@16, O: changes@21)
+4	"We humans"	"have played"	"with matter and mixed elements to create new compounds"
+4	"We humans"	"have played"	"to create new compounds"
+4	"these compounds"	"have"	"chemical and physical changes"
+# Line 5: The matter can change physically with shape and the energy that cannot be broken or destroyed meaning it has a position or in motion.
+# Semantic graph: [change/VB
+#                  nsubj:[matter/NN det:The/DT]
+#                  aux:can/MD
+#                  acomp:[physically/RB
+#                         prep:[with/IN
+#                               pobj:[shape/NN
+#                                     cc:and/CC
+#                                     conj:[energy/NN
+#                                           det:the/DT
+#                                           rcmod:[broken/VBN
+#                                                  nsubjpass:that/WDT
+#                                                  aux:can/MD
+#                                                  neg:not/RB
+#                                                  auxpass:be/VB
+#                                                  cc:or/CC
+#                                                  conj:destroyed/VBN
+#                                                  xcomp:[meaning/VBG
+#                                                         ccomp:[has/VBZ
+#                                                                nsubj:it/PRP
+#                                                                dobj:[position/NN det:a/DT]]]]]]
+#                               cc:or/CC
+#                               conj:[in/IN pobj:motion/NN]]]]
+#   Detected 4 clause(s).
+#   - SVC (V: change@4, S: matter@2, ACOMP: physically@5)
+#   - SVO (V: broken@15, S: energy@10, XCOMP: meaning@18)
+#   - SVO (V: destroyed@17, S: energy@10, XCOMP: meaning@18)
+#   - SVO (V: has@20, S: it@19, O: position@22)
+5	"The matter"	"can change"	"physically with shape and the energy or in motion"
+5	"the energy"	"can not be broken"	"meaning it has a position"
+5	"the energy"	"can not be destroyed"	"meaning it has a position"
+5	"it"	"has"	"a position"

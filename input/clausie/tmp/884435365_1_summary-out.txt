@@ -1,0 +1,107 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter the key of the universe, all matter whether visible or not, it's there.
+# Semantic graph: [matter/VBP
+#                  ccomp:[Matter/VB
+#                         dobj:[key/NN det:the/DT prep:[of/IN pobj:[universe/NN det:the/DT]]]]
+#                  nsubj:all/DT
+#                  ccomp:['s/VBZ
+#                         ccomp:[visible/JJ dep:whether/IN cc:or/CC conj:not/RB]
+#                         nsubj:it/PRP
+#                         advmod:there/RB]]
+#   Detected 2 clause(s).
+#   - SVOC (V: matter@9, S: all@8, CCOMP: Matter@1, CCOMP: 's@16)
+#   - SVC (V: 's@16, S: it@15, CCOMP: visible@11, A?: there@17)
+1	"all"	"matter"	"Matter the key of the universe whether visible or not it 's there"
+1	"it"	"'s"	"whether visible or not there"
+1	"it"	"'s"	"whether visible or not"
+# Line 2: Matter has different properties which are physical properties, chemical properties, also there are changes which are physical and chemical changes.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[properties/NNS
+#                        amod:different/JJ
+#                        rcmod:[properties/NNS
+#                               nsubj:which/WDT
+#                               cop:are/VBP
+#                               amod:physical/JJ
+#                               appos:[properties/NNS nn:chemical/NN]
+#                               advmod:also/RB
+#                               rcmod:[are/VBP
+#                                      expl:there/EX
+#                                      nsubj:[changes/NNS
+#                                             rcmod:[changes/NNS
+#                                                    nsubj:which/WDT
+#                                                    cop:are/VBP
+#                                                    amod:[physical/NN
+#                                                          cc:and/CC
+#                                                          conj:chemical/NN]]]]]]]
+#   Detected 5 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: properties@4)
+#   - SVC (C: properties@8, V: are@6, S: properties@4, A?: also@13)
+#   - SVC (S: properties@8, V: "is", C: properties@11)
+#   - EXISTENTIAL (V: are@15, S: changes@16, O: properties@8)
+#   - SVC (C: changes@22, V: are@18, S: changes@16)
+2	"Matter"	"has"	"different properties"
+2	"different properties"	"are"	"physical properties also"
+2	"different properties"	"are"	"physical properties"
+2	"which are physical properties also"	"is"	"chemical properties"
+2	"changes"	"there are"	"physical properties"
+2	"changes"	"are"	"physical and chemical changes"
+# Line 3: Physical properties, is the property where the matter it's in the original shape and form, chemical properties is the reactivity that the matter has with the environment or manually altered to produce near substances.
+# Semantic graph: [reactivity/NN
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  ccomp:[property/NN
+#                         cop:is/VBZ
+#                         det:the/DT
+#                         rcmod:['s/VBZ
+#                                advmod:[where/WRB dep:[matter/NN det:the/DT]]
+#                                nsubj:it/PRP
+#                                prep:[in/IN
+#                                      pobj:[shape/NN
+#                                            det:the/DT
+#                                            amod:original/JJ
+#                                            cc:and/CC
+#                                            conj:form/NN]]]]
+#                  nsubj:[properties/NNS nn:chemical/NN]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[altered/VBN
+#                         complm:that/IN
+#                         nsubj:[matter/NN det:the/DT]
+#                         aux:has/VBZ
+#                         prep:[with/IN
+#                               pobj:[environment/NN det:the/DT cc:or/CC advmod:manually/RB]]
+#                         xcomp:[produce/VB aux:to/TO dobj:[substances/NNS amod:near/JJ]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: 's@11, S: it@10, A?: where@7, A?: in@12, O: property@6)
+#   - SVC (C: reactivity@23, V: is@21, S: properties@2, CCOMP: property@6, CCOMP: altered@33)
+#   - SVC (C: reactivity@23, V: is@21, S: properties@20, CCOMP: property@6, CCOMP: altered@33)
+#   - SVO (V: altered@33, S: matter@26, A?: with@28, XCOMP: produce@35)
+3	"it"	"'s"	"the property where the matter"
+3	"it"	"'s"	"in the original shape and form the property"
+3	"it"	"'s"	"the property"
+3	"Physical properties"	"is"	"the reactivity is the property that the matter has with the environment or manually altered to produce near substances"
+3	"chemical properties"	"is"	"the reactivity is the property that the matter has with the environment or manually altered to produce near substances"
+3	"the matter"	"has altered"	"to produce near substances with the environment or manually"
+3	"the matter"	"has altered"	"to produce near substances"

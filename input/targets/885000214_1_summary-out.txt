@@ -1,0 +1,175 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: All objects and substances are matter.
+# Semantic graph: [matter/NN
+#                  nsubj:[objects/NNS det:All/DT cc:and/CC conj:substances/NNS]
+#                  aux:are/VBP]
+#   Detected 1 clause(s).
+#   - SV (V: matter@6, S: objects@2)
+1	"All objects and substances"	"are matter"
+# Line 2: Beause the have volume and mass.
+# Semantic graph: [have/VBP
+#                  nsubj:[the/NNP nn:Beause/NNP]
+#                  dobj:[volume/NN cc:and/CC conj:mass/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: have@3, S: the@2, O: volume@4)
+2	"Beause the"	"have"	"volume and mass"
+# Line 3: Some matters are easier to sense such as trees or sofas.
+# Semantic graph: [easier/JJR
+#                  nsubj:[matters/NNS det:Some/DT]
+#                  cop:are/VBP
+#                  prep:[to/TO
+#                        pobj:[sense/NN
+#                              prep:[as/IN mwe:such/JJ pobj:[trees/NNS cc:or/CC conj:sofas/NNS]]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: easier@4, V: are@3, S: matters@2, A?: to@5)
+3	"Some matters"	"are"	"easier to sense such as trees or sofas"
+3	"Some matters"	"are"	"easier"
+# Line 4: Some are harder to sense such as micro objects or air.
+# Semantic graph: [harder/JJR
+#                  nsubj:Some/DT
+#                  cop:are/VBP
+#                  prep:[to/TO
+#                        pobj:[sense/NN
+#                              prep:[as/IN
+#                                    mwe:such/JJ
+#                                    pobj:[objects/NNS amod:micro/JJ cc:or/CC conj:air/NN]]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: harder@3, V: are@2, S: Some@1, A?: to@4)
+4	"Some"	"are"	"harder to sense such as micro objects or air"
+4	"Some"	"are"	"harder"
+# Line 5: The characteristics of the properties of matter help classify and identify it.
+# Semantic graph: [help/VBP
+#                  nsubj:[characteristics/NNS
+#                         det:The/DT
+#                         prep:[of/IN
+#                               pobj:[properties/NNS det:the/DT prep:[of/IN pobj:matter/NN]]]]
+#                  xcomp:[classify/VB cc:and/CC conj:identify/VB dobj:it/PRP]]
+#   Detected 1 clause(s).
+#   - SVO (V: help@8, S: characteristics@2, XCOMP: classify@9)
+5	"The characteristics of the properties of matter"	"help"	"classify it"
+5	"The characteristics of the properties of matter"	"help"	"identify it"
+# Line 6: The physical properties of the matter is observed without changing the chemistry of it.
+# Semantic graph: [observed/JJ
+#                  nsubj:[properties/NNS
+#                         det:The/DT
+#                         amod:physical/JJ
+#                         prep:[of/IN pobj:[matter/NN det:the/DT]]]
+#                  cop:is/VBZ
+#                  prep:[without/IN
+#                        pcomp:[changing/VBG
+#                               dobj:[chemistry/NN det:the/DT prep:[of/IN pobj:it/PRP]]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: observed@8, V: is@7, S: properties@3, A?: without@9)
+6	"The physical properties of the matter"	"is"	"observed without changing the chemistry of it"
+6	"The physical properties of the matter"	"is"	"observed"
+# Line 7: Chemical properties is a matter that can be change to substance with new properties.
+# Semantic graph: [matter/NN
+#                  nsubj:[properties/NNS nn:Chemical/NNP]
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  rcmod:[change/NN
+#                         nsubj:that/WDT
+#                         aux:can/MD
+#                         cop:be/VB
+#                         prep:[to/TO
+#                               pobj:[substance/NN
+#                                     prep:[with/IN pobj:[properties/NNS amod:new/JJ]]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: matter@5, V: is@3, S: properties@2)
+#   - SVC (C: change@9, V: be@8, S: matter@5, A?: to@10)
+7	"Chemical properties"	"is"	"a matter"
+7	"a matter"	"can be"	"change to substance with new properties"
+7	"a matter"	"can be"	"change"
+# Line 8: When changing the shape and size of the matter does not change the chemistry of it.
+# Semantic graph: [change/VB
+#                  advcl:[changing/VBG
+#                         advmod:When/WRB
+#                         dobj:[shape/NN
+#                               det:the/DT
+#                               cc:and/CC
+#                               conj:size/NN
+#                               prep:[of/IN pobj:[matter/NN det:the/DT]]]]
+#                  aux:does/VBZ
+#                  neg:not/RB
+#                  dobj:[chemistry/NN det:the/DT prep:[of/IN pobj:it/PRP]]]
+#   Detected 0 clause(s).
+# Line 9: But when chemical reaction happens to the matter every changes.
+# Semantic graph: [happens/VBZ
+#                  dep:But/CC
+#                  advmod:when/WRB
+#                  nsubj:[reaction/NN nn:chemical/NN]
+#                  prep:[to/TO pobj:[matter/NN det:the/DT dep:[changes/NNS det:every/DT]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: happens@5, S: reaction@4, A?: when@2, A!: to@6)
+9	"chemical reaction"	"happens"	"to the matter every changes when"
+9	"chemical reaction"	"happens"	"to the matter every changes"
+# Line 10: All matter has energy and is one of is properties energy cannot be destroyed and created but can be pass to one object to another.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN det:All/DT]
+#                  dobj:energy/NN
+#                  cc:and/CC
+#                  conj:[one/CD
+#                        cop:is/VBZ
+#                        prep:[of/IN
+#                              pcomp:[properties/NNS
+#                                     cop:is/VBZ
+#                                     rcmod:[destroyed/VBN
+#                                            nsubjpass:energy/NN
+#                                            aux:can/MD
+#                                            neg:not/RB
+#                                            auxpass:be/VB
+#                                            cc:and/CC
+#                                            conj:created/VBN
+#                                            cc:but/CC
+#                                            conj:[pass/VB
+#                                                  aux:can/MD
+#                                                  aux:be/VB
+#                                                  prep:[to/TO pobj:[object/NN num:one/CD]]
+#                                                  prep:[to/TO pobj:another/DT]]]]]]]
+#   Detected 5 clause(s).
+#   - SVO (V: has@3, S: matter@2, O: energy@4)
+#   - SVC (C: one@7, V: is@6, S: matter@2, A?: of@8)
+#   - SVO (V: destroyed@15, S: energy@11, O: properties@10)
+#   - SVO (V: created@17, S: energy@11, O: properties@10)
+#   - SVO (V: pass@21, S: energy@11, A?: to@22, A?: to@25, O: properties@10)
+10	"All matter"	"has"	"energy"
+10	"All matter"	"is"	"one of is properties"
+10	"All matter"	"is"	"one"
+10	"energy"	"can not be destroyed"	"properties"
+10	"energy"	"can not be created"	"properties"
+10	"energy"	"can be pass"	"to one object properties"
+10	"energy"	"can be pass"	"to another properties"
+10	"energy"	"can be pass"	"properties"
+# Line 11: Some forms energy are mechanical energy, kinetic energy and potential energy.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN det:Some/DT nn:forms/NNS]
+#                  cop:are/VBP
+#                  amod:mechanical/JJ
+#                  conj:[energy/NN amod:kinetic/JJ]
+#                  cc:and/CC
+#                  conj:[energy/NN amod:potential/JJ]]
+#   Detected 1 clause(s).
+#   - SVC (C: energy@6, V: are@4, S: energy@3)
+11	"Some forms energy"	"are"	"mechanical energy kinetic energy and potential energy"

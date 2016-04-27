@@ -1,0 +1,102 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the stuff that the universe is made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[universe/NN det:the/DT]
+#                         auxpass:is/VBZ
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@9)
+#   - SVA (V: made@9, S: universe@7, A!: of@10)
+1	"Matter"	"is"	"the stuff that the universe is made of"
+1	"the universe"	"is made"	"of"
+# Line 2: Matter has all space, mass, and volume.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[space/NN det:all/DT conj:mass/NN cc:and/CC conj:volume/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: space@4)
+2	"Matter"	"has"	"all space mass and volume"
+# Line 3: Matter is a thing you can easily observe.
+# Semantic graph: [thing/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  rcmod:[observe/VB nsubj:you/PRP aux:can/MD advmod:easily/RB]]
+#   Detected 2 clause(s).
+#   - SVC (C: thing@4, V: is@2, S: Matter@1)
+#   - SVO (V: observe@8, S: you@5, A?: easily@7, O: thing@4)
+3	"Matter"	"is"	"a thing"
+3	"you"	"can observe"	"a thing easily"
+3	"you"	"can observe"	"a thing"
+# Line 4: Matter has physical and chemical changes.
+# Semantic graph: [has/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[changes/NNS amod:[physical/NN cc:and/CC conj:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@2, S: Matter@1, O: changes@6)
+4	"Matter"	"has"	"physical and chemical changes"
+# Line 5: Energy is related to matter it lights up a light bulb and makes fan spin.
+# Semantic graph: [related/VBN
+#                  nsubjpass:Energy/NNP
+#                  auxpass:is/VBZ
+#                  xcomp:[matter/VB
+#                         aux:to/TO
+#                         ccomp:[lights/VB
+#                                nsubj:it/PRP
+#                                prt:up/RP
+#                                dobj:[bulb/NN det:a/DT amod:light/JJ]]]
+#                  cc:and/CC
+#                  conj:[makes/VBZ dobj:[spin/NN nn:fan/NN]]]
+#   Detected 3 clause(s).
+#   - SVO (V: related@3, S: Energy@1, XCOMP: matter@5)
+#   - SVO (V: makes@13, S: Energy@1, O: spin@15)
+#   - SVO (V: lights@7, S: it@6, O: bulb@11)
+5	"Energy"	"is related"	"to matter it lights up a light bulb"
+5	"Energy"	"makes"	"fan spin"
+5	"it"	"lights up"	"a light bulb"
+# Line 6: Matter can be detected because you can see it.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  advcl:[see/VB mark:because/IN nsubj:you/PRP aux:can/MD dobj:it/PRP]]
+#   Detected 2 clause(s).
+#   - SVA (V: detected@4, S: Matter@1, A!: see@8)
+#   - SVO (V: see@8, S: you@6, O: it@9)
+6	"Matter"	"can be detected"	"because you can see it"
+6	"you"	"can see"	"it"
+# Line 7: Feel it and smell it.
+# Semantic graph: [Feel/VB dobj:it/PRP cc:and/CC conj:[smell/VBP dobj:it/PRP]]
+#   Detected 0 clause(s).
+# Line 8: A microscope can classify matter.
+# Semantic graph: [classify/VB nsubj:[microscope/NN det:A/DT] aux:can/MD dobj:matter/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: classify@4, S: microscope@2, O: matter@5)
+8	"A microscope"	"can classify"	"matter"

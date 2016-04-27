@@ -1,0 +1,196 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: In the steps before in this unit we learned about the subject of matter and its definition and other scientific terms we learned that matter are all the substances and objects in the universe.
+# Semantic graph: [learned/VBD
+#                  prep:[In/IN
+#                        pobj:[steps/NNS
+#                              det:the/DT
+#                              dep:[learned/VBD
+#                                   mark:before/IN
+#                                   prep:[in/IN pobj:[unit/NN det:this/DT]]
+#                                   nsubj:we/PRP
+#                                   prep:[about/IN
+#                                         pobj:[subject/NN
+#                                               det:the/DT
+#                                               prep:[of/IN pobj:matter/NN]
+#                                               cc:and/CC
+#                                               conj:[definition/NN
+#                                                     poss:its/PRP$
+#                                                     cc:and/CC
+#                                                     conj:[terms/NNS
+#                                                           amod:other/JJ
+#                                                           amod:scientific/JJ]]]]]]]
+#                  nsubj:we/PRP
+#                  ccomp:[substances/NNS
+#                         complm:that/IN
+#                         nsubj:matter/NN
+#                         cop:are/VBP
+#                         dep:all/PDT
+#                         det:the/DT
+#                         cc:and/CC
+#                         conj:objects/NNS
+#                         prep:[in/IN pobj:[universe/NN det:the/DT]]]]
+#   Detected 4 clause(s).
+#   - SVA (V: learned@9, S: we@8, A?: in@5, A!: about@10)
+#   - SVO (S: its@16, V: "has", O: definition@17)
+#   - SVO (V: learned@23, S: we@22, A?: In@1, CCOMP: substances@29)
+#   - SVC (C: substances@29, V: are@26, S: matter@25, A?: in@32)
+1	"we"	"learned"	"about the subject of matter and its definition and other scientific terms in this unit"
+1	"we"	"learned"	"about the subject of matter and its definition and other scientific terms"
+1	"its"	"has"	"definition and other scientific terms"
+1	"we"	"learned"	"that matter are all the substances and objects in the universe In the steps before in this unit we learned about the subject of matter and its definition and other scientific terms"
+1	"we"	"learned"	"that matter are all the substances and objects in the universe"
+1	"matter"	"are"	"all the substances and objects in the universe"
+1	"matter"	"are"	"all the substances and objects"
+# Line 2: We also learned that all matter can be detected and measured because it takes up space and has a certain amount of mass.
+# Semantic graph: [learned/VBD
+#                  nsubj:We/PRP
+#                  advmod:also/RB
+#                  ccomp:[detected/VBN
+#                         complm:that/IN
+#                         nsubjpass:[matter/NN det:all/DT]
+#                         aux:can/MD
+#                         auxpass:be/VB
+#                         cc:and/CC
+#                         conj:measured/VBN
+#                         advcl:[takes/VBZ
+#                                mark:because/IN
+#                                nsubj:it/PRP
+#                                prt:up/RP
+#                                dobj:space/NN
+#                                cc:and/CC
+#                                conj:[has/VBZ
+#                                      dobj:[amount/NN
+#                                            det:a/DT
+#                                            amod:certain/JJ
+#                                            prep:[of/IN pobj:mass/NN]]]]]]
+#   Detected 5 clause(s).
+#   - SVO (V: learned@3, S: We@1, A?: also@2, CCOMP: detected@9)
+#   - SVA (V: detected@9, S: matter@6, A!: takes@14)
+#   - SVA (V: measured@11, S: matter@6, A!: takes@14)
+#   - SVO (V: takes@14, S: it@13, O: space@16)
+#   - SVO (V: has@18, S: it@13, O: amount@21)
+2	"We"	"learned"	"that all matter can be detected and measured because it takes up space and has a certain amount of mass also"
+2	"We"	"learned"	"that all matter can be detected and measured because it takes up space and has a certain amount of mass"
+2	"all matter"	"can be detected"	"because it takes up space and has a certain amount of mass"
+2	"all matter"	"can be measured"	"because it takes up space and has a certain amount of mass"
+2	"it"	"takes up"	"space"
+2	"it"	"has"	"a certain amount of mass"
+# Line 3: We learned that properties are what is used to classify matter.
+# Semantic graph: [learned/VBD
+#                  nsubj:We/PRP
+#                  ccomp:[are/VBP
+#                         complm:that/IN
+#                         nsubj:properties/NNS
+#                         ccomp:[used/VBN
+#                                nsubjpass:what/WP
+#                                auxpass:is/VBZ
+#                                xcomp:[classify/VB aux:to/TO dobj:matter/NN]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: learned@2, S: We@1, CCOMP: are@5)
+#   - SVC (V: are@5, S: properties@4, CCOMP: used@8)
+#   - SVO (V: used@8, S: what@6, XCOMP: classify@10)
+3	"We"	"learned"	"that properties are what is used to classify matter"
+3	"properties"	"are"	"what is used to classify matter"
+3	"what"	"is used"	"to classify matter"
+# Line 4: The terms physical and chemical change and what are the differences between them and it's the fact that when there is a chemical change new substances are created.
+# Semantic graph: [change/VBP
+#                  nsubj:[terms/NNS det:The/DT amod:[physical/NN cc:and/CC conj:chemical/NN]]
+#                  cc:and/CC
+#                  conj:[differences/NNS
+#                        nsubj:what/WDT
+#                        cop:are/VBP
+#                        det:the/DT
+#                        prep:[between/IN pobj:them/PRP]
+#                        cc:and/CC
+#                        conj:[fact/NN
+#                              nsubj:it/PRP
+#                              cop:'s/VBZ
+#                              det:the/DT
+#                              ccomp:[created/VBN
+#                                     complm:that/IN
+#                                     advcl:[is/VBZ
+#                                            advmod:when/WRB
+#                                            expl:there/EX
+#                                            nsubj:[change/NN det:a/DT amod:chemical/JJ]]
+#                                     nsubjpass:[substances/NNS amod:new/JJ]
+#                                     auxpass:are/VBP]]]]
+#   Detected 5 clause(s).
+#   - SV (V: change@6, S: terms@2)
+#   - SVC (C: differences@11, V: are@9, S: what@8, A?: between@12)
+#   - SVC (C: fact@18, V: 's@16, S: it@15, CCOMP: created@29)
+#   - EXISTENTIAL (V: is@22, S: change@25, A?: when@20)
+#   - SV (V: created@29, S: substances@27, A?: is@22)
+4	"The terms physical and chemical"	"change"
+4	"what"	"are"	"the differences between them"
+4	"what"	"are"	"the differences"
+4	"it"	"'s"	"the fact that when there is a chemical change new substances are created"
+4	"a chemical change"	"there is"	"when"
+4	"a chemical change"	"there is"
+4	"new substances"	"are created"	"when there is a chemical change"
+4	"new substances"	"are created"
+# Line 5: We learned that energy is a property of matter and that all matter has it.
+# Semantic graph: [learned/VBD
+#                  nsubj:We/PRP
+#                  ccomp:[property/NN
+#                         complm:that/IN
+#                         nsubj:energy/NN
+#                         cop:is/VBZ
+#                         det:a/DT
+#                         prep:[of/IN pobj:matter/NN]
+#                         cc:and/CC
+#                         conj:[has/VBZ complm:that/IN nsubj:[matter/NN det:all/DT] dobj:it/PRP]]]
+#   Detected 3 clause(s).
+#   - SVO (V: learned@2, S: We@1, CCOMP: property@7)
+#   - SVC (C: property@7, V: is@5, S: energy@4, A?: of@8)
+#   - SVO (V: has@14, S: matter@13, O: it@15)
+5	"We"	"learned"	"that energy is a property of matter and that all matter has it"
+5	"energy"	"is"	"a property of matter"
+5	"energy"	"is"	"a property"
+5	"all matter"	"has"	"it"
+# Line 6: And finally we learned about mechanical energy is energy an object has because of its motion and position.
+# Semantic graph: [learned/VBD
+#                  cc:And/CC
+#                  advmod:finally/RB
+#                  nsubj:we/PRP
+#                  ccomp:[energy/NN
+#                         nsubj:[energy/NN advmod:about/RB amod:mechanical/JJ]
+#                         cop:is/VBZ
+#                         rcmod:[of/IN
+#                                nsubj:[object/NN det:an/DT]
+#                                aux:has/VBZ
+#                                advmod:because/RB
+#                                pobj:[motion/NN poss:its/PRP$ cc:and/CC conj:position/NN]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: learned@4, S: we@3, A?: finally@2, CCOMP: energy@9)
+#   - SVC (C: energy@9, V: is@8, S: energy@7)
+#   - SVO (V: of@14, S: object@11, A?: because@13, A?: motion@16, O: energy@9)
+#   - SVO (S: its@15, V: "has", O: motion@16)
+6	"we"	"learned"	"about mechanical energy is energy finally"
+6	"we"	"learned"	"about mechanical energy is energy"
+6	"about mechanical energy"	"is"	"energy"
+6	"an object"	"has of"	"energy because"
+6	"an object"	"has of"	"its motion and position energy"
+6	"an object"	"has of"	"energy"
+6	"its"	"has"	"motion and position"

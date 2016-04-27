@@ -1,0 +1,161 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the substance in which physical objects are composed of.
+# Semantic graph: [substance/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  rcmod:[composed/VBN
+#                         rel:[in/IN pobj:which/WDT]
+#                         nsubjpass:[objects/NNS amod:physical/JJ]
+#                         auxpass:are/VBP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: substance@4, V: is@2, S: Matter@1)
+#   - SVA (V: composed@10, S: objects@8, S: in@5, A?: of@11)
+1	"Matter"	"is"	"the substance"
+1	"physical objects"	"are composed"	"of in the substance"
+1	"physical objects"	"are composed"	"in the substance"
+# Line 2: The classification of matter is identified by the chemical and physical properties of the object.
+# Semantic graph: [identified/VBN
+#                  nsubjpass:[classification/NN det:The/DT prep:[of/IN pobj:matter/NN]]
+#                  auxpass:is/VBZ
+#                  prep:[by/IN
+#                        pobj:[properties/NNS
+#                              det:the/DT
+#                              amod:[chemical/NN cc:and/CC conj:physical/NN]
+#                              prep:[of/IN pobj:[object/NN det:the/DT]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: identified@6, S: classification@2, A!: by@7)
+2	"The classification of matter"	"is identified"	"by the chemical and physical properties of the object"
+# Line 3: A physical property of a substances is the alteration of shape, mass and, etc.
+# Semantic graph: [alteration/NN
+#                  nsubj:[property/NN
+#                         det:A/DT
+#                         amod:physical/JJ
+#                         prep:[of/IN pobj:[substances/NNS det:a/DT]]]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN pobj:shape/NN]
+#                  conj:mass/NN
+#                  cc:and/CC
+#                  advmod:etc./RB]
+#   Detected 1 clause(s).
+#   - SVC (C: alteration@9, V: is@7, S: property@3, A?: of@10, A?: etc.@16)
+3	"A physical property of a substances"	"is"	"the alteration mass and of shape"
+3	"A physical property of a substances"	"is"	"the alteration mass and etc."
+3	"A physical property of a substances"	"is"	"the alteration mass and"
+# Line 4: The chemical property of matter is the complete change of a substances identity.
+# Semantic graph: [change/NN
+#                  nsubj:[property/NN det:The/DT amod:chemical/JJ prep:[of/IN pobj:matter/NN]]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  amod:complete/JJ
+#                  prep:[of/IN pobj:[identity/NN det:a/DT nn:substances/NNS]]]
+#   Detected 1 clause(s).
+#   - SVC (C: change@9, V: is@6, S: property@3, A?: of@10)
+4	"The chemical property of matter"	"is"	"the complete change of a substances identity"
+4	"The chemical property of matter"	"is"	"the complete change"
+# Line 5: Energy is a scalar physical quantity that a property of objects and system of objects.
+# Semantic graph: [quantity/NN
+#                  nsubj:Energy/NNP
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  amod:scalar/JJ
+#                  amod:physical/JJ
+#                  prep:[that/IN
+#                        pobj:[property/NN
+#                              det:a/DT
+#                              prep:[of/IN pobj:[objects/NNS cc:and/CC conj:system/NN]]]]
+#                  prep:[of/IN pobj:objects/NNS]]
+#   Detected 1 clause(s).
+#   - SVC (C: quantity@6, V: is@2, S: Energy@1, A?: that@7, A?: of@14)
+5	"Energy"	"is"	"a scalar physical quantity that a property of objects and system"
+5	"Energy"	"is"	"a scalar physical quantity of objects"
+5	"Energy"	"is"	"a scalar physical quantity"
+# Line 6: The law of conservation of energy state energy is neither created or destroyed, but constantly transferring.
+# Semantic graph: [created/VBN
+#                  nsubjpass:[law/NN
+#                             det:The/DT
+#                             prep:[of/IN
+#                                   pobj:[conservation/NN
+#                                         prep:[of/IN pobj:[energy/NN nn:energy/NN nn:state/NN]]]]]
+#                  auxpass:is/VBZ
+#                  advmod:neither/RB
+#                  cc:or/CC
+#                  conj:destroyed/VBN
+#                  cc:but/CC
+#                  advmod:constantly/RB
+#                  conj:transferring/VBG]
+#   Detected 3 clause(s).
+#   - SVA (V: created@11, S: law@2, A?: neither@10, A!: constantly@16)
+#   - SV (V: transferring@17, S: law@2, A?: neither@10, A?: constantly@16)
+#   - SVA (V: destroyed@13, S: law@2, A?: neither@10, A!: constantly@16)
+6	"The law of conservation of energy state energy"	"is created"	"constantly neither"
+6	"The law of conservation of energy state energy"	"is created"	"constantly"
+6	"The law of conservation of energy state energy"	"is transferring"	"neither"
+6	"The law of conservation of energy state energy"	"is transferring"	"constantly"
+6	"The law of conservation of energy state energy"	"is transferring"
+6	"The law of conservation of energy state energy"	"is destroyed"	"constantly neither"
+6	"The law of conservation of energy state energy"	"is destroyed"	"constantly"
+# Line 7: Mechanical energy is the energy of an objects by it's position and motion.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[of/IN
+#                        pobj:[objects/NNS
+#                              det:an/DT
+#                              prep:[by/IN
+#                                    pobj:[position/NN
+#                                          poss:[it/PRP possessive:'s/POS]
+#                                          cc:and/CC
+#                                          conj:motion/NN]]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2, A?: of@6)
+#   - SVO (S: it@10, V: "has", O: position@12)
+7	"Mechanical energy"	"is"	"the energy of an objects by it 's position and motion"
+7	"Mechanical energy"	"is"	"the energy"
+7	"it"	"has"	"position and motion"
+# Line 8: The potential energy is a function of the position of an object.
+# Semantic graph: [function/NN
+#                  nsubj:[energy/NN det:The/DT amod:potential/JJ]
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[of/IN
+#                        pobj:[position/NN det:the/DT prep:[of/IN pobj:[object/NN det:an/DT]]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: function@6, V: is@4, S: energy@3, A?: of@7)
+8	"The potential energy"	"is"	"a function of the position of an object"
+8	"The potential energy"	"is"	"a function"
+# Line 9: The kinetic energy is a function of the objects movement.
+# Semantic graph: [function/NN
+#                  nsubj:[energy/NN det:The/DT amod:kinetic/JJ]
+#                  cop:is/VBZ
+#                  det:a/DT
+#                  prep:[of/IN pobj:[movement/NN det:the/DT nn:objects/NNS]]]
+#   Detected 1 clause(s).
+#   - SVC (C: function@6, V: is@4, S: energy@3, A?: of@7)
+9	"The kinetic energy"	"is"	"a function of the objects movement"
+9	"The kinetic energy"	"is"	"a function"

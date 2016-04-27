@@ -1,0 +1,158 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the stuff that all objects and substances in the universe are made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[objects/NNS
+#                                    det:all/DT
+#                                    cc:and/CC
+#                                    conj:substances/NNS
+#                                    prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                         auxpass:are/VBP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@14)
+#   - SVA (V: made@14, S: objects@7, A!: of@15)
+1	"Matter"	"is"	"the stuff that all objects and substances in the universe are made of"
+1	"all objects and substances in the universe"	"are made"	"of"
+# Line 2: The matter can be detected and measured because all the matter take up space, has volume, has mass, and contains a certain amount.
+# Semantic graph: [detected/VBN
+#                  nsubjpass:[matter/NN det:The/DT]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  cc:and/CC
+#                  conj:measured/VBN
+#                  advcl:[take/VBP
+#                         mark:because/IN
+#                         nsubj:[matter/NN predet:all/PDT det:the/DT]
+#                         prt:up/RP
+#                         dobj:space/NN
+#                         conj:[has/VBZ dobj:volume/NN]
+#                         conj:[has/VBZ dobj:mass/NN]
+#                         cc:and/CC
+#                         conj:[contains/VBZ dobj:[amount/NN det:a/DT amod:certain/JJ]]]]
+#   Detected 6 clause(s).
+#   - SVA (V: detected@5, S: matter@2, A!: take@12)
+#   - SVA (V: measured@7, S: matter@2, A!: take@12)
+#   - SVO (V: take@12, S: matter@11, O: space@14)
+#   - SVO (V: has@16, S: matter@11, O: volume@17)
+#   - SVO (V: has@19, S: matter@11, O: mass@20)
+#   - SVO (V: contains@23, S: matter@11, O: amount@26)
+2	"The matter"	"can be detected"	"because all the matter take up space has volume has mass and contains a certain amount"
+2	"The matter"	"can be measured"	"because all the matter take up space has volume has mass and contains a certain amount"
+2	"all the matter"	"take up"	"space"
+2	"all the matter"	"has"	"volume"
+2	"all the matter"	"has"	"mass"
+2	"all the matter"	"contains"	"a certain amount"
+# Line 3: Properties help to classify or identify matter.
+# Semantic graph: [help/VBP
+#                  nsubj:Properties/NNP
+#                  xcomp:[classify/VB aux:to/TO cc:or/CC conj:identify/VB dobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVO (V: help@2, S: Properties@1, XCOMP: classify@4)
+3	"Properties"	"help"	"to classify matter"
+3	"Properties"	"help"	"to identify matter"
+# Line 4: All the matter has both physical properties and chemical properties.
+# Semantic graph: [has/VBZ
+#                  nsubj:[matter/NN predet:All/PDT det:the/DT]
+#                  dobj:[properties/NNS
+#                        preconj:both/CC
+#                        amod:physical/JJ
+#                        cc:and/CC
+#                        conj:[properties/NNS nn:chemical/NN]]]
+#   Detected 1 clause(s).
+#   - SVO (V: has@4, S: matter@3, O: properties@7)
+4	"All the matter"	"has"	"both physical properties and chemical properties"
+# Line 5: A physical properties can be observed without changing the make-up, or identity of the matter.
+# Semantic graph: [observed/VBN
+#                  nsubjpass:[properties/NNS det:A/DT amod:physical/JJ]
+#                  aux:can/MD
+#                  auxpass:be/VB
+#                  prep:[without/IN
+#                        pcomp:[changing/VBG
+#                               dobj:[make-up/NN
+#                                     det:the/DT
+#                                     cc:or/CC
+#                                     conj:identity/NN
+#                                     prep:[of/IN pobj:[matter/NN det:the/DT]]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: observed@6, S: properties@3, A!: without@7)
+5	"A physical properties"	"can be observed"	"without changing the make-up or identity of the matter"
+# Line 6: It can changed side and shape but chemical properties have changed and new kind of matter with different properties.
+# Semantic graph: [changed/VBD
+#                  nsubj:It/PRP
+#                  aux:can/MD
+#                  dobj:[side/NN cc:and/CC conj:shape/NN]
+#                  cc:but/CC
+#                  conj:[changed/VBN
+#                        nsubj:[properties/NNS nn:chemical/NN]
+#                        aux:have/VBP
+#                        cc:and/CC
+#                        conj:[kind/NN
+#                              amod:new/JJ
+#                              prep:[of/IN pobj:matter/NN]
+#                              prep:[with/IN pobj:[properties/NNS amod:different/JJ]]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: changed@3, S: It@1, O: side@4)
+#   - SV (V: changed@11, S: properties@9)
+#   - SVA (V: kind@14, S: properties@9, A!: of@15, A?: with@17)
+6	"It"	"can changed"	"side and shape"
+6	"chemical properties"	"have changed"
+6	"chemical properties"	"have new kind"	"of matter with different properties"
+6	"chemical properties"	"have new kind"	"of matter"
+# Line 7: Correct
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 8: 1.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 9: Properties help them to classify or identify the matter.
+# Semantic graph: [help/VBP
+#                  nsubj:Properties/NNP
+#                  xcomp:[classify/VB
+#                         nsubj:them/PRP
+#                         aux:to/TO
+#                         cc:or/CC
+#                         conj:identify/VB
+#                         dobj:[matter/NN det:the/DT]]]
+#   Detected 3 clause(s).
+#   - SVO (V: help@2, S: Properties@1, XCOMP: classify@5)
+#   - SVO (V: classify@5, S: them@3, O: matter@9)
+#   - SVO (V: identify@7, S: them@3, O: matter@9)
+9	"Properties"	"help"	"them to classify the matter"
+9	"Properties"	"help"	"them to identify the matter"
+9	"them"	"to classify"	"the matter"
+9	"them"	"to identify"	"the matter"
+# Line 10: 2.
+# Semantic graph: []
+#   Detected 0 clause(s).
+# Line 11: All the matter takes up space.
+# Semantic graph: [takes/VBZ nsubj:[matter/NN predet:All/PDT det:the/DT] prt:up/RP dobj:space/NN]
+#   Detected 1 clause(s).
+#   - SVO (V: takes@4, S: matter@3, O: space@6)
+11	"All the matter"	"takes up"	"space"

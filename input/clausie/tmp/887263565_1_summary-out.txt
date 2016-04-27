@@ -1,0 +1,155 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is the stuff that all object and substances in the universe are made of.
+# Semantic graph: [stuff/NN
+#                  nsubj:Matter/NNP
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  ccomp:[made/VBN
+#                         complm:that/IN
+#                         nsubjpass:[object/NN
+#                                    det:all/DT
+#                                    cc:and/CC
+#                                    conj:substances/NNS
+#                                    prep:[in/IN pobj:[universe/NN det:the/DT]]]
+#                         auxpass:are/VBP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (C: stuff@4, V: is@2, S: Matter@1, CCOMP: made@14)
+#   - SVA (V: made@14, S: object@7, A!: of@15)
+1	"Matter"	"is"	"the stuff that all object and substances in the universe are made of"
+1	"all object and substances in the universe"	"are made"	"of"
+# Line 2: This means that everything no matter what it is has some kind of matter.
+# Semantic graph: [means/VBZ
+#                  nsubj:This/DT
+#                  dobj:[everything/NN det:that/DT]
+#                  advmod:[matter/NN
+#                          det:no/DT
+#                          dep:[has/VBZ
+#                               dobj:what/WP
+#                               nsubj:it/PRP
+#                               aux:is/VBZ
+#                               dobj:[kind/NN det:some/DT prep:[of/IN pobj:matter/NN]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: means@2, S: This@1, O: everything@4, A?: matter@6)
+#   - SVOC (V: has@10, S: it@8, O: what@7, O: kind@12)
+2	"This"	"means"	"that everything no matter what it is has some kind of matter"
+2	"This"	"means"	"that everything"
+2	"it"	"is has"	"what some kind of matter"
+# Line 3: Matter can also be measured by the amount of space that it takes up.
+# Semantic graph: [measured/VBN
+#                  nsubjpass:Matter/NNP
+#                  aux:can/MD
+#                  advmod:also/RB
+#                  auxpass:be/VB
+#                  prep:[by/IN pobj:[amount/NN det:the/DT prep:[of/IN pobj:space/NN]]]
+#                  ccomp:[takes/VBZ complm:that/IN nsubj:it/PRP prt:up/RP]]
+#   Detected 2 clause(s).
+#   - SVO (V: measured@5, S: Matter@1, A?: also@3, A?: by@6, CCOMP: takes@13)
+#   - SV (V: takes@13, S: it@12)
+3	"Matter"	"can be measured"	"that it takes up also"
+3	"Matter"	"can be measured"	"by the amount of space that it takes up"
+3	"Matter"	"can be measured"	"that it takes up"
+3	"it"	"takes up"
+# Line 4: Rock, trees, bicycles all have matter in some sort.
+# Semantic graph: [bicycles/VBZ
+#                  nsubj:[Rock/NNP appos:trees/NNS]
+#                  advmod:all/RB
+#                  dep:[have/VB dobj:[matter/NN prep:[in/IN pobj:[sort/NN det:some/DT]]]]]
+#   Detected 2 clause(s).
+#   - SVC (S: Rock@1, V: "is", C: trees@3)
+#   - SVA (V: bicycles@5, S: Rock@1, A!: all@6)
+4	"Rock"	"is"	"trees"
+4	"Rock"	"bicycles"	"all"
+# Line 5: Paper is an example of a physical change.
+# Semantic graph: [example/NN
+#                  nsubj:Paper/NNP
+#                  cop:is/VBZ
+#                  det:an/DT
+#                  prep:[of/IN pobj:[change/NN det:a/DT amod:physical/JJ]]]
+#   Detected 1 clause(s).
+#   - SVC (C: example@4, V: is@2, S: Paper@1, A?: of@5)
+5	"Paper"	"is"	"an example of a physical change"
+5	"Paper"	"is"	"an example"
+# Line 6: Matter also contains energy which his something that can be transmitted from one object to another.
+# Semantic graph: [contains/VBZ
+#                  nsubj:Matter/NNP
+#                  advmod:also/RB
+#                  dobj:[energy/NN
+#                        rcmod:[object/VBP
+#                               dobj:which/WDT
+#                               nsubj:[something/NN
+#                                      poss:his/PRP$
+#                                      rcmod:[transmitted/VBN
+#                                             nsubjpass:that/WDT
+#                                             aux:can/MD
+#                                             auxpass:be/VB
+#                                             prep:[from/IN pobj:one/CD]]]
+#                               prep:[to/TO pobj:another/DT]]]]
+#   Detected 4 clause(s).
+#   - SVO (V: contains@3, S: Matter@1, A?: also@2, O: energy@4)
+#   - SVO (S: his@6, V: "has", O: something@7)
+#   - SVA (V: transmitted@11, S: something@7, A!: from@12)
+#   - SVO (V: object@14, S: something@7, O: energy@4, A?: to@15)
+6	"Matter"	"contains"	"energy also"
+6	"Matter"	"contains"	"energy"
+6	"his"	"has"	"something"
+6	"his something"	"can be transmitted"	"from one"
+6	"his something"	"object"	"energy to another"
+6	"his something"	"object"	"energy"
+# Line 7: Mechanical energy is the energy on objects has because of its motion or its position.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  det:the/DT
+#                  prep:[on/IN
+#                        pobj:[objects/NNS
+#                              rcmod:[of/IN
+#                                     aux:has/VBZ
+#                                     advmod:because/RB
+#                                     pobj:[motion/NN
+#                                           poss:its/PRP$
+#                                           cc:or/CC
+#                                           conj:[position/NN poss:its/PRP$]]]]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@5, V: is@3, S: energy@2, A?: on@6)
+#   - SVO (S: its@11, V: "has", O: motion@12)
+#   - SVO (S: its@14, V: "has", O: position@15)
+7	"Mechanical energy"	"is"	"the energy on objects"
+7	"Mechanical energy"	"is"	"the energy"
+7	"its"	"has"	"motion or its position"
+7	"its"	"has"	"position"
+# Line 8: All objects and matter are consistent in chemical energy and physical energy.
+# Semantic graph: [consistent/JJ
+#                  nsubj:[objects/NNS det:All/DT cc:and/CC conj:matter/NN]
+#                  cop:are/VBP
+#                  prep:[in/IN
+#                        pobj:[energy/NN
+#                              nn:chemical/NN
+#                              cc:and/CC
+#                              conj:[energy/NN amod:physical/JJ]]]]
+#   Detected 1 clause(s).
+#   - SVC (C: consistent@6, V: are@5, S: objects@2, A?: in@7)
+8	"All objects and matter"	"are"	"consistent in chemical energy and physical energy"
+8	"All objects and matter"	"are"	"consistent"

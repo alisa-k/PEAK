@@ -1,0 +1,129 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: The five paragraphs were about matter.
+# Semantic graph: [were/VBD
+#                  nsubj:[paragraphs/NNS det:The/DT num:five/CD]
+#                  prep:[about/IN pobj:matter/NN]]
+#   Detected 1 clause(s).
+#   - SVA (V: were@4, S: paragraphs@3, A!: about@5)
+1	"The five paragraphs"	"were"	"about matter"
+# Line 2: Matter is what everything around us is made out of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN
+#                         dep:what/WP
+#                         nsubjpass:[everything/NN prep:[around/IN pobj:us/PRP]]
+#                         auxpass:is/VBZ
+#                         prt:out/RP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@8)
+#   - SVA (V: made@8, S: everything@4, A!: of@10)
+2	"Matter"	"is"	"what everything around us is made out of"
+2	"everything around us"	"is made out"	"of"
+# Line 3: Matter contains physical and chemical properties as well as changes and forms of energy.
+# Semantic graph: [contains/VBZ
+#                  nsubj:Matter/NNP
+#                  dobj:[properties/NNS
+#                        amod:[physical/NN cc:and/CC conj:chemical/NN]
+#                        cc:[well/RB advmod:as/RB mwe:as/IN]
+#                        conj:[changes/NNS cc:and/CC conj:forms/NNS prep:[of/IN pobj:energy/NN]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: contains@2, S: Matter@1, O: properties@6)
+3	"Matter"	"contains"	"physical and chemical properties as well as changes and forms of energy"
+# Line 4: Physical properties are watching matter change without changing everything about it.
+# Semantic graph: [watching/VBG
+#                  nsubj:[properties/NNS amod:Physical/JJ]
+#                  aux:are/VBP
+#                  dobj:[change/NN nn:matter/NN]
+#                  prep:[without/IN
+#                        pobj:[everything/NN amod:changing/VBG prep:[about/IN pobj:it/PRP]]]]
+#   Detected 1 clause(s).
+#   - SVO (V: watching@4, S: properties@2, O: change@6, A?: without@7)
+4	"Physical properties"	"are watching"	"matter change without changing everything about it"
+4	"Physical properties"	"are watching"	"matter change"
+# Line 5: Chemical properties is observing.
+# Semantic graph: [observing/VBG nsubj:[properties/NNS nn:Chemical/NNP] aux:is/VBZ]
+#   Detected 1 clause(s).
+#   - SV (V: observing@4, S: properties@2)
+5	"Chemical properties"	"is observing"
+# Line 6: The matter change when changing it place or different property.
+# Semantic graph: [change/VBP
+#                  nsubj:[matter/NN det:The/DT]
+#                  advcl:[changing/VBG
+#                         advmod:when/WRB
+#                         dobj:it/PRP
+#                         dep:[place/NN cc:or/CC conj:[property/NN amod:different/JJ]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: change@3, S: matter@2, A!: changing@5)
+6	"The matter"	"change"	"when changing it place or different property"
+# Line 7: The energy in matter is in different forms: mechanical, kinetic and potential energy.
+# Semantic graph: [is/VBZ
+#                  nsubj:[energy/NN det:The/DT prep:[in/IN pobj:matter/NN]]
+#                  prep:[in/IN
+#                        pobj:[forms/NNS
+#                              amod:different/JJ
+#                              dep:[energy/NN
+#                                   amod:[mechanical/JJ
+#                                         conj:kinetic/JJ
+#                                         cc:and/CC
+#                                         conj:potential/JJ]]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: is@5, S: energy@2, A!: in@6)
+7	"The energy in matter"	"is"	"in different forms mechanical kinetic and potential energy"
+# Line 8: Mechanical energy is when it has motion or position.
+# Semantic graph: [is/VBZ
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  advcl:[has/VBZ
+#                         advmod:when/WRB
+#                         nsubj:it/PRP
+#                         dobj:[motion/NN cc:or/CC conj:position/NN]]]
+#   Detected 2 clause(s).
+#   - SVA (V: is@3, S: energy@2, A!: has@6)
+#   - SVO (V: has@6, S: it@5, A?: when@4, O: motion@7)
+8	"Mechanical energy"	"is"	"when it has motion or position"
+8	"it"	"has"	"motion or position when"
+8	"it"	"has"	"motion or position"
+# Line 9: Kinetic is when the energy is moving and potential is when the energy has position or shape.
+# Semantic graph: [is/VBZ
+#                  nsubj:Kinetic/NNP
+#                  advcl:[moving/VBG advmod:when/WRB nsubj:[energy/NN det:the/DT] aux:is/VBZ]
+#                  cc:and/CC
+#                  conj:[is/VBZ
+#                        nsubj:potential/NN
+#                        advcl:[has/VBZ
+#                               advmod:when/WRB
+#                               nsubj:[energy/NN det:the/DT]
+#                               dobj:[position/NN cc:or/CC conj:shape/NN]]]]
+#   Detected 4 clause(s).
+#   - SVA (V: is@2, S: Kinetic@1, A!: moving@7)
+#   - SV (V: moving@7, S: energy@5, A?: when@3)
+#   - SVA (V: is@10, S: potential@9, A!: has@14)
+#   - SVO (V: has@14, S: energy@13, A?: when@11, O: position@15)
+9	"Kinetic"	"is"	"when the energy is moving"
+9	"the energy"	"is moving"	"when"
+9	"the energy"	"is moving"
+9	"potential"	"is"	"when the energy has position or shape"
+9	"the energy"	"has"	"position or shape when"
+9	"the energy"	"has"	"position or shape"

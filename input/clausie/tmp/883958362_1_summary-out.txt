@@ -1,0 +1,222 @@
+# CLAUSE DETECTION
+#   Dict. copular        : 25 (be, prove, sound, ...)
+#   Dict. ext-copular    : 31 (love, be, prove, ...)
+#   Dict. not ext.-cop.  : 2 (die, walk)
+#   Dict. complex trans. : 15 (set, lay, bring, ...)
+#   Dict. ignored adverb : 6 (as, thus, even, ...)
+#   Dict. included adverb: 5 (seldom, barely, scarcely, ...)
+#   Dict. conj adverbs   : 0
+#   Conservative SVA     : true
+#   Conservative SVOA    : false
+#   Process all verb CCs : true
+#   Process non-verb CCs : false
+#   Process appositions  : true
+#   Process possessives  : true
+#   Process partmods     : true
+# 
+# REPRESENTATION
+#   n-ary propositions  : false
+#   Min. opt. args      : 0
+#   Max. opt. args      : 1
+#   Lemmatize           : false
+#   Appositions verb    : "is"
+#   Possessive verb     : "has"
+# Line 1: Matter is what everything is made up of.
+# Semantic graph: [is/VBZ
+#                  nsubj:Matter/NNP
+#                  ccomp:[made/VBN
+#                         dep:what/WP
+#                         nsubjpass:everything/NN
+#                         auxpass:is/VBZ
+#                         prt:up/RP
+#                         prep:of/IN]]
+#   Detected 2 clause(s).
+#   - SVC (V: is@2, S: Matter@1, CCOMP: made@6)
+#   - SVA (V: made@6, S: everything@4, A!: of@8)
+1	"Matter"	"is"	"what everything is made up of"
+1	"everything"	"is made up"	"of"
+# Line 2: You can see it cause it does have a physical being.
+# Semantic graph: [see/VB
+#                  nsubj:You/PRP
+#                  aux:can/MD
+#                  ccomp:[cause/VB
+#                         nsubj:it/PRP
+#                         ccomp:[have/VB
+#                                nsubj:it/PRP
+#                                aux:does/VBZ
+#                                dobj:[being/NN det:a/DT amod:physical/JJ]]]]
+#   Detected 3 clause(s).
+#   - SVO (V: see@3, S: You@1, CCOMP: cause@5)
+#   - SVO (V: cause@5, S: it@4, CCOMP: have@8)
+#   - SVO (V: have@8, S: it@6, O: being@11)
+2	"You"	"can see"	"it cause it does have a physical being"
+2	"it"	"cause"	"it does have a physical being"
+2	"it"	"does have"	"a physical being"
+# Line 3: But somethings are too small to see with the naked eye like dust under your couch.
+# Semantic graph: [small/JJ
+#                  cc:But/CC
+#                  nsubj:somethings/NNS
+#                  cop:are/VBP
+#                  advmod:too/RB
+#                  xcomp:[see/VB
+#                         aux:to/TO
+#                         prep:[with/IN
+#                               pobj:[eye/NN
+#                                     det:the/DT
+#                                     amod:naked/JJ
+#                                     prep:[like/IN pobj:dust/NN]]]
+#                         prep:[under/IN pobj:[couch/NN poss:your/PRP$]]]]
+#   Detected 2 clause(s).
+#   - SVC (C: small@5, V: are@3, S: somethings@2, A?: too@4, XCOMP: see@7)
+#   - SVO (S: your@15, V: "has", O: couch@16)
+3	"somethings"	"are"	"But small too to see with the naked eye like dust under your couch"
+3	"somethings"	"are"	"But small too to see with the naked eye like dust"
+3	"somethings"	"are"	"But small to see with the naked eye like dust under your couch"
+3	"somethings"	"are"	"But small to see with the naked eye like dust"
+3	"your"	"has"	"couch"
+# Line 4: To classify matter you do test on it like weighing it out or putting it in water which tells us the properties of matter.
+# Semantic graph: [do/VBP
+#                  dep:[classify/VB aux:To/TO dobj:matter/NN]
+#                  nsubj:you/PRP
+#                  dobj:[test/NN prep:[on/IN pobj:it/PRP]]
+#                  prep:[like/IN
+#                        pcomp:[weighing/VBG
+#                               dobj:it/PRP
+#                               prt:out/RP
+#                               cc:or/CC
+#                               conj:[putting/VBG
+#                                     dobj:it/PRP
+#                                     prep:[in/IN
+#                                           pobj:[water/NN
+#                                                 rcmod:[tells/VBZ
+#                                                        nsubj:which/WDT
+#                                                        iobj:us/PRP
+#                                                        dobj:[properties/NNS
+#                                                              det:the/DT
+#                                                              prep:[of/IN pobj:matter/NN]]]]]]]]]
+#   Detected 2 clause(s).
+#   - SVO (V: do@5, S: you@4, O: test@6, A?: like@9)
+#   - SVOO (V: tells@19, S: water@17, IO: us@20, O: properties@22)
+4	"you"	"do"	"test on it like weighing it out or putting it in water"
+4	"you"	"do"	"test on it"
+4	"water"	"tells"	"us the properties of matter"
+# Line 5: The physical properties of matter are like taking a piece of clay and squeezing it.
+# Semantic graph: [are/VBP
+#                  nsubj:[properties/NNS det:The/DT amod:physical/JJ prep:[of/IN pobj:matter/NN]]
+#                  prep:[like/IN
+#                        pcomp:[taking/VBG
+#                               dobj:[piece/NN det:a/DT prep:[of/IN pobj:clay/NN]]
+#                               cc:and/CC
+#                               conj:[squeezing/VBG dobj:it/PRP]]]]
+#   Detected 1 clause(s).
+#   - SVA (V: are@6, S: properties@3, A!: like@7)
+5	"The physical properties of matter"	"are"	"like taking a piece of clay and squeezing it"
+# Line 6: It will take a different form but what its made up of will not change.
+# Semantic graph: [take/VB
+#                  nsubj:It/PRP
+#                  aux:will/MD
+#                  dobj:[form/NN det:a/DT amod:different/JJ]
+#                  cc:but/CC
+#                  conj:[change/VB
+#                        csubj:[made/VBD dep:what/WP nsubj:its/PRP$ prt:up/RP prep:of/IN]
+#                        aux:will/MD
+#                        neg:not/RB]]
+#   Detected 3 clause(s).
+#   - SVO (V: take@3, S: It@1, O: form@6)
+#   - SVA (V: made@10, S: its@9, A!: of@12)
+#   - SV (V: change@15, S: made@10)
+6	"It"	"will take"	"a different form"
+6	"its"	"made up"	"of"
+6	"what its made up of"	"will not change"
+# Line 7: A physical change is what it looks like a chemical change is what it is actually made up of.
+# Semantic graph: [is/VBZ
+#                  nsubj:[change/NN det:A/DT amod:physical/JJ]
+#                  ccomp:[looks/VBZ
+#                         dep:what/WP
+#                         nsubj:it/PRP
+#                         advcl:[is/VBZ
+#                                mark:like/IN
+#                                nsubj:[change/NN det:a/DT nn:chemical/NN]
+#                                ccomp:[made/VBN
+#                                       dep:what/WP
+#                                       nsubjpass:it/PRP
+#                                       auxpass:is/VBZ
+#                                       advmod:actually/RB
+#                                       prt:up/RP
+#                                       prep:of/IN]]]]
+#   Detected 4 clause(s).
+#   - SVC (V: is@4, S: change@3, CCOMP: looks@7)
+#   - SVA (V: looks@7, S: it@6, A!: is@12)
+#   - SVC (V: is@12, S: change@11, CCOMP: made@17)
+#   - SVA (V: made@17, S: it@14, A?: actually@16, A!: of@19)
+7	"A physical change"	"is"	"what it looks like a chemical change is what it is actually made up of"
+7	"it"	"looks"	"like a chemical change is what it is actually made up of"
+7	"a chemical change"	"is"	"what it is actually made up of"
+7	"it"	"is made up"	"of actually"
+7	"it"	"is made up"	"of"
+# Line 8: The reading tells us there is a thing called law of conservation of energy and it means that energy can be transferred from one object or system to another.
+# Semantic graph: [tells/VBZ
+#                  nsubj:[reading/NN det:The/DT]
+#                  dep:[thing/NN
+#                       nsubj:us/PRP
+#                       advmod:there/RB
+#                       cop:is/VBZ
+#                       det:a/DT
+#                       partmod:[called/VBN
+#                                dobj:[law/NN
+#                                      prep:[of/IN
+#                                            pobj:[conservation/NN prep:[of/IN pobj:energy/NN]]]]]
+#                       cc:and/CC
+#                       conj:[means/VBZ
+#                             nsubj:it/PRP
+#                             ccomp:[transferred/VBN
+#                                    complm:that/IN
+#                                    nsubjpass:energy/NN
+#                                    aux:can/MD
+#                                    auxpass:be/VB
+#                                    prep:[from/IN
+#                                          pobj:[object/NN num:one/CD cc:or/CC conj:system/NN]]
+#                                    prep:[to/TO pobj:another/DT]]]]]
+#   Detected 5 clause(s).
+#   - SV (V: tells@3, S: reading@2)
+#   - SVC (C: thing@8, V: is@6, S: us@4, A?: there@5, A?: called@9)
+#   - SVA (V: "be called", S: thing@8, O: law@10)
+#   - SVO (V: means@17, S: it@16, CCOMP: transferred@22)
+#   - SVA (V: transferred@22, S: energy@19, A!: from@23, A?: to@28)
+8	"The reading"	"tells"
+8	"us"	"is"	"a thing there"
+8	"us"	"is"	"a thing called law of conservation of energy"
+8	"us"	"is"	"a thing"
+8	"there a thing and it means that energy can be transferred from one object or system to another"	"be called"	"law of conservation of energy"
+8	"it"	"means"	"that energy can be transferred from one object or system to another"
+8	"energy"	"can be transferred"	"from one object or system to another"
+8	"energy"	"can be transferred"	"from one object or system"
+# Line 9: Energy cant be created or destroyed.
+# Semantic graph: [created/VBN
+#                  nsubjpass:[cant/NNP nn:Energy/NNP]
+#                  auxpass:be/VB
+#                  cc:or/CC
+#                  conj:destroyed/VBN]
+#   Detected 2 clause(s).
+#   - SV (V: created@4, S: cant@2)
+#   - SV (V: destroyed@6, S: cant@2)
+9	"Energy cant"	"be created"
+9	"Energy cant"	"be destroyed"
+# Line 10: Mechanical energy is energy an object that has because of its motion or position.
+# Semantic graph: [energy/NN
+#                  nsubj:[energy/NN amod:Mechanical/JJ]
+#                  cop:is/VBZ
+#                  dep:[object/NN det:an/DT]
+#                  rcmod:[of/IN
+#                         nsubj:that/WDT
+#                         aux:has/VBZ
+#                         advmod:because/RB
+#                         pobj:[motion/NN poss:its/PRP$ cc:or/CC conj:position/NN]]]
+#   Detected 3 clause(s).
+#   - SVC (C: energy@4, V: is@3, S: energy@2)
+#   - SVA (V: of@10, S: energy@4, A?: because@9, A!: motion@12)
+#   - SVO (S: its@11, V: "has", O: motion@12)
+10	"Mechanical energy"	"is"	"energy an object"
+10	"energy an object"	"has of"	"its motion or position because"
+10	"energy an object"	"has of"	"its motion or position"
+10	"its"	"has"	"motion or position"
